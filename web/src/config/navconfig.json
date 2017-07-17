@@ -1,0 +1,26 @@
+[
+    {
+        "url": "/",
+        "name": "Dashboard"
+    },
+    {
+        "url": "directory",
+        "name": "Directory"
+    },
+    {
+        "url": "/tablespacedetail",
+        "name": "Table Space Usage"
+    },
+    {
+        "url": "/queryperf",
+        "name": "Query Performance"
+    },
+    {
+        "url": "/servermemorybydb",
+        "name": "Memory Usage by Database"
+    },
+    {
+        "url": "/users",
+        "name": "Database Users"
+    }
+]

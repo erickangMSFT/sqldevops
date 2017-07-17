@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<!-- This sqlproj file requires Visual Studio 2017 MSBuil.exe or higher version -->
+<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <ModelCollation>1033, CI</ModelCollation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <!--This property group is for VS compatibility-->
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="src" />
+    <Folder Include="deployment_scripts" />
+    <Folder Include="publish_profiles" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="src\*.sql" />
+    <Build Include="src\*\*.sql" />
+    <None Include="deployment_scripts\*.sql" />
+    <None Include="*.md" />
+    <None Include=".gitignore" />
+  </ItemGroup>
+</Project>

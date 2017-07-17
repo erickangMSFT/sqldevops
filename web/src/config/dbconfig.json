@@ -1,0 +1,9 @@
+{
+    "user": "sa",
+    "password": "Yukon900",
+    "server": "localhost",
+    "database": "AdventureWorks",
+    "options": {
+        "encrypt": false
+    }
+}

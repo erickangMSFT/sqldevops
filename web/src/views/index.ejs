@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title><%=title%></title>
+    <!-- Bootstrap core CSS -->
+    <!--bower:css-->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+    <!--endbower-->
+    <!--inject:css-->
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <!--endinject-->
+  </head>
+  <body onload="drawChart()">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">AdventureWorks</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/Settings">Settings</a></li>
+            <li><a href="/Profile">Profile</a></li>
+            <li><a href="/Help">Help</a></li>
+          </ul>
+          <!--<form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form> -->
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/">Insights <span class="sr-only">(current)</span></a></li>
+            <li><a href="/Directory">Directory</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="/QueryPerf">Query Performance</a></li>
+            <li><a href="/tablespacedetail">Table Space Usage</a></li>
+            <li ><a href="/users">Database Users </a></li>
+            <li ><a href="/servermemorybydb">Memory Usage by Database </span></a></li>
+            <li ><a href="/backuphistory">Backup History </span></a></li>  
+          </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Insights
+          <span class="text-muted"> 
+            <h5>Connected to <%=server%>/<%=database%> (<%=user%>)</h5>
+          </span>
+          </h1> 
+          <div class="row placeholders">
+            <!-- place chart.js here -->
+            <!-- diskusage chart -->
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <div id="canvas-holder"> 
+                <canvas id="diskusage-chart" />
+              </div>
+              <h4>Disk Usage (%)</h4>
+                <span class="text-muted"><%=database%></span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <div id="canvas-holder"> 
+                <canvas id="servermemory-chart" />
+              </div>
+              <h4>Memory Usage (%)</h4>
+                <span class="text-muted"><%=server%></span>
+            </div>
+            <div class="col-sm-6 placeholder">
+              <div id="canvas-holder"> 
+                <canvas id="cpu-graph" />
+              </div>
+              <h4>CPU (%)</h4>
+                <span class="text-muted"><%=server%></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h4 class="sub-header">Table Space Usage
+            <span class="text-muted"> <h5>Top 10 tables and indexes</h5> </span>
+        </h4>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Schema</th>
+                  <th>Table</th>
+                  <th>Rows</th>
+                  <th>Used space (MB)</th>
+                  <th>Data space (MB)</th>
+                  <th>Total space (MB)</th>
+                  <th>Total pages</th>
+                  <th>Used pages</th>
+                  <th>Data pages</th>
+                  <th>Index</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for (var i=0; i < 11; i++) { %>
+                  <tr>
+                      <td> <%=tablespaces[i].schema_name %></td>
+                      <td> <%=tablespaces[i].table_name %></td>
+                      <td> <%=tablespaces[i].row_count %></td>
+                      <td> <%=tablespaces[i].used_space_MB %></td>
+                      <td> <%=tablespaces[i].total_space_MB %></td>
+                      <td> <%=tablespaces[i].data_space_MB %></td>
+                      <td> <%=tablespaces[i].total_pages %></td>
+                      <td> <%=tablespaces[i].used_pages %></td>
+                      <td> <%=tablespaces[i].data_pages %></td>
+                      <td> <%=tablespaces[i].index_name %></td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!--bower:js-->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/chart.js/dist/Chart.js"></script>
+    <!--endbower-->
+    <!--inject:js-->
+    <script src="/js/seq_0_utils.js"></script>
+    <script src="/js/seq_1_dashboard.js"></script>
+    <!--endinject-->
+    <script>
+    window.onload = function () {
+    var diskusagectx = document.getElementById('diskusage-chart').getContext('2d');
+    window.diskUsageChart = new Chart(diskusagectx, diskusageconfig);
+
+    var memoryusagectx = document.getElementById('servermemory-chart').getContext('2d');
+    window.memoryUsageChart = new Chart(memoryusagectx, servermemoryconfig);
+
+    var cpuctx = document.getElementById('cpu-graph').getContext('2d');
+    window.cpuGraph = new Chart(cpuctx, cpuconfig);
+    };
+    </script>
+  </body>
+</html>
