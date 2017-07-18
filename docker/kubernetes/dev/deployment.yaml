@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mssql
+  namespace: sqlpassdev
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: sqlpassdev
+    spec:
+      containers:
+      - name: sqldevops
+        image: sqldevopsacs.azurecr.io/sqldevops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 1433
+      imagePullSecrets:
+        - name: sqldevops2
