@@ -7,7 +7,7 @@ const randomScalingFactor = function () {
 // Disk Usage Chart config.
 // Todo: get data from mssql 
 const diskusageconfig = {
-    type: 'doughnut',
+    type: 'pie',
     data: {
         datasets: [{
             data: [

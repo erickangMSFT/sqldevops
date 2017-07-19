@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module SeedData - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-seed_orgchart_data">#seed_orgchart_data</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-SeedData">
+  <h1 id="module-SeedData" class="module">
+    module SeedData
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-seed_orgchart_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">seed_orgchart_data</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>OrgChart unittest data seeding</p>
+          
+          
+
+          
+          <div class="method-source-code" id="seed_orgchart_data-source">
+            <pre><span class="ruby-comment"># File tests/db_unittest/lib/helpers/seed_data.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">seed_orgchart_data</span>()
+
+<span class="ruby-comment"># Seed unittest database in the complex FK relationship.</span>
+    <span class="ruby-comment"># See data/adventureworks/seed_data/_seed_sequence.md for more detail of the data seeding sequence.</span>
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.BusinessEntity ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_businessentity.csv&#39;</span>, <span class="ruby-string">&#39;Person.BusinessEntity&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.BusinessEntity OFF;&quot;</span>)
+    
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_person.csv&#39;</span>, <span class="ruby-string">&#39;Person.Person&#39;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_humanresources_employee.csv&#39;</span>,<span class="ruby-string">&#39;HumanResources.Employee&#39;</span>)
+    
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT HumanResources.Department ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_humanresources_department.csv&#39;</span>, <span class="ruby-string">&#39;HumanResources.Department&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT HumanResources.Department OFF;&quot;</span>)
+    
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT HumanResources.Shift ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_humanresources_shift.csv&#39;</span>, <span class="ruby-string">&#39;HumanResources.Shift&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT HumanResources.Shift OFF;&quot;</span>)
+
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.EmailAddress ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_emailaddress.csv&#39;</span>, <span class="ruby-string">&#39;Person.EmailAddress&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.EmailAddress OFF;&quot;</span>)
+
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.PhoneNumberType ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_phonenumbertype.csv&#39;</span>, <span class="ruby-string">&#39;Person.PhoneNumberType&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.PhoneNumberType OFF;&quot;</span>)
+
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_personphone.csv&#39;</span>, <span class="ruby-string">&#39;Person.PersonPhone&#39;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_countryregion.csv&#39;</span>, <span class="ruby-string">&#39;Person.CountryRegion&#39;</span>)
+    
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Sales.SalesTerritory ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_sales_salesterritory.csv&#39;</span>, <span class="ruby-string">&#39;Sales.SalesTerritory&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Sales.SalesTerritory OFF;&quot;</span>)
+
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.StateProvince ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_stateprovince.csv&#39;</span>, <span class="ruby-string">&#39;Person.StateProvince&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.StateProvince OFF;&quot;</span>)
+
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.AddressType ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_addresstype.csv&#39;</span>, <span class="ruby-string">&#39;Person.AddressType&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.AddressType OFF;&quot;</span>)
+
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.AddressRename ON;&quot;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_addressrename.csv&#39;</span>, <span class="ruby-string">&#39;Person.AddressRename&#39;</span>)
+    <span class="ruby-identifier">query</span>(<span class="ruby-string">&quot;SET IDENTITY_INSERT Person.AddressRename OFF;&quot;</span>)
+
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_person_businessentityaddress.csv&#39;</span>, <span class="ruby-string">&#39;Person.BusinessEntityAddress&#39;</span>)
+    <span class="ruby-identifier">load_csv</span>(<span class="ruby-string">&#39;adventureworks/seed_data/seed_humanresources_employeedepartmenthistory.csv&#39;</span>, <span class="ruby-string">&#39;HumanResources.EmployeeDepartmentHistory&#39;</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://rdoc.github.io/rdoc">RDoc</a> 5.0.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
