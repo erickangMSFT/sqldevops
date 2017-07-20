@@ -1,0 +1,230 @@
+{
+    "List all databases and states":{
+		"prefix": "sqlListDatabaseWithState",
+		"body":[
+            "--List all databases with states",
+			"SELECT name, state_desc, user_access_desc, recovery_model_desc FROM sys.databases",
+			"GO"
+		],
+		"description": "List databases with states"
+	},
+
+	    "Get top queries by total CPU time":{
+        "prefix":"insightPerfTopQueriesByTotalCpuTime",
+        "body": [
+            "-- Top 10 queries by total CPU time",
+            "SELECT TOP 10",
+            "   RANK() OVER(ORDER BY total_worker_time DESC,sql_handle,statement_start_offset) as [Rank]",
+            "   , creation_time as [Creation Time]",
+            "   , last_execution_time as [Last Execution Time]",
+            "   , (total_worker_time+0.0)/1000 as [Total Worker Time]",
+            "   , (total_worker_time+0.0)/(execution_count*1000) as [Average CPU Time]",
+            "   , total_logical_reads as [Logical Reads]",
+            "   , total_logical_writes as [Logical Writes]",
+            "   , execution_count as [Execution Count]",
+            "   , total_logical_reads+total_logical_writes as [Aggegated IO]",
+            "   , (total_logical_reads+total_logical_writes)/(execution_count + 0.0) as [Average IO]",
+            "   , CASE WHEN sql_handle IS NULL",
+            "       THEN ''",
+            "       ELSE ( SUBSTRING(st.text,(qs.statement_start_offset+2)/2,",
+            "           (CASE WHEN qs.statement_end_offset = -1",        
+            "               THEN len(CONVERT(nvarchar(MAX),st.text))*2",      
+            "               ELSE qs.statement_end_offset",
+            "           END - qs.statement_start_offset) /2  ) )",
+            "   END as [Query Text]",
+            "   , DB_NAME(st.dbid) as [Database]",
+            "   , st.objectid as [Object ID]",
+            "FROM sys.dm_exec_query_stats qs",
+            "CROSS APPLY sys.dm_exec_sql_text(sql_handle) st",
+            "WHERE total_worker_time > 0",
+            "ORDER BY total_worker_time  desc"
+        ],
+        "description": "Get top queries by total CPU time"
+    },
+
+	"Get backup status for all databases":{
+		"prefix": "insightRecoveryBackupStatus",
+		"body": [
+            "-- Get backup status for all databases",
+			"USE master;",
+			"GO",
+			"DECLARE @HOURS tinyint",
+			"SET @HOURS = 22",
+			"SELECT",
+			"    SERVERPROPERTY('MachineName') AS [MACHINE NAME],",
+			"    SERVERPROPERTY('InstanceName') AS INSTANCE,",
+			"    DB.name AS [DATABASE],",
+			"    CASE",
+			"        WHEN BK.[type] = 'D' THEN 'FULL'",
+			"        WHEN BK.[type] = 'I' THEN 'DIFF'",
+			"        WHEN BK.[type] = 'L' THEN 'LOG'",
+			"        WHEN BK.[type] = 'F' THEN 'FILEGROUP'",
+			"        WHEN BK.[type] = 'G' THEN 'DIFFERENTIAL - FILE'",
+			"        WHEN BK.[type] = 'P' THEN 'PARTIAL'",
+			"        WHEN BK.[type] = 'Q' THEN 'DIFFERENTIAL PARTIAL'",
+			"    END AS [BACKUP TYPE],",
+			"    MAX(BK.backup_start_date) AS [LAST BACKUP],",
+			"    CASE",
+			"        WHEN (DATEDIFF( HH , MAX(BK.backup_start_date) , GETDATE()) < @HOURS) THEN 'Compliant' ELSE 'Incompliant'",
+			"    END AS Compliance",
+			"FROM master..sysdatabases AS DB",
+			"LEFT JOIN msdb..backupset AS BK ON DB.name = BK.database_name",
+			"LEFT JOIN msdb..backupmediafamily AS MD ON BK.media_set_id = MD.media_set_id",
+			"WHERE BK.[type] IS NOT NULL --AND BK.[type] = 'D'",
+			"AND DB.[dbid] > 4 and DB.name NOT LIKE 'ReportServer%'",
+			"GROUP BY DB.name, BK.[type]",
+			"ORDER BY [MACHINE NAME], MAX(BK.backup_start_date) DESC, DB.name",
+			"GO"
+		],
+		"description": "Get backup status from all databases"
+	},
+	"Get logins and users": {
+		"prefix": "insightSecurityLoginsAndUsers",
+		"body": [
+			"--Get all login details",
+			"SELECT sp.name AS LoginName,sp.type_desc AS LoginType,",
+				"sp.default_database_name AS DefaultDBName,slog.sysadmin AS SysAdmin,",
+				"slog.securityadmin AS SecurityAdmin,slog.serveradmin AS ServerAdmin,", 
+				"slog.setupadmin AS SetupAdmin, slog.processadmin AS ProcessAdmin,", 
+				"slog.diskadmin AS DiskAdmin, slog.dbcreator AS DBCreator,slog.bulkadmin AS BulkAdmin",
+			"FROM sys.server_principals sp  JOIN master..syslogins slog",
+			"ON sp.sid=slog.sid",
+			"WHERE sp.type  <> 'R' AND sp.name NOT LIKE '##%'",
+			"",
+			"--Get all database users and roles",
+			"DECLARE @SQLStatement VARCHAR(4000)",
+			"DECLARE @T_DBuser TABLE (DBName SYSNAME, UserName SYSNAME, AssociatedDBRole NVARCHAR(256))", 
+			"SET @SQLStatement='",
+				"SELECT ''?'' AS DBName,dp.name AS UserName,USER_NAME(drm.role_principal_id) AS AssociatedDBRole", 
+				"FROM ?.sys.database_principals dp",
+				"LEFT OUTER JOIN ?.sys.database_role_members drm",
+				"ON dp.principal_id=drm.member_principal_id",
+				"WHERE dp.sid NOT IN (0x01) AND dp.sid IS NOT NULL AND dp.type NOT IN (''C'')", 
+					"AND dp.is_fixed_role <> 1 AND dp.name NOT LIKE ''##%'' AND ''?''", 
+					"NOT IN (''master'',''msdb'',''model'',''tempdb'') ORDER BY DBName'",
+			"INSERT @T_DBuser",
+			"EXEC sp_MSforeachdb @SQLStatement",
+			"SELECT * FROM @T_DBuser ORDER BY DBName"
+		],
+		"description": "Get logins and users"
+		},
+		
+		"Get Explicit Permission":{
+			"prefix": "insightSecurityGetExplicitPermissions",
+			"body": [
+				"-- Get all explicit permission on '${DatabaseName}'",
+				"USE ${DatabaseName}",
+				"GO",
+				"DECLARE @Obj VARCHAR(4000)",
+				"DECLARE @T_Obj TABLE (UserName SYSNAME, ObjectName SYSNAME, Permission NVARCHAR(128))",
+				"SET @Obj='",
+				"SELECT Us.name AS username, Obj.name AS object,  dp.permission_name AS permission",
+				"FROM sys.database_permissions dp",
+				"JOIN sys.sysusers Us",
+				"ON dp.grantee_principal_id = Us.uid", 
+				"JOIN sys.sysobjects Obj",
+				"ON dp.major_id = Obj.id '",
+				"INSERT @T_Obj",
+				"EXEC sp_MSforeachdb @Obj",
+				"SELECT * FROM @T_Obj"
+			],
+			"description": "Get Explicit Permissions"
+		},
+		"Get Backup & Restore Progress": {
+			"prefix": "insightRecoveryBackupRestoreProgress",
+			"body":[
+				"-- Get all backup and restore detail in progress",
+				"SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete,", 
+				"dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time", 
+				"FROM sys.dm_exec_requests r CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a", 
+				"WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')"
+			],
+			"description": "Get Backup and Restore Progress"
+		},
+		"Get Server Audit detail": {
+			"prefix": "insightSecurityServerAudit",
+			"body":[
+				"--Get all server audit detail",
+				"SELECT a.name, a.is_state_enabled, a.create_date, a.modify_date, a.on_failure_desc",
+				"FROM sys.server_audits as a",
+				"GO",
+				"--Get all server audit specifications",
+				"select * from sys.server_audit_specification_details",
+				"--Get audit file details",
+				"SELECT audit_id, name, create_date, modify_date, log_file_path + log_file_name auditlog_file_name",
+				"FROM sys.server_file_audits"
+			],
+			"description": "Get Server Audit detail"
+		},
+		"Configure Server Audit for Logins":{
+			"prefix": "previewdemoConfigureAuditDemo",
+			"body":[
+				"--Conifugre '${AuditName}' with '${ServerAuditSpec}' for logins",
+				"CREATE SERVER AUDIT ${AuditName}",
+				"TO FILE", 
+				"(FILEPATH = N'/var/opt/mssql/auditlog'",
+				",MAXSIZE = 0 MB",
+				",MAX_ROLLOVER_FILES = 2147483647",
+				",RESERVE_DISK_SPACE = OFF",
+				")",
+				"WITH",
+				"(QUEUE_DELAY = 1000",
+				",ON_FAILURE = CONTINUE",
+				")",
+				"GO",
+				"",
+				"SELECT name, is_state_enabled", 
+				"FROM sys.server_audits;",
+				"GO",
+				"",
+				"-- Create server audit specification for Success and Failed logins",
+				"ALTER SERVER AUDIT ${AuditName}",
+				"WITH (STATE = OFF);",
+				"GO",
+				"",
+				"CREATE SERVER AUDIT SPECIFICATION ${ServerAuditSpec}",
+				"FOR SERVER AUDIT ${AuditName}",
+				"ADD (FAILED_LOGIN_GROUP),",
+				"ADD (SUCCESSFUL_LOGIN_GROUP)",
+				"WITH ( STATE = ON );",
+				"GO",
+				"ALTER SERVER AUDIT ${AuditName}",
+				"WITH (STATE = ON);",		
+				"GO"
+		],
+		"description": "Configure Server audit for logins and verify"
+	},
+
+		"Get insight of users and roles in SQL Database on Azure":{
+		"prefix":"insightAzureUsersAndRoles",
+		"body":[
+			"select m.name as Member, r.name as Role",
+			"from sys.database_role_members",
+			"inner join sys.database_principals m on sys.database_role_members.member_principal_id = m.principal_id",
+			"inner join sys.database_principals r on sys.database_role_members.role_principal_id = r.principal_id"
+		],
+		"description":"Get insight of users and roels in SQL Database on Azure"
+	},
+
+	"List all logins":{
+		"prefix":"sqlListLogins",
+		"body":[
+			"-- On Azure, connect to master",
+			"select * from sys.sql_logins"
+		],
+		"description": "List all logins"
+	},
+
+	"Get insight of logins and roles":{
+		"prefix":"sqlListServerRolesAndMembers",
+		"body":[
+			"select m.name as Member, r.name as Role",
+			"from sys.server_role_members",
+			"inner join sys.server_principals m on sys.server_role_members.member_principal_id = m.principal_id",
+			"inner join sys.server_principals r on sys.server_role_members.role_principal_id = r.principal_id"
+		],
+		"description": "List server roles and members"
+	}
+
+
+}

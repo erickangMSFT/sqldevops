@@ -13,7 +13,7 @@
         },
         {
             "gridItemConfig": {
-                "sizex": 1,
+                "sizex": 2,
                 "sizey": 1
             },
             "widget": {

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Mount Azure file
+# sudo apt-get install cifs-utils
+# mkdir /azurebackups
+# sudo mount -t cifs //<yourstorage>.file.core.windows.net/backups /azurebackups -o vers=3.0,username=<username>,password=<password>,dir_mode=0777,file_mode=0777
+ 
 # docker pull microsoft/mssql-server-linux:latest
 docker images
 
@@ -46,6 +51,7 @@ docker rmi dev-db-tmp
 docker images
 
 # build and publish docker images
+docker build ./docker_build -t dev-db:latest
 docker tag dev-db:latest sqldevopsacs.azurecr.io/dev-db:latest
 #docker login sqldevopsacs.azurecr.io
 docker push sqldevopsacs.azurecr.io/dev-db:latest

@@ -1,7 +1,7 @@
 {
     "user": "sa",
     "password": "Yukon900",
-    "server": "windows-vm",
+    "server": "localhost",
     "database": "AdventureWorks",
     "options": {
         "encrypt": false
