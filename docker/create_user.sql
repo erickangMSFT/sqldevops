@@ -15,3 +15,4 @@ ALTER ROLE [db_ddladmin] ADD MEMBER [scripter]
 GO
 GRANT VIEW DEFINITION TO [scripter]
 GO
+print(N'Successfully created user: scripter without UNMASK permission on AdventureWorks database');

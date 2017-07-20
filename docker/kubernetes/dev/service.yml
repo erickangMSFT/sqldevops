@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql
-  namespace: sqlpassdev
+  name: demoservice
+  namespace: sqldevops
   labels:
     version: test
 spec:
   selector:
-    app: sqlpassdev
+    app: sqltest
   ports:
   - port: 1433
   type: ClusterIP

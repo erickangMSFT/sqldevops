@@ -1,5 +1,3 @@
-
---Get all database users and roles
 DECLARE @SQLStatement VARCHAR(4000)
 DECLARE @T_DBuser TABLE (DBName SYSNAME, UserName SYSNAME, AssociatedDBRole NVARCHAR(256))
 SET @SQLStatement='

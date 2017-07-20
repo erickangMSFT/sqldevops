@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: sqlpassdev
+  name: sqldevops
   labels:
-    name: sqlpassdev
+    name: sqldevops

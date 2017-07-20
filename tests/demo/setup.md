@@ -7,7 +7,15 @@ Slacker requires ruby and ruby devkit as a pre-req for the build and unittest ag
 Install [runby 2.2.6](https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.6-x64.exe)
 
 ```bash
-brew install ruby #macOS
+# macOS
+brew install rbenv
+echo eval "$(rbenv init -)" > .bash_profile
+source .bash_profile
+rbenv install 2.4.1
+rbenv global 2.4.1
+ruby -v
+
+# windows
 ruby_installer.exe -o "c:\Ruby" -y
 ```
 

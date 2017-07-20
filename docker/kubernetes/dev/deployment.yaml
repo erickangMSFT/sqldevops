@@ -1,8 +1,8 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: mssql
-  namespace: sqlpassdev
+  name: demodeploy
+  namespace: sqldevops
 spec:
   replicas: 1
   strategy:
@@ -14,7 +14,7 @@ spec:
   template:
     metadata:
       labels:
-        app: sqlpassdev
+        app: sqltest
     spec:
       containers:
       - name: sqldevops
