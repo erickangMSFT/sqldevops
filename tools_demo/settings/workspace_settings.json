@@ -13,6 +13,7 @@
                     "type": {
                         "chart": {
                             "legendPosition": "bottom"
+                            //demo add color map here
                         }
                     }
                 }

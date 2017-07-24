@@ -14,9 +14,9 @@ GO
 create database [PGSQLmigration];
 GO
 
-backup database Adventureworks to disk = N'/backups/adventureworks.bak';
+backup database WorldWideImporters to disk = N'/backups/WorldWideImporters.bak';
 GO
-backup database clinic to disk = N'/backups/clinic.bak';
+backup database ClinicDB to disk = N'/backups/clinic.bak';
 GO
 backup database toolstest to disk = N'/backups/toolstest.bak';
 GO

@@ -2,6 +2,65 @@
 {
     "dashboard.database": [
         {
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "name": "Disk Usage",
+            "widget": {
+                "insights-widget": {
+                    "queryFile": "/Users/erickang/Projects/Demos/sqldevops/tools_demo/sql/diskusage.sql",
+                    "type": {
+                        "chart": {
+                            "legendPosition": "top",
+                            "colorMap": {
+                                "Used_Space": "maroon",
+                                "Available_Space": "green"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+            {
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "name": "Disk Usage",
+            "widget": {
+                "insights-widget": {
+                    "queryFile": "/Users/erickang/Projects/Demos/sqldevops/tools_demo/sql/diskusage.sql",
+                    "type": {
+                        "chart": {
+                            "legendPosition": "bottom"
+                            //demo add color map here
+                        }
+                    }
+                }
+            }
+        },
+            {
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "name": "Disk Usage",
+            "widget": {
+                "insights-widget": {
+                    "queryFile": "/Users/erickang/Projects/Demos/sqldevops/tools_demo/sql/diskusage.sql",
+                    "type": {
+                        "chart": {
+                            "legendPosition": "bottom"
+                            //demo add color map here
+                        }
+                    }
+                }
+            }
+        },
+
+    
+        {
             "name": "Tasks",
             "gridItemConfig": {
                 "sizex": 1,

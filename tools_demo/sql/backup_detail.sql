@@ -16,7 +16,7 @@ b.backup_start_date as [Backup start date],
 b.backup_finish_date as [Backup finish date],
 case
     when m.last_backup_time is null then 0 --N'No backup found'
-    when datediff( hh , m.last_backup_time, getdate()) > @condition then 1 -- N'Older than 24hrs'
+    when datediff(hh, m.last_backup_time, getdate()) > @condition then 1 -- N'Older than 24hrs'
     else 2 --N'Within 24hrs' 
     end as [Backup_Health]
 from sys.databases as d

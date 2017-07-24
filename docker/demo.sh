@@ -5,7 +5,9 @@
 # mkdir /azurebackups
 # sudo mount -t cifs //<yourstorage>.file.core.windows.net/backups /azurebackups -o vers=3.0,username=<username>,password=<password>,dir_mode=0777,file_mode=0777
  
-# docker pull microsoft/mssql-server-linux:latest
+docker pull microsoft/mssql-server-linux:latest
+
+
 docker images
 
 # create a new container with a data volume
@@ -16,13 +18,14 @@ docker exec -it sqldevops ls /backups
 
 # prepare database to script out restore db | mask sensitive user data | create user without UNMASK permission
 clear
-sqlcmd -S localhost -U sa -P Yukon900 -i restore_demo.sql 
-sqlcmd -S localhost -Usa -P Yukon900 -Q'select name from sys.databases'
+sqlcmd -S 127.0.0.1 -U sa -P Yukon900 -i restore_demo.sql 
+sqlcmd -S 127.0.0.1 -Usa -P Yukon900 -Q'select name from sys.databases'
 
 clear
-sqlcmd -S localhost -dAdventureWorks -U sa -P Yukon900 -i ddm.sql 
-sqlcmd -S localhost -U sa -P Yukon900 -i create_user.sql
-sqlcmd -dAdventureWorks -Uscripter -PYukon900 -Q'select top(10) BusinessEntityID, EmailAddress, PhoneNumber from HumanResources.vEmployee'
+sqlcmd -S 127.0.0.1 -dAdventureWorks -U sa -P Yukon900 -i ddm.sql 
+sqlcmd -S 127.0.0.1 -U sa -P Yukon900 -i create_user.sql
+
+sqlcmd -S 127.0.0.1 -dAdventureWorks -Uscripter -PYukon900 -Q'select top(10) BusinessEntityID, EmailAddress, PhoneNumber from HumanResources.vEmployee'
 
 # script out a subset of database that application needs
 clear
@@ -34,9 +37,9 @@ docker run --name sqldev -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Yukon900' -p 1433:14
 docker ps
 
 # create database, schema and insert statically masked data
-sqlcmd -S localhost -U sa -P Yukon900 -i createdb.sql
-sqlcmd -S localhost -dAdventureWorks -U sa -P Yukon900 -i script.sql > .executionlog
-sqlcmd -dAdventureWorks -Usa -PYukon900 -Q'select top(10) BusinessEntityID, EmailAddress, PhoneNumber from HumanResources.vEmployee'
+sqlcmd -S 127.0.0.1 -U sa -P Yukon900 -i createdb.sql
+sqlcmd -S 127.0.0.1 -dAdventureWorks -U sa -P Yukon900 -i script.sql > .executionlog
+sqlcmd -S 127.0.0.1 dAdventureWorks -Usa -PYukon900 -Q'select top(10) BusinessEntityID, EmailAddress, PhoneNumber from HumanResources.vEmployee'
 
 # commit sqlpassdev to dev-db-container
 docker commit sqldev dev-db:latest
