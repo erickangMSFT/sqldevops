@@ -14,7 +14,7 @@ const fs = require('fs');
 const sqldevops = require('../modules/sqldevops.js');
 
 const dbconfig = require('../config/dbconfig.json');
-const directorySqlFile = './src/sql/directory.sql';
+const directorySqlFile = './src/sql/customers_wwi.sql';
 const nav = require('../config/navconfig.json');
 
 /* GET directory page. */
@@ -35,7 +35,7 @@ router.get('/', (req, res, next) => {
                 res.render('directory', {
                     title: 'Contact Information',
                     nav: nav,
-                    employees: rec.recordset,
+                    customers: rec.recordset,
                     server: dbconfig.server,
                     database: dbconfig.database,
                     user: dbconfig.user

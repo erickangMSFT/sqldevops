@@ -2,7 +2,7 @@
     "user": "sa",
     "password": "Yukon900",
     "server": "localhost",
-    "database": "AdventureWorks",
+    "database": "WideWorldImporters",
     "options": {
         "encrypt": false
     }

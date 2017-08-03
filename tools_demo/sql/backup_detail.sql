@@ -7,9 +7,14 @@ d.name as [Database],
 d.recovery_model_desc as [Recovery model],
 d.state_desc as [Database state],
 case
-    when b.type = N'F' then N'Full'
-    when b.type = N'D' then N'Differential'
-    when b.type = N'L' then N'Transaction-Log' else NULL
+    when b.type = N'D' then N'Database'
+    when b.type = N'I' then N'Differential Database'
+    when b.type = N'L' then N'Log' 
+    when b.type = N'F' then N'File or Filegroup'
+    when b.type = N'G' then N'Differental File'
+    when b.type = N'P' then N'Partial'
+    when b.type = N'Q' then N'Differential Partial'
+    else NULL
     end
 as [Backup type],
 b.backup_start_date as [Backup start date],

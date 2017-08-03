@@ -112,11 +112,10 @@
                   <th>Total pages</th>
                   <th>Used pages</th>
                   <th>Data pages</th>
-                  <th>Index</th>
                 </tr>
               </thead>
               <tbody>
-                <% for (var i=0; i < 11; i++) { %>
+                <% for (var i in tablespaces) { %>
                   <tr>
                       <td> <%=tablespaces[i].schema_name %></td>
                       <td> <%=tablespaces[i].table_name %></td>
@@ -127,7 +126,6 @@
                       <td> <%=tablespaces[i].total_pages %></td>
                       <td> <%=tablespaces[i].used_pages %></td>
                       <td> <%=tablespaces[i].data_pages %></td>
-                      <td> <%=tablespaces[i].index_name %></td>
                   </tr>
                 <% } %>
               </tbody>

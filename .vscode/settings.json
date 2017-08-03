@@ -1,0 +1,167 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "dashboard.database.properties": false,
+    "dashboard.database.widgets": [
+
+        {
+            "provider":"MSSQL",
+            "name": "QDS: Top 5 slowest queries",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "query-data-store-julie-koesmarno": null
+            }
+        },
+        {
+            "provider":"MSSQL",
+            "name":"Missing index and PKs",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "widget": {
+                "missing-index-pk-julie-koesmarno": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "name": "Disk Usage",
+            "widget": {
+                "disk-usage-db-insight": null
+            }
+        },
+        {
+            "provider":"MSSQL",
+            "edition": [1,2,3,4],
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "name": "Data file space usage (MB)",
+            "widget": {
+             "data-file-space-db-insight": null
+            }
+        },
+        {
+            "provider":"MSSQL",
+            "name": "Space used by tables",
+            "widget": {
+             "table-space-db-insight": null
+            },
+            "gridItemConfig": {
+              "sizex": 2,
+              "sizey": 1  
+            }
+        },
+        {
+            "name": "Tasks",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "widget": {
+                "tasks-widget": {}
+            }
+        },
+        {
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "explorer-widget": {}
+            }
+        }
+    ],
+    "dashboard.server.widgets": [
+
+        {
+            "provider": "MSSQL",
+            "name": "Database status",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "widget": {
+                "database-state-julie-koesmarno": null
+            }
+            
+        },
+        {
+            "provider": "MSSQL",
+            "name": "Backups older than 24 hours",
+            "widget": {
+                "backup-history-server-insight": null
+            }
+        },
+        {
+            "provider":"MSSQL",
+            "name": "Database growth",
+            "widget": {
+                "backup-growth-trend-server-insight": null
+            },
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "name": "Wait counts per type",
+            "widget": {
+             "Wait-counts-by-Paul-Rendal-server-insight": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "name": "CPU utilization",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "cpu-utilization-server-insight": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "name": "Memory usage by database",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "memory-usage-by-db-server-insight": null
+            }
+        },
+        {
+            "name": "Tasks",
+            "widget": {
+                "tasks-widget": {}
+            },
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            }
+        },
+        {
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "explorer-widget": {}
+            }
+        }
+    ]
+}

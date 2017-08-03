@@ -10,11 +10,23 @@ docker pull microsoft/mssql-server-linux:latest
 
 docker images
 
-# create a new container with a data volume
+# Option 1. create a new container with a data volume
 clear
 docker run --name sqldevops -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Yukon900' -p 1433:1433 -v /Users/erickang/dockershare:/backups  -d microsoft/mssql-server-linux  
 docker ps
 docker exec -it sqldevops ls /backups
+
+# Option 2. mount data volumee and backup volume for user databases
+# docker volume create sqldb
+# docker run --name sqlserver -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Yukon900' -p 1433:1433 -v /sqldb -v /Users/erickang/dockershare:/backups  -d microsoft/mssql-server-linux  
+# docker exec sqlserver /opt/mssql/bin/mssql-conf set filelocation.defaultdatadir /sqldb
+# docker exec sqlserver /opt/mssql/bin/mssql-conf set filelocation.defaultlogdir /sqldb
+# docker restart sqlserver
+# sqlcmd -Usa -PYukon900 -i ./get_default_path.sql
+
+# Option 3. mount data volume with system and user databases and mount /backups from host directory mount 
+# docker run --name sqlserver -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Yukon900' --cap-add SYS_PTRACE -p 1433:1433 -v sqlvolume:/var/opt/mssql -v /Users/erickang/dockershare:/backups -d microsoft/mssql-server-linux
+
 
 # prepare database to script out restore db | mask sensitive user data | create user without UNMASK permission
 clear

@@ -74,24 +74,24 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-                  <th>Job Title</th>
-                  <th>Department</th>
+                  <th>Customer Name</th>
+                  <th>Customer Category</th>
+                  <th>Primary Contact</th>
+                  <th>Alternate Contact</th>
+                  <th>PhoneNumber</th>
+                  <th>Website URL</th>
                 </tr>
               </thead>
               <tbody>
-                <% for (var i in employees) { %>
+                <% for (var i in customers) { %>
                   <tr>
-                      <td> <%=employees[i].BusinessEntityID %></td>
-                      <td> <%=employees[i].FirstName %></td>
-                      <td> <%=employees[i].LastName %></td>
-                      <td> <%=employees[i].EmailAddress %></td>
-                      <td> <%=employees[i].PhoneNumber %></td>
-                      <td> <%=employees[i].JobTitle %></td>
-                      <td> <%=employees[i].DepartmentName %></td>
+                      <td> <%=customers[i].CustomerID %></td>
+                      <td> <%=customers[i].CustomerName %></td>
+                      <td> <%=customers[i].CustomerCategory %></td>
+                      <td> <%=customers[i].PrimaryContact %></td>
+                      <td> <%=customers[i].AlternateContact %></td>
+                      <td> <%=customers[i].PhoneNumber %></td>
+                      <td> <%=customers[i].WebsiteURL %></td>
                   </tr>
                 <% } %>
               </tbody>

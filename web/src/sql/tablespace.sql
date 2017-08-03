@@ -1,7 +1,7 @@
-SELECT 
+SELECT TOP(10)
 SCH.name as schema_name, 
-TABL.name AS table_name, 
-INDX.name AS index_name,
+concat(TABL.name,':', INDX.name) AS table_name, 
+--INDX.name AS index_name,
 SUM(PART.rows) AS row_count,
 (SUM(ALOC.used_pages)*8/1024) AS used_space_MB, 
 (SUM(ALOC.total_pages)*8/1024) AS total_space_MB, 
