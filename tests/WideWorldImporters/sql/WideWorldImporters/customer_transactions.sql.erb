@@ -1,0 +1,5 @@
+
+select  ct.CustomerID, ct.TransactionDate
+from sales.customertransactions ct
+where CustomerID = '<%= options[:id] %>'
+order by TransactionDate desc
