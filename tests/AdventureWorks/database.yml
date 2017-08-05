@@ -7,3 +7,5 @@ server: localhost
 database: AdventureWorks
 user: sa
 password: Yukon900
+port: 1433
+driver: tiny_tds
