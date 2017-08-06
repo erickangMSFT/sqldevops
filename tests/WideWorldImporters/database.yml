@@ -4,7 +4,7 @@
 # Replace the following with your connection information.
 # Note that at this point Slacker only works with SQL Server authentication.
 server: localhost
-database: WideWorldImporters
+database: WideWorldImportersTest
 user: sa
 password: Yukon900
 port: 1433
