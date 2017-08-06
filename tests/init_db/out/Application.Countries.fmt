@@ -1,0 +1,16 @@
+13.0
+14
+1       SQLNCHAR            0       24      "\t\0"   1     CountryID                                                                                            ""
+2       SQLNCHAR            0       120     "\t\0"   2     CountryName                                                                                          Latin1_General_100_CI_AS
+3       SQLNCHAR            0       120     "\t\0"   3     FormalName                                                                                           Latin1_General_100_CI_AS
+4       SQLNCHAR            0       6       "\t\0"   4     IsoAlpha3Code                                                                                        Latin1_General_100_CI_AS
+5       SQLNCHAR            0       24      "\t\0"   5     IsoNumericCode                                                                                       ""
+6       SQLNCHAR            0       40      "\t\0"   6     CountryType                                                                                          Latin1_General_100_CI_AS
+7       SQLNCHAR            0       42      "\t\0"   7     LatestRecordedPopulation                                                                             ""
+8       SQLNCHAR            0       60      "\t\0"   8     Continent                                                                                            Latin1_General_100_CI_AS
+9       SQLNCHAR            0       60      "\t\0"   9     Region                                                                                               Latin1_General_100_CI_AS
+10      SQLNCHAR            0       60      "\t\0"   10    Subregion                                                                                            Latin1_General_100_CI_AS
+11      SQLNCHAR            0       0       "\t\0"   11    Border                                                                                               ""
+12      SQLNCHAR            0       24      "\t\0"   12    LastEditedBy                                                                                         ""
+13      SQLNCHAR            0       60      "\t\0"   13    ValidFrom                                                                                            ""
+14      SQLNCHAR            0       60      "\n\0"   14    ValidTo                                                                                              ""
