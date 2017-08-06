@@ -3,3 +3,4 @@ db/bin
 db/obj
 /tests/WideWorldImporters/debug
 /tests/init_db/out/
+nul
