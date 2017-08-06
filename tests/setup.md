@@ -18,7 +18,7 @@ ruby -v
 brew install FreeTDS
 
 gem install ./slacker-1.0.16.gem
-slacker
+
 ```
 
 ## Linux (Ubuntu ~>16.0.4)
@@ -49,5 +49,21 @@ make
 make install
 
 gem install ./slacker-1.0.16.gem
-slacker
+```
+
+## Setup WideWorldImporters unit test database
+For demo, powershell for Linux / macOS is used
+Pre-req: localhost + WideWorldImporters sample database.
+
+Creating WideWorldImportersTest database
+```powershell
+cd tests/init_db/init_db.ps1
+```
+
+## Run tests
+check database.yml settings for the database connection
+
+```powershell
+cd WideWorldImporters
+./runner.sh
 ```

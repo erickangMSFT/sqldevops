@@ -1,5 +1,5 @@
 describe 'WideWorldImporters: Website.InsertCustomerOrders' do
-    it 'successfully create orders' do
+    it 'successfully creates orders' do
         raise ("todo")
     end
 
@@ -11,11 +11,11 @@ describe 'WideWorldImporters: Website.InsertCustomerOrders' do
         raise ("todo")
     end
 
-    it 'fails for invalid creted by person id' do
+    it 'fails for an invalid creted by person id' do
         raise("todo")
     end
 
-    it 'fails for invalid sales person id' do
+    it 'fails for an invalid sales person id' do
         raise("todo")
     end
 end

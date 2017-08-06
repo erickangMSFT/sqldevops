@@ -1,5 +1,5 @@
 describe 'WideWorldImporters: Website.ChangePassword' do
-    it 'changes a password successfully' do
+    it 'successfully changes a password' do
         raise("todo")
     end
 
@@ -7,7 +7,7 @@ describe 'WideWorldImporters: Website.ChangePassword' do
         raise("todo")
     end
 
-    it 'defines for invalid old password' do
+    it 'denies for an invalid old password' do
         raise("todo")
     end
 end
