@@ -1,14 +1,16 @@
 describe 'WideWorldImporters: Website.ActivateWebsiteLogon' do
     it 'successfully activates a website logon' do
-        raise("not implemented")
+        expect(sql.WideWorldImporters.website.activateLogon(:PersonID => 3150, :LogonName => 'emily@widworldimporters.com', :Password => 'Yukon900').count).to eq(1)
     end
 
-    it 'denies a website logon for PersonID == 1' do
-        raise ("not implmented")
+    it 'denies the logon activation for PersonID == 1' do
+        expect{sql.WideWorldImporters.website.activateLogon(:PersonID => 1, :LogonName => 'testuser@wideworldimporters.com', :Password => 'Yukon900')}.to raise_error(TinyTds::Error, 'Invalid PersonID')
+
     end
 
-    it 'denies a website logon if already activated' do
-        raise ("not implemented")
+    it 'denies a logon activation if already activated' do
+        expect{sql.WideWorldImporters.website.activateLogon(:PersonID => 2, :LogonName => 'kaylaw@wideworldimporters.com', :Password => 'Yukon900')}.to raise_error(TinyTds::Error, 'Invalid PersonID')
+
     end
 
 end
