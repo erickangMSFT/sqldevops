@@ -2,4 +2,4 @@ web/node_modules
 db/bin
 db/obj
 /tests/WideWorldImporters/debug
-/test/init_db/out/
+/tests/init_db/out/
