@@ -1,13 +1,31 @@
 describe 'WideWorldImporters: Website.ChangePassword' do
     it 'successfully changes a password' do
-        raise("todo")
+        expect{
+            sql.WideWorldImporters.website.init_n_changePassword(
+                :PersonID => 3150, 
+                :LogonName => 'emily@widworldimporters.com', 
+                :InitialPassword => 'Yukon900', 
+                :NewPassword => 'Yukon1000')}
+            .not_to raise_error
     end
 
-    it 'denies for PersonID == 1' do
-        raise("todo")
+    it 'denies PersonID == 1' do
+        expect{
+            sql.WideWorldImporters.website.changePassword(
+                :PersonID => 1, 
+                :OldPassword => 'Yukon900', 
+                :NewPassword => 'Yukon1000')}
+            .to raise_error(TinyTds::Error, "Invalid Password Change")
     end
 
-    it 'denies for an invalid old password' do
-        raise("todo")
+    it 'denies an invalid old password' do
+        expect{
+            sql.WideWorldImporters.website.init_n_changeWrongPassword(
+                :PersonID => 3150, 
+                :LogonName => 'emily@widworldimporters.com', 
+                :InitialPassword => 'Yukon900', 
+                :OldPassword => 'WrongPassword', 
+                :NewPassword => 'Yukon1000')}
+            .to raise_error(TinyTds::Error, "Invalid Password Change")
     end
 end

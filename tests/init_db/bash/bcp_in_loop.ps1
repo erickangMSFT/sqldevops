@@ -8,10 +8,12 @@
             "Application.PaymentMethods", 
             "Application.TransactionTypes", 
             "Purchasing.SupplierCategories",
+            "Purchasing.Suppliers",
             "Sales.BuyingGroups",
             "Sales.CustomerCategories",
             "Warehouse.Colors",
-            "Warehouse.PackageTypes")
+            "Warehouse.PackageTypes",
+            "Warehouse.StockItems")
 
  foreach ($ref_table in $ref_tables) {
     $bcp_file = "./out/" + $ref_table + ".bcp"
