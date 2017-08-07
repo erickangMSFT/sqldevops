@@ -25,7 +25,7 @@ docker exec -it sqldevops ls /backups
 # sqlcmd -Usa -PYukon900 -i ./get_default_path.sql
 
 # Option 3. mount data volume with system and user databases and mount /backups from host directory mount 
-# docker run --name sqlserver -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Yukon900' --cap-add SYS_PTRACE -p 1433:1433 -v sqlvolume:/var/opt/mssql -v /Users/erickang/dockershare:/backups -d microsoft/mssql-server-linux
+# docker run --name mssql -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Yukon900' --cap-add SYS_PTRACE -p 1433:1433 -v sqlvolume:/var/opt/mssql -v /Users/erickang/dockershare:/backups -d microsoft/mssql-server-linux
 
 
 # prepare database to script out restore db | mask sensitive user data | create user without UNMASK permission
