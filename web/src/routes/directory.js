@@ -33,7 +33,7 @@ router.get('/', (req, res, next) => {
                 // for debugging
                 // console.log(rec.recordset);
                 res.render('directory', {
-                    title: 'Contact Information',
+                    title: 'Customer Information',
                     nav: nav,
                     customers: rec.recordset,
                     server: dbconfig.server,
