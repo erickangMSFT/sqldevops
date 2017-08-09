@@ -9,9 +9,9 @@ kubectl get pods -n sqldevops-dev
 
 # spining up / down
 clear
-kubectl scale deployment mssql --replicas=10 -n sqldevops-dev
+kubectl scale deployment mssql --replicas=10 -n sqldevops
 watch kubectl get pods -n sqldevops-dev
 
 clear
-kubectl scale deployment mssql --replicas=1 -n sqldevops-dev
+kubectl scale deployment mssql --replicas=1 -n sqldevops
 watch kubectl get pods -n sqldevops-dev

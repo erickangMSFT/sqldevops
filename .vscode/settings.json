@@ -80,6 +80,17 @@
         }
     ],
     "dashboard.server.widgets": [
+        {
+            "provider":"MSSQL",
+            "name": "Used space by databases",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "all_database_used_space": null
+            }
+        },
 
         {
             "provider": "MSSQL",
