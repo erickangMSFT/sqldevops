@@ -1,0 +1,115 @@
+<ShowPlanXML 
+  xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.6" Build="14.0.800.90">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementText="SELECT TOP 1000 * &#xd;&#xa;FROM Application.Countries" StatementId="1" StatementCompId="1" StatementType="SELECT" StatementSqlHandle="0x09003A9DD0D6402A57205FDFE8DC673C742C0000000000000000000000000000000000000000000000000000" DatabaseContextSettingsId="2" ParentObjectId="0" StatementParameterizationType="0" RetrievedFromCache="true" StatementSubTreeCost="0.0642507" StatementEstRows="190" SecurityPolicyApplied="false" StatementOptmLevel="TRIVIAL" QueryHash="0x72135ED0F1C0FAED" QueryPlanHash="0x075F95B4F61D7273" CardinalityEstimationModelVersion="130">
+          <StatementSetOptions QUOTED_IDENTIFIER="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" NUMERIC_ROUNDABORT="false"></StatementSetOptions>
+          <QueryPlan CachedPlanSize="24" CompileTime="7" CompileCPU="5" CompileMemory="104">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0"></MemoryGrantInfo>
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="161689" EstimatedPagesCached="20211" EstimatedAvailableDegreeOfParallelism="2" MaxCompileMemory="1945928"></OptimizerHardwareDependentProperties>
+            <TraceFlags IsCompileTime="1">
+              <TraceFlag Value="835" Scope="Global"></TraceFlag>
+              <TraceFlag Value="3105" Scope="Global"></TraceFlag>
+              <TraceFlag Value="5504" Scope="Global"></TraceFlag>
+              <TraceFlag Value="5521" Scope="Global"></TraceFlag>
+              <TraceFlag Value="6529" Scope="Global"></TraceFlag>
+              <TraceFlag Value="8020" Scope="Global"></TraceFlag>
+              <TraceFlag Value="8415" Scope="Global"></TraceFlag>
+            </TraceFlags>
+            <RelOp NodeId="0" PhysicalOp="Top" LogicalOp="Top" EstimateRows="190" EstimateIO="0" EstimateCPU="1.9e-005" AvgRowSize="4319" EstimatedTotalSubtreeCost="0.0642507" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+              <OutputList>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryID"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryName"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="FormalName"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="IsoAlpha3Code"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="IsoNumericCode"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryType"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="LatestRecordedPopulation"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Continent"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Region"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Subregion"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Border"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="LastEditedBy"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="ValidFrom"></ColumnReference>
+                <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="ValidTo"></ColumnReference>
+              </OutputList>
+              <Top RowCount="0" IsPercent="0" WithTies="0">
+                <TopExpression>
+                  <ScalarOperator ScalarString="(1000)">
+                    <Const ConstValue="(1000)"></Const>
+                  </ScalarOperator>
+                </TopExpression>
+                <RelOp NodeId="1" PhysicalOp="Clustered Index Scan" LogicalOp="Clustered Index Scan" EstimateRows="190" EstimatedRowsRead="190" EstimateIO="0.0638657" EstimateCPU="0.000366" AvgRowSize="4319" EstimatedTotalSubtreeCost="0.0642317" TableCardinality="190" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                  <OutputList>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryID"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryName"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="FormalName"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="IsoAlpha3Code"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="IsoNumericCode"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryType"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="LatestRecordedPopulation"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Continent"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Region"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Subregion"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Border"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="LastEditedBy"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="ValidFrom"></ColumnReference>
+                    <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="ValidTo"></ColumnReference>
+                  </OutputList>
+                  <IndexScan Ordered="0" ForcedIndex="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryID"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryName"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="FormalName"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="IsoAlpha3Code"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="IsoNumericCode"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="CountryType"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="LatestRecordedPopulation"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Continent"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Region"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Subregion"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="Border"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="LastEditedBy"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="ValidFrom"></ColumnReference>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Column="ValidTo"></ColumnReference>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <Object Database="[WideWorldImporters]" Schema="[Application]" Table="[Countries]" Index="[PK_Application_Countries]" IndexKind="Clustered" Storage="RowStore"></Object>
+                  </IndexScan>
+                </RelOp>
+              </Top>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>

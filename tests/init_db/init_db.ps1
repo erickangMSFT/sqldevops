@@ -6,7 +6,7 @@ write-host "** drop WideWorldImportersTest database" -foreground green
 sqlcmd -Slocalhost -Usa -PYukon900 -i ./sql/drop_testdb.sql
 
 write-host "** generae script wiht mssql-scripter schema only" -foreground green
-/usr/local/bin/mssql-scripter -Slocalhost -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
+mssql-scripter -Slocalhost -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
 
 write-host "** find and replace db name from WideWorldImporters to WideWorldImportersTest" -foreground green
 Get-ChildItem -Path ./out/wwi.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'WideWorldImporters', 'WideWorldImportersTest' | set-content $_.fullname }
