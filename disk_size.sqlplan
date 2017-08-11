@@ -1,0 +1,1578 @@
+<ShowPlanXML 
+  xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.6" Build="14.0.800.90">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementText="with fs&#xd;&#xa;as&#xd;&#xa;(&#xd;&#xa;    select database_id, type, size * 8.0 / 1024 size&#xd;&#xa;    from sys.master_files&#xd;&#xa;)&#xd;&#xa;select &#xd;&#xa;    name,&#xd;&#xa;    (select sum(size) from fs where type = 0 and fs.database_id = db.database_id) DataFileSizeMB,&#xd;&#xa;    (select sum(size) from fs where type = 1 and fs.database_id = db.database_id) LogFileSizeMB&#xd;&#xa;from sys.databases db&#xd;&#xa;where database_id &gt; 4" StatementId="1" StatementCompId="1" StatementType="SELECT" StatementSqlHandle="0x090011F8BA9894236DCED71368B7597EE7C70000000000000000000000000000000000000000000000000000" DatabaseContextSettingsId="2" ParentObjectId="0" StatementParameterizationType="0" RetrievedFromCache="true" StatementSubTreeCost="0.0867924" StatementEstRows="87.8616" SecurityPolicyApplied="false" StatementOptmLevel="FULL" QueryHash="0xA09D9DC2DA2AC775" QueryPlanHash="0x9D5624058FC13726" StatementOptmEarlyAbortReason="GoodEnoughPlanFound" CardinalityEstimationModelVersion="130">
+          <StatementSetOptions QUOTED_IDENTIFIER="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" NUMERIC_ROUNDABORT="false"></StatementSetOptions>
+          <QueryPlan NonParallelPlanReason="CouldNotGenerateValidParallelPlan" CachedPlanSize="200" CompileTime="44" CompileCPU="44" CompileMemory="5632">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0"></MemoryGrantInfo>
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="161689" EstimatedPagesCached="20211" EstimatedAvailableDegreeOfParallelism="2" MaxCompileMemory="1433680"></OptimizerHardwareDependentProperties>
+            <OptimizerStatsUsage>
+              <StatisticsInfo LastUpdate="2017-05-10T14:38:56.33" ModificationCount="279" SamplingPercent="100" Statistics="[_WA_Sys_00000008_00000016]" Table="[sysbrickfiles]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-11T00:49:23.17" ModificationCount="170" SamplingPercent="100" Statistics="[clst]" Table="[sysobjvalues]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2009-04-13T12:59:17.03" ModificationCount="77" SamplingPercent="100" Statistics="[clst]" Table="[sysdbreg]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-05-10T14:38:56.33" ModificationCount="276" SamplingPercent="100" Statistics="[_WA_Sys_0000000D_00000016]" Table="[sysbrickfiles]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-11T00:49:23.18" ModificationCount="170" SamplingPercent="100" Statistics="[_WA_Sys_00000004_0000003C]" Table="[sysobjvalues]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-09T21:52:16.66" ModificationCount="278" SamplingPercent="100" Statistics="[clst]" Table="[sysclsobjs]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-11T00:53:56.48" ModificationCount="0" SamplingPercent="100" Statistics="[clst]" Table="[syssingleobjrefs]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-05-10T14:37:18.37" ModificationCount="316" SamplingPercent="100" Statistics="[_WA_Sys_00000007_00000016]" Table="[sysbrickfiles]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-11T00:53:56.48" ModificationCount="0" SamplingPercent="100" Statistics="[_WA_Sys_00000001_0000004A]" Table="[syssingleobjrefs]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-05-10T14:38:56.33" ModificationCount="264" SamplingPercent="100" Statistics="[_WA_Sys_00000003_00000016]" Table="[sysbrickfiles]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-11T00:49:23.18" ModificationCount="170" SamplingPercent="100" Statistics="[_WA_Sys_00000003_0000003C]" Table="[sysobjvalues]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-10T19:15:10.52" ModificationCount="130" SamplingPercent="100" Statistics="[_WA_Sys_00000005_00000040]" Table="[sysclsobjs]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-11T00:49:23.18" ModificationCount="170" SamplingPercent="100" Statistics="[_WA_Sys_00000002_0000003C]" Table="[sysobjvalues]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-05-10T14:37:38.31" ModificationCount="284" SamplingPercent="100" Statistics="[clst]" Table="[sysbrickfiles]" Schema="[sys]" Database="[master]"></StatisticsInfo>
+            </OptimizerStatsUsage>
+            <TraceFlags IsCompileTime="1">
+              <TraceFlag Value="835" Scope="Global"></TraceFlag>
+              <TraceFlag Value="3105" Scope="Global"></TraceFlag>
+              <TraceFlag Value="5504" Scope="Global"></TraceFlag>
+              <TraceFlag Value="5521" Scope="Global"></TraceFlag>
+              <TraceFlag Value="6529" Scope="Global"></TraceFlag>
+              <TraceFlag Value="8020" Scope="Global"></TraceFlag>
+              <TraceFlag Value="8415" Scope="Global"></TraceFlag>
+            </TraceFlags>
+            <RelOp NodeId="0" PhysicalOp="Compute Scalar" LogicalOp="Compute Scalar" EstimateRows="87.8616" EstimateIO="0" EstimateCPU="8.78616e-006" AvgRowSize="173" EstimatedTotalSubtreeCost="0.0867924" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+              <OutputList>
+                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                <ColumnReference Column="Expr1107"></ColumnReference>
+                <ColumnReference Column="Expr1135"></ColumnReference>
+              </OutputList>
+              <ComputeScalar>
+                <DefinedValues>
+                  <DefinedValue>
+                    <ColumnReference Column="Expr1107"></ColumnReference>
+                    <ScalarOperator ScalarString="[Expr1105]">
+                      <Identifier>
+                        <ColumnReference Column="Expr1105"></ColumnReference>
+                      </Identifier>
+                    </ScalarOperator>
+                  </DefinedValue>
+                  <DefinedValue>
+                    <ColumnReference Column="Expr1135"></ColumnReference>
+                    <ScalarOperator ScalarString="[Expr1133]">
+                      <Identifier>
+                        <ColumnReference Column="Expr1133"></ColumnReference>
+                      </Identifier>
+                    </ScalarOperator>
+                  </DefinedValue>
+                </DefinedValues>
+                <RelOp NodeId="1" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="87.8616" EstimateIO="0" EstimateCPU="0.000326461" AvgRowSize="173" EstimatedTotalSubtreeCost="0.0867836" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                  <OutputList>
+                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                    <ColumnReference Column="Expr1105"></ColumnReference>
+                    <ColumnReference Column="Expr1133"></ColumnReference>
+                  </OutputList>
+                  <NestedLoops Optimized="0">
+                    <Predicate>
+                      <ScalarOperator ScalarString="[master].[sys].[sysbrickfiles].[dbid] as [f].[dbid]=[master].[sys].[sysdbreg].[id] as [d].[id]">
+                        <Compare CompareOp="EQ">
+                          <ScalarOperator>
+                            <Identifier>
+                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                            </Identifier>
+                          </ScalarOperator>
+                          <ScalarOperator>
+                            <Identifier>
+                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                            </Identifier>
+                          </ScalarOperator>
+                        </Compare>
+                      </ScalarOperator>
+                    </Predicate>
+                    <RelOp NodeId="2" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="78.1007" EstimateIO="0" EstimateCPU="0.000290235" AvgRowSize="160" EstimatedTotalSubtreeCost="0.0616429" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                      <OutputList>
+                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                        <ColumnReference Column="Expr1105"></ColumnReference>
+                      </OutputList>
+                      <NestedLoops Optimized="0">
+                        <Predicate>
+                          <ScalarOperator ScalarString="[master].[sys].[sysbrickfiles].[dbid] as [f].[dbid]=[master].[sys].[sysdbreg].[id] as [d].[id]">
+                            <Compare CompareOp="EQ">
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                </Identifier>
+                              </ScalarOperator>
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                </Identifier>
+                              </ScalarOperator>
+                            </Compare>
+                          </ScalarOperator>
+                        </Predicate>
+                        <RelOp NodeId="3" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="69.4342" EstimateIO="0" EstimateCPU="0.000289271" AvgRowSize="143" EstimatedTotalSubtreeCost="0.0374093" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                          <OutputList>
+                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                          </OutputList>
+                          <NestedLoops Optimized="0">
+                            <Predicate>
+                              <ScalarOperator ScalarString="[master].[sys].[sysobjvalues].[objid] as [rda].[objid]=[master].[sys].[sysdbreg].[id] as [d].[id]">
+                                <Compare CompareOp="EQ">
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[rda]" Column="objid"></ColumnReference>
+                                    </Identifier>
+                                  </ScalarOperator>
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                    </Identifier>
+                                  </ScalarOperator>
+                                </Compare>
+                              </ScalarOperator>
+                            </Predicate>
+                            <RelOp NodeId="4" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="69.2035" EstimateIO="0" EstimateCPU="0.000288313" AvgRowSize="143" EstimatedTotalSubtreeCost="0.023" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                              <OutputList>
+                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                              </OutputList>
+                              <NestedLoops Optimized="0">
+                                <Predicate>
+                                  <ScalarOperator ScalarString="[master].[sys].[sysobjvalues].[objid] as [coll].[objid]=[master].[sys].[sysdbreg].[id] as [d].[id]">
+                                    <Compare CompareOp="EQ">
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[coll]" Column="objid"></ColumnReference>
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </Compare>
+                                  </ScalarOperator>
+                                </Predicate>
+                                <RelOp NodeId="5" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="68.9743" EstimateIO="0" EstimateCPU="0.000194995" AvgRowSize="143" EstimatedTotalSubtreeCost="0.00862804" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                  <OutputList>
+                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                                  </OutputList>
+                                  <NestedLoops Optimized="0">
+                                    <Predicate>
+                                      <ScalarOperator ScalarString="SYSFULLTEXTLANGUAGES.[lcid]=DBPROP.[default_fulltext_language]">
+                                        <Compare CompareOp="EQ">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Table="[SYSFULLTEXTLANGUAGES]" Column="lcid"></ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Table="[DBPROP]" Column="default_fulltext_language"></ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                    </Predicate>
+                                    <RelOp NodeId="6" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="46.6496" EstimateIO="0" EstimateCPU="0.000194995" AvgRowSize="147" EstimatedTotalSubtreeCost="0.00837225" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                                        <ColumnReference Table="[DBPROP]" Column="default_fulltext_language"></ColumnReference>
+                                      </OutputList>
+                                      <NestedLoops Optimized="0">
+                                        <OuterReferences>
+                                          <ColumnReference Table="[DBPROP]" Column="default_language"></ColumnReference>
+                                        </OuterReferences>
+                                        <RelOp NodeId="7" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="8.00033" EstimateIO="0" EstimateCPU="3.344e-005" AvgRowSize="151" EstimatedTotalSubtreeCost="0.00777452" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                          <OutputList>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                                            <ColumnReference Table="[DBPROP]" Column="default_language"></ColumnReference>
+                                            <ColumnReference Table="[DBPROP]" Column="default_fulltext_language"></ColumnReference>
+                                          </OutputList>
+                                          <NestedLoops Optimized="0">
+                                            <OuterReferences>
+                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                            </OuterReferences>
+                                            <RelOp NodeId="8" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="8" EstimateIO="0" EstimateCPU="3.344e-005" AvgRowSize="151" EstimatedTotalSubtreeCost="0.00334424" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                              <OutputList>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                                                <ColumnReference Table="[DBPROP]" Column="default_language"></ColumnReference>
+                                                <ColumnReference Table="[DBPROP]" Column="default_fulltext_language"></ColumnReference>
+                                              </OutputList>
+                                              <NestedLoops Optimized="0">
+                                                <OuterReferences>
+                                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                </OuterReferences>
+                                                <RelOp NodeId="9" PhysicalOp="Filter" LogicalOp="Filter" EstimateRows="8" EstimateIO="0" EstimateCPU="1.184e-005" AvgRowSize="143" EstimatedTotalSubtreeCost="0.00330264" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                                  <OutputList>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                                                  </OutputList>
+                                                  <Filter StartupExpression="0">
+                                                    <RelOp NodeId="10" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="8" EstimatedRowsRead="8" EstimateIO="0.003125" EstimateCPU="0.0001658" AvgRowSize="143" EstimatedTotalSubtreeCost="0.0032908" TableCardinality="12" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                                      <OutputList>
+                                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                                                      </OutputList>
+                                                      <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                        <DefinedValues>
+                                                          <DefinedValue>
+                                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                          </DefinedValue>
+                                                          <DefinedValue>
+                                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="name"></ColumnReference>
+                                                          </DefinedValue>
+                                                        </DefinedValues>
+                                                        <Object Database="[master]" Schema="[sys]" Table="[sysdbreg]" Index="[clst]" Alias="[d]" IndexKind="Clustered" Storage="RowStore"></Object>
+                                                        <SeekPredicates>
+                                                          <SeekPredicateNew>
+                                                            <SeekKeys>
+                                                              <StartRange ScanType="GT">
+                                                                <RangeColumns>
+                                                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                                </RangeColumns>
+                                                                <RangeExpressions>
+                                                                  <ScalarOperator ScalarString="(4)">
+                                                                    <Const ConstValue="(4)"></Const>
+                                                                  </ScalarOperator>
+                                                                </RangeExpressions>
+                                                              </StartRange>
+                                                              <EndRange ScanType="LT">
+                                                                <RangeColumns>
+                                                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                                </RangeColumns>
+                                                                <RangeExpressions>
+                                                                  <ScalarOperator ScalarString="(32767)">
+                                                                    <Const ConstValue="(32767)"></Const>
+                                                                  </ScalarOperator>
+                                                                </RangeExpressions>
+                                                              </EndRange>
+                                                            </SeekKeys>
+                                                          </SeekPredicateNew>
+                                                        </SeekPredicates>
+                                                      </IndexScan>
+                                                    </RelOp>
+                                                    <Predicate>
+                                                      <ScalarOperator ScalarString="has_access(&apos;DB&apos;,CASE WHEN serverproperty(&apos;EngineEdition&apos;)=5 THEN CONVERT_IMPLICIT(int,db_id(),0) ELSE [master].[sys].[sysdbreg].[id] as [d].[id] END)=(1)">
+                                                        <Compare CompareOp="EQ">
+                                                          <ScalarOperator>
+                                                            <Intrinsic FunctionName="has_access">
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="&apos;DB&apos;"></Const>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <IF>
+                                                                  <Condition>
+                                                                    <ScalarOperator>
+                                                                      <Compare CompareOp="EQ">
+                                                                        <ScalarOperator>
+                                                                          <Identifier>
+                                                                            <ColumnReference Column="ConstExpr1136">
+                                                                              <ScalarOperator>
+                                                                                <Intrinsic FunctionName="serverproperty">
+                                                                                  <ScalarOperator>
+                                                                                    <Const ConstValue="&apos;EngineEdition&apos;"></Const>
+                                                                                  </ScalarOperator>
+                                                                                </Intrinsic>
+                                                                              </ScalarOperator>
+                                                                            </ColumnReference>
+                                                                          </Identifier>
+                                                                        </ScalarOperator>
+                                                                        <ScalarOperator>
+                                                                          <Const ConstValue="5"></Const>
+                                                                        </ScalarOperator>
+                                                                      </Compare>
+                                                                    </ScalarOperator>
+                                                                  </Condition>
+                                                                  <Then>
+                                                                    <ScalarOperator>
+                                                                      <Convert DataType="int" Style="0" Implicit="1">
+                                                                        <ScalarOperator>
+                                                                          <Identifier>
+                                                                            <ColumnReference Column="ConstExpr1137">
+                                                                              <ScalarOperator>
+                                                                                <Intrinsic FunctionName="db_id">
+                                                                                  <ScalarOperator>
+                                                                                    <Const ConstValue=""></Const>
+                                                                                  </ScalarOperator>
+                                                                                </Intrinsic>
+                                                                              </ScalarOperator>
+                                                                            </ColumnReference>
+                                                                          </Identifier>
+                                                                        </ScalarOperator>
+                                                                      </Convert>
+                                                                    </ScalarOperator>
+                                                                  </Then>
+                                                                  <Else>
+                                                                    <ScalarOperator>
+                                                                      <Identifier>
+                                                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                                      </Identifier>
+                                                                    </ScalarOperator>
+                                                                  </Else>
+                                                                </IF>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue=""></Const>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue=""></Const>
+                                                              </ScalarOperator>
+                                                            </Intrinsic>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(1)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </Predicate>
+                                                  </Filter>
+                                                </RelOp>
+                                                <RelOp NodeId="11" PhysicalOp="Table-valued function" LogicalOp="Table-valued function" EstimateRows="1" EstimateIO="0" EstimateCPU="1.157e-006" AvgRowSize="15" EstimatedTotalSubtreeCost="8.157e-006" Parallel="0" EstimateRebinds="7" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                                  <OutputList>
+                                                    <ColumnReference Table="[DBPROP]" Column="default_language"></ColumnReference>
+                                                    <ColumnReference Table="[DBPROP]" Column="default_fulltext_language"></ColumnReference>
+                                                  </OutputList>
+                                                  <TableValuedFunction>
+                                                    <DefinedValues>
+                                                      <DefinedValue>
+                                                        <ColumnReference Table="[DBPROP]" Column="default_language"></ColumnReference>
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Table="[DBPROP]" Column="default_fulltext_language"></ColumnReference>
+                                                      </DefinedValue>
+                                                    </DefinedValues>
+                                                    <Object Table="[DBPROP]"></Object>
+                                                    <ParameterList>
+                                                      <ScalarOperator ScalarString="CASE WHEN serverproperty(&apos;EngineEdition&apos;)=5 THEN CONVERT_IMPLICIT(int,db_id(),0) ELSE [master].[sys].[sysdbreg].[id] as [d].[id] END">
+                                                        <IF>
+                                                          <Condition>
+                                                            <ScalarOperator>
+                                                              <Compare CompareOp="EQ">
+                                                                <ScalarOperator>
+                                                                  <Intrinsic FunctionName="serverproperty">
+                                                                    <ScalarOperator>
+                                                                      <Const ConstValue="&apos;EngineEdition&apos;"></Const>
+                                                                    </ScalarOperator>
+                                                                  </Intrinsic>
+                                                                </ScalarOperator>
+                                                                <ScalarOperator>
+                                                                  <Const ConstValue="5"></Const>
+                                                                </ScalarOperator>
+                                                              </Compare>
+                                                            </ScalarOperator>
+                                                          </Condition>
+                                                          <Then>
+                                                            <ScalarOperator>
+                                                              <Convert DataType="int" Style="0" Implicit="1">
+                                                                <ScalarOperator>
+                                                                  <Intrinsic FunctionName="db_id">
+                                                                    <ScalarOperator>
+                                                                      <Const ConstValue=""></Const>
+                                                                    </ScalarOperator>
+                                                                  </Intrinsic>
+                                                                </ScalarOperator>
+                                                              </Convert>
+                                                            </ScalarOperator>
+                                                          </Then>
+                                                          <Else>
+                                                            <ScalarOperator>
+                                                              <Identifier>
+                                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                              </Identifier>
+                                                            </ScalarOperator>
+                                                          </Else>
+                                                        </IF>
+                                                      </ScalarOperator>
+                                                    </ParameterList>
+                                                  </TableValuedFunction>
+                                                </RelOp>
+                                              </NestedLoops>
+                                            </RelOp>
+                                            <RelOp NodeId="12" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="11" EstimatedTotalSubtreeCost="0.0043898" TableCardinality="266" Parallel="0" EstimateRebinds="7" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                              <OutputList></OutputList>
+                                              <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                <DefinedValues></DefinedValues>
+                                                <Object Database="[master]" Schema="[sys]" Table="[syssingleobjrefs]" Index="[clst]" Alias="[ssr]" IndexKind="Clustered" Storage="RowStore"></Object>
+                                                <SeekPredicates>
+                                                  <SeekPredicateNew>
+                                                    <SeekKeys>
+                                                      <Prefix ScanType="EQ">
+                                                        <RangeColumns>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[syssingleobjrefs]" Alias="[ssr]" Column="depid"></ColumnReference>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[syssingleobjrefs]" Alias="[ssr]" Column="class"></ColumnReference>
+                                                        </RangeColumns>
+                                                        <RangeExpressions>
+                                                          <ScalarOperator ScalarString="[master].[sys].[sysdbreg].[id] as [d].[id]">
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysdbreg]" Alias="[d]" Column="id"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator ScalarString="(108)">
+                                                            <Const ConstValue="(108)"></Const>
+                                                          </ScalarOperator>
+                                                        </RangeExpressions>
+                                                      </Prefix>
+                                                    </SeekKeys>
+                                                  </SeekPredicateNew>
+                                                </SeekPredicates>
+                                                <Predicate>
+                                                  <ScalarOperator ScalarString="[master].[sys].[syssingleobjrefs].[depid] as [ssr].[depid]&gt;(4) AND [master].[sys].[syssingleobjrefs].[depid] as [ssr].[depid]&lt;(32767)">
+                                                    <Logical Operation="AND">
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="GT">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[syssingleobjrefs]" Alias="[ssr]" Column="depid"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(4)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="LT">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[syssingleobjrefs]" Alias="[ssr]" Column="depid"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(32767)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </Logical>
+                                                  </ScalarOperator>
+                                                </Predicate>
+                                              </IndexScan>
+                                            </RelOp>
+                                          </NestedLoops>
+                                        </RelOp>
+                                        <RelOp NodeId="13" PhysicalOp="Filter" LogicalOp="Filter" EstimateRows="5.83095" EstimateIO="0" EstimateCPU="1.632e-005" AvgRowSize="9" EstimatedTotalSubtreeCost="0.000402734" Parallel="0" EstimateRebinds="4.00017" EstimateRewinds="3.00017" EstimatedExecutionMode="Row">
+                                          <OutputList></OutputList>
+                                          <Filter StartupExpression="0">
+                                            <RelOp NodeId="14" PhysicalOp="Table-valued function" LogicalOp="Table-valued function" EstimateRows="34" EstimateIO="0" EstimateCPU="3.4157e-005" AvgRowSize="11" EstimatedTotalSubtreeCost="0.000272168" Parallel="0" EstimateRebinds="0" EstimateRewinds="7.00033" EstimatedExecutionMode="Row">
+                                              <OutputList>
+                                                <ColumnReference Table="[SYSLANG]" Column="lcid"></ColumnReference>
+                                              </OutputList>
+                                              <TableValuedFunction>
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Table="[SYSLANG]" Column="lcid"></ColumnReference>
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Table="[SYSLANG]"></Object>
+                                                <ParameterList>
+                                                  <ScalarOperator ScalarString="(0)">
+                                                    <Const ConstValue="(0)"></Const>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="NULL">
+                                                    <Const ConstValue="NULL"></Const>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="(0)">
+                                                    <Const ConstValue="(0)"></Const>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="NULL">
+                                                    <Const ConstValue="NULL"></Const>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="(0)">
+                                                    <Const ConstValue="(0)"></Const>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="NULL">
+                                                    <Const ConstValue="NULL"></Const>
+                                                  </ScalarOperator>
+                                                </ParameterList>
+                                              </TableValuedFunction>
+                                            </RelOp>
+                                            <Predicate>
+                                              <ScalarOperator ScalarString="SYSLANG.[lcid]=DBPROP.[default_language]">
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Table="[SYSLANG]" Column="lcid"></ColumnReference>
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Table="[DBPROP]" Column="default_language"></ColumnReference>
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Predicate>
+                                          </Filter>
+                                        </RelOp>
+                                      </NestedLoops>
+                                    </RelOp>
+                                    <RelOp NodeId="15" PhysicalOp="Table-valued function" LogicalOp="Table-valued function" EstimateRows="1" EstimateIO="0" EstimateCPU="1.157e-006" AvgRowSize="11" EstimatedTotalSubtreeCost="4.68066e-005" Parallel="0" EstimateRebinds="0" EstimateRewinds="45.6496" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Table="[SYSFULLTEXTLANGUAGES]" Column="lcid"></ColumnReference>
+                                      </OutputList>
+                                      <TableValuedFunction>
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Table="[SYSFULLTEXTLANGUAGES]" Column="lcid"></ColumnReference>
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <Object Table="[SYSFULLTEXTLANGUAGES]"></Object>
+                                      </TableValuedFunction>
+                                    </RelOp>
+                                  </NestedLoops>
+                                </RelOp>
+                                <RelOp NodeId="16" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="15" EstimatedTotalSubtreeCost="0.0140298" TableCardinality="596" Parallel="0" EstimateRebinds="0" EstimateRewinds="67.9743" EstimatedExecutionMode="Row">
+                                  <OutputList>
+                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[coll]" Column="objid"></ColumnReference>
+                                  </OutputList>
+                                  <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[coll]" Column="objid"></ColumnReference>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <Object Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Index="[clst]" Alias="[coll]" IndexKind="Clustered" Storage="RowStore"></Object>
+                                    <SeekPredicates>
+                                      <SeekPredicateNew>
+                                        <SeekKeys>
+                                          <Prefix ScanType="EQ">
+                                            <RangeColumns>
+                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[coll]" Column="valclass"></ColumnReference>
+                                            </RangeColumns>
+                                            <RangeExpressions>
+                                              <ScalarOperator ScalarString="(102)">
+                                                <Const ConstValue="(102)"></Const>
+                                              </ScalarOperator>
+                                            </RangeExpressions>
+                                          </Prefix>
+                                          <StartRange ScanType="GT">
+                                            <RangeColumns>
+                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[coll]" Column="objid"></ColumnReference>
+                                            </RangeColumns>
+                                            <RangeExpressions>
+                                              <ScalarOperator ScalarString="(4)">
+                                                <Const ConstValue="(4)"></Const>
+                                              </ScalarOperator>
+                                            </RangeExpressions>
+                                          </StartRange>
+                                          <EndRange ScanType="LT">
+                                            <RangeColumns>
+                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[coll]" Column="objid"></ColumnReference>
+                                            </RangeColumns>
+                                            <RangeExpressions>
+                                              <ScalarOperator ScalarString="(32767)">
+                                                <Const ConstValue="(32767)"></Const>
+                                              </ScalarOperator>
+                                            </RangeExpressions>
+                                          </EndRange>
+                                        </SeekKeys>
+                                      </SeekPredicateNew>
+                                    </SeekPredicates>
+                                    <Predicate>
+                                      <ScalarOperator ScalarString="[master].[sys].[sysobjvalues].[subobjid] as [coll].[subobjid]=(0)">
+                                        <Compare CompareOp="EQ">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[coll]" Column="subobjid"></ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Const ConstValue="(0)"></Const>
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                    </Predicate>
+                                  </IndexScan>
+                                </RelOp>
+                              </NestedLoops>
+                            </RelOp>
+                            <RelOp NodeId="17" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="15" EstimatedTotalSubtreeCost="0.0140661" TableCardinality="596" Parallel="0" EstimateRebinds="0" EstimateRewinds="68.2035" EstimatedExecutionMode="Row">
+                              <OutputList>
+                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[rda]" Column="objid"></ColumnReference>
+                              </OutputList>
+                              <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[rda]" Column="objid"></ColumnReference>
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Index="[clst]" Alias="[rda]" IndexKind="Clustered" Storage="RowStore"></Object>
+                                <SeekPredicates>
+                                  <SeekPredicateNew>
+                                    <SeekKeys>
+                                      <Prefix ScanType="EQ">
+                                        <RangeColumns>
+                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[rda]" Column="valclass"></ColumnReference>
+                                        </RangeColumns>
+                                        <RangeExpressions>
+                                          <ScalarOperator ScalarString="(116)">
+                                            <Const ConstValue="(116)"></Const>
+                                          </ScalarOperator>
+                                        </RangeExpressions>
+                                      </Prefix>
+                                      <StartRange ScanType="GT">
+                                        <RangeColumns>
+                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[rda]" Column="objid"></ColumnReference>
+                                        </RangeColumns>
+                                        <RangeExpressions>
+                                          <ScalarOperator ScalarString="(4)">
+                                            <Const ConstValue="(4)"></Const>
+                                          </ScalarOperator>
+                                        </RangeExpressions>
+                                      </StartRange>
+                                      <EndRange ScanType="LT">
+                                        <RangeColumns>
+                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[rda]" Column="objid"></ColumnReference>
+                                        </RangeColumns>
+                                        <RangeExpressions>
+                                          <ScalarOperator ScalarString="(32767)">
+                                            <Const ConstValue="(32767)"></Const>
+                                          </ScalarOperator>
+                                        </RangeExpressions>
+                                      </EndRange>
+                                    </SeekKeys>
+                                  </SeekPredicateNew>
+                                </SeekPredicates>
+                                <Predicate>
+                                  <ScalarOperator ScalarString="[master].[sys].[sysobjvalues].[valnum] as [rda].[valnum]=(0)">
+                                    <Compare CompareOp="EQ">
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysobjvalues]" Alias="[rda]" Column="valnum"></ColumnReference>
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Const ConstValue="(0)"></Const>
+                                      </ScalarOperator>
+                                    </Compare>
+                                  </ScalarOperator>
+                                </Predicate>
+                              </IndexScan>
+                            </RelOp>
+                          </NestedLoops>
+                        </RelOp>
+                        <RelOp NodeId="18" PhysicalOp="Table Spool" LogicalOp="Lazy Spool" EstimateRows="1" EstimateIO="0.01" EstimateCPU="0.00010038" AvgRowSize="28" EstimatedTotalSubtreeCost="0.0239225" Parallel="0" EstimateRebinds="0" EstimateRewinds="68.4342" EstimatedExecutionMode="Row">
+                          <OutputList>
+                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                            <ColumnReference Column="Expr1105"></ColumnReference>
+                          </OutputList>
+                          <Spool>
+                            <RelOp NodeId="19" PhysicalOp="Stream Aggregate" LogicalOp="Aggregate" EstimateRows="1" EstimateIO="0" EstimateCPU="2.4799e-006" AvgRowSize="28" EstimatedTotalSubtreeCost="0.00696643" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                              <OutputList>
+                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                <ColumnReference Column="Expr1105"></ColumnReference>
+                              </OutputList>
+                              <StreamAggregate>
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1105"></ColumnReference>
+                                    <ScalarOperator ScalarString="SUM([Expr1162])">
+                                      <Aggregate Distinct="0" AggType="SUM">
+                                        <ScalarOperator>
+                                          <Identifier>
+                                            <ColumnReference Column="Expr1162"></ColumnReference>
+                                          </Identifier>
+                                        </ScalarOperator>
+                                      </Aggregate>
+                                    </ScalarOperator>
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <GroupBy>
+                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                </GroupBy>
+                                <RelOp NodeId="20" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="3.29983" EstimateIO="0" EstimateCPU="1.37933e-005" AvgRowSize="20" EstimatedTotalSubtreeCost="0.00696395" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                  <OutputList>
+                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                    <ColumnReference Column="Expr1162"></ColumnReference>
+                                  </OutputList>
+                                  <NestedLoops Optimized="0">
+                                    <Predicate>
+                                      <ScalarOperator ScalarString="[master].[sys].[sysbrickfiles].[pname] as [f].[pname] like [Expr1163]">
+                                        <Intrinsic FunctionName="like">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Column="Expr1163"></ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Intrinsic>
+                                      </ScalarOperator>
+                                    </Predicate>
+                                    <RelOp NodeId="21" PhysicalOp="Compute Scalar" LogicalOp="Compute Scalar" EstimateRows="3.29983" EstimateIO="0" EstimateCPU="3.29983e-007" AvgRowSize="284" EstimatedTotalSubtreeCost="0.00329857" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                        <ColumnReference Column="Expr1162"></ColumnReference>
+                                      </OutputList>
+                                      <ComputeScalar>
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1162"></ColumnReference>
+                                            <ScalarOperator ScalarString="CONVERT_IMPLICIT(numeric(10,0),[master].[sys].[sysbrickfiles].[size] as [f].[size],0)*(8.0)/(1024.)">
+                                              <Arithmetic Operation="DIV">
+                                                <ScalarOperator>
+                                                  <Arithmetic Operation="MULT">
+                                                    <ScalarOperator>
+                                                      <Convert DataType="numeric" Precision="10" Scale="0" Style="0" Implicit="1">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                      </Convert>
+                                                    </ScalarOperator>
+                                                    <ScalarOperator>
+                                                      <Const ConstValue="(8.0)"></Const>
+                                                    </ScalarOperator>
+                                                  </Arithmetic>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue="(1024.)"></Const>
+                                                </ScalarOperator>
+                                              </Arithmetic>
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <RelOp NodeId="22" PhysicalOp="Filter" LogicalOp="Filter" EstimateRows="3.29983" EstimateIO="0" EstimateCPU="1.11067e-005" AvgRowSize="279" EstimatedTotalSubtreeCost="0.00329824" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                          <OutputList>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                          </OutputList>
+                                          <Filter StartupExpression="1">
+                                            <RelOp NodeId="23" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="3.29983" EstimatedRowsRead="4.66667" EstimateIO="0.003125" EstimateCPU="0.000162133" AvgRowSize="285" EstimatedTotalSubtreeCost="0.00328713" TableCardinality="28" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                              <OutputList>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pruid"></ColumnReference>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="fileid"></ColumnReference>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filetype"></ColumnReference>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                              </OutputList>
+                                              <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pruid"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="fileid"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filetype"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Index="[clst]" Alias="[f]" TableReferenceId="1" IndexKind="Clustered" Storage="RowStore"></Object>
+                                                <SeekPredicates>
+                                                  <SeekPredicateNew>
+                                                    <SeekKeys>
+                                                      <StartRange ScanType="GT">
+                                                        <RangeColumns>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                                        </RangeColumns>
+                                                        <RangeExpressions>
+                                                          <ScalarOperator ScalarString="(4)">
+                                                            <Const ConstValue="(4)"></Const>
+                                                          </ScalarOperator>
+                                                        </RangeExpressions>
+                                                      </StartRange>
+                                                      <EndRange ScanType="LT">
+                                                        <RangeColumns>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                                        </RangeColumns>
+                                                        <RangeExpressions>
+                                                          <ScalarOperator ScalarString="(32767)">
+                                                            <Const ConstValue="(32767)"></Const>
+                                                          </ScalarOperator>
+                                                        </RangeExpressions>
+                                                      </EndRange>
+                                                    </SeekKeys>
+                                                  </SeekPredicateNew>
+                                                </SeekPredicates>
+                                                <Predicate>
+                                                  <ScalarOperator ScalarString="[master].[sys].[sysbrickfiles].[filetype] as [f].[filetype]=(0) AND [master].[sys].[sysbrickfiles].[pruid] as [f].[pruid]=(0) AND ([master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&lt;(1) OR [master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&gt;(1)) AND ([master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&lt;(2) OR [master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&gt;(2))">
+                                                    <Logical Operation="AND">
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="EQ">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filetype"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(0)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="EQ">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pruid"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(0)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Logical Operation="OR">
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="LT">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(1)"></Const>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="GT">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(1)"></Const>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                        </Logical>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Logical Operation="OR">
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="LT">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(2)"></Const>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="GT">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(2)"></Const>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                        </Logical>
+                                                      </ScalarOperator>
+                                                    </Logical>
+                                                  </ScalarOperator>
+                                                </Predicate>
+                                              </IndexScan>
+                                            </RelOp>
+                                            <Predicate>
+                                              <ScalarOperator ScalarString="has_access(&apos;MF&apos;,(1))=(1)">
+                                                <Identifier>
+                                                  <ColumnReference Column="ConstExpr1159">
+                                                    <ScalarOperator>
+                                                      <Compare CompareOp="EQ">
+                                                        <ScalarOperator>
+                                                          <Intrinsic FunctionName="has_access">
+                                                            <ScalarOperator>
+                                                              <Const ConstValue="&apos;MF&apos;"></Const>
+                                                            </ScalarOperator>
+                                                            <ScalarOperator>
+                                                              <Const ConstValue="(1)"></Const>
+                                                            </ScalarOperator>
+                                                            <ScalarOperator>
+                                                              <Const ConstValue=""></Const>
+                                                            </ScalarOperator>
+                                                            <ScalarOperator>
+                                                              <Const ConstValue=""></Const>
+                                                            </ScalarOperator>
+                                                          </Intrinsic>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="(1)"></Const>
+                                                        </ScalarOperator>
+                                                      </Compare>
+                                                    </ScalarOperator>
+                                                  </ColumnReference>
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Predicate>
+                                          </Filter>
+                                        </RelOp>
+                                      </ComputeScalar>
+                                    </RelOp>
+                                    <RelOp NodeId="24" PhysicalOp="Compute Scalar" LogicalOp="Compute Scalar" EstimateRows="1" EstimateIO="0" EstimateCPU="1e-007" AvgRowSize="406" EstimatedTotalSubtreeCost="0.00364928" Parallel="0" EstimateRebinds="0" EstimateRewinds="2.29983" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Column="Expr1163"></ColumnReference>
+                                        <ColumnReference Column="Expr1164"></ColumnReference>
+                                        <ColumnReference Column="Expr1165"></ColumnReference>
+                                        <ColumnReference Column="Expr1166"></ColumnReference>
+                                      </OutputList>
+                                      <ComputeScalar>
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1163"></ColumnReference>
+                                            <ScalarOperator ScalarString="[master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;">
+                                              <Arithmetic Operation="ADD">
+                                                <ScalarOperator>
+                                                  <Identifier>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue="N&apos;%&apos;"></Const>
+                                                </ScalarOperator>
+                                              </Arithmetic>
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1164"></ColumnReference>
+                                            <ScalarOperator ScalarString="LikeRangeStart([master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;)">
+                                              <Intrinsic FunctionName="LikeRangeStart">
+                                                <ScalarOperator>
+                                                  <Arithmetic Operation="ADD">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                    <ScalarOperator>
+                                                      <Const ConstValue="N&apos;%&apos;"></Const>
+                                                    </ScalarOperator>
+                                                  </Arithmetic>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue=""></Const>
+                                                </ScalarOperator>
+                                              </Intrinsic>
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1165"></ColumnReference>
+                                            <ScalarOperator ScalarString="LikeRangeEnd([master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;)">
+                                              <Intrinsic FunctionName="LikeRangeEnd">
+                                                <ScalarOperator>
+                                                  <Arithmetic Operation="ADD">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                    <ScalarOperator>
+                                                      <Const ConstValue="N&apos;%&apos;"></Const>
+                                                    </ScalarOperator>
+                                                  </Arithmetic>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue=""></Const>
+                                                </ScalarOperator>
+                                              </Intrinsic>
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1166"></ColumnReference>
+                                            <ScalarOperator ScalarString="LikeRangeInfo([master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;)">
+                                              <Intrinsic FunctionName="LikeRangeInfo">
+                                                <ScalarOperator>
+                                                  <Arithmetic Operation="ADD">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                    <ScalarOperator>
+                                                      <Const ConstValue="N&apos;%&apos;"></Const>
+                                                    </ScalarOperator>
+                                                  </Arithmetic>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue=""></Const>
+                                                </ScalarOperator>
+                                              </Intrinsic>
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <RelOp NodeId="25" PhysicalOp="Filter" LogicalOp="Filter" EstimateRows="1" EstimateIO="0" EstimateCPU="6.8e-007" AvgRowSize="139" EstimatedTotalSubtreeCost="0.00364895" Parallel="0" EstimateRebinds="0" EstimateRewinds="2.29983" EstimatedExecutionMode="Row">
+                                          <OutputList>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                          </OutputList>
+                                          <Filter StartupExpression="1">
+                                            <RelOp NodeId="26" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="141" EstimatedTotalSubtreeCost="0.0036467" TableCardinality="29" Parallel="0" EstimateRebinds="0" EstimateRewinds="2.29983" EstimatedExecutionMode="Row">
+                                              <OutputList>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                              </OutputList>
+                                              <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Index="[clst]" Alias="[co]" TableReferenceId="1" IndexKind="Clustered" Storage="RowStore"></Object>
+                                                <SeekPredicates>
+                                                  <SeekPredicateNew>
+                                                    <SeekKeys>
+                                                      <Prefix ScanType="EQ">
+                                                        <RangeColumns>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="class"></ColumnReference>
+                                                        </RangeColumns>
+                                                        <RangeExpressions>
+                                                          <ScalarOperator ScalarString="(57)">
+                                                            <Const ConstValue="(57)"></Const>
+                                                          </ScalarOperator>
+                                                        </RangeExpressions>
+                                                      </Prefix>
+                                                    </SeekKeys>
+                                                  </SeekPredicateNew>
+                                                </SeekPredicates>
+                                                <Predicate>
+                                                  <ScalarOperator ScalarString="[master].[sys].[sysclsobjs].[type] as [co].[type]=&apos;&apos;">
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="type"></ColumnReference>
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="&apos;&apos;"></Const>
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                </Predicate>
+                                              </IndexScan>
+                                            </RelOp>
+                                            <Predicate>
+                                              <ScalarOperator ScalarString="has_access(&apos;CR&apos;,(0))=(1)">
+                                                <Identifier>
+                                                  <ColumnReference Column="ConstExpr1158">
+                                                    <ScalarOperator>
+                                                      <Compare CompareOp="EQ">
+                                                        <ScalarOperator>
+                                                          <Intrinsic FunctionName="has_access">
+                                                            <ScalarOperator>
+                                                              <Const ConstValue="&apos;CR&apos;"></Const>
+                                                            </ScalarOperator>
+                                                            <ScalarOperator>
+                                                              <Const ConstValue="(0)"></Const>
+                                                            </ScalarOperator>
+                                                            <ScalarOperator>
+                                                              <Const ConstValue=""></Const>
+                                                            </ScalarOperator>
+                                                            <ScalarOperator>
+                                                              <Const ConstValue=""></Const>
+                                                            </ScalarOperator>
+                                                          </Intrinsic>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="(1)"></Const>
+                                                        </ScalarOperator>
+                                                      </Compare>
+                                                    </ScalarOperator>
+                                                  </ColumnReference>
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Predicate>
+                                          </Filter>
+                                        </RelOp>
+                                      </ComputeScalar>
+                                    </RelOp>
+                                  </NestedLoops>
+                                </RelOp>
+                              </StreamAggregate>
+                            </RelOp>
+                          </Spool>
+                        </RelOp>
+                      </NestedLoops>
+                    </RelOp>
+                    <RelOp NodeId="27" PhysicalOp="Table Spool" LogicalOp="Lazy Spool" EstimateRows="1" EstimateIO="0.01" EstimateCPU="0.00010038" AvgRowSize="28" EstimatedTotalSubtreeCost="0.0247908" Parallel="0" EstimateRebinds="0" EstimateRewinds="77.1007" EstimatedExecutionMode="Row">
+                      <OutputList>
+                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                        <ColumnReference Column="Expr1133"></ColumnReference>
+                      </OutputList>
+                      <Spool>
+                        <RelOp NodeId="28" PhysicalOp="Stream Aggregate" LogicalOp="Aggregate" EstimateRows="1" EstimateIO="0" EstimateCPU="2.4799e-006" AvgRowSize="28" EstimatedTotalSubtreeCost="0.00696643" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                          <OutputList>
+                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                            <ColumnReference Column="Expr1133"></ColumnReference>
+                          </OutputList>
+                          <StreamAggregate>
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1133"></ColumnReference>
+                                <ScalarOperator ScalarString="SUM([Expr1167])">
+                                  <Aggregate Distinct="0" AggType="SUM">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Column="Expr1167"></ColumnReference>
+                                      </Identifier>
+                                    </ScalarOperator>
+                                  </Aggregate>
+                                </ScalarOperator>
+                              </DefinedValue>
+                            </DefinedValues>
+                            <GroupBy>
+                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                            </GroupBy>
+                            <RelOp NodeId="29" PhysicalOp="Nested Loops" LogicalOp="Left Outer Join" EstimateRows="3.29983" EstimateIO="0" EstimateCPU="1.37933e-005" AvgRowSize="20" EstimatedTotalSubtreeCost="0.00696395" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                              <OutputList>
+                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                <ColumnReference Column="Expr1167"></ColumnReference>
+                              </OutputList>
+                              <NestedLoops Optimized="0">
+                                <Predicate>
+                                  <ScalarOperator ScalarString="[master].[sys].[sysbrickfiles].[pname] as [f].[pname] like [Expr1168]">
+                                    <Intrinsic FunctionName="like">
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Identifier>
+                                          <ColumnReference Column="Expr1168"></ColumnReference>
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </Intrinsic>
+                                  </ScalarOperator>
+                                </Predicate>
+                                <RelOp NodeId="30" PhysicalOp="Compute Scalar" LogicalOp="Compute Scalar" EstimateRows="3.29983" EstimateIO="0" EstimateCPU="3.29983e-007" AvgRowSize="218" EstimatedTotalSubtreeCost="0.00329857" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                  <OutputList>
+                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                    <ColumnReference Column="Expr1167"></ColumnReference>
+                                  </OutputList>
+                                  <ComputeScalar>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1167"></ColumnReference>
+                                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(numeric(10,0),[master].[sys].[sysbrickfiles].[size] as [f].[size],0)*(8.0)/(1024.)">
+                                          <Arithmetic Operation="DIV">
+                                            <ScalarOperator>
+                                              <Arithmetic Operation="MULT">
+                                                <ScalarOperator>
+                                                  <Convert DataType="numeric" Precision="10" Scale="0" Style="0" Implicit="1">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Convert>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue="(8.0)"></Const>
+                                                </ScalarOperator>
+                                              </Arithmetic>
+                                            </ScalarOperator>
+                                            <ScalarOperator>
+                                              <Const ConstValue="(1024.)"></Const>
+                                            </ScalarOperator>
+                                          </Arithmetic>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <RelOp NodeId="31" PhysicalOp="Filter" LogicalOp="Filter" EstimateRows="3.29983" EstimateIO="0" EstimateCPU="1.11067e-005" AvgRowSize="279" EstimatedTotalSubtreeCost="0.00329824" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                      </OutputList>
+                                      <Filter StartupExpression="1">
+                                        <RelOp NodeId="32" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="3.29983" EstimatedRowsRead="4.66667" EstimateIO="0.003125" EstimateCPU="0.000162133" AvgRowSize="285" EstimatedTotalSubtreeCost="0.00328713" TableCardinality="28" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                          <OutputList>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pruid"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="fileid"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filetype"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                          </OutputList>
+                                          <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pruid"></ColumnReference>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="fileid"></ColumnReference>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filetype"></ColumnReference>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="size"></ColumnReference>
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pname"></ColumnReference>
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <Object Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Index="[clst]" Alias="[f]" TableReferenceId="2" IndexKind="Clustered" Storage="RowStore"></Object>
+                                            <SeekPredicates>
+                                              <SeekPredicateNew>
+                                                <SeekKeys>
+                                                  <StartRange ScanType="GT">
+                                                    <RangeColumns>
+                                                      <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                                    </RangeColumns>
+                                                    <RangeExpressions>
+                                                      <ScalarOperator ScalarString="(4)">
+                                                        <Const ConstValue="(4)"></Const>
+                                                      </ScalarOperator>
+                                                    </RangeExpressions>
+                                                  </StartRange>
+                                                  <EndRange ScanType="LT">
+                                                    <RangeColumns>
+                                                      <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="dbid"></ColumnReference>
+                                                    </RangeColumns>
+                                                    <RangeExpressions>
+                                                      <ScalarOperator ScalarString="(32767)">
+                                                        <Const ConstValue="(32767)"></Const>
+                                                      </ScalarOperator>
+                                                    </RangeExpressions>
+                                                  </EndRange>
+                                                </SeekKeys>
+                                              </SeekPredicateNew>
+                                            </SeekPredicates>
+                                            <Predicate>
+                                              <ScalarOperator ScalarString="[master].[sys].[sysbrickfiles].[filetype] as [f].[filetype]=(1) AND [master].[sys].[sysbrickfiles].[pruid] as [f].[pruid]=(0) AND ([master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&lt;(1) OR [master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&gt;(1)) AND ([master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&lt;(2) OR [master].[sys].[sysbrickfiles].[filestate] as [f].[filestate]&gt;(2))">
+                                                <Logical Operation="AND">
+                                                  <ScalarOperator>
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filetype"></ColumnReference>
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(1)"></Const>
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="pruid"></ColumnReference>
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(0)"></Const>
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Logical Operation="OR">
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="LT">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(1)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="GT">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(1)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </Logical>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Logical Operation="OR">
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="LT">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(2)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="GT">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[master]" Schema="[sys]" Table="[sysbrickfiles]" Alias="[f]" Column="filestate"></ColumnReference>
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(2)"></Const>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </Logical>
+                                                  </ScalarOperator>
+                                                </Logical>
+                                              </ScalarOperator>
+                                            </Predicate>
+                                          </IndexScan>
+                                        </RelOp>
+                                        <Predicate>
+                                          <ScalarOperator ScalarString="has_access(&apos;MF&apos;,(1))=(1)">
+                                            <Identifier>
+                                              <ColumnReference Column="ConstExpr1161">
+                                                <ScalarOperator>
+                                                  <Compare CompareOp="EQ">
+                                                    <ScalarOperator>
+                                                      <Intrinsic FunctionName="has_access">
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="&apos;MF&apos;"></Const>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="(1)"></Const>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue=""></Const>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue=""></Const>
+                                                        </ScalarOperator>
+                                                      </Intrinsic>
+                                                    </ScalarOperator>
+                                                    <ScalarOperator>
+                                                      <Const ConstValue="(1)"></Const>
+                                                    </ScalarOperator>
+                                                  </Compare>
+                                                </ScalarOperator>
+                                              </ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Predicate>
+                                      </Filter>
+                                    </RelOp>
+                                  </ComputeScalar>
+                                </RelOp>
+                                <RelOp NodeId="33" PhysicalOp="Compute Scalar" LogicalOp="Compute Scalar" EstimateRows="1" EstimateIO="0" EstimateCPU="1e-007" AvgRowSize="406" EstimatedTotalSubtreeCost="0.00364928" Parallel="0" EstimateRebinds="0" EstimateRewinds="2.29983" EstimatedExecutionMode="Row">
+                                  <OutputList>
+                                    <ColumnReference Column="Expr1168"></ColumnReference>
+                                    <ColumnReference Column="Expr1169"></ColumnReference>
+                                    <ColumnReference Column="Expr1170"></ColumnReference>
+                                    <ColumnReference Column="Expr1171"></ColumnReference>
+                                  </OutputList>
+                                  <ComputeScalar>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1168"></ColumnReference>
+                                        <ScalarOperator ScalarString="[master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;">
+                                          <Arithmetic Operation="ADD">
+                                            <ScalarOperator>
+                                              <Identifier>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                              </Identifier>
+                                            </ScalarOperator>
+                                            <ScalarOperator>
+                                              <Const ConstValue="N&apos;%&apos;"></Const>
+                                            </ScalarOperator>
+                                          </Arithmetic>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1169"></ColumnReference>
+                                        <ScalarOperator ScalarString="LikeRangeStart([master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;)">
+                                          <Intrinsic FunctionName="LikeRangeStart">
+                                            <ScalarOperator>
+                                              <Arithmetic Operation="ADD">
+                                                <ScalarOperator>
+                                                  <Identifier>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue="N&apos;%&apos;"></Const>
+                                                </ScalarOperator>
+                                              </Arithmetic>
+                                            </ScalarOperator>
+                                            <ScalarOperator>
+                                              <Const ConstValue=""></Const>
+                                            </ScalarOperator>
+                                          </Intrinsic>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1170"></ColumnReference>
+                                        <ScalarOperator ScalarString="LikeRangeEnd([master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;)">
+                                          <Intrinsic FunctionName="LikeRangeEnd">
+                                            <ScalarOperator>
+                                              <Arithmetic Operation="ADD">
+                                                <ScalarOperator>
+                                                  <Identifier>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue="N&apos;%&apos;"></Const>
+                                                </ScalarOperator>
+                                              </Arithmetic>
+                                            </ScalarOperator>
+                                            <ScalarOperator>
+                                              <Const ConstValue=""></Const>
+                                            </ScalarOperator>
+                                          </Intrinsic>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1171"></ColumnReference>
+                                        <ScalarOperator ScalarString="LikeRangeInfo([master].[sys].[sysclsobjs].[name] as [co].[name]+N&apos;%&apos;)">
+                                          <Intrinsic FunctionName="LikeRangeInfo">
+                                            <ScalarOperator>
+                                              <Arithmetic Operation="ADD">
+                                                <ScalarOperator>
+                                                  <Identifier>
+                                                    <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue="N&apos;%&apos;"></Const>
+                                                </ScalarOperator>
+                                              </Arithmetic>
+                                            </ScalarOperator>
+                                            <ScalarOperator>
+                                              <Const ConstValue=""></Const>
+                                            </ScalarOperator>
+                                          </Intrinsic>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <RelOp NodeId="34" PhysicalOp="Filter" LogicalOp="Filter" EstimateRows="1" EstimateIO="0" EstimateCPU="6.8e-007" AvgRowSize="139" EstimatedTotalSubtreeCost="0.00364895" Parallel="0" EstimateRebinds="0" EstimateRewinds="2.29983" EstimatedExecutionMode="Row">
+                                      <OutputList>
+                                        <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                      </OutputList>
+                                      <Filter StartupExpression="1">
+                                        <RelOp NodeId="35" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="141" EstimatedTotalSubtreeCost="0.0036467" TableCardinality="29" Parallel="0" EstimateRebinds="0" EstimateRewinds="2.29983" EstimatedExecutionMode="Row">
+                                          <OutputList>
+                                            <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                          </OutputList>
+                                          <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="name"></ColumnReference>
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <Object Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Index="[clst]" Alias="[co]" TableReferenceId="2" IndexKind="Clustered" Storage="RowStore"></Object>
+                                            <SeekPredicates>
+                                              <SeekPredicateNew>
+                                                <SeekKeys>
+                                                  <Prefix ScanType="EQ">
+                                                    <RangeColumns>
+                                                      <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="class"></ColumnReference>
+                                                    </RangeColumns>
+                                                    <RangeExpressions>
+                                                      <ScalarOperator ScalarString="(57)">
+                                                        <Const ConstValue="(57)"></Const>
+                                                      </ScalarOperator>
+                                                    </RangeExpressions>
+                                                  </Prefix>
+                                                </SeekKeys>
+                                              </SeekPredicateNew>
+                                            </SeekPredicates>
+                                            <Predicate>
+                                              <ScalarOperator ScalarString="[master].[sys].[sysclsobjs].[type] as [co].[type]=&apos;&apos;">
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Database="[master]" Schema="[sys]" Table="[sysclsobjs]" Alias="[co]" Column="type"></ColumnReference>
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Const ConstValue="&apos;&apos;"></Const>
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Predicate>
+                                          </IndexScan>
+                                        </RelOp>
+                                        <Predicate>
+                                          <ScalarOperator ScalarString="has_access(&apos;CR&apos;,(0))=(1)">
+                                            <Identifier>
+                                              <ColumnReference Column="ConstExpr1160">
+                                                <ScalarOperator>
+                                                  <Compare CompareOp="EQ">
+                                                    <ScalarOperator>
+                                                      <Intrinsic FunctionName="has_access">
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="&apos;CR&apos;"></Const>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue="(0)"></Const>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue=""></Const>
+                                                        </ScalarOperator>
+                                                        <ScalarOperator>
+                                                          <Const ConstValue=""></Const>
+                                                        </ScalarOperator>
+                                                      </Intrinsic>
+                                                    </ScalarOperator>
+                                                    <ScalarOperator>
+                                                      <Const ConstValue="(1)"></Const>
+                                                    </ScalarOperator>
+                                                  </Compare>
+                                                </ScalarOperator>
+                                              </ColumnReference>
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Predicate>
+                                      </Filter>
+                                    </RelOp>
+                                  </ComputeScalar>
+                                </RelOp>
+                              </NestedLoops>
+                            </RelOp>
+                          </StreamAggregate>
+                        </RelOp>
+                      </Spool>
+                    </RelOp>
+                  </NestedLoops>
+                </RelOp>
+              </ComputeScalar>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>

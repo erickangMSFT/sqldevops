@@ -2,9 +2,8 @@
 {
     "dashboard.database.properties": false,
     "dashboard.database.widgets": [
-
         {
-            "provider":"MSSQL",
+            "provider": "MSSQL",
             "name": "QDS: Top 5 slowest queries",
             "gridItemConfig": {
                 "sizex": 2,
@@ -15,8 +14,8 @@
             }
         },
         {
-            "provider":"MSSQL",
-            "name":"Missing index and PKs",
+            "provider": "MSSQL",
+            "name": "Missing index and PKs",
             "gridItemConfig": {
                 "sizex": 1,
                 "sizey": 1
@@ -37,26 +36,40 @@
             }
         },
         {
-            "provider":"MSSQL",
-            "edition": [1,2,3,4],
+            "provider": "MSSQL",
+            "edition": [
+                1,
+                2,
+                3,
+                4
+            ],
             "gridItemConfig": {
                 "sizex": 1,
                 "sizey": 1
             },
             "name": "Data file space usage (MB)",
             "widget": {
-             "data-file-space-db-insight": null
+                "data-file-space-db-insight": null
             }
         },
         {
-            "provider":"MSSQL",
+            "provider": "MSSQL",
             "name": "Space used by tables",
             "widget": {
-             "table-space-db-insight": null
+                "table-space-db-insight": null
             },
             "gridItemConfig": {
-              "sizex": 2,
-              "sizey": 1  
+                "sizex": 2,
+                "sizey": 1
+            }
+        },
+        {
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "widget": {
+                "explorer-widget": {}
             }
         },
         {
@@ -68,20 +81,11 @@
             "widget": {
                 "tasks-widget": {}
             }
-        },
-        {
-            "gridItemConfig": {
-                "sizex": 2,
-                "sizey": 1
-            },
-            "widget": {
-                "explorer-widget": {}
-            }
         }
     ],
     "dashboard.server.widgets": [
         {
-            "provider":"MSSQL",
+            "provider": "MSSQL",
             "name": "Used space by databases",
             "gridItemConfig": {
                 "sizex": 2,
@@ -91,7 +95,6 @@
                 "all_database_used_space": null
             }
         },
-
         {
             "provider": "MSSQL",
             "name": "Database status",
@@ -102,7 +105,6 @@
             "widget": {
                 "database-state-julie-koesmarno": null
             }
-            
         },
         {
             "provider": "MSSQL",
@@ -112,7 +114,7 @@
             }
         },
         {
-            "provider":"MSSQL",
+            "provider": "MSSQL",
             "name": "Database growth",
             "widget": {
                 "backup-growth-trend-server-insight": null
@@ -130,7 +132,7 @@
             },
             "name": "Wait counts per type",
             "widget": {
-             "Wait-counts-by-Paul-Rendal-server-insight": null
+                "Wait-counts-by-Paul-Rendal-server-insight": null
             }
         },
         {
