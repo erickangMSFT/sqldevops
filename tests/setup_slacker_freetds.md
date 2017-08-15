@@ -1,7 +1,3 @@
-# WideWorldImporters Database Unit Test setup
-
-## Install Ruby and Slacker (clone for Tiny_TDS)
-
 ### Windows
 
 1. Install [Ruby 2.3.3-x64](https://rubyinstaller.org/downloads/) to c:\ruby23-x64
@@ -74,21 +70,4 @@ make
 make install
 
 gem install ./slacker-1.0.16.gem
-```
-
-## Setup WideWorldImporters unit test database
-For demo, powershell for Linux / macOS is used
-Pre-req: localhost + WideWorldImporters sample database.
-
-Creating WideWorldImportersTest database
-```powershell
-cd tests/init_db/init_db.ps1
-```
-
-## Run tests
-check database.yml settings for the database connection
-
-```powershell
-cd WideWorldImporters
-./runner.sh
 ```

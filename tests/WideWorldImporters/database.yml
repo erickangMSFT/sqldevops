@@ -7,5 +7,5 @@ server: localhost
 database: WideWorldImportersTest
 user: sa
 password: Yukon900
-port: 1433
 driver: tiny_tds
+# port: 1433
