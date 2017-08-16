@@ -31,6 +31,7 @@
         * slackercontrol service and deployment with Stateless - External IP
     * Spin up and spin down for slacker_runner pods to loadbalance.
     * [demo folder](./docker/kubernetes/WideWorldImporters)
+    * [test runner](./testrunner)
 
 5. ---
 
