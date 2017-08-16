@@ -1,16 +1,5 @@
 # sqldevops
 
-## Upcoming events
-
-1. Open Source Summit Sept 11 - is someone going here? 
-    -  Puppet Conf in Oct
-2. Linux TownHall - 8/24 sqldevops
-3. Ignite - 9/25? Presenting with HPE for Nimble Storage about sqldevops
-    - Tools session as well
-4. SQLPass - sqldevops and CICD with SSDT & VSTS
-5. MVP Summit - carbon and CLI tools
-6. CONNECT 2017 - Carbon and others?
-
 ## Available Demos
 
 1. Data sanitization - sanitize data by reducing size (schema and data) and adding sensitive data protection
@@ -45,6 +34,7 @@
 
 5. 'new tool' extension settings demo
     * [demo folder](./.vscode)
+    
 6. Docker containerization 
     * Todo: include Docker Compose scenarios
     * [demo folder](./docker)
