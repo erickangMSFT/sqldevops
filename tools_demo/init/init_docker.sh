@@ -7,7 +7,7 @@ docker images
 
 docker run --name mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Yukon900' \
 --cap-add SYS_PTRACE -p 1433:1433 -v sqlvolume:/var/opt/mssql \
--v /Users/erickang/dockershare:/backups -d microsoft/mssql-server-linux \
+-v /Users/erickang/dockershare:/backups -d microsoft/mssql-server-linux
 
 
 docker run --name postgres -e POSTGRES_USER=sa -e POSTGRES_PASSWORD=Yukon900 \

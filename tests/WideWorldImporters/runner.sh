@@ -1,3 +1,3 @@
 #!/bin/bash
-slacker -fd ./spec/**/*.rb
 
+slacker -fd ./spec/**/*.rb >> /dev/stdout

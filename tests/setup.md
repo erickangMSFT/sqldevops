@@ -50,7 +50,7 @@ gem install ./slacker-1.0.16.gem
 
 ```bash
 sudo apt-get update
-sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev wget rbenv ruby-build
 sudo apt-get install git
 
 cd
