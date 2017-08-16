@@ -6,3 +6,4 @@ db/obj
 nul
 /test_runner/node_modules/
 /test_runner/docker/git/
+.vscode
