@@ -32,9 +32,8 @@
     * Spin up and spin down for slacker_runner pods to loadbalance.
     * [demo folder](./docker/kubernetes/WideWorldImporters)
 
-5. 'new tool' extension settings demo
-    * [demo folder](./.vscode)
-    
+5. ---
+
 6. Docker containerization 
     * Todo: include Docker Compose scenarios
     * [demo folder](./docker)
