@@ -1,0 +1,2 @@
+BusinessEntityID,NationalIDNumber,LoginID,OrganizationNode,OrganizationLevel,Title,FirstName,MiddleName,LastName,Suffix,JobTitle,PhoneNumber,PhoneNumberType,EmailAddress,EmailPromotion,AddressLine1,AddressLine2,City,StateProvinceName,PostalCode,CountryRegionName,AdditionalContactInfo,DepartmentID,GroupName,DepartmentName
+2,245797967,adventure-works\terri0,58,1,,Terri,Lee,Duffy,,Vice President of Engineering,819-555-0175,Work,terri0@adventure-works.com,1,7559 Worth Ct.,,Renton,Washington,98055,United States,,1,Research and Development,Engineering

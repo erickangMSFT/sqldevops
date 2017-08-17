@@ -1,0 +1,12 @@
+<html>
+<head>
+
+  <h1> <%= title %> </h1>
+  </head>
+  <body>
+  
+  <div>
+  <%= results %>
+  </div>
+<body>
+</html>

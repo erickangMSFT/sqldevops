@@ -1,5 +1,0 @@
-
-select ct.CustomerID, ct.TransactionAmount, ct.LastEditedWhen
-from sales.customertransactions ct
-where CustomerID = '<%= options[:id] %>'
-order by TransactionDate desc

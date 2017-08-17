@@ -1,0 +1,7 @@
+select 
+p.PersonID,
+p.FullName,
+p.PreferredName,
+p.SearchName
+from Application.People p
+where p.PersonID = '<%= options[:id] %>'

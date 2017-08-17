@@ -1,0 +1,31 @@
+13.0
+29
+1       SQLNCHAR            0       24      "\t\0"   1     SupplierID                                                                                           ""
+2       SQLNCHAR            0       200     "\t\0"   2     SupplierName                                                                                         Latin1_General_100_CI_AS
+3       SQLNCHAR            0       24      "\t\0"   3     SupplierCategoryID                                                                                   ""
+4       SQLNCHAR            0       24      "\t\0"   4     PrimaryContactPersonID                                                                               ""
+5       SQLNCHAR            0       24      "\t\0"   5     AlternateContactPersonID                                                                             ""
+6       SQLNCHAR            0       24      "\t\0"   6     DeliveryMethodID                                                                                     ""
+7       SQLNCHAR            0       24      "\t\0"   7     DeliveryCityID                                                                                       ""
+8       SQLNCHAR            0       24      "\t\0"   8     PostalCityID                                                                                         ""
+9       SQLNCHAR            0       40      "\t\0"   9     SupplierReference                                                                                    Latin1_General_100_CI_AS
+10      SQLNCHAR            0       100     "\t\0"   10    BankAccountName                                                                                      Latin1_General_100_CI_AS
+11      SQLNCHAR            0       100     "\t\0"   11    BankAccountBranch                                                                                    Latin1_General_100_CI_AS
+12      SQLNCHAR            0       40      "\t\0"   12    BankAccountCode                                                                                      Latin1_General_100_CI_AS
+13      SQLNCHAR            0       40      "\t\0"   13    BankAccountNumber                                                                                    Latin1_General_100_CI_AS
+14      SQLNCHAR            0       40      "\t\0"   14    BankInternationalCode                                                                                Latin1_General_100_CI_AS
+15      SQLNCHAR            0       24      "\t\0"   15    PaymentDays                                                                                          ""
+16      SQLNCHAR            0       0       "\t\0"   16    InternalComments                                                                                     Latin1_General_100_CI_AS
+17      SQLNCHAR            0       40      "\t\0"   17    PhoneNumber                                                                                          Latin1_General_100_CI_AS
+18      SQLNCHAR            0       40      "\t\0"   18    FaxNumber                                                                                            Latin1_General_100_CI_AS
+19      SQLNCHAR            0       512     "\t\0"   19    WebsiteURL                                                                                           Latin1_General_100_CI_AS
+20      SQLNCHAR            0       120     "\t\0"   20    DeliveryAddressLine1                                                                                 Latin1_General_100_CI_AS
+21      SQLNCHAR            0       120     "\t\0"   21    DeliveryAddressLine2                                                                                 Latin1_General_100_CI_AS
+22      SQLNCHAR            0       20      "\t\0"   22    DeliveryPostalCode                                                                                   Latin1_General_100_CI_AS
+23      SQLNCHAR            0       0       "\t\0"   23    DeliveryLocation                                                                                     ""
+24      SQLNCHAR            0       120     "\t\0"   24    PostalAddressLine1                                                                                   Latin1_General_100_CI_AS
+25      SQLNCHAR            0       120     "\t\0"   25    PostalAddressLine2                                                                                   Latin1_General_100_CI_AS
+26      SQLNCHAR            0       20      "\t\0"   26    PostalPostalCode                                                                                     Latin1_General_100_CI_AS
+27      SQLNCHAR            0       24      "\t\0"   27    LastEditedBy                                                                                         ""
+28      SQLNCHAR            0       60      "\t\0"   28    ValidFrom                                                                                            ""
+29      SQLNCHAR            0       60      "\n\0"   29    ValidTo                                                                                              ""

@@ -1,0 +1,2 @@
+BusinessEntityID,NationalIDNumber,LoginID,OrganizationNode,OrganizationLevel,Title,FirstName,MiddleName,LastName,Suffix,JobTitle,PhoneNumber,PhoneNumberType,EmailAddress,EmailPromotion,AddressLine1,AddressLine2,City,StateProvinceName,PostalCode,CountryRegionName,AdditionalContactInfo,DepartmentID,GroupName,DepartmentName
+1,295847284,adventure-works\ken0,0x,0,,Ken,J,Sánchez,,Chief Executive Officer,697-555-0142,Cell,ken0@adventure-works.com,0,4350 Minute Dr.,,Newport Hills,Washington,98006,United States,,16,Executive General and Administration,Executive

@@ -1,5 +1,0 @@
-exec Website.ActivateWebsiteLogon @PersonID = '<%= options[:PersonID] %>', @LogonName = '<%= options[:LogonName] %>', @InitialPassword = '<%= options[:Password] %>'
-
-select LogonName 
-from Application.People
-where PersonID = '<%= options[:PersonID] %>' and LogonName = '<%= options[:LogonName] %>'

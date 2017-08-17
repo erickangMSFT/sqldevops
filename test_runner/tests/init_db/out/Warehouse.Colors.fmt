@@ -1,0 +1,7 @@
+13.0
+5
+1       SQLNCHAR            0       24      "\t\0"   1     ColorID                                              ""
+2       SQLNCHAR            0       40      "\t\0"   2     ColorName                                            Latin1_General_100_CI_AS
+3       SQLNCHAR            0       24      "\t\0"   3     LastEditedBy                                         ""
+4       SQLNCHAR            0       60      "\t\0"   4     ValidFrom                                            ""
+5       SQLNCHAR            0       60      "\n\0"   5     ValidTo                                              ""

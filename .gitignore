@@ -4,6 +4,6 @@ db/obj
 /tests/WideWorldImporters/debug
 /tests/init_db/out/
 nul
-/test_runner/node_modules/
 /test_runner/docker/git/
+/test_runner/runner/node_modules
 .vscode

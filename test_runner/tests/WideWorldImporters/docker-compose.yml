@@ -1,0 +1,14 @@
+version: '3'
+services:
+  slacker:
+    build: .
+    depends_on: 
+      - mssql
+    # command: ["./wait-for-it.sh", "mssql:1433", "--", "./runner.sh"]
+    command: ["tail", "-f", "/dev/null"] # make slacker runner container up and running
+    container_name: slacker_runner
+  mssql:
+    container_name: mssql_testdb
+    image: sqldevopsacs.azurecr.io/mssql
+    ports: 
+      - "1433:1433"
