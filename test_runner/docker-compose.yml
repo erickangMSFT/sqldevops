@@ -10,8 +10,9 @@ services:
     ports:
       - "8888:3000"
   mssql:
+    build: ./unittest_db
     container_name: mssql_unittest
-    image: microsoft/mssql-server-linux:latest
+    #image: microsoft/mssql-server-linux:latest
     ports: 
       - "1433:1433"
     environment:

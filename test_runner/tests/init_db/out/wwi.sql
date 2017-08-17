@@ -1,6 +1,6 @@
 ﻿/*    ==Scripting Parameters==
 
-    Source Server Version : Version140 (14.0.800)
+    Source Server Version : Version140 (14.0.900)
     Source Database Engine Edition : Enterprise
     Source Database Engine Type : Standalone
 
@@ -10,17 +10,17 @@
 */
 USE [master]
 GO
-/****** Object:  Database [WideWorldImportersTest]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  Database [WideWorldImportersTest]    Script Date: 8/16/17 10:26:04 PM ******/
 CREATE DATABASE [WideWorldImportersTest]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'WWI_Primary', FILENAME = N'/var/opt/mssql/data/D:/Data/WideWorldImportersTest.mdf' , SIZE = 1048576KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB ), 
+( NAME = N'WWI_Primary', FILENAME = N'/var/opt/mssql/data/WideWorldImportersTest.mdf' , SIZE = 1048576KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB ), 
  FILEGROUP [USERDATA]  DEFAULT
-( NAME = N'WWI_UserData', FILENAME = N'/var/opt/mssql/data/D:/Data/WideWorldImportersTest_UserData.ndf' , SIZE = 2097152KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB ), 
+( NAME = N'WWI_UserData', FILENAME = N'/var/opt/mssql/data/WideWorldImportersTest_Userdata.mdf' , SIZE = 2097152KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB ), 
  FILEGROUP [WWI_InMemory_Data] CONTAINS MEMORY_OPTIMIZED_DATA  DEFAULT
-( NAME = N'WWI_InMemory_Data_1', FILENAME = N'/var/opt/mssql/data/D:/Data/WideWorldImportersTest_InMemory_Data_1' , MAXSIZE = UNLIMITED)
+( NAME = N'WWI_InMemory_Data_1', FILENAME = N'/var/opt/mssql/data/WideWorldImportersTest_InMemory_Data_1' , MAXSIZE = UNLIMITED)
  LOG ON 
-( NAME = N'WWI_Log', FILENAME = N'/var/opt/mssql/data/E:/Log/WideWorldImportersTest.ldf' , SIZE = 167936KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'WWI_Log', FILENAME = N'/var/opt/mssql/data/WideWorldImportersTest.ldf' , SIZE = 102400KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 GO
 ALTER DATABASE [WideWorldImportersTest] SET COMPATIBILITY_LEVEL = 130
 GO
@@ -115,78 +115,78 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  DatabaseRole [Southwest Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [Southwest Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [Southwest Sales]
 GO
-/****** Object:  DatabaseRole [Southeast Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [Southeast Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [Southeast Sales]
 GO
-/****** Object:  DatabaseRole [Rocky Mountain Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [Rocky Mountain Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [Rocky Mountain Sales]
 GO
-/****** Object:  DatabaseRole [Plains Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [Plains Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [Plains Sales]
 GO
-/****** Object:  DatabaseRole [New England Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [New England Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [New England Sales]
 GO
-/****** Object:  DatabaseRole [Mideast Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [Mideast Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [Mideast Sales]
 GO
-/****** Object:  DatabaseRole [Great Lakes Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [Great Lakes Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [Great Lakes Sales]
 GO
-/****** Object:  DatabaseRole [Far West Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [Far West Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [Far West Sales]
 GO
-/****** Object:  DatabaseRole [External Sales]    Script Date: 8/11/17 1:36:40 PM ******/
+/****** Object:  DatabaseRole [External Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE ROLE [External Sales]
 GO
-/****** Object:  Schema [Application]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Application]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Application]
 GO
-/****** Object:  Schema [DataLoadSimulation]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [DataLoadSimulation]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [DataLoadSimulation]
 GO
-/****** Object:  Schema [Integration]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Integration]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Integration]
 GO
-/****** Object:  Schema [PowerBI]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [PowerBI]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [PowerBI]
 GO
-/****** Object:  Schema [Purchasing]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Purchasing]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Purchasing]
 GO
-/****** Object:  Schema [Reports]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Reports]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Reports]
 GO
-/****** Object:  Schema [Sales]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Sales]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Sales]
 GO
-/****** Object:  Schema [Sequences]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Sequences]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Sequences]
 GO
-/****** Object:  Schema [Warehouse]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Warehouse]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Warehouse]
 GO
-/****** Object:  Schema [Website]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Schema [Website]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SCHEMA [Website]
 GO
-/****** Object:  PartitionFunction [PF_TransactionDate]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  PartitionFunction [PF_TransactionDate]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE PARTITION FUNCTION [PF_TransactionDate](date) AS RANGE RIGHT FOR VALUES (N'2014-01-01T00:00:00.000', N'2015-01-01T00:00:00.000', N'2016-01-01T00:00:00.000', N'2017-01-01T00:00:00.000')
 GO
-/****** Object:  PartitionFunction [PF_TransactionDateTime]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  PartitionFunction [PF_TransactionDateTime]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE PARTITION FUNCTION [PF_TransactionDateTime](datetime) AS RANGE RIGHT FOR VALUES (N'2014-01-01T00:00:00.000', N'2015-01-01T00:00:00.000', N'2016-01-01T00:00:00.000', N'2017-01-01T00:00:00.000')
 GO
-/****** Object:  PartitionScheme [PS_TransactionDate]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  PartitionScheme [PS_TransactionDate]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE PARTITION SCHEME [PS_TransactionDate] AS PARTITION [PF_TransactionDate] TO ([USERDATA], [USERDATA], [USERDATA], [USERDATA], [USERDATA], [USERDATA])
 GO
-/****** Object:  PartitionScheme [PS_TransactionDateTime]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  PartitionScheme [PS_TransactionDateTime]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE PARTITION SCHEME [PS_TransactionDateTime] AS PARTITION [PF_TransactionDateTime] TO ([USERDATA], [USERDATA], [USERDATA], [USERDATA], [USERDATA], [USERDATA])
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[BuyingGroupID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[BuyingGroupID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[BuyingGroupID] 
  AS [int]
  START WITH 3
@@ -197,7 +197,7 @@ CREATE SEQUENCE [Sequences].[BuyingGroupID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[CityID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[CityID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[CityID] 
  AS [int]
  START WITH 38187
@@ -208,7 +208,7 @@ CREATE SEQUENCE [Sequences].[CityID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[ColorID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[ColorID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[ColorID] 
  AS [int]
  START WITH 37
@@ -219,7 +219,7 @@ CREATE SEQUENCE [Sequences].[ColorID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[CountryID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[CountryID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[CountryID] 
  AS [int]
  START WITH 242
@@ -230,7 +230,7 @@ CREATE SEQUENCE [Sequences].[CountryID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[CustomerCategoryID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[CustomerCategoryID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[CustomerCategoryID] 
  AS [int]
  START WITH 9
@@ -241,7 +241,7 @@ CREATE SEQUENCE [Sequences].[CustomerCategoryID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[CustomerID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[CustomerID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[CustomerID] 
  AS [int]
  START WITH 1062
@@ -252,7 +252,7 @@ CREATE SEQUENCE [Sequences].[CustomerID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[DeliveryMethodID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[DeliveryMethodID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[DeliveryMethodID] 
  AS [int]
  START WITH 11
@@ -263,7 +263,7 @@ CREATE SEQUENCE [Sequences].[DeliveryMethodID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[InvoiceID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[InvoiceID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[InvoiceID] 
  AS [int]
  START WITH 70511
@@ -274,7 +274,7 @@ CREATE SEQUENCE [Sequences].[InvoiceID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[InvoiceLineID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[InvoiceLineID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[InvoiceLineID] 
  AS [int]
  START WITH 228266
@@ -285,7 +285,7 @@ CREATE SEQUENCE [Sequences].[InvoiceLineID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[OrderID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[OrderID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[OrderID] 
  AS [int]
  START WITH 73596
@@ -296,7 +296,7 @@ CREATE SEQUENCE [Sequences].[OrderID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[OrderLineID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[OrderLineID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[OrderLineID] 
  AS [int]
  START WITH 231413
@@ -307,7 +307,7 @@ CREATE SEQUENCE [Sequences].[OrderLineID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[PackageTypeID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[PackageTypeID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[PackageTypeID] 
  AS [int]
  START WITH 15
@@ -318,7 +318,7 @@ CREATE SEQUENCE [Sequences].[PackageTypeID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[PaymentMethodID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[PaymentMethodID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[PaymentMethodID] 
  AS [int]
  START WITH 5
@@ -329,7 +329,7 @@ CREATE SEQUENCE [Sequences].[PaymentMethodID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[PersonID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[PersonID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[PersonID] 
  AS [int]
  START WITH 3262
@@ -340,7 +340,7 @@ CREATE SEQUENCE [Sequences].[PersonID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[PurchaseOrderID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[PurchaseOrderID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[PurchaseOrderID] 
  AS [int]
  START WITH 2075
@@ -351,7 +351,7 @@ CREATE SEQUENCE [Sequences].[PurchaseOrderID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[PurchaseOrderLineID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[PurchaseOrderLineID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[PurchaseOrderLineID] 
  AS [int]
  START WITH 8368
@@ -362,7 +362,7 @@ CREATE SEQUENCE [Sequences].[PurchaseOrderLineID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[SpecialDealID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[SpecialDealID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[SpecialDealID] 
  AS [int]
  START WITH 3
@@ -373,7 +373,7 @@ CREATE SEQUENCE [Sequences].[SpecialDealID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[StateProvinceID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[StateProvinceID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[StateProvinceID] 
  AS [int]
  START WITH 54
@@ -384,7 +384,7 @@ CREATE SEQUENCE [Sequences].[StateProvinceID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[StockGroupID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[StockGroupID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[StockGroupID] 
  AS [int]
  START WITH 11
@@ -395,7 +395,7 @@ CREATE SEQUENCE [Sequences].[StockGroupID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[StockItemID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[StockItemID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[StockItemID] 
  AS [int]
  START WITH 228
@@ -406,7 +406,7 @@ CREATE SEQUENCE [Sequences].[StockItemID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[StockItemStockGroupID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[StockItemStockGroupID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[StockItemStockGroupID] 
  AS [int]
  START WITH 443
@@ -417,7 +417,7 @@ CREATE SEQUENCE [Sequences].[StockItemStockGroupID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[SupplierCategoryID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[SupplierCategoryID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[SupplierCategoryID] 
  AS [int]
  START WITH 10
@@ -428,7 +428,7 @@ CREATE SEQUENCE [Sequences].[SupplierCategoryID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[SupplierID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[SupplierID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[SupplierID] 
  AS [int]
  START WITH 14
@@ -439,7 +439,7 @@ CREATE SEQUENCE [Sequences].[SupplierID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[SystemParameterID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[SystemParameterID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[SystemParameterID] 
  AS [int]
  START WITH 2
@@ -450,7 +450,7 @@ CREATE SEQUENCE [Sequences].[SystemParameterID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[TransactionID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[TransactionID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[TransactionID] 
  AS [int]
  START WITH 336253
@@ -461,7 +461,7 @@ CREATE SEQUENCE [Sequences].[TransactionID]
 GO
 USE [WideWorldImportersTest]
 GO
-/****** Object:  Sequence [Sequences].[TransactionTypeID]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Sequence [Sequences].[TransactionTypeID]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE SEQUENCE [Sequences].[TransactionTypeID] 
  AS [int]
  START WITH 14
@@ -470,7 +470,7 @@ CREATE SEQUENCE [Sequences].[TransactionTypeID]
  MAXVALUE 2147483647
  CACHE 
 GO
-/****** Object:  UserDefinedTableType [Website].[OrderIDList]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  UserDefinedTableType [Website].[OrderIDList]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE TYPE [Website].[OrderIDList] AS TABLE(
 	[OrderID] [int] NOT NULL,
 	 PRIMARY KEY NONCLUSTERED 
@@ -480,7 +480,7 @@ CREATE TYPE [Website].[OrderIDList] AS TABLE(
 )
 WITH ( MEMORY_OPTIMIZED = ON )
 GO
-/****** Object:  UserDefinedTableType [Website].[OrderLineList]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  UserDefinedTableType [Website].[OrderLineList]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE TYPE [Website].[OrderLineList] AS TABLE(
 	[OrderReference] [int] NULL,
 	[StockItemID] [int] NULL,
@@ -493,7 +493,7 @@ CREATE TYPE [Website].[OrderLineList] AS TABLE(
 )
 WITH ( MEMORY_OPTIMIZED = ON )
 GO
-/****** Object:  UserDefinedTableType [Website].[OrderList]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  UserDefinedTableType [Website].[OrderList]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE TYPE [Website].[OrderList] AS TABLE(
 	[OrderReference] [int] NOT NULL,
 	[CustomerID] [int] NULL,
@@ -510,7 +510,7 @@ CREATE TYPE [Website].[OrderList] AS TABLE(
 )
 WITH ( MEMORY_OPTIMIZED = ON )
 GO
-/****** Object:  UserDefinedTableType [Website].[SensorDataList]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  UserDefinedTableType [Website].[SensorDataList]    Script Date: 8/16/17 10:26:05 PM ******/
 CREATE TYPE [Website].[SensorDataList] AS TABLE(
 	[SensorDataListID] [int] IDENTITY(1,1) NOT NULL,
 	[ColdRoomSensorNumber] [int] NULL,
@@ -523,7 +523,7 @@ CREATE TYPE [Website].[SensorDataList] AS TABLE(
 )
 WITH ( MEMORY_OPTIMIZED = ON )
 GO
-/****** Object:  UserDefinedFunction [Website].[CalculateCustomerPrice]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  UserDefinedFunction [Website].[CalculateCustomerPrice]    Script Date: 8/16/17 10:26:05 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -616,7 +616,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  Table [Warehouse].[Colors_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Warehouse].[Colors_Archive]    Script Date: 8/16/17 10:26:05 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -630,14 +630,14 @@ CREATE TABLE [Warehouse].[Colors_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_Colors_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Index [ix_Colors_Archive]    Script Date: 8/16/17 10:26:06 PM ******/
 CREATE CLUSTERED INDEX [ix_Colors_Archive] ON [Warehouse].[Colors_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Warehouse].[Colors]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Warehouse].[Colors]    Script Date: 8/16/17 10:26:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -664,7 +664,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Warehouse].[Colors_Archive] )
 )
 
 GO
-/****** Object:  Table [Warehouse].[PackageTypes_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Warehouse].[PackageTypes_Archive]    Script Date: 8/16/17 10:26:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -678,14 +678,14 @@ CREATE TABLE [Warehouse].[PackageTypes_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_PackageTypes_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Index [ix_PackageTypes_Archive]    Script Date: 8/16/17 10:26:06 PM ******/
 CREATE CLUSTERED INDEX [ix_PackageTypes_Archive] ON [Warehouse].[PackageTypes_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Warehouse].[PackageTypes]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Warehouse].[PackageTypes]    Script Date: 8/16/17 10:26:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -712,7 +712,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Warehouse].[PackageTypes_Archive] )
 )
 
 GO
-/****** Object:  Table [Warehouse].[StockGroups_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Warehouse].[StockGroups_Archive]    Script Date: 8/16/17 10:26:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -726,14 +726,14 @@ CREATE TABLE [Warehouse].[StockGroups_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_StockGroups_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Index [ix_StockGroups_Archive]    Script Date: 8/16/17 10:26:06 PM ******/
 CREATE CLUSTERED INDEX [ix_StockGroups_Archive] ON [Warehouse].[StockGroups_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Warehouse].[StockGroups]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Warehouse].[StockGroups]    Script Date: 8/16/17 10:26:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -760,7 +760,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Warehouse].[StockGroups_Archive] )
 )
 
 GO
-/****** Object:  Table [Application].[StateProvinces_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Application].[StateProvinces_Archive]    Script Date: 8/16/17 10:26:06 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -779,14 +779,14 @@ CREATE TABLE [Application].[StateProvinces_Archive](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_StateProvinces_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Index [ix_StateProvinces_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_StateProvinces_Archive] ON [Application].[StateProvinces_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Application].[StateProvinces]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Application].[StateProvinces]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -818,7 +818,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Application].[StateProvinces_Archive] 
 )
 
 GO
-/****** Object:  Table [Application].[Cities_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Application].[Cities_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -835,14 +835,14 @@ CREATE TABLE [Application].[Cities_Archive](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_Cities_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Index [ix_Cities_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_Cities_Archive] ON [Application].[Cities_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Application].[Cities]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Application].[Cities]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -868,7 +868,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Application].[Cities_Archive] )
 )
 
 GO
-/****** Object:  Table [Purchasing].[Suppliers_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Purchasing].[Suppliers_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -906,14 +906,14 @@ CREATE TABLE [Purchasing].[Suppliers_Archive](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_Suppliers_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Index [ix_Suppliers_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_Suppliers_Archive] ON [Purchasing].[Suppliers_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Purchasing].[Suppliers]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Purchasing].[Suppliers]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -964,7 +964,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Purchasing].[Suppliers_Archive] )
 )
 
 GO
-/****** Object:  Table [Sales].[Customers_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Sales].[Customers_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1004,14 +1004,14 @@ CREATE TABLE [Sales].[Customers_Archive](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_Customers_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Index [ix_Customers_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_Customers_Archive] ON [Sales].[Customers_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Sales].[Customers]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Sales].[Customers]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1064,7 +1064,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Sales].[Customers_Archive] )
 )
 
 GO
-/****** Object:  UserDefinedFunction [Application].[DetermineCustomerAccess]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  UserDefinedFunction [Application].[DetermineCustomerAccess]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1089,7 +1089,7 @@ RETURN (SELECT 1 AS AccessResult
 				        WHERE c.CityID = @CityID
 				        AND sp.SalesTerritory = SESSION_CONTEXT(N'SalesTerritory'))));
 GO
-/****** Object:  Table [Warehouse].[ColdRoomTemperatures_Archive]    Script Date: 8/11/17 1:36:41 PM ******/
+/****** Object:  Table [Warehouse].[ColdRoomTemperatures_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1104,14 +1104,14 @@ CREATE TABLE [Warehouse].[ColdRoomTemperatures_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_ColdRoomTemperatures_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_ColdRoomTemperatures_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_ColdRoomTemperatures_Archive] ON [Warehouse].[ColdRoomTemperatures_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Warehouse].[ColdRoomTemperatures]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Warehouse].[ColdRoomTemperatures]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1137,7 +1137,7 @@ INDEX [IX_Warehouse_ColdRoomTemperatures_ColdRoomSensorNumber] NONCLUSTERED
 )WITH ( MEMORY_OPTIMIZED = ON , DURABILITY = SCHEMA_AND_DATA, SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Warehouse].[ColdRoomTemperatures_Archive] ) )
 
 GO
-/****** Object:  Table [Application].[People_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[People_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1167,14 +1167,14 @@ CREATE TABLE [Application].[People_Archive](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_People_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_People_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_People_Archive] ON [Application].[People_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Application].[People]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[People]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1213,7 +1213,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Application].[People_Archive] )
 )
 
 GO
-/****** Object:  Table [Warehouse].[StockItems_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Warehouse].[StockItems_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1247,14 +1247,14 @@ CREATE TABLE [Warehouse].[StockItems_Archive](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_StockItems_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_StockItems_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_StockItems_Archive] ON [Warehouse].[StockItems_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Warehouse].[StockItems]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Warehouse].[StockItems]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1301,7 +1301,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Warehouse].[StockItems_Archive] )
 )
 
 GO
-/****** Object:  StoredProcedure [Website].[RecordColdRoomTemperatures]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  StoredProcedure [Website].[RecordColdRoomTemperatures]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1358,7 +1358,7 @@ BEGIN ATOMIC WITH
     END CATCH;
 END;
 GO
-/****** Object:  Table [Application].[Countries_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[Countries_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1381,14 +1381,14 @@ CREATE TABLE [Application].[Countries_Archive](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_Countries_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_Countries_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_Countries_Archive] ON [Application].[Countries_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Application].[Countries]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[Countries]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1428,7 +1428,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Application].[Countries_Archive] )
 )
 
 GO
-/****** Object:  Table [Application].[DeliveryMethods_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[DeliveryMethods_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1442,14 +1442,14 @@ CREATE TABLE [Application].[DeliveryMethods_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_DeliveryMethods_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_DeliveryMethods_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_DeliveryMethods_Archive] ON [Application].[DeliveryMethods_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Application].[DeliveryMethods]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[DeliveryMethods]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1476,7 +1476,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Application].[DeliveryMethods_Archive]
 )
 
 GO
-/****** Object:  Table [Application].[PaymentMethods_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[PaymentMethods_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1490,14 +1490,14 @@ CREATE TABLE [Application].[PaymentMethods_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_PaymentMethods_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_PaymentMethods_Archive]    Script Date: 8/16/17 10:26:07 PM ******/
 CREATE CLUSTERED INDEX [ix_PaymentMethods_Archive] ON [Application].[PaymentMethods_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Application].[PaymentMethods]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[PaymentMethods]    Script Date: 8/16/17 10:26:07 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1524,7 +1524,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Application].[PaymentMethods_Archive] 
 )
 
 GO
-/****** Object:  Table [Purchasing].[SupplierCategories_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Purchasing].[SupplierCategories_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1538,14 +1538,14 @@ CREATE TABLE [Purchasing].[SupplierCategories_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_SupplierCategories_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_SupplierCategories_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 CREATE CLUSTERED INDEX [ix_SupplierCategories_Archive] ON [Purchasing].[SupplierCategories_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Purchasing].[SupplierCategories]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Purchasing].[SupplierCategories]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1572,7 +1572,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Purchasing].[SupplierCategories_Archiv
 )
 
 GO
-/****** Object:  View [Website].[Suppliers]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  View [Website].[Suppliers]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1605,7 +1605,7 @@ LEFT OUTER JOIN [Application].Cities AS c
 ON s.DeliveryCityID = c.CityID
 
 GO
-/****** Object:  Table [Sales].[BuyingGroups_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Sales].[BuyingGroups_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1619,14 +1619,14 @@ CREATE TABLE [Sales].[BuyingGroups_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_BuyingGroups_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_BuyingGroups_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 CREATE CLUSTERED INDEX [ix_BuyingGroups_Archive] ON [Sales].[BuyingGroups_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Sales].[BuyingGroups]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Sales].[BuyingGroups]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1653,7 +1653,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Sales].[BuyingGroups_Archive] )
 )
 
 GO
-/****** Object:  Table [Sales].[CustomerCategories_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Sales].[CustomerCategories_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1667,14 +1667,14 @@ CREATE TABLE [Sales].[CustomerCategories_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_CustomerCategories_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_CustomerCategories_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 CREATE CLUSTERED INDEX [ix_CustomerCategories_Archive] ON [Sales].[CustomerCategories_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Sales].[CustomerCategories]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Sales].[CustomerCategories]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1701,7 +1701,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Sales].[CustomerCategories_Archive] )
 )
 
 GO
-/****** Object:  View [Website].[Customers]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  View [Website].[Customers]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1738,7 +1738,7 @@ LEFT OUTER JOIN [Application].Cities AS c
 ON s.DeliveryCityID = c.CityID
 
 GO
-/****** Object:  Table [Warehouse].[VehicleTemperatures]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Warehouse].[VehicleTemperatures]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1761,7 +1761,7 @@ CREATE TABLE [Warehouse].[VehicleTemperatures]
 )WITH ( MEMORY_OPTIMIZED = ON , DURABILITY = SCHEMA_AND_DATA )
 
 GO
-/****** Object:  View [Website].[VehicleTemperatures]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  View [Website].[VehicleTemperatures]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1781,7 +1781,7 @@ SELECT vt.VehicleTemperatureID,
 FROM Warehouse.VehicleTemperatures AS vt;
 
 GO
-/****** Object:  Table [Application].[TransactionTypes_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[TransactionTypes_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1795,14 +1795,14 @@ CREATE TABLE [Application].[TransactionTypes_Archive](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [ix_TransactionTypes_Archive]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Index [ix_TransactionTypes_Archive]    Script Date: 8/16/17 10:26:08 PM ******/
 CREATE CLUSTERED INDEX [ix_TransactionTypes_Archive] ON [Application].[TransactionTypes_Archive]
 (
 	[ValidTo] ASC,
 	[ValidFrom] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Table [Application].[TransactionTypes]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[TransactionTypes]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1829,7 +1829,7 @@ SYSTEM_VERSIONING = ON ( HISTORY_TABLE = [Application].[TransactionTypes_Archive
 )
 
 GO
-/****** Object:  Table [Application].[SystemParameters]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Application].[SystemParameters]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1855,7 +1855,7 @@ CREATE TABLE [Application].[SystemParameters](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Table [Purchasing].[PurchaseOrderLines]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Purchasing].[PurchaseOrderLines]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1880,7 +1880,7 @@ CREATE TABLE [Purchasing].[PurchaseOrderLines](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Table [Purchasing].[PurchaseOrders]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Purchasing].[PurchaseOrders]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1905,7 +1905,7 @@ CREATE TABLE [Purchasing].[PurchaseOrders](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Table [Purchasing].[SupplierTransactions]    Script Date: 8/11/17 1:36:42 PM ******/
+/****** Object:  Table [Purchasing].[SupplierTransactions]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1933,13 +1933,13 @@ CREATE TABLE [Purchasing].[SupplierTransactions](
 ) ON [PS_TransactionDate]([TransactionDate])
 
 GO
-/****** Object:  Index [CX_Purchasing_SupplierTransactions]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [CX_Purchasing_SupplierTransactions]    Script Date: 8/16/17 10:26:08 PM ******/
 CREATE CLUSTERED INDEX [CX_Purchasing_SupplierTransactions] ON [Purchasing].[SupplierTransactions]
 (
 	[TransactionDate] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Table [Sales].[CustomerTransactions]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Sales].[CustomerTransactions]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1966,13 +1966,13 @@ CREATE TABLE [Sales].[CustomerTransactions](
 ) ON [PS_TransactionDate]([TransactionDate])
 
 GO
-/****** Object:  Index [CX_Sales_CustomerTransactions]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [CX_Sales_CustomerTransactions]    Script Date: 8/16/17 10:26:08 PM ******/
 CREATE CLUSTERED INDEX [CX_Sales_CustomerTransactions] ON [Sales].[CustomerTransactions]
 (
 	[TransactionDate] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Table [Sales].[InvoiceLines]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Sales].[InvoiceLines]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1998,7 +1998,7 @@ CREATE TABLE [Sales].[InvoiceLines](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Table [Sales].[Invoices]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Sales].[Invoices]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2036,7 +2036,7 @@ CREATE TABLE [Sales].[Invoices](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Table [Sales].[OrderLines]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Sales].[OrderLines]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2061,7 +2061,7 @@ CREATE TABLE [Sales].[OrderLines](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Table [Sales].[Orders]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Sales].[Orders]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2090,7 +2090,7 @@ CREATE TABLE [Sales].[Orders](
 ) ON [USERDATA] TEXTIMAGE_ON [USERDATA]
 
 GO
-/****** Object:  Table [Sales].[SpecialDeals]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Sales].[SpecialDeals]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2117,7 +2117,7 @@ CREATE TABLE [Sales].[SpecialDeals](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Table [Warehouse].[StockItemHoldings]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Warehouse].[StockItemHoldings]    Script Date: 8/16/17 10:26:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2139,7 +2139,7 @@ CREATE TABLE [Warehouse].[StockItemHoldings](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Table [Warehouse].[StockItemStockGroups]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Warehouse].[StockItemStockGroups]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2167,7 +2167,7 @@ CREATE TABLE [Warehouse].[StockItemStockGroups](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Table [Warehouse].[StockItemTransactions]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Table [Warehouse].[StockItemTransactions]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2191,7 +2191,7 @@ CREATE TABLE [Warehouse].[StockItemTransactions](
 ) ON [USERDATA]
 
 GO
-/****** Object:  Index [FK_Application_Cities_StateProvinceID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Application_Cities_StateProvinceID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Application_Cities_StateProvinceID] ON [Application].[Cities]
 (
 	[StateProvinceID] ASC
@@ -2200,19 +2200,19 @@ GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_Application_People_FullName]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Application_People_FullName]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Application_People_FullName] ON [Application].[People]
 (
 	[FullName] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [IX_Application_People_IsEmployee]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Application_People_IsEmployee]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Application_People_IsEmployee] ON [Application].[People]
 (
 	[IsEmployee] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [IX_Application_People_IsSalesperson]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Application_People_IsSalesperson]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Application_People_IsSalesperson] ON [Application].[People]
 (
 	[IsSalesperson] ASC
@@ -2221,7 +2221,7 @@ GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_Application_People_Perf_20160301_05]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Application_People_Perf_20160301_05]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Application_People_Perf_20160301_05] ON [Application].[People]
 (
 	[IsPermittedToLogon] ASC,
@@ -2230,7 +2230,7 @@ CREATE NONCLUSTERED INDEX [IX_Application_People_Perf_20160301_05] ON [Applicati
 INCLUDE ( 	[FullName],
 	[EmailAddress]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Application_StateProvinces_CountryID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Application_StateProvinces_CountryID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Application_StateProvinces_CountryID] ON [Application].[StateProvinces]
 (
 	[CountryID] ASC
@@ -2239,43 +2239,43 @@ GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_Application_StateProvinces_SalesTerritory]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Application_StateProvinces_SalesTerritory]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Application_StateProvinces_SalesTerritory] ON [Application].[StateProvinces]
 (
 	[SalesTerritory] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Application_SystemParameters_DeliveryCityID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Application_SystemParameters_DeliveryCityID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Application_SystemParameters_DeliveryCityID] ON [Application].[SystemParameters]
 (
 	[DeliveryCityID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Application_SystemParameters_PostalCityID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Application_SystemParameters_PostalCityID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Application_SystemParameters_PostalCityID] ON [Application].[SystemParameters]
 (
 	[PostalCityID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_PurchaseOrderLines_PackageTypeID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_PurchaseOrderLines_PackageTypeID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_PurchaseOrderLines_PackageTypeID] ON [Purchasing].[PurchaseOrderLines]
 (
 	[PackageTypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_PurchaseOrderLines_PurchaseOrderID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_PurchaseOrderLines_PurchaseOrderID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_PurchaseOrderLines_PurchaseOrderID] ON [Purchasing].[PurchaseOrderLines]
 (
 	[PurchaseOrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_PurchaseOrderLines_StockItemID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_PurchaseOrderLines_StockItemID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_PurchaseOrderLines_StockItemID] ON [Purchasing].[PurchaseOrderLines]
 (
 	[StockItemID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [IX_Purchasing_PurchaseOrderLines_Perf_20160301_4]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Purchasing_PurchaseOrderLines_Perf_20160301_4]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Purchasing_PurchaseOrderLines_Perf_20160301_4] ON [Purchasing].[PurchaseOrderLines]
 (
 	[IsOrderLineFinalized] ASC,
@@ -2284,79 +2284,79 @@ CREATE NONCLUSTERED INDEX [IX_Purchasing_PurchaseOrderLines_Perf_20160301_4] ON 
 INCLUDE ( 	[OrderedOuters],
 	[ReceivedOuters]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_PurchaseOrders_ContactPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_PurchaseOrders_ContactPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_PurchaseOrders_ContactPersonID] ON [Purchasing].[PurchaseOrders]
 (
 	[ContactPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_PurchaseOrders_DeliveryMethodID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_PurchaseOrders_DeliveryMethodID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_PurchaseOrders_DeliveryMethodID] ON [Purchasing].[PurchaseOrders]
 (
 	[DeliveryMethodID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_PurchaseOrders_SupplierID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_PurchaseOrders_SupplierID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_PurchaseOrders_SupplierID] ON [Purchasing].[PurchaseOrders]
 (
 	[SupplierID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_Suppliers_AlternateContactPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_Suppliers_AlternateContactPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_Suppliers_AlternateContactPersonID] ON [Purchasing].[Suppliers]
 (
 	[AlternateContactPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_Suppliers_DeliveryCityID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_Suppliers_DeliveryCityID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_Suppliers_DeliveryCityID] ON [Purchasing].[Suppliers]
 (
 	[DeliveryCityID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_Suppliers_DeliveryMethodID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_Suppliers_DeliveryMethodID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_Suppliers_DeliveryMethodID] ON [Purchasing].[Suppliers]
 (
 	[DeliveryMethodID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_Suppliers_PostalCityID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_Suppliers_PostalCityID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_Suppliers_PostalCityID] ON [Purchasing].[Suppliers]
 (
 	[PostalCityID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_Suppliers_PrimaryContactPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_Suppliers_PrimaryContactPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_Suppliers_PrimaryContactPersonID] ON [Purchasing].[Suppliers]
 (
 	[PrimaryContactPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_Suppliers_SupplierCategoryID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_Suppliers_SupplierCategoryID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_Suppliers_SupplierCategoryID] ON [Purchasing].[Suppliers]
 (
 	[SupplierCategoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Purchasing_SupplierTransactions_PaymentMethodID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_SupplierTransactions_PaymentMethodID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_SupplierTransactions_PaymentMethodID] ON [Purchasing].[SupplierTransactions]
 (
 	[PaymentMethodID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Purchasing_SupplierTransactions_PurchaseOrderID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_SupplierTransactions_PurchaseOrderID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_SupplierTransactions_PurchaseOrderID] ON [Purchasing].[SupplierTransactions]
 (
 	[PurchaseOrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Purchasing_SupplierTransactions_SupplierID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_SupplierTransactions_SupplierID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_SupplierTransactions_SupplierID] ON [Purchasing].[SupplierTransactions]
 (
 	[SupplierID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Purchasing_SupplierTransactions_TransactionTypeID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Purchasing_SupplierTransactions_TransactionTypeID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Purchasing_SupplierTransactions_TransactionTypeID] ON [Purchasing].[SupplierTransactions]
 (
 	[TransactionTypeID] ASC
@@ -2371,55 +2371,55 @@ SET ANSI_WARNINGS ON
 SET NUMERIC_ROUNDABORT OFF
 
 GO
-/****** Object:  Index [IX_Purchasing_SupplierTransactions_IsFinalized]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Purchasing_SupplierTransactions_IsFinalized]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Purchasing_SupplierTransactions_IsFinalized] ON [Purchasing].[SupplierTransactions]
 (
 	[IsFinalized] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Sales_Customers_AlternateContactPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Customers_AlternateContactPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Customers_AlternateContactPersonID] ON [Sales].[Customers]
 (
 	[AlternateContactPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Customers_BuyingGroupID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Customers_BuyingGroupID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Customers_BuyingGroupID] ON [Sales].[Customers]
 (
 	[BuyingGroupID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Customers_CustomerCategoryID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Customers_CustomerCategoryID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Customers_CustomerCategoryID] ON [Sales].[Customers]
 (
 	[CustomerCategoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Customers_DeliveryCityID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Customers_DeliveryCityID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Customers_DeliveryCityID] ON [Sales].[Customers]
 (
 	[DeliveryCityID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Customers_DeliveryMethodID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Customers_DeliveryMethodID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Customers_DeliveryMethodID] ON [Sales].[Customers]
 (
 	[DeliveryMethodID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Customers_PostalCityID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Customers_PostalCityID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Customers_PostalCityID] ON [Sales].[Customers]
 (
 	[PostalCityID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Customers_PrimaryContactPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Customers_PrimaryContactPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Customers_PrimaryContactPersonID] ON [Sales].[Customers]
 (
 	[PrimaryContactPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [IX_Sales_Customers_Perf_20160301_06]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Sales_Customers_Perf_20160301_06]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Sales_Customers_Perf_20160301_06] ON [Sales].[Customers]
 (
 	[IsOnCreditHold] ASC,
@@ -2428,25 +2428,25 @@ CREATE NONCLUSTERED INDEX [IX_Sales_Customers_Perf_20160301_06] ON [Sales].[Cust
 )
 INCLUDE ( 	[PrimaryContactPersonID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_CustomerTransactions_CustomerID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_CustomerTransactions_CustomerID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_CustomerTransactions_CustomerID] ON [Sales].[CustomerTransactions]
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Sales_CustomerTransactions_InvoiceID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_CustomerTransactions_InvoiceID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_CustomerTransactions_InvoiceID] ON [Sales].[CustomerTransactions]
 (
 	[InvoiceID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Sales_CustomerTransactions_PaymentMethodID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_CustomerTransactions_PaymentMethodID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_CustomerTransactions_PaymentMethodID] ON [Sales].[CustomerTransactions]
 (
 	[PaymentMethodID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Sales_CustomerTransactions_TransactionTypeID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_CustomerTransactions_TransactionTypeID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_CustomerTransactions_TransactionTypeID] ON [Sales].[CustomerTransactions]
 (
 	[TransactionTypeID] ASC
@@ -2461,73 +2461,73 @@ SET ANSI_WARNINGS ON
 SET NUMERIC_ROUNDABORT OFF
 
 GO
-/****** Object:  Index [IX_Sales_CustomerTransactions_IsFinalized]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Sales_CustomerTransactions_IsFinalized]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Sales_CustomerTransactions_IsFinalized] ON [Sales].[CustomerTransactions]
 (
 	[IsFinalized] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_TransactionDate]([TransactionDate])
 GO
-/****** Object:  Index [FK_Sales_InvoiceLines_InvoiceID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_InvoiceLines_InvoiceID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_InvoiceLines_InvoiceID] ON [Sales].[InvoiceLines]
 (
 	[InvoiceID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_InvoiceLines_PackageTypeID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_InvoiceLines_PackageTypeID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_InvoiceLines_PackageTypeID] ON [Sales].[InvoiceLines]
 (
 	[PackageTypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_InvoiceLines_StockItemID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_InvoiceLines_StockItemID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_InvoiceLines_StockItemID] ON [Sales].[InvoiceLines]
 (
 	[StockItemID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_AccountsPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_AccountsPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_AccountsPersonID] ON [Sales].[Invoices]
 (
 	[AccountsPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_BillToCustomerID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_BillToCustomerID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_BillToCustomerID] ON [Sales].[Invoices]
 (
 	[BillToCustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_ContactPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_ContactPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_ContactPersonID] ON [Sales].[Invoices]
 (
 	[ContactPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_CustomerID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_CustomerID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_CustomerID] ON [Sales].[Invoices]
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_DeliveryMethodID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_DeliveryMethodID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_DeliveryMethodID] ON [Sales].[Invoices]
 (
 	[DeliveryMethodID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_OrderID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_OrderID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_OrderID] ON [Sales].[Invoices]
 (
 	[OrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_PackedByPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_PackedByPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_PackedByPersonID] ON [Sales].[Invoices]
 (
 	[PackedByPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Invoices_SalespersonPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Invoices_SalespersonPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Invoices_SalespersonPersonID] ON [Sales].[Invoices]
 (
 	[SalespersonPersonID] ASC
@@ -2542,33 +2542,33 @@ SET ANSI_WARNINGS ON
 SET NUMERIC_ROUNDABORT OFF
 
 GO
-/****** Object:  Index [IX_Sales_Invoices_ConfirmedDeliveryTime]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Sales_Invoices_ConfirmedDeliveryTime]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Sales_Invoices_ConfirmedDeliveryTime] ON [Sales].[Invoices]
 (
 	[ConfirmedDeliveryTime] ASC
 )
 INCLUDE ( 	[ConfirmedReceivedBy]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_OrderLines_OrderID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_OrderLines_OrderID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_OrderLines_OrderID] ON [Sales].[OrderLines]
 (
 	[OrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_OrderLines_PackageTypeID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_OrderLines_PackageTypeID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_OrderLines_PackageTypeID] ON [Sales].[OrderLines]
 (
 	[PackageTypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [IX_Sales_OrderLines_AllocatedStockItems]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Sales_OrderLines_AllocatedStockItems]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Sales_OrderLines_AllocatedStockItems] ON [Sales].[OrderLines]
 (
 	[StockItemID] ASC
 )
 INCLUDE ( 	[PickedQuantity]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [IX_Sales_OrderLines_Perf_20160301_01]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Sales_OrderLines_Perf_20160301_01]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Sales_OrderLines_Perf_20160301_01] ON [Sales].[OrderLines]
 (
 	[PickingCompletedWhen] ASC,
@@ -2578,7 +2578,7 @@ CREATE NONCLUSTERED INDEX [IX_Sales_OrderLines_Perf_20160301_01] ON [Sales].[Ord
 INCLUDE ( 	[Quantity],
 	[StockItemID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [IX_Sales_OrderLines_Perf_20160301_02]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [IX_Sales_OrderLines_Perf_20160301_02]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [IX_Sales_OrderLines_Perf_20160301_02] ON [Sales].[OrderLines]
 (
 	[StockItemID] ASC,
@@ -2587,121 +2587,121 @@ CREATE NONCLUSTERED INDEX [IX_Sales_OrderLines_Perf_20160301_02] ON [Sales].[Ord
 INCLUDE ( 	[OrderID],
 	[PickedQuantity]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Orders_ContactPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Orders_ContactPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Orders_ContactPersonID] ON [Sales].[Orders]
 (
 	[ContactPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Orders_CustomerID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Orders_CustomerID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Orders_CustomerID] ON [Sales].[Orders]
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Orders_PickedByPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Orders_PickedByPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Orders_PickedByPersonID] ON [Sales].[Orders]
 (
 	[PickedByPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_Orders_SalespersonPersonID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_Orders_SalespersonPersonID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_Orders_SalespersonPersonID] ON [Sales].[Orders]
 (
 	[SalespersonPersonID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_SpecialDeals_BuyingGroupID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_SpecialDeals_BuyingGroupID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_SpecialDeals_BuyingGroupID] ON [Sales].[SpecialDeals]
 (
 	[BuyingGroupID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_SpecialDeals_CustomerCategoryID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_SpecialDeals_CustomerCategoryID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_SpecialDeals_CustomerCategoryID] ON [Sales].[SpecialDeals]
 (
 	[CustomerCategoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_SpecialDeals_CustomerID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_SpecialDeals_CustomerID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_SpecialDeals_CustomerID] ON [Sales].[SpecialDeals]
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_SpecialDeals_StockGroupID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_SpecialDeals_StockGroupID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_SpecialDeals_StockGroupID] ON [Sales].[SpecialDeals]
 (
 	[StockGroupID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Sales_SpecialDeals_StockItemID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Sales_SpecialDeals_StockItemID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Sales_SpecialDeals_StockItemID] ON [Sales].[SpecialDeals]
 (
 	[StockItemID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItems_ColorID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItems_ColorID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItems_ColorID] ON [Warehouse].[StockItems]
 (
 	[ColorID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItems_OuterPackageID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItems_OuterPackageID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItems_OuterPackageID] ON [Warehouse].[StockItems]
 (
 	[OuterPackageID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItems_SupplierID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItems_SupplierID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItems_SupplierID] ON [Warehouse].[StockItems]
 (
 	[SupplierID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItems_UnitPackageID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItems_UnitPackageID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItems_UnitPackageID] ON [Warehouse].[StockItems]
 (
 	[UnitPackageID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItemTransactions_CustomerID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItemTransactions_CustomerID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItemTransactions_CustomerID] ON [Warehouse].[StockItemTransactions]
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItemTransactions_InvoiceID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItemTransactions_InvoiceID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItemTransactions_InvoiceID] ON [Warehouse].[StockItemTransactions]
 (
 	[InvoiceID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItemTransactions_PurchaseOrderID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItemTransactions_PurchaseOrderID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItemTransactions_PurchaseOrderID] ON [Warehouse].[StockItemTransactions]
 (
 	[PurchaseOrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItemTransactions_StockItemID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItemTransactions_StockItemID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItemTransactions_StockItemID] ON [Warehouse].[StockItemTransactions]
 (
 	[StockItemID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItemTransactions_SupplierID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItemTransactions_SupplierID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItemTransactions_SupplierID] ON [Warehouse].[StockItemTransactions]
 (
 	[SupplierID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [FK_Warehouse_StockItemTransactions_TransactionTypeID]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [FK_Warehouse_StockItemTransactions_TransactionTypeID]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED INDEX [FK_Warehouse_StockItemTransactions_TransactionTypeID] ON [Warehouse].[StockItemTransactions]
 (
 	[TransactionTypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [USERDATA]
 GO
-/****** Object:  Index [NCCX_Sales_InvoiceLines]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [NCCX_Sales_InvoiceLines]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED COLUMNSTORE INDEX [NCCX_Sales_InvoiceLines] ON [Sales].[InvoiceLines]
 (
 	[InvoiceID],
@@ -2715,7 +2715,7 @@ GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [NCCX_Sales_OrderLines]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [NCCX_Sales_OrderLines]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE NONCLUSTERED COLUMNSTORE INDEX [NCCX_Sales_OrderLines] ON [Sales].[OrderLines]
 (
 	[OrderID],
@@ -2726,7 +2726,7 @@ CREATE NONCLUSTERED COLUMNSTORE INDEX [NCCX_Sales_OrderLines] ON [Sales].[OrderL
 	[PickedQuantity]
 )WITH (DROP_EXISTING = OFF, COMPRESSION_DELAY = 0) ON [USERDATA]
 GO
-/****** Object:  Index [CCX_Warehouse_StockItemTransactions]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  Index [CCX_Warehouse_StockItemTransactions]    Script Date: 8/16/17 10:26:09 PM ******/
 CREATE CLUSTERED COLUMNSTORE INDEX [CCX_Warehouse_StockItemTransactions] ON [Warehouse].[StockItemTransactions] WITH (DROP_EXISTING = OFF, COMPRESSION_DELAY = 0) ON [USERDATA]
 GO
 ALTER TABLE [Application].[Cities] ADD  CONSTRAINT [DF_Application_Cities_CityID]  DEFAULT (NEXT VALUE FOR [Sequences].[CityID]) FOR [CityID]
@@ -2811,27 +2811,27 @@ ALTER TABLE [Warehouse].[StockItemTransactions] ADD  CONSTRAINT [DF_Warehouse_St
 GO
 ALTER TABLE [Warehouse].[StockItemTransactions] ADD  CONSTRAINT [DF_Warehouse_StockItemTransactions_LastEditedWhen]  DEFAULT (sysdatetime()) FOR [LastEditedWhen]
 GO
-ALTER TABLE [Application].[Cities]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_Cities_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Application].[Cities]  WITH CHECK ADD  CONSTRAINT [FK_Application_Cities_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[Cities] CHECK CONSTRAINT [FK_Application_Cities_Application_People]
 GO
-ALTER TABLE [Application].[Cities]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_Cities_StateProvinceID_Application_StateProvinces] FOREIGN KEY([StateProvinceID])
+ALTER TABLE [Application].[Cities]  WITH CHECK ADD  CONSTRAINT [FK_Application_Cities_StateProvinceID_Application_StateProvinces] FOREIGN KEY([StateProvinceID])
 REFERENCES [Application].[StateProvinces] ([StateProvinceID])
 GO
 ALTER TABLE [Application].[Cities] CHECK CONSTRAINT [FK_Application_Cities_StateProvinceID_Application_StateProvinces]
 GO
-ALTER TABLE [Application].[Countries]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_Countries_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Application].[Countries]  WITH CHECK ADD  CONSTRAINT [FK_Application_Countries_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[Countries] CHECK CONSTRAINT [FK_Application_Countries_Application_People]
 GO
-ALTER TABLE [Application].[DeliveryMethods]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_DeliveryMethods_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Application].[DeliveryMethods]  WITH CHECK ADD  CONSTRAINT [FK_Application_DeliveryMethods_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[DeliveryMethods] CHECK CONSTRAINT [FK_Application_DeliveryMethods_Application_People]
 GO
-ALTER TABLE [Application].[PaymentMethods]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_PaymentMethods_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Application].[PaymentMethods]  WITH CHECK ADD  CONSTRAINT [FK_Application_PaymentMethods_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[PaymentMethods] CHECK CONSTRAINT [FK_Application_PaymentMethods_Application_People]
@@ -2841,32 +2841,32 @@ REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[People] CHECK CONSTRAINT [FK_Application_People_Application_People]
 GO
-ALTER TABLE [Application].[StateProvinces]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_StateProvinces_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Application].[StateProvinces]  WITH CHECK ADD  CONSTRAINT [FK_Application_StateProvinces_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[StateProvinces] CHECK CONSTRAINT [FK_Application_StateProvinces_Application_People]
 GO
-ALTER TABLE [Application].[StateProvinces]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_StateProvinces_CountryID_Application_Countries] FOREIGN KEY([CountryID])
+ALTER TABLE [Application].[StateProvinces]  WITH CHECK ADD  CONSTRAINT [FK_Application_StateProvinces_CountryID_Application_Countries] FOREIGN KEY([CountryID])
 REFERENCES [Application].[Countries] ([CountryID])
 GO
 ALTER TABLE [Application].[StateProvinces] CHECK CONSTRAINT [FK_Application_StateProvinces_CountryID_Application_Countries]
 GO
-ALTER TABLE [Application].[SystemParameters]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_SystemParameters_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Application].[SystemParameters]  WITH CHECK ADD  CONSTRAINT [FK_Application_SystemParameters_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[SystemParameters] CHECK CONSTRAINT [FK_Application_SystemParameters_Application_People]
 GO
-ALTER TABLE [Application].[SystemParameters]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_SystemParameters_DeliveryCityID_Application_Cities] FOREIGN KEY([DeliveryCityID])
+ALTER TABLE [Application].[SystemParameters]  WITH CHECK ADD  CONSTRAINT [FK_Application_SystemParameters_DeliveryCityID_Application_Cities] FOREIGN KEY([DeliveryCityID])
 REFERENCES [Application].[Cities] ([CityID])
 GO
 ALTER TABLE [Application].[SystemParameters] CHECK CONSTRAINT [FK_Application_SystemParameters_DeliveryCityID_Application_Cities]
 GO
-ALTER TABLE [Application].[SystemParameters]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_SystemParameters_PostalCityID_Application_Cities] FOREIGN KEY([PostalCityID])
+ALTER TABLE [Application].[SystemParameters]  WITH CHECK ADD  CONSTRAINT [FK_Application_SystemParameters_PostalCityID_Application_Cities] FOREIGN KEY([PostalCityID])
 REFERENCES [Application].[Cities] ([CityID])
 GO
 ALTER TABLE [Application].[SystemParameters] CHECK CONSTRAINT [FK_Application_SystemParameters_PostalCityID_Application_Cities]
 GO
-ALTER TABLE [Application].[TransactionTypes]  WITH NOCHECK ADD  CONSTRAINT [FK_Application_TransactionTypes_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Application].[TransactionTypes]  WITH CHECK ADD  CONSTRAINT [FK_Application_TransactionTypes_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Application].[TransactionTypes] CHECK CONSTRAINT [FK_Application_TransactionTypes_Application_People]
@@ -2911,7 +2911,7 @@ REFERENCES [Purchasing].[Suppliers] ([SupplierID])
 GO
 ALTER TABLE [Purchasing].[PurchaseOrders] CHECK CONSTRAINT [FK_Purchasing_PurchaseOrders_SupplierID_Purchasing_Suppliers]
 GO
-ALTER TABLE [Purchasing].[SupplierCategories]  WITH NOCHECK ADD  CONSTRAINT [FK_Purchasing_SupplierCategories_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Purchasing].[SupplierCategories]  WITH CHECK ADD  CONSTRAINT [FK_Purchasing_SupplierCategories_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Purchasing].[SupplierCategories] CHECK CONSTRAINT [FK_Purchasing_SupplierCategories_Application_People]
@@ -2976,12 +2976,12 @@ REFERENCES [Application].[TransactionTypes] ([TransactionTypeID])
 GO
 ALTER TABLE [Purchasing].[SupplierTransactions] CHECK CONSTRAINT [FK_Purchasing_SupplierTransactions_TransactionTypeID_Application_TransactionTypes]
 GO
-ALTER TABLE [Sales].[BuyingGroups]  WITH NOCHECK ADD  CONSTRAINT [FK_Sales_BuyingGroups_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Sales].[BuyingGroups]  WITH CHECK ADD  CONSTRAINT [FK_Sales_BuyingGroups_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Sales].[BuyingGroups] CHECK CONSTRAINT [FK_Sales_BuyingGroups_Application_People]
 GO
-ALTER TABLE [Sales].[CustomerCategories]  WITH NOCHECK ADD  CONSTRAINT [FK_Sales_CustomerCategories_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Sales].[CustomerCategories]  WITH CHECK ADD  CONSTRAINT [FK_Sales_CustomerCategories_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Sales].[CustomerCategories] CHECK CONSTRAINT [FK_Sales_CustomerCategories_Application_People]
@@ -3201,12 +3201,12 @@ REFERENCES [Warehouse].[StockItems] ([StockItemID])
 GO
 ALTER TABLE [Sales].[SpecialDeals] CHECK CONSTRAINT [FK_Sales_SpecialDeals_StockItemID_Warehouse_StockItems]
 GO
-ALTER TABLE [Warehouse].[Colors]  WITH NOCHECK ADD  CONSTRAINT [FK_Warehouse_Colors_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Warehouse].[Colors]  WITH CHECK ADD  CONSTRAINT [FK_Warehouse_Colors_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Warehouse].[Colors] CHECK CONSTRAINT [FK_Warehouse_Colors_Application_People]
 GO
-ALTER TABLE [Warehouse].[PackageTypes]  WITH NOCHECK ADD  CONSTRAINT [FK_Warehouse_PackageTypes_Application_People] FOREIGN KEY([LastEditedBy])
+ALTER TABLE [Warehouse].[PackageTypes]  WITH CHECK ADD  CONSTRAINT [FK_Warehouse_PackageTypes_Application_People] FOREIGN KEY([LastEditedBy])
 REFERENCES [Application].[People] ([PersonID])
 GO
 ALTER TABLE [Warehouse].[PackageTypes] CHECK CONSTRAINT [FK_Warehouse_PackageTypes_Application_People]
@@ -3313,7 +3313,7 @@ ALTER TABLE [Sales].[SpecialDeals]  WITH CHECK ADD  CONSTRAINT [CK_Sales_Special
 GO
 ALTER TABLE [Sales].[SpecialDeals] CHECK CONSTRAINT [CK_Sales_SpecialDeals_Unit_Price_Deal_Requires_Special_StockItem]
 GO
-/****** Object:  StoredProcedure [Application].[AddRoleMemberIfNonexistent]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[AddRoleMemberIfNonexistent]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3355,7 +3355,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_ApplyAuditing]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_ApplyAuditing]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3439,7 +3439,7 @@ ADD (SELECT ON OBJECT::[Purchasing].[SupplierTransactions] BY [public]);';
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_ApplyColumnstoreIndexing]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_ApplyColumnstoreIndexing]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3540,7 +3540,7 @@ REORGANIZE WITH (COMPRESS_ALL_ROW_GROUPS = ON);';
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_ApplyFullTextIndexing]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_ApplyFullTextIndexing]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3737,7 +3737,7 @@ END;';
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_ApplyPartitioning]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_ApplyPartitioning]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3971,7 +3971,7 @@ ON PS_TransactionDate(TransactionDate);';
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_ApplyRowLevelSecurity]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_ApplyRowLevelSecurity]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4033,7 +4033,7 @@ ON Sales.Customers AFTER UPDATE;';
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_ConfigureForEnterpriseEdition]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_ConfigureForEnterpriseEdition]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4045,7 +4045,10 @@ BEGIN
 
     EXEC [Application].[Configuration_ApplyColumnstoreIndexing];
 
-    EXEC [Application].[Configuration_ApplyFullTextIndexing];
+    IF SERVERPROPERTY(N'IsFullTextInstalled') = 0
+    BEGIN
+        EXEC [Application].[Configuration_ApplyFullTextIndexing];
+    END;
 
     EXEC [Application].[Configuration_EnableInMemory];
 
@@ -4054,13 +4057,14 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_EnableInMemory]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_EnableInMemory]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [Application].[Configuration_EnableInMemory]
+WITH EXECUTE AS OWNER
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -4082,24 +4086,23 @@ BEGIN
 				IF NOT EXISTS (SELECT 1 FROM sys.filegroups WHERE name = N'WWI_InMemory_Data')
 				BEGIN
 				    SET @SQL = N'
-ALTER DATABASE CURRENT
+ALTER DATABASE WideWorldImportersTest
 ADD FILEGROUP WWI_InMemory_Data CONTAINS MEMORY_OPTIMIZED_DATA;';
 					EXECUTE (@SQL);
 
 					SET @SQL = N'
-ALTER DATABASE CURRENT
+ALTER DATABASE WideWorldImportersTest
 ADD FILE (name = N''WWI_InMemory_Data_1'', filename = '''
 		                 + @MemoryOptimizedFilegroupFolder + N''')
 TO FILEGROUP WWI_InMemory_Data;';
 					EXECUTE (@SQL);
 
+					SET @SQL = N'
+ALTER DATABASE WideWorldImportersTest
+SET MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;';
+					EXECUTE (@SQL);
 				END;
             END;
-
-			SET @SQL = N'
-ALTER DATABASE CURRENT
-SET MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;';
-			EXECUTE (@SQL);
 
             IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = N'ColdRoomTemperatures' AND is_memory_optimized <> 0)
             BEGIN
@@ -4554,7 +4557,7 @@ END;';
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_RemoveAuditing]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_RemoveAuditing]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4612,7 +4615,7 @@ DROP SERVER AUDIT [WWI_Audit];';
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[Configuration_RemoveRowLevelSecurity]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[Configuration_RemoveRowLevelSecurity]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4644,7 +4647,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Application].[CreateRoleIfNonexistent]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Application].[CreateRoleIfNonexistent]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4676,7 +4679,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [DataLoadSimulation].[Configuration_ApplyDataLoadSimulationProcedures]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [DataLoadSimulation].[Configuration_ApplyDataLoadSimulationProcedures]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7453,7 +7456,7 @@ END;';
 END;
 
 GO
-/****** Object:  StoredProcedure [DataLoadSimulation].[Configuration_RemoveDataLoadSimulationProcedures]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [DataLoadSimulation].[Configuration_RemoveDataLoadSimulationProcedures]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7489,7 +7492,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [DataLoadSimulation].[DeactivateTemporalTablesBeforeDataLoad]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [DataLoadSimulation].[DeactivateTemporalTablesBeforeDataLoad]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8201,7 +8204,7 @@ AS BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [DataLoadSimulation].[PopulateDataToCurrentDate]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [DataLoadSimulation].[PopulateDataToCurrentDate]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8237,7 +8240,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [DataLoadSimulation].[ReactivateTemporalTablesAfterDataLoad]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [DataLoadSimulation].[ReactivateTemporalTablesAfterDataLoad]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8324,7 +8327,7 @@ AS BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetCityUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetCityUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8512,7 +8515,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetCustomerUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetCustomerUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8715,7 +8718,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetEmployeeUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetEmployeeUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8808,7 +8811,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetMovementUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetMovementUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8842,7 +8845,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetOrderUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetOrderUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8891,7 +8894,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetPaymentMethodUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetPaymentMethodUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8976,7 +8979,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetPurchaseUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetPurchaseUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9017,7 +9020,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetSaleUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetSaleUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9071,7 +9074,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetStockHoldingUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetStockHoldingUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9098,7 +9101,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetStockItemUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetStockItemUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9217,7 +9220,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetSupplierUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetSupplierUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9359,7 +9362,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetTransactionTypeUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetTransactionTypeUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9444,7 +9447,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Integration].[GetTransactionUpdates]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Integration].[GetTransactionUpdates]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9509,7 +9512,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Sequences].[ReseedAllSequences]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Sequences].[ReseedAllSequences]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9551,7 +9554,7 @@ AS BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Sequences].[ReseedSequenceBeyondTableValues]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Sequences].[ReseedSequenceBeyondTableValues]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9592,7 +9595,7 @@ AS BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[ActivateWebsiteLogon]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[ActivateWebsiteLogon]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9626,7 +9629,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[ChangePassword]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[ChangePassword]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9659,7 +9662,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[InsertCustomerOrders]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[InsertCustomerOrders]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9730,7 +9733,7 @@ BEGIN
     RETURN 0;
 END;
 GO
-/****** Object:  StoredProcedure [Website].[InvoiceCustomerOrders]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[InvoiceCustomerOrders]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9891,7 +9894,7 @@ BEGIN
     RETURN 0;
 END;
 GO
-/****** Object:  StoredProcedure [Website].[RecordVehicleTemperature]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[RecordVehicleTemperature]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9957,7 +9960,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[SearchForCustomers]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[SearchForCustomers]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9988,7 +9991,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[SearchForPeople]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[SearchForPeople]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10023,7 +10026,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[SearchForStockItems]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[SearchForStockItems]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10045,7 +10048,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[SearchForStockItemsByTags]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[SearchForStockItemsByTags]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10067,7 +10070,7 @@ BEGIN
 END;
 
 GO
-/****** Object:  StoredProcedure [Website].[SearchForSuppliers]    Script Date: 8/11/17 1:36:43 PM ******/
+/****** Object:  StoredProcedure [Website].[SearchForSuppliers]    Script Date: 8/16/17 10:26:09 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

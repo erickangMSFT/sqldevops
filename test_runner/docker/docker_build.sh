@@ -1,7 +1,7 @@
 #!/bin/bash
 
-rm -rf docker/git
-mkdir docker/git
+rm -rf git
+mkdir git
 git clone https://github.com/rbenv/rbenv.git ./git/rbenv 
 git clone https://github.com/rbenv/ruby-build.git ./git/rbenv/plugins/ruby-build 
 
