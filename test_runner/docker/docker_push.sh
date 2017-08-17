@@ -11,3 +11,4 @@ docker push ericskang/mssql-slacker:$dt
 docker push ericskang/mssql-slacker:latest
 
 docker rmi -f $(docker images -f "dangling=true" -q)
+docker rmi -f slackerbuild:latest
