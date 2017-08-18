@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf '\e[1;34m%-6s\e[m' "* starting tests:" && printf "\n"
+printf "\n" && printf '\e[1;34m%-6s\e[m' "* starting tests for:" && printf "\n"
 starttime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
 
 curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFile'
@@ -12,15 +12,15 @@ for spec in $(curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFil
     curl -s $url & 
 done
 
-printf "\n" && printf '\e[1;34m%-6s\e[m' "* waiting for the results:" && printf "\n" 
+printf "\n" && printf '\e[1;34m%-6s\e[m' "* waiting for the results..." && printf "\n" 
 
 wait
 
 duration=$(( SECONDS - start )) && endtime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
-printf '\e[1;35m%-6s\e[m' "--- Summary ---" && printf "\n" 
-printf '\e[1;35m%-6s\e[m' "Start time:          " && printf "%s %s %s\n" $starttime
-printf '\e[1;35m%-6s\e[m' "End time:            " && printf "%s %s %s\n" $endtime
-printf '\e[1;35m%-6s\e[m' "Total elapse time:   "  && printf "%s seconds\n\n" $duration
+printf '\e[1;36m%-6s\e[m' "--- summary ---" && printf "\n" 
+printf '\e[1;36m%-6s\e[m' "start time:  " && printf "%s %s %s\n" $starttime
+printf '\e[1;36m%-6s\e[m' "end time:    " && printf "%s %s %s\n" $endtime
+printf '\e[1;36m%-6s\e[m' "elapse time: "  && printf "%s seconds\n\n" $duration
 
 
 
