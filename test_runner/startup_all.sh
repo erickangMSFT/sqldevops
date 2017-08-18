@@ -11,5 +11,5 @@ bash ./restore.sh
 cd ../tests/init_db
 powershell ./init_unittest_db.ps1
 
-curl http://localhost:8888
+curl http://localhost:8888/api/runall
 

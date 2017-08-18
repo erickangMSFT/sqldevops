@@ -1,27 +1,44 @@
 #!/bin/bash
 
-specList=$(curl http://localhost:8888/api/specs)
-echo $specList
+printf '\e[1;34m%-6s\e[m' "* starting tests:" && printf "\n"
+starttime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
 
-for spec in $specList; do
-    curl http://localhost:8888/api/runspec/$spec.specFile
+curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFile'
+
+start=$SECONDS
+
+for spec in $(curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFile'); do
+    url='http://localhost:8888/api/runspec/'$spec
+    curl -s $url & 
 done
 
-# delayed_ajax() {
-#   local url=$1
-#   local callback=$2
-#   local seconds=$3
+printf "\n" && printf '\e[1;34m%-6s\e[m' "* waiting for the results:" && printf "\n" 
 
-#   sleep $seconds
-#   curl -s "$url" | "$callback"
-# }
+wait
 
-# my_handler() {
-#   # Read from stdin and do something.
-#   # E.g. just append to a file:
-#   cat 1>&2 
-# }
+duration=$(( SECONDS - start )) && endtime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
+printf '\e[1;35m%-6s\e[m' "--- Summary ---" && printf "\n" 
+printf '\e[1;35m%-6s\e[m' "Start time:          " && printf "%s %s %s\n" $starttime
+printf '\e[1;35m%-6s\e[m' "End time:            " && printf "%s %s %s\n" $endtime
+printf '\e[1;35m%-6s\e[m' "Total elapse time:   "  && printf "%s seconds\n\n" $duration
 
-# for delay in 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1; do
-#   delayed_ajax http://localhost:3000 my_handler $delay &
-# done
+
+
+
+
+
+
+
+
+
+
+
+
+# Black        0;30     Dark Gray     1;30
+# Red          0;31     Light Red     1;31
+# Green        0;32     Light Green   1;32
+# Brown/Orange 0;33     Yellow        1;33
+# Blue         0;34     Light Blue    1;34
+# Purple       0;35     Light Purple  1;35
+# Cyan         0;36     Light Cyan    1;36
+# Light Gray   0;37     White         1;37
