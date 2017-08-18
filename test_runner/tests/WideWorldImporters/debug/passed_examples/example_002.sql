@@ -1,6 +1,6 @@
--- Example "WideWorldImporters: Website.InsertCustomerOrders fails for invalid orders"
--- ./spec/website/insertCustomerOrder.rb:7
--- Executed at 2017-08-16 17:41:54 -0700
+-- Example "WideWorldImporters database processes complex customer transaction"
+-- ./spec/customer/wwi_customer.rb:14
+-- Executed at 2017-08-18 12:35:44 -0700
 
 -- Initiate the example script
 begin transaction;

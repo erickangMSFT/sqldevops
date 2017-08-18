@@ -1,17 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var child_process = require('child_process');
+var runnerConfig = require('../../modules/runnerconfig');
 
+const configFile = 'config/slackerRunner.yml';
+var config = runnerConfig.getConfig(configFile)
 
 router.get('/:folder/:spec', function (req, res, next) {
-  var specPath = 'spec/';
+  var specPath = config.specs.specFolder + '/';
   specPath += req.params.folder + '/' + req.params.spec;
-  console.log(req.params.folder);
-  console.log(req.params.spec);
-  console.log(specPath);
-  child_process.execFile('slacker', ['-fd', specPath], { cwd: '/opt/var/slacker_runner/test' }, function (err, testResult) {
+  child_process.execFile('slacker', ['-fd', specPath], { cwd: config.specs.rootFolder }, function (err, testResult) {
     if (!err) {
-      console.log(testResult);
       res.writeHead(200, { "Content-Type": "text/utf-8" });
       res.write(testResult);
       res.end();
@@ -24,9 +23,9 @@ router.get('/:folder/:spec', function (req, res, next) {
 });
 
 router.get('/:spec', function (req, res, next) {
-  var specPath = 'spec/'; 
+  var specPath = config.specs.specFolder + '/';
   specPath += req.params.spec;
-  child_process.execFile('slacker', ['-fd', specPath], { cwd: '/opt/var/slacker_runner/test' }, function (err, testResult) {
+  child_process.execFile('slacker', ['-fd', specPath], { cwd: config.specs.rootFolder }, function (err, testResult) {
     if (!err) {
       //res.type('application/json')
       res.write(testResult);

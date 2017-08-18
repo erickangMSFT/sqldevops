@@ -1,6 +1,6 @@
--- Example "WideWorldImporters: Website.InvoiceCustomerOrders fails if the order is not picked"
--- ./spec/website/invoiceCustomerOrder.rb:18
--- Executed at 2017-08-16 17:41:54 -0700
+-- Example "WideWorldImporters: Website.InsertCustomerOrders successfully creates orders"
+-- ./spec/website/insertCustomerOrder.rb:2
+-- Executed at 2017-08-18 12:35:44 -0700
 
 -- Initiate the example script
 begin transaction;

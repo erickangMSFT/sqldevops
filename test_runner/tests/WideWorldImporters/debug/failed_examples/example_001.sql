@@ -1,6 +1,6 @@
--- Example "WideWorldImporters reference table: Application.People contains PersonID == 1 as a template"
--- ./spec/reference_data/application_People.rb:2
--- Executed at 2017-08-16 17:41:54 -0700
+-- Example "WideWorldImporters: Website.SearchForSuppliers successfully find suppliers"
+-- ./spec/website/searchForSuppliers.rb:3
+-- Executed at 2017-08-18 12:35:44 -0700
 
 -- Initiate the example script
 begin transaction;
@@ -20,23 +20,14 @@ set ansi_nulls on;
 set concat_null_yields_null on;
 
 
--- query '/WideWorldImporters/reference_data/check_personid.sql.erb', options = {:id=>1}
-select 
-p.PersonID,
-p.FullName,
-p.PreferredName,
-p.SearchName
-from Application.People p
-where p.PersonID = '1'
-
 -- Rollback the changes made by the example script
 if @@trancount > 0 rollback transaction;
 
 --               SLACKER RESULTS
 -- *******************************************
--- Failure/Error: expect(sql.WideWorldImporters.reference_data.check_personid(:id => 1)).to match('WideWorldImporters/reference_data/match/application_people_personid_1.csv')
+-- Failure/Error: raise ("unittest failure demonstration")
 -- 
--- TinyTds::Error:
---   Invalid object name 'Application.People'.
--- ./spec/reference_data/application_People.rb:3:in `block (2 levels) in <top (required)>'
+-- RuntimeError:
+--   unittest failure demonstration
+-- ./spec/website/searchForSuppliers.rb:4:in `block (2 levels) in <top (required)>'
 -- *******************************************

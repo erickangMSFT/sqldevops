@@ -1,0 +1,10 @@
+# Slacker node runner configuration
+
+# port: expose port for slacker node runner.
+# specs.rootFolder: the full folder path of your slacker test project.
+# specs.specFolder: the root level spec folder path. Typically it is under 'spec' folder.
+
+port: 8888
+specs:
+  rootFolder: /opt/var/slacker_runner/test
+  specFolder: /opt/var/slacker_runner/test/spec

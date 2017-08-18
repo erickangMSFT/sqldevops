@@ -1,6 +1,6 @@
--- Example "WideWorldImporters: Website.InvoiceCustomerOrders fails to create a new invoice number"
--- ./spec/website/invoiceCustomerOrder.rb:26
--- Executed at 2017-08-16 17:41:54 -0700
+-- Example "WideWorldImporters: Website.InsertCustomerOrders fails for invalid orderlines"
+-- ./spec/website/insertCustomerOrder.rb:11
+-- Executed at 2017-08-18 12:35:44 -0700
 
 -- Initiate the example script
 begin transaction;

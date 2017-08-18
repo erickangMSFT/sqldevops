@@ -9,5 +9,5 @@ RUN npm install
 COPY runner/ .
 COPY ./tests/WideWorldImporters ./test
 WORKDIR /opt/var/slacker_runner
-EXPOSE 3000
+#EXPOSE 8888
 CMD [ "node", "./bin/www" ]

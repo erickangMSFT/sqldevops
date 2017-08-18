@@ -1,6 +1,6 @@
--- Example "WideWorldImporters: Website.InvoiceCustomerOrders fails for an invalid invoiced by person id"
--- ./spec/website/invoiceCustomerOrder.rb:14
--- Executed at 2017-08-16 17:41:54 -0700
+-- Example "WideWorldImporters: Website.ChangePassword denies an invalid old password"
+-- ./spec/website/changePassword.rb:21
+-- Executed at 2017-08-18 12:35:44 -0700
 
 -- Initiate the example script
 begin transaction;
@@ -19,6 +19,17 @@ set ansi_padding on;
 set ansi_nulls on;
 set concat_null_yields_null on;
 
+
+-- query '/WideWorldImporters/website/init_n_changeWrongPassword.sql.erb', options = {:PersonID=>3150, :LogonName=>"emily@widworldimporters.com", :InitialPassword=>"Yukon900", :OldPassword=>"WrongPassword", :NewPassword=>"Yukon1000"}
+exec Website.ActivateWebsiteLogon 
+    @PersonID = '3150', 
+    @LogonName = 'emily@widworldimporters.com', 
+    @InitialPassword = 'Yukon900'
+
+exec Website.ChangePassword 
+    @PersonID = '3150', 
+    @OldPassword = 'WrongPassword', 
+    @NewPassword = 'Yukon1000'
 
 -- Rollback the changes made by the example script
 if @@trancount > 0 rollback transaction;

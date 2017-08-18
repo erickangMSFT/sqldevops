@@ -1,6 +1,6 @@
--- Example "WideWorldImporters: Website.InsertCustomerOrders fails for invalid orderlines"
--- ./spec/website/insertCustomerOrder.rb:11
--- Executed at 2017-08-16 17:41:54 -0700
+-- Example "WideWorldImporters reference table: Application.People contains PersonID == 1 as a template"
+-- ./spec/reference_data/application_People.rb:2
+-- Executed at 2017-08-18 12:35:44 -0700
 
 -- Initiate the example script
 begin transaction;
@@ -19,6 +19,15 @@ set ansi_padding on;
 set ansi_nulls on;
 set concat_null_yields_null on;
 
+
+-- query '/WideWorldImporters/reference_data/check_personid.sql.erb', options = {:id=>1}
+select 
+p.PersonID,
+p.FullName,
+p.PreferredName,
+p.SearchName
+from Application.People p
+where p.PersonID = '1'
 
 -- Rollback the changes made by the example script
 if @@trancount > 0 rollback transaction;

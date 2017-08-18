@@ -8,7 +8,7 @@ services:
     # command: ["node", "-f", "/dev/null"] # make slacker runner container up and running
     container_name: slacker_runner
     ports:
-      - "8888:3000"
+      - "8888:8888"
   mssql:
     build: ./unittest_db
     container_name: mssql_unittest
