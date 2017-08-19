@@ -8,7 +8,8 @@
 (() => {
 
     module.exports = {
-        formatSpecList: formatSpecList
+        formatSpecList: formatSpecList,
+        getFormatArgument: getFormatArgument
     };
 
     function formatSpecList(specList) {
@@ -31,6 +32,22 @@
         return result;
     }
 
+    function getFormatArgument(format) {
+        var formatArg = {};
+        switch(format){
+            case 'json':
+                formatArg = {"arg":"-fj","type":"json"}
+                break;
+            case 'html':
+                formatArg = {"arg":"-fh","type":"html"}
+                break;
+            case 'document':
+            default:
+                formatArg = {"arg":"-fd","type":"json"}
+        }
+        return formatArg;
+    }
+    
     function formatAllResults(res) { }
 
     function formatSpecResult(res) { }

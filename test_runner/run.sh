@@ -8,7 +8,7 @@ curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFile'
 start=$SECONDS
 
 for spec in $(curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFile'); do
-    url='http://localhost:8888/api/runspec/'$spec
+    url='http://localhost:8888/api/runspec/document/'$spec
     curl -s $url & 
 done
 
