@@ -11,12 +11,10 @@ router.get('/:folder/:spec', function (req, res, next) {
   specPath += req.params.folder + '/' + req.params.spec;
   child_process.execFile('slacker', ['-fd', specPath], { cwd: config.specs.rootFolder }, function (err, testResult) {
     if (!err) {
-      res.writeHead(200, { "Content-Type": "text/utf-8" });
-      res.write(testResult);
-      res.end();
+      res.type('application/json');
+      res.send(testResult);
     }
     else {
-      console.log(err);
       res.status('500').send(err.message);
     }
   });

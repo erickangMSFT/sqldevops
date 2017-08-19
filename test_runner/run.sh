@@ -15,7 +15,7 @@ done
 printf "\n" && printf '\e[1;34m%-6s\e[m' "* waiting for the results..." && printf "\n" 
 
 wait
-
+printf "\n" 
 duration=$(( SECONDS - start )) && endtime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
 printf '\e[1;36m%-6s\e[m' "--- summary ---" && printf "\n" 
 printf '\e[1;36m%-6s\e[m' "start time:  " && printf "%s %s %s\n" $starttime
