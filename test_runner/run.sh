@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# Usage: ./run.sh -f {document, json, html} default = document view.
+
+format='document' #default format
+while [[ $# -gt 1 ]]
+do
+key="$1"
+case $key in
+    -f|--format)
+    format="$2"
+    shift 
+    ;;
+    *)
+
+    ;;
+esac
+shift 
+done
+
 printf "\n" && printf '\e[1;34m%-6s\e[m' "* starting tests for:" && printf "\n"
 starttime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
 
@@ -8,7 +26,7 @@ curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFile'
 start=$SECONDS
 
 for spec in $(curl -s http://localhost:8888/api/getspecs | jq -r '.[] | .specFile'); do
-    url='http://localhost:8888/api/runspec/document/'$spec
+    url='http://localhost:8888/api/runspec/'${format}'/'$spec
     curl -s $url & 
 done
 
