@@ -8,9 +8,9 @@ const configFile = 'config/slackerRunner.yml';
 var config = runnerConfig.getConfig(configFile)
 
 router.get('/', function (req, res, next) {
-  child_process.exec('slacker -fd ./spec/**/*', { cwd: config.specs.rootFolder }, function (err, testResult) {
+  child_process.exec('slacker -fh ./spec/**/*', { cwd: config.specs.rootFolder }, function (err, testResult) {
     if (!err) {
-      res.type('application/json');
+      res.type('html');
       res.send(testResult);
     }
     else{

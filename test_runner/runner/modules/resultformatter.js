@@ -22,7 +22,7 @@
             last = index + 1;
             index = specList.indexOf('\n', last);
             result += '{ "id": ' + specId + ', "specFile": "' + spec;
-            if (index < 1)
+            if (index < 1) // detects the last json object.
                 result += '" }';
             else
                 result += '" },';
@@ -34,22 +34,18 @@
 
     function getFormatArgument(format) {
         var formatArg = {};
-        switch(format){
+        switch (format) {
             case 'json':
-                formatArg = {"arg":"-fj","type":"json"}
+                formatArg = { "arg": "-fj", "type": "json" };
                 break;
             case 'html':
-                formatArg = {"arg":"-fh","type":"html"}
+                formatArg = { "arg": "-fh", "type": "html" };
                 break;
             case 'document':
             default:
-                formatArg = {"arg":"-fd","type":"json"}
+                formatArg = { "arg": "-fd", "type": "json" };
         }
         return formatArg;
     }
-    
-    function formatAllResults(res) { }
-
-    function formatSpecResult(res) { }
 
 })();

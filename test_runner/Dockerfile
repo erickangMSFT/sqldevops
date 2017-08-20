@@ -4,7 +4,7 @@ WORKDIR /opt/var/slacker_runner
 # Install app dependencies
 COPY runner/package.json .
 # COPY runner/package-lock.json .
-RUN npm install
+RUN npm install --only=production
 # Bundle app source
 COPY runner/ .
 COPY ./tests/WideWorldImporters ./test
