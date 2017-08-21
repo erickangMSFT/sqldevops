@@ -14,7 +14,8 @@ router.get('/', function (req, res, next) {
       res.send(testResult);
     }
     else{
-      res.status('500').send(err.message)
+      err.status = '500';
+      res.render('error',{message: err.message,error: err});
     }
   });
 });
@@ -28,7 +29,8 @@ router.get('/:format', function (req, res, next) {
       res.send(testResult);
     }
     else{
-      res.status('500').send(err.message)
+      err.status = '500';
+      res.render('error',{message: err.message,error: err});
     }
   });
 });

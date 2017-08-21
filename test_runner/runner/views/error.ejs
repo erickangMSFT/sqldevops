@@ -1,14 +1,33 @@
 
 <html>
 <head>
-Error
+<p>&#10006; Slacker node runner service has encountered an error <%= error.status %></p>
+<a href="/">[go back to homepage]</a>
+<link rel="stylesheet" href="/css/marked.css">
 </head>
 
 <body>
 <div>
-<%= message %>
-<%=error.status %>
-<%= error.stack %>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">error</th>
+<th style="text-align:left">details</th>
+<tr>
+</thead>
+<tbody>
+<tr>
+    <td style="text-align:left">message</td>
+    <td style="text-align:left"><%= error.message %></td></tr>
+<tr>
+    <td style="text-align:left">status</td>
+    <td style="text-align:left"><%= error.status %></td>
+</tr>
+<tr>
+    <td style="text-align:left">stack</td>
+    <td style="text-align:left"><%= error.stack %></td>
+</tr>
+</tbody>
 </div>
 </body>
 

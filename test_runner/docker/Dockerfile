@@ -1,8 +1,8 @@
-FROM node:boron
+FROM node:latest
 
 WORKDIR /usr/src/slacker
 
-RUN apt-get update && apt-get -y install ca-certificates wget vim build-essential libc6-dev libssl-dev libreadline-dev zlib1g-dev unixodbc-dev --no-install-recommends apt-utils
+RUN apt-get update && apt-get -y install ca-certificates wget vim build-essential libc6-dev libssl-dev libreadline-dev zlib1g-dev unixodbc-dev
 
 COPY git/rbenv /usr/local/rbenv
 COPY git/freetds-1.00.27 ./freetds-1.00.27

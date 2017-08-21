@@ -17,7 +17,8 @@ router.get('/:format/:folder/:spec', function (req, res, next) {
       res.send(testResult);
     }
     else {
-      res.status('500').send(err.message);
+      err.status = '500';
+      res.render('error',{message: err.message,error: err});
     }
   });
 });
@@ -32,14 +33,17 @@ router.get('/:format/:spec', function (req, res, next) {
       res.send(testResult);
     }
     else {
-      //res.type('application/json')
-      res.status('500').send(err.message);
+      err.status = '500';
+      res.render('error',{message: err.message,error: err});
     }
   });
 });
 
 router.get('/', function (req, res, next) {
-  res.send('enter spec file name');
+  var err={};
+  err.message = 'Invalid API request. Refer to Slacker Node Runner Homepage';
+  err.status = '500';
+  res.render('error', {message: err.message, error:err});
 });
 
 

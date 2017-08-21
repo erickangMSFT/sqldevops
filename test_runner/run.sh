@@ -20,12 +20,12 @@ done
 printf "\n" && printf '\e[1;34m%-6s\e[m' "* starting tests for:" && printf "\n"
 starttime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
 
-curl -s http://localhost/api/getspecs | jq -r '.[] | .specFile'
+curl -s http://localhost:8000/api/getspecs | jq -r '.[] | .specFile'
 
 start=$SECONDS
 
-for spec in $(curl -s http://localhost/api/getspecs | jq -r '.[] | .specFile'); do
-    url='http://localhost/api/runspec/'${format}'/'$spec
+for spec in $(curl -s http://localhost:8000/api/getspecs | jq -r '.[] | .specFile'); do
+    url='http://localhost:8000/api/runspec/'${format}'/'$spec
     curl -s $url & 
 done
 

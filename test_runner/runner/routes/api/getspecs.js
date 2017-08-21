@@ -16,7 +16,8 @@ router.get('/', function (req, res, next) {
       res.send(result);
     }
     else {
-      res.status('500').send(err);
+      err.status = '500';
+      res.render('error',{message: err.message,error: err});
     }
   });
 });

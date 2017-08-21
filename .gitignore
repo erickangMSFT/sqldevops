@@ -8,3 +8,4 @@ nul
 /test_runner/runner/node_modules
 .vscode
 *.bak
+*.deb
