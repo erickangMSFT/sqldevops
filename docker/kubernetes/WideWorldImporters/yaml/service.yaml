@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mssql
-  namespace: sqldevops
   labels:
     app: mssql
 spec:

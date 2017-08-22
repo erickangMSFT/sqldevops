@@ -12,15 +12,15 @@
 ### Sample Usage
 
 * get all spec list
-    * [json output](http://localhost:8000/api/getspecs)
+    * [json output](/api/getspecs)
 * run all specs
-    * [html output](http://localhost:8000/api/runall/html)
-    * [json output](http://localhost:8000/api/runall/json)
-    * [document output](http://localhost:8000/api/runall/document)
+    * [html output](/api/runall/html)
+    * [json output](/api/runall/json)
+    * [document output](/api/runall/document)
 * run a rspec file
-    * [html output](http://localhost:8000/api/runspec/html/sample_1.rb)
-    * [json output](http://localhost:8000/api/runspec/json/sample_1.rb)
-    * [document output](http://localhost:8000/api/runspec/document/sample_1.rb)
+    * [html output](/api/runspec/html/sample_1.rb)
+    * [json output](/api/runspec/json/sample_1.rb)
+    * [document output](/api/runspec/document/sample_1.rb)
 
 > This sample below assumes the slacker node runner service is running at port 80.
 

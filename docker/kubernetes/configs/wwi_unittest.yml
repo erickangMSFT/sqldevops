@@ -13,9 +13,9 @@ spec:
     type: Recreate
   selector: 
     matchLabels: 
-      app: slacker-runner
+      app: unittest
       tier: backend
-      version": latest
+      version: latest
   template:
     metadata:
       labels:
@@ -24,11 +24,11 @@ spec:
         version: latest
     spec:
       containers:
-        image: sqldevopsacs.azurecr.io/wwi_test:latest
-        name: mssql
-        imagePullPolicy: Always
+        - image: sqldevopsacs.azurecr.io/wwi_test:latest
+          name: mssql
+          imagePullPolicy: Always
       imagePullSecrets:
-          name: mssqlkey
+        - name: mssqlkey
 
 ---
 
@@ -65,6 +65,7 @@ spec:
       port: 8000
       targetPort: 8000
   type: LoadBalancer
+
 ---
 
 apiVersion: apps/v1beta1
@@ -83,8 +84,10 @@ spec:
     spec:
       containers:
         - name: slacker-runner
-          image: "gcr.io/google-samples/hello-frontend:1.0"
-          lifecycle:
-            preStop:
-              exec:
-                command: ["/usr/sbin/nginx","-s","quit"]
+          image: sqldevopsacs.azurecr.io/slacker-node-runner:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: mssqlkey
+---

@@ -1,0 +1,21 @@
+# Database connection.
+
+# Slacker supports odbc and tiny_tds.
+# tiny_tds is recommended.
+# When not set, driver defaults to odbc for backward compatibility.
+driver: tiny_tds
+
+# Full instance name when using odbc; hostname or IP when using tiny_tds.
+server: localhost 
+
+# Port is used by tiny_tds only. Defaults to 1433 when not set.
+# Use server and port when targeting named instances with tiny_tds.
+port: 1433 
+
+database: tempdb
+
+# Slacker supports only SQL Server authentication.
+user: sa
+password: Yukon900
+
+console_enabled: false

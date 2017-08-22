@@ -1,16 +1,16 @@
 version: '3'
 services:
   slacker:
-    image: ericskang/slacker-node-runner:latest
+    build: .
     depends_on: 
       - mssql
     # command: ["./wait-for-it.sh", "mssql:1433", "--", "./runner.sh"]
-    command: ["bash", "-c","npm start"] # make slacker runner container up and running
+    # command: ["node", "-f", "/dev/null"] # make slacker runner container up and running
     container_name: slacker_runner
     ports:
-      - "8000:8000"
+      - "80:8000"
   mssql:
-    image: sqldevopsacs.azurecr.io/wwi_test:latest
+    build: ./unittest_db
     container_name: mssql_unittest
     #image: microsoft/mssql-server-linux:latest
     ports: 

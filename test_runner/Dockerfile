@@ -7,6 +7,8 @@ COPY runner/package.json .
 RUN npm install --only=production
 # Bundle app source
 COPY runner/ .
-COPY ./tests/WideWorldImporters ./test
+
+# replace it with your slacker test project 
+COPY ./tests/WideWorldImporters ./test 
 
 CMD npm start

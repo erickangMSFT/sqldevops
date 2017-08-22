@@ -3,7 +3,7 @@ write-host "** cleanup intermediate files" -foreground green
 rm -f ./out/*.*
 
 write-host "** drop WideWorldImportersTest database" -foreground green
-sqlcmd -Usa -PYukon900 -i ./sql/drop_testdb.sql
+sqlcmd -S 127.0.0.1 -Usa -PYukon900 -i ./sql/drop_testdb.sql
 
 write-host "** generae script wiht mssql-scripter schema only" -foreground green
 mssql-scripter -Slocalhost -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
@@ -12,7 +12,7 @@ write-host "** find and replace db name from WideWorldImporters to WideWorldImpo
 Get-ChildItem -Path ./out/wwi.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'WideWorldImporters', 'WideWorldImportersTest' | set-content $_.fullname }
 
 write-host "** create WideWorldImportersTest database" -foreground green
-sqlcmd  -Usa -PYukon900 -i ./out/wwi.sql
+sqlcmd -S 127.0.0.1 -Usa -PYukon900 -i ./out/wwi.sql
 
 write-host "** bcp out reference tables from WideWorldImporters" -foreground green
 /usr/local/bin/powershell ./bash/bcp_out_loop.ps1
