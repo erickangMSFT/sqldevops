@@ -1,4 +1,15 @@
 #!/usr/local/bin/powershell
+
+# Install SQL Server CLI tools.
+
+# apt-get mssql-tools unixodbc-dev
+# apt-get python python-pip
+# pip install mssql-scripter
+
+write-host "Enable Dynamic Data masking on WideWorldImporters"
+sqlcmd -S 127.0.0.1 -dWideWorldImporters -U sa -P Yukon900 -i ./sql/ddm.sql 
+sqlcmd -S 127.0.0.1 -U sa -P Yukon900 -i ./sql/create_user.sql
+
 write-host "** cleanup intermediate files" -foreground green
 rm -f ./out/*.*
 
@@ -19,7 +30,6 @@ write-host "** bcp out reference tables from WideWorldImporters" -foreground gre
 
 write-host "** bcp in reference tables to WideWorldImportersTest" -foreground green
 /usr/local/bin/powershell ./bash/bcp_in_loop.ps1
-
 
 write-host "** cleanup intermediate files" -foreground green
 rm -f ./out/*.*

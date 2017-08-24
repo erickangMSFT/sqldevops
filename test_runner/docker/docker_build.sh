@@ -14,7 +14,7 @@ cd ..
 docker build . --rm -t slackerbuild:temp
 
 docker run --name slackerbuild_temp -d slackerbuild:temp
-docker export slackerbuild_temp | docker import - slackerbuild:latest`
+docker export slackerbuild_temp | docker import - slackerbuild:latest
 
 docker rm -f slackerbuild_temp
 docker rmi slackerbuild:temp

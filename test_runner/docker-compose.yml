@@ -4,15 +4,12 @@ services:
     build: .
     depends_on: 
       - mssql
-    # command: ["./wait-for-it.sh", "mssql:1433", "--", "./runner.sh"]
-    # command: ["node", "-f", "/dev/null"] # make slacker runner container up and running
     container_name: slacker_runner
     ports:
       - "80:8000"
   mssql:
     build: ./unittest_db
     container_name: mssql_unittest
-    #image: microsoft/mssql-server-linux:latest
     ports: 
       - "1433:1433"
     environment:
