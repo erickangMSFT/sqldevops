@@ -33,18 +33,18 @@
     * [demo folder](./docker/kubernetes/WideWorldImporters)
     * [test runner](./testrunner)
 
-5. ---
-
-6. Docker containerization 
+5. Docker containerization 
     * Todo: include Docker Compose scenarios
     * [demo folder](./docker)
     * [demo file](./docker/docker_wwi.sh)
 
-7. Demo web application - WidWorldImporters (node.js)
+6. Demo web application - WidWorldImporters (node.js)
     * [demo folder](./web)
 
-8. CI and CD automation for all above scenarios
+7. CI and CD automation for all above scenarios
 
 ## Missing demos 
 
-9. Develop database and publish the change back to production: Windows Only
+8. Develop database and publish the change back to production: Windows Only
+
+9. Containerization (cluster included) with persistent volume setup for statefulset
