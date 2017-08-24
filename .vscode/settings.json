@@ -10,59 +10,59 @@
                 "sizey": 1
             },
             "widget": {
-               "query-data-store-julie-koesmarno": null
+                "query-data-store-julie-koesmarno": null
             }
         },
-        // {
-        //     "provider": "MSSQL",
-        //     "name": "Missing index and PKs",
-        //     "gridItemConfig": {
-        //         "sizex": 1,
-        //         "sizey": 1
-        //     },
-        //     "widget": {
-        //         "missing-index-pk-julie-koesmarno": null
-        //     }
-        // },
-        // {
-        //     "provider": "MSSQL",
-        //     "gridItemConfig": {
-        //         "sizex": 1,
-        //         "sizey": 1
-        //     },
-        //     "name": "Disk Usage",
-        //     "widget": {
-        //         "disk-usage-db-insight": null
-        //     }
-        // },
-        // {
-        //     "provider": "MSSQL",
-        //     "edition": [
-        //         1,
-        //         2,
-        //         3,
-        //         4
-        //     ],
-        //     "gridItemConfig": {
-        //         "sizex": 1,
-        //         "sizey": 1
-        //     },
-        //     "name": "Data file space usage (MB)",
-        //     "widget": {
-        //         "data-file-space-db-insight": null
-        //     }
-        // },
-        // {
-        //     "provider": "MSSQL",
-        //     "name": "Space used by tables",
-        //     "widget": {
-        //         "table-space-db-insight": null
-        //     },
-        //     "gridItemConfig": {
-        //         "sizex": 2,
-        //         "sizey": 1
-        //     }
-        // },
+        {
+            "provider": "MSSQL",
+            "name": "Missing index and PKs",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "widget": {
+                "missing-index-pk-julie-koesmarno": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "name": "Disk Usage",
+            "widget": {
+                "disk-usage-db-insight": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "edition": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "name": "Data file space usage (MB)",
+            "widget": {
+                "data-file-space-db-insight": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "name": "Space used by tables",
+            "widget": {
+                "table-space-db-insight": null
+            },
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            }
+        },
         {
             "gridItemConfig": {
                 "sizex": 3,
