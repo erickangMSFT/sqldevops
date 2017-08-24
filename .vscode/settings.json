@@ -65,8 +65,8 @@
         },
         {
             "gridItemConfig": {
-                "sizex": 3,
-                "sizey": 2
+                "sizex": 1,
+                "sizey": 1
             },
             "widget": {
                 "explorer-widget": {}
