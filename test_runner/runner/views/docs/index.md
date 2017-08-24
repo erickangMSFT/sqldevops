@@ -28,7 +28,7 @@
 # get the list of all *.rb files in spec folder and its sub folders.
 curl -s http://localhost:8000/api/getspecs
 
-# executs all rspec examples in spec folder and sub folders and return the result in html format.
+# executs all rspec examples in spec folder and sub folders and return the result..
 curl -s http://localhost:8000/api/runall/html # result output in html foramt
 curl -s http://localhost:8000/api/runall/json # result output in json format
 curl -s curl -s http://localhost:8000/api/runall/html # result output in plain text document foramt.
