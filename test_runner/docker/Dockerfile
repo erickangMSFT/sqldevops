@@ -6,7 +6,6 @@ RUN apt-get update && apt-get -y install ca-certificates wget vim build-essentia
 
 COPY git/rbenv /usr/local/rbenv
 COPY git/freetds-1.00.27 ./freetds-1.00.27
-COPY slacker-1.0.18.gem .
 
 RUN echo '# rbenv setup' > /etc/profile.d/rbenv.sh
 RUN echo 'export RBENV_ROOT=/usr/local/rbenv' >> /etc/profile.d/rbenv.sh
@@ -28,6 +27,6 @@ RUN rbenv install 2.4.1
 RUN rbenv global 2.4.1
 
 RUN gem install tiny_tds -f 
-RUN gem install ./slacker-1.0.18.gem
+RUN gem install slacker
 
 CMD /bin/bash -c "tail -f /dev/null"
