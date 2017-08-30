@@ -9,6 +9,3 @@ write-host "** scripting database ..."
 write-host "** find and replace db name ..."
 # regex replace if needed 
 gci -Path script.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'AdventureWorks', 'devdb' | set-content $_.fullname }
-
-
-

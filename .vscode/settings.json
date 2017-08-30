@@ -96,6 +96,15 @@
             }
         },
         {
+            "gridItemConfig": {
+                "sizex": 1,
+                "sizey": 1
+            },
+            "widget": {
+                "explorer-widget": {}
+            }
+        },
+        {
             "provider": "MSSQL",
             "name": "Database status",
             "gridItemConfig": {
@@ -166,15 +175,7 @@
                 "sizex": 2,
                 "sizey": 1
             }
-        },
-        {
-            "gridItemConfig": {
-                "sizex": 2,
-                "sizey": 1
-            },
-            "widget": {
-                "explorer-widget": {}
-            }
         }
+
     ]
 }
