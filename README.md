@@ -2,7 +2,7 @@
 
 ## Available Demos
 
-- UnitTest database initialization - sanitize data with Dynamic Data Masking and including schema and reference table data only
+- Crete UnitTest Database: sanitize data with Dynamic Data Masking and including schema and reference table data only
     * mssql-scipter to create a database with schema only.
     * bcp out and bcp in only reference table data
     * [demo](./data_sanitization)
@@ -12,7 +12,7 @@
     * Slacker framework with tiny_tds driver support.
     * [demo folder](./tests/WideWorldImporters)
 
-- Massively Parallel Testing with Slacker framework, containers, ACR and ACS with Kubernetes
+- Parallel Testing with Slacker framework, containers, ACR and ACS with Kubernetes
     * docker container for unit test datbase (mssql) 
     * docker container for application (wwiapp)
     * docker container for slacker test runner (slacker)
@@ -24,16 +24,15 @@
         * slackerrunner service and deployment with Stateless Loadbalancer - ClusterIP
         * slackercontrol service and deployment with Stateless - External IP
     * Spin up and spin down for slacker_runner pods to loadbalance.
-    * [demo folder](./docker/kubernetes/WideWorldImporters)
-    * [test runner](./testrunner)
+    * [demo folder](./docker_cluster/kubernetes_unittest_cluster)
+    * [test runner](./sqldevops/test_runner)
+    * [test controller] (./test_controller)
 
-- Docker containerization 
-    * Todo: include Docker Compose scenarios
-    * [demo folder](./docker)
-    * [demo file](./docker/docker_wwi.sh)
+- Docker containerization
+    * [demo folder](./docker_cluster)
 
 - Demo web application - WidWorldImporters (node.js)
-    * [demo folder](./web)
+    * [demo folder](./web_app)
 
 - CI and CD automation for all above scenarios
 
