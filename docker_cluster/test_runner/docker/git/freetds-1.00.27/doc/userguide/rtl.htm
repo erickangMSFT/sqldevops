@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>On Linkers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="PREVIOUS"
+TITLE="Contributors"
+HREF="contributors.htm"><LINK
+REL="NEXT"
+TITLE="What is a C library?"
+HREF="rtl.define.library.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="APPENDIX"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="contributors.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="rtl.define.library.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="RTL"
+></A
+>Appendix A. On Linkers</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="rtl.htm#RTL.DEFINE.FUNCTION"
+>What is a C function?</A
+></DT
+><DT
+><A
+HREF="rtl.define.library.htm"
+>What is a C library?</A
+></DT
+><DT
+><A
+HREF="linker.library.check.htm"
+>Checking if a Library Provides a Function</A
+></DT
+><DT
+><A
+HREF="linker.how.htm"
+>How Dost Thy Linker Link?</A
+></DT
+><DT
+><A
+HREF="linker.conclusion.htm"
+>Keep in Mind</A
+></DT
+></DL
+></DIV
+><BLOCKQUOTE
+CLASS="ABSTRACT"
+><DIV
+CLASS="ABSTRACT"
+><P
+></P
+><A
+NAME="AEN6423"
+></A
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is a library, obviously, its functions invoked by an application.  How the application finds the library can be mysterious.  In the interest of making <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> easier to use, this appendix discusses how it all works.   </P
+><P
+>This appendix focusses on <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>using</I
+></SPAN
+> <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> in your application.  It isn't intended to help in building <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>, although the background information it provides might be useful.  </P
+><P
+></P
+></DIV
+></BLOCKQUOTE
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="RTL.DEFINE.FUNCTION"
+>What is a C function?</A
+></H1
+><P
+>A C function is a named bit of code.</P
+><P
+>A C compiler recognizes function names in source code by parsing the C language.  When it encounters a function name, it looks for a <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>definition</I
+></SPAN
+> for the function &mdash; i.e. actual code implementing it &mdash; in the current file.  If it finds one, it creates machine instructions to push any parameters on the stack, jump to the named address, and clear the stack after the functions returns.  If it doesn't find one, it shrugs<A
+NAME="AEN6436"
+HREF="#FTN.AEN6436"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+> and adds that name to the list of names to be <I
+CLASS="FIRSTTERM"
+>resolved</I
+> later.  We'll get to what that means in a minute.   </P
+><P
+>The compiler's job ends where the linker's begins.   
+		<P
+></P
+><P
+><B
+>Compiler's job</B
+></P
+><UL
+><LI
+><P
+>Convert source code into object code </P
+></LI
+><LI
+><P
+>Put in jumps to defined functions </P
+></LI
+><LI
+><P
+>Create a list of defined functions, and their addresses </P
+></LI
+><LI
+><P
+>Create a list of undefined functions </P
+></LI
+></UL
+>
+
+The <B
+CLASS="COMMAND"
+>nm</B
+> utility displays function names.  Here are the ones defined by <TT
+CLASS="FILENAME"
+>bsqldb.c</TT
+> (in <TT
+CLASS="FILENAME"
+>bsqsldb.o</TT
+>):
+
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>nm bsqldb.o | grep -wi t</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>0000000000000000 T err_handler
+0000000000000270 T get_login
+00000000000001d0 t get_printable_size
+0000000000000940 T main
+00000000000000a0 T msg_handler
+00000000000007d0 t next_query
+00000000000006c0 t set_format_string
+0000000000000080 t usage</SAMP
+></PRE
+>
+
+GNU <B
+CLASS="COMMAND"
+>nm</B
+> marks with a lower-case letter functions that are locally defined, not intended to be used outside the file.  The C programmer marked those functions <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>static</I
+></SPAN
+>.  Note how closely the source code corresponds to the object code: 
+
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>grep ^static src/bsqldb.c</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>static int next_query(DBPROCESS *dbproc);
+static void print_results(DBPROCESS *dbproc);
+static int get_printable_size(int type, int size);
+static void usage(const char invoked_as[]);
+static int set_format_string(struct METADATA * meta, const char separator[]);</SAMP
+></PRE
+>
+
+(Order doesn't matter.  It's a set, not a list.)  
+    </P
+><P
+>Here are some functions used, but not defined, by <TT
+CLASS="FILENAME"
+>bsqldb.o</TT
+>:
+
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>nm bsqldb.o | grep -w U | head</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>                 U __assert_fail
+                 U __ctype_b_loc
+                 U __errno_location
+                 U __strdup
+                 U __xpg_basename
+                 U asprintf
+                 U calloc
+                 U dbaltbind
+                 U dbaltcolid
+                 U dbaltlen</SAMP
+></PRE
+>
+
+Two things to note.  First, the functions defined by <TT
+CLASS="FILENAME"
+>bsqldb.o</TT
+> have addresses, and undefined functions don't.  Second, <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>only the name</I
+></SPAN
+> identifies the function.  It's been that way since about 1978, and it's one reason C libraries are so useful: to find a function, the tool need only <I
+CLASS="FIRSTTERM"
+>resolve the name</I
+>, i.e. convert the name into an address.  The caller (the programmer, really) has to know the function's inputs and semantics (how it behaves), but the tool's job is bone simple.  Which turns out to be quite handy.        
+	</P
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN6436"
+HREF="rtl.htm#AEN6436"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>You have to watch carefully.  Modern compilers shrug quickly.  </P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="contributors.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="rtl.define.library.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Contributors</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>What is a C library?</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

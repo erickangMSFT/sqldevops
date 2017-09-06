@@ -1,0 +1,9 @@
+<map id="tds_goodwrite" name="tds_goodwrite">
+<area shape="rect" id="node2" href="$a00388.html#gad7aae89e32444ab30852fee056231403" title="Select on a socket until it&#39;s available or the timeout expires. " alt="" coords="519,5,605,32"/>
+<area shape="rect" id="node3" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="831,132,933,159"/>
+<area shape="rect" id="node4" href="$a00388.html#gad6f81b48fbcfc18ce0b213dbbea47e30" title="Write to an OS socket. " alt="" coords="343,107,471,133"/>
+<area shape="rect" id="node5" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="526,183,598,209"/>
+<area shape="rect" id="node7" href="$a00388.html#ga3e3f76009fce5ceedb2f42bb2c9aed2e" title="Close current socket. " alt="" coords="164,208,295,235"/>
+<area shape="rect" id="node6" href="$a00387.html#ga11338742dc30fd0c2711f58eb830316f" title="tds_send_cancel() sends an empty packet (8 byte header only) tds_process_cancel should be called dire..." alt="" coords="653,208,783,235"/>
+<area shape="rect" id="node8" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="353,259,460,285"/>
+</map>

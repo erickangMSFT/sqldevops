@@ -1,0 +1,6 @@
+<map id="tds_writetext_continue" name="tds_writetext_continue">
+<area shape="rect" id="node2" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="216,5,323,32"/>
+<area shape="rect" id="node3" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="668,31,771,57"/>
+<area shape="rect" id="node4" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="371,31,443,57"/>
+<area shape="rect" id="node5" href="$a00387.html#ga11338742dc30fd0c2711f58eb830316f" title="tds_send_cancel() sends an empty packet (8 byte header only) tds_process_cancel should be called dire..." alt="" coords="491,81,620,108"/>
+</map>

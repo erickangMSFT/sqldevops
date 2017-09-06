@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>OS-specific Issues</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Build FreeTDS"
+HREF="build.htm"><LINK
+REL="PREVIOUS"
+TITLE="How to build: Configure and make"
+HREF="config.htm"><LINK
+REL="NEXT"
+TITLE="Install FreeTDS"
+HREF="install.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="config.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Build <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="install.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="OSISSUES"
+>OS-specific Issues</A
+></H1
+><TABLE
+CLASS="SIDEBAR"
+BORDER="1"
+CELLPADDING="5"
+><TR
+><TD
+><DIV
+CLASS="SIDEBAR"
+><P
+></P
+><A
+NAME="AEN707"
+></A
+><P
+>If you've recently built and installed <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> and noticed steps peculiar to your OS, we'll happily include your comments here.</P
+><P
+>One thing that can be said, if it's not too obvious:  check with your vendor or favorite download site.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is routinely rolled up into OS install packages.  We know of packages for <SPAN
+CLASS="PRODUCTNAME"
+>Debian</SPAN
+>, <SPAN
+CLASS="PRODUCTNAME"
+>Red Hat</SPAN
+>, <SPAN
+CLASS="PRODUCTNAME"
+>FreeBSD</SPAN
+>, and <SPAN
+CLASS="PRODUCTNAME"
+>NetBSD</SPAN
+>.  The installation through the package management systems in these environments may well reduce your work to simply <B
+CLASS="COMMAND"
+>make install</B
+>.</P
+><P
+></P
+></DIV
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="WINDOWS"
+>Win32 and Win64</A
+></H2
+><P
+>Officially <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> for Windows should be compiled using CMake. CMake is able to create project files for different development systems (like Visual C++).
+Install CMake on your box and point to the source directory to generate wanted files. Refer to CMake documentation on how to do it (I personally use CMake GUI passing source directory and a newly create build directory).
+Once project files are created you can open them with your environment.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN721"
+>Other ways to build under Windows&reg;</A
+></H3
+><P
+></P
+><UL
+><LI
+><P
+>MingW</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN726"
+>Download Windows&reg; binaries</A
+></H3
+><P
+>You can  download FreeTDS binaries for Windows from AppVeyor (the hosted CI platform used).</P
+><P
+>There is a .zip file available as artifact of every sucessful build.
+
+The list of builds is at
+<A
+HREF="https://ci.appveyor.com/project/FreeTDS/freetds/history"
+TARGET="_top"
+>https://ci.appveyor.com/project/FreeTDS/freetds/history</A
+>.
+
+You can find there builds of code in the master banch and (from time to
+time) builds from the post-1.0 release fixes-only Branch-1_00 branch.
+Every build matrix element generates its artifact.</P
+><P
+>Ramiro Morales also maintains similar builds of the Branch-0_95 branch at
+<A
+HREF="https://github.com/ramiro/freetds/releases"
+TARGET="_top"
+>https://github.com/ramiro/freetds/releases</A
+>.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="REGSVR32"
+>ODBC driver registration</A
+></H3
+><P
+>If compiled correctly <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> ODBC driver supports component registration.
+Although an ODBC driver is not a Windows component you can register the driver with regsvr32 utility or
+you can use this feature with some installer
+and register the driver as a standard component.</P
+><P
+>Once the ODBC driver is registered in the system you can configure it from Control Panel.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="VMS"
+>VMS&reg;</A
+></H2
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will probably build and run on most versions of OpenVMS Alpha 7.0 and later with DEC/Compaq C 6.0 or later.  Other prerequisites:
+				
+				<P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><SPAN
+CLASS="APPLICATION"
+>gunzip</SPAN
+></TD
+></TR
+><TR
+><TD
+><SPAN
+CLASS="APPLICATION"
+>vmstar</SPAN
+></TD
+></TR
+><TR
+><TD
+><SPAN
+CLASS="APPLICATION"
+>MMS</SPAN
+> or <SPAN
+CLASS="APPLICATION"
+>MMK</SPAN
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN750"
+>Build Instructions</A
+></H3
+><P
+>Decompress and unpack the source archive using gunzip and vmstar.  If
+					you are untarring on an ODS-5 disk, you should use the <CODE
+CLASS="PARAMETER"
+>/ODS2</CODE
+> or <CODE
+CLASS="PARAMETER"
+>-o</CODE
+>
+					option to create universally VMS-friendly filenames; otherwise the build will fail to locate some files.</P
+><P
+>Set default to the top-level source directory and run the configuration
+					script:</P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$</SAMP
+> <KBD
+CLASS="USERINPUT"
+>@[.vms]configure</KBD
+></PRE
+><P
+> This creates a <TT
+CLASS="FILENAME"
+>descrip.mms</TT
+> in the top-level source
+					directory which you may execute by simply running MMS (if you have the Module Management System that
+					is part of DECset) or MMK (a freeware MMS alternative available from <A
+HREF="http://www.madgoat.com"
+TARGET="_top"
+>www.madgoat.com</A
+>).</P
+><P
+>Further information can be found in the <TT
+CLASS="FILENAME"
+>vms/README.vms</TT
+> in the source distribution.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="OSX"
+>OS X&reg;</A
+></H2
+><P
+>The regular distribution compiles on OS X.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="OSX.BUILD.LINKISSUES"
+>Possible linker problems</A
+></H3
+><P
+>On 18 April 2016, a problem was reported causing linker issues.
+<PRE
+CLASS="SCREEN"
+>	Undefined symbols for architecture x86_64:
+
+	  "___strlcpy_chk", referenced from:
+	      _tdsdbopen in libsybdb_64.a(dblib.o)
+	      _db_env_chg in libsybdb_64.a(dblib.o)
+	      _dbcolinfo in libsybdb_64.a(dblib.o)
+	      _dbtablecolinfo in libsybdb_64.a(dblib.o)
+	      _tds_alloc_dynamic in libsybdb_64.a(mem.o)
+	      _tds7_get_instance_port in libsybdb_64.a(net.o)
+	      _tds_get_locale in libsybdb_64.a(locale.o)
+	      ...</PRE
+></P
+><P
+>This is due to some mismatch on different project releases. To solve these issue set the target release like
+<PRE
+CLASS="SCREEN"
+>	<KBD
+CLASS="USERINPUT"
+>CFLAGS="-mmacosx-version-min=10.8" ./configure
+	make</KBD
+></PRE
+>
+or
+<PRE
+CLASS="SCREEN"
+>	<KBD
+CLASS="USERINPUT"
+>export MACOSX_DEPLOYMENT_TARGET=10.8
+	./configure
+	make</KBD
+></PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AIX"
+>AIX&reg;</A
+></H2
+><P
+>AIX&reg; can induce linker indigestion.  libtool doesn't always understand that a <TT
+CLASS="FILENAME"
+>.a</TT
+> file
+				can be a shared library.  One solution is to build only static libraries with the <CODE
+CLASS="OPTION"
+>--disable-shared</CODE
+>
+				configure option.</P
+><P
+>Another problem seems to be that the linker isn't asked to pull in all the requisite libraries.  Cf. this helpful
+				<A
+HREF="http://lists.ibiblio.org/pipermail/freetds/2004q3/016748.html"
+TARGET="_top"
+>mailing list message</A
+>.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="RPM"
+>GNU/Linux distributions that use RPMs</A
+></H2
+><P
+>You may find it convenient to make an RPM from the source distribution, in which case you'll be glad to
+				know it is easily done:
+				
+<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>rpmbuild -ta freetds-0.95.tar.bz2</KBD
+></PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="config.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="install.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>How to build: Configure and make</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="build.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Install <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

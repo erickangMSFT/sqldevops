@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Appending Dump Files</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Advanced Configurations"
+HREF="configs.htm"><LINK
+REL="PREVIOUS"
+TITLE="Threading in unixODBC"
+HREF="uothread.htm"><LINK
+REL="NEXT"
+TITLE="TDS Connection Pooling"
+HREF="tdspool.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="uothread.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Advanced Configurations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tdspool.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="APPENDMODE"
+>Appending Dump Files</A
+></H1
+><P
+>When running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> with applications such as <SPAN
+CLASS="PRODUCTNAME"
+>Apache</SPAN
+>/PHP it is often difficult to get a usable log file.  Since each of the many httpd children opens the file at the beginning of its connection and closes it on connection close, they tend to stomp all over each other.  In append mode, the log file is opened for append each time it is written to and then immediately closed.  If you are experiencing problems when running under <SPAN
+CLASS="PRODUCTNAME"
+>Apache</SPAN
+> (or similar application) use append mode to generate useful logs.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.DUMPAPPEND"
+></A
+><P
+><B
+>Example 5-7. Turning on Dump File Append mode in  <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>				[mssql]
+				host = ntbox.mydomain.com
+				port = 1433
+				tds version = 7.0
+				dump file = /tmp/freetds.log
+				dump file append = yes
+				</PRE
+></DIV
+><P
+>In this example, the <TT
+CLASS="FILENAME"
+>/tmp/freetds.log</TT
+> file will contain log entries for all processes using the Microsoft <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> server, identified by pid.</P
+><DIV
+CLASS="IMPORTANT"
+><P
+></P
+><TABLE
+CLASS="IMPORTANT"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/important.gif"
+HSPACE="5"
+ALT="Important"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Because there will be one log file being opened and closed more or less continuously, there is going to be a negative impact on performance. Also, be advised that the log file will grow quite large.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>As an alternative to <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> logging, you might also consider using <B
+CLASS="COMMAND"
+>tcpdump</B
+> or <A
+HREF="http://www.wireshark.org/"
+TARGET="_top"
+>wireshark</A
+> to log network packets.  While not as useful as a <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> log, it can also help to identify problems.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="uothread.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tdspool.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Threading in unixODBC</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="configs.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>TDS Connection Pooling</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

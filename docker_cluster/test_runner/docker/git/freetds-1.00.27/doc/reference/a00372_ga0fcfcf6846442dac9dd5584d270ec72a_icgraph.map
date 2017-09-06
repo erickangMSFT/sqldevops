@@ -1,0 +1,9 @@
+<map id="dbfreebuf" name="dbfreebuf">
+<area shape="rect" id="node2" href="$a00372.html#ga87b39d9863316b4ba85654b0885d53a0" title="Append SQL to the command buffer. " alt="" coords="137,56,200,83"/>
+<area shape="rect" id="node5" href="$a00372.html#gaef740b394b44eb33925c2718f7b30d69" title="Close a connection to the server and free associated resources. " alt="" coords="133,107,204,133"/>
+<area shape="rect" id="node3" href="$a00372.html#ga43727b10d4cbb7708b374811abe6eadb" title="printf&#45;like way to form SQL to send to the server. " alt="" coords="263,5,329,32"/>
+<area shape="rect" id="node4" href="$a00372.html#ga66ea891910f0a357cc78107d6ab7d962" title="Change current database. " alt="" coords="267,56,325,83"/>
+<area shape="rect" id="node6" href="$a00378.html#ga2c99ec565452279e9a382451d89642eb" title="Form a connection with the server. " alt="" coords="252,107,340,133"/>
+<area shape="rect" id="node8" href="$a00372.html#gad0044401c8c83205583f93a4764f2d8b" title="Close server connections and free all related structures. " alt="" coords="267,157,325,184"/>
+<area shape="rect" id="node7" href="$a00232.html#ae408d8e1c2ab0767d8bfd26d00d1ff6a" title="Normally not used. " alt="" coords="388,107,457,133"/>
+</map>

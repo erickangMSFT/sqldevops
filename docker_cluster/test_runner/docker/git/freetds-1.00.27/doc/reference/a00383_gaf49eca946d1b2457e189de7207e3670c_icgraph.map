@@ -1,0 +1,6 @@
+<map id="tds_get_home_file" name="tds_get_home_file">
+<area shape="rect" id="node2" href="$a00383.html#ga0a63cb612f245fd85e56cfea98ff8f3b" title="Read configuration info for given server return 0 on error. " alt="" coords="197,5,335,32"/>
+<area shape="rect" id="node5" href="$a00383.html#ga6631af35ee817f93827c62bbda41674a" title="Try to find the IP number and port for a (possibly) logical server name. " alt="" coords="192,56,340,83"/>
+<area shape="rect" id="node3" href="$a00383.html#ga9af192306186ddf39e09be0fd4ad8aaf" title="tds_read_config_info() will fill the tds connection structure based on configuration information gath..." alt="" coords="388,31,543,57"/>
+<area shape="rect" id="node4" href="$a00378.html#ga2c99ec565452279e9a382451d89642eb" title="Form a connection with the server. " alt="" coords="591,31,679,57"/>
+</map>

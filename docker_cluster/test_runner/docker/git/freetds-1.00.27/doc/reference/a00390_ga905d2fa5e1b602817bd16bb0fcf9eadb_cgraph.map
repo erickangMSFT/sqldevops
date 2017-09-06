@@ -1,0 +1,12 @@
+<map id="tds_process_col_name" name="tds_process_col_name">
+<area shape="rect" id="node2" href="$a00388.html#gad38aa5b9547817854ccba1fcc7855861" title="Get an int16 from the server. " alt="" coords="417,5,548,32"/>
+<area shape="rect" id="node5" href="$a00390.html#gaeaaed2ea1d8c827da1a0f5b419524ae1" title="Reads list of names (usually table names) " alt="" coords="221,107,360,133"/>
+<area shape="rect" id="node6" href="$a00390.html#ga21e9de33de9c8c492aa2f96c823596bb" title="Frees list of names. " alt="" coords="415,157,550,184"/>
+<area shape="rect" id="node10" href="$a00389.html#gad96366d9fa93bfc283cef1299fbe97ab" title="copy a string from another " alt="" coords="235,208,346,235"/>
+<area shape="rect" id="node3" href="$a00388.html#gae7d9c4e1a079e1d0aa0252732631e8c4" title="Get N bytes from the buffer and return them in the already allocated space given to us..." alt="" coords="765,56,851,83"/>
+<area shape="rect" id="node4" href="$a00388.html#ga410619783bdf2bb60b0f27a5578e0e07" title="Read in one &#39;packet&#39; from the server. " alt="" coords="899,81,1027,108"/>
+<area shape="rect" id="node7" href="$a00388.html#ga0cb72d3f6943795c39db1fa692be0a58" title="Return a single byte from the input buffer. " alt="" coords="610,107,713,133"/>
+<area shape="rect" id="node8" href="$a00390.html#gafb26aba5d935e40b87b95e21a5185848" title="Reads a string from wire in a new allocated buffer. " alt="" coords="408,56,557,83"/>
+<area shape="rect" id="node9" href="$a00388.html#ga90f080e6e9448feac15dee1370d66802" title="Fetch a string from the wire. " alt="" coords="605,56,717,83"/>
+<area shape="rect" id="node11" href="$a00389.html#ga656718f240d7403f986ae887d84a6ca1" title="Set string to a given buffer of characters. " alt="" coords="423,208,542,235"/>
+</map>

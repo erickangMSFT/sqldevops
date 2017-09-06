@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>What is a C library?</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="On Linkers"
+HREF="rtl.htm"><LINK
+REL="PREVIOUS"
+TITLE="On Linkers"
+HREF="rtl.htm"><LINK
+REL="NEXT"
+TITLE="Checking if a Library Provides a Function"
+HREF="linker.library.check.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="rtl.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. On Linkers</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="linker.library.check.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="RTL.DEFINE.LIBRARY"
+>What is a C library?</A
+></H1
+><P
+>A C library is a set of named functions, for example <TT
+CLASS="LITERAL"
+>dbinit()</TT
+> or <TT
+CLASS="LITERAL"
+>SQLConnect()</TT
+>.  Or, for that matter, <TT
+CLASS="LITERAL"
+>fopen(3)</TT
+><A
+NAME="AEN6478"
+HREF="#FTN.AEN6478"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>.  </P
+><P
+>Libraries come in two flavors: <I
+CLASS="FIRSTTERM"
+>static</I
+> and <I
+CLASS="FIRSTTERM"
+>dynamic</I
+>.  </P
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="RTL.DEFINE.LIBRARY.STATIC"
+>Static libraries</A
+></H2
+><P
+>Static libraries (also known as <I
+CLASS="FIRSTTERM"
+>archives</I
+>) have been around as long as C itself.  Like a <TT
+CLASS="LITERAL"
+>.zip</TT
+> file, they're just a bag of object files &mdash; containing functions, of course &mdash; with a table of contents in front giving the address of each name<A
+NAME="AEN6489"
+HREF="#FTN.AEN6489"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+>.  Static libraries are created from object files using a <I
+CLASS="FIRSTTERM"
+>librarian</I
+> utility of some kind.  One such programs is <B
+CLASS="COMMAND"
+>ar</B
+>, for <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>archive</I
+></SPAN
+>.  </P
+><P
+>Static libraries are part of the build environment.  Functions in static libraries are joined to a program's main module by a <I
+CLASS="FIRSTTERM"
+>static linker</I
+> at build time to produce an executable program.  The executable incorporates the libraries' object code into its own body, making it completely self-sufficient.  </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="RTL.DEFINE.LIBRARY.DYNAMIC"
+>Dynamic libraries</A
+></H2
+><P
+>Dynamic libraries are the new kid on the block, as these things go, arriving on the Unix scene circa 1985.   Like a static library, a dynamic library is a collection of functions with a table of contents.  They are referenced at build time to give the executatble information about how they will eventually be used, but they aren't <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>used</I
+></SPAN
+> until run time.  </P
+><P
+>Dynamic libraries are part of the run-time environment.  When a program is run, the run-time linker finds the dynamic libraries needed by the program, finds the addresses of the required functions, and assembles a runable image in memory.  Missing libraries and/or missing functions &mdash; or the wrong versions of them &mdash; can lead to head-scratching and other amusing behavior.  </P
+><P
+>In Windows&reg; dynamic libraries are called <I
+CLASS="FIRSTTERM"
+>dynamic link libraries</I
+> (DLLs).  In Unix they're normally called <I
+CLASS="FIRSTTERM"
+>shared objects</I
+>.  But they're roughly the same thing.    </P
+><P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>What about <TT
+CLASS="LITERAL"
+>.h</TT
+> files?</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>C header files include <I
+CLASS="FIRSTTERM"
+>functional prototypes</I
+>, declarations (not <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>definitions)</I
+></SPAN
+> of functions.  Functional prototypes describe to the compiler each function's parameters, allowing the compiler to confirm that the function is being called correctly.  </P
+><P
+>Most of the functions declared in header files are implemented in libraries.  However, there's <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>no mechanical or automatic relationship</I
+></SPAN
+> between the functional prototypes in the header files and their implementation in a library.  The <TT
+CLASS="LITERAL"
+>.h</TT
+> file is maintained by hand, by the programmer, and is used to generate a library.  The header file and associated library are distributed and installed together (one hopes), but correct installation and subsequent use by the compiler &amp; linker require human beings to keep track of the pair.  Failure to do so leads to <SPAN
+CLASS="QUOTE"
+>"interesting"</SPAN
+> development and even run-time problems, especially with libraries whose functions' parameters change from version to version. </P
+><P
+>For example, imagine a function <TT
+CLASS="LITERAL"
+>f(int g)</TT
+> defined in library <TT
+CLASS="FILENAME"
+>libf.so</TT
+> and declared in <TT
+CLASS="FILENAME"
+>f.h</TT
+>.  In a later version of <TT
+CLASS="FILENAME"
+>libf.so</TT
+>, the function's parameter is changed to use a pointer, <TT
+CLASS="LITERAL"
+>f(int *p)</TT
+>, and <TT
+CLASS="FILENAME"
+>f.h</TT
+> is likewise updated.  Possible errors that cannot be prevented by the linker include: 
+
+<P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>An old program could use the new library.  Probably the integer it passes will be interpreted as an out-of-bounds address, resulting in a segmentation violation.   </P
+></LI
+><LI
+><P
+>A new program could use the old library, passing an address that the library interprets as an integer.  Hillarity ensues.  </P
+></LI
+><LI
+><P
+>Existing source code could be compiled using the old header file but linked to the new library.  If you've never done that, give it time.   </P
+></LI
+></OL
+>
+
+These errors are possible because C functions are identified to the linker <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>by name only</I
+></SPAN
+>.  On the upside, that makes the tools simple and easy to implement and, by the same token, simplifies the use of C libraries by other languages.  The downside is that the work of ensuring that the right libraries are used becomes an administrative task instead of a technical one.   </P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN6478"
+HREF="rtl.define.library.htm#AEN6478"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>The Unix convention is to put in parentheses behind the name the section of the manual in which the function is documented.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> functions don't get numbers because they're not in the manual.  Yet.  </P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN6489"
+HREF="rtl.define.library.htm#AEN6489"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Or, depending on how you look at it, the name of each address.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="rtl.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="linker.library.check.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>On Linkers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="rtl.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Checking if a Library Provides a Function</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

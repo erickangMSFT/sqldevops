@@ -1,0 +1,10 @@
+<map id="tds_start_query_head" name="tds_start_query_head">
+<area shape="rect" id="node2" href="$a00387.html#ga024bc5482366735070befd6f4af59f71" title="Convert a string in an allocated buffer. " alt="" coords="213,54,352,81"/>
+<area shape="rect" id="node7" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="400,130,507,157"/>
+<area shape="rect" id="node3" href="$a00385.html#ga87db49044919f1bc84c0ff5e9ab00304" title="Wrapper around iconv(3). " alt="" coords="412,54,495,81"/>
+<area shape="rect" id="node4" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="988,130,1091,157"/>
+<area shape="rect" id="node5" href="$a00385.html#ga3380140fc6eb9f2090c430f40e846876" title="Move the input sequence pointer to the next valid position. " alt="" coords="555,29,741,56"/>
+<area shape="rect" id="node6" href="$a00385.html#ga900b0bce08c6bfc2e7c988f4b5970516" title="Inputs are FreeTDS canonical names, no other. " alt="" coords="789,80,940,106"/>
+<area shape="rect" id="node8" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="612,181,684,208"/>
+<area shape="rect" id="node9" href="$a00387.html#ga11338742dc30fd0c2711f58eb830316f" title="tds_send_cancel() sends an empty packet (8 byte header only) tds_process_cancel should be called dire..." alt="" coords="800,232,929,258"/>
+</map>

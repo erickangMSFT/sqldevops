@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>The locales.conf file</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Install FreeTDS"
+HREF="install.htm"><LINK
+REL="PREVIOUS"
+TITLE="The freetds.conf file"
+HREF="freetdsconf.htm"><LINK
+REL="NEXT"
+TITLE="Environment variables"
+HREF="envvar.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="freetdsconf.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Install <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="envvar.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LOCALES"
+>The <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> file</A
+></H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="LOCALESPURPOSE"
+>What it does</A
+></H2
+><P
+>For an English-speaking American, not much.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>  originated in the United States, and uses U.S. conventions if no <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> is present.  The <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> provided with the installation also reflects these conventions.</P
+><DIV
+CLASS="IMPORTANT"
+><P
+></P
+><TABLE
+CLASS="IMPORTANT"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/important.gif"
+HSPACE="5"
+ALT="Important"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+><TT
+CLASS="FILENAME"
+>locales.conf</TT
+> will probably be dropped from <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> one day.  Its only real purpose now is to control the format of date strings.  The Right Way&trade; to deduce the appropriate default date format is from the application's locale settings, while allowing an override in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.  That's the direction we're headed.</P
+><P
+>If your purpose is to affect the client charset description, use <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> instead.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>Information on locales and locale strings is easily (even too easily!) found on the Internet, or see <B
+CLASS="COMMAND"
+>man locale</B
+> for your system.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will examine its environment for a <TT
+CLASS="LITERAL"
+>LOCALE</TT
+> string.  If it finds one, it will look it up in <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> to find your preferred settings.  If it fails to find one, it will use its defaults.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="LOCALESLOCATION"
+>Where it goes</A
+></H2
+><P
+>Like <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>, the location of <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> is determined by the value of <CODE
+CLASS="OPTION"
+>--sysconfdir</CODE
+> to <B
+CLASS="COMMAND"
+>configure</B
+>.  The default is <TT
+CLASS="LITERAL"
+>PREFIX/etc</TT
+>.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="LOCALESFORMAT"
+>What it looks like</A
+></H2
+><P
+>The format of <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> is similar to that of <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.  There is a <TT
+CLASS="LITERAL"
+>[default]</TT
+> section, and a section for each locale.
+				
+				<TT
+CLASS="FILENAME"
+>locales.conf</TT
+> controls three settings
+				<P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><TT
+CLASS="LITERAL"
+>date format</TT
+></DT
+><DD
+><P
+>This entry will be passed (almost) literally to <CODE
+CLASS="FUNCTION"
+>strftime(3)</CODE
+> to convert dates to strings.</P
+><P
+>For the most part, see you system documentation for <CODE
+CLASS="FUNCTION"
+>strftime(3)</CODE
+> (<B
+CLASS="COMMAND"
+>man 3 strftime</B
+>).  You will see there though that <CODE
+CLASS="FUNCTION"
+>strftime(3)</CODE
+> has no provision for milliseconds.  The <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> format string uses <TT
+CLASS="LITERAL"
+>%z</TT
+> for milliseconds.  <DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="90%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>If your system's <CODE
+CLASS="FUNCTION"
+>strftime(3)</CODE
+> does employ <TT
+CLASS="LITERAL"
+>%z</TT
+> for its own use, it will not be given that chance by <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will consume the <TT
+CLASS="LITERAL"
+>%z</TT
+> for its milliseconds needs, and will not pass it on to <CODE
+CLASS="FUNCTION"
+>strftime(3)</CODE
+>.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+></DD
+><DT
+><TT
+CLASS="LITERAL"
+>language</TT
+></DT
+><DD
+><P
+>The language that will be used for error/status messages from the server.  A <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> client can specify a language for such messages at login time. <DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="90%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> issues a few messages of its own.  Messages from the server are called <SPAN
+CLASS="QUOTE"
+>"messages"</SPAN
+>; those from the client library (i.e., from <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>) are called <SPAN
+CLASS="QUOTE"
+>"error messages"</SPAN
+>.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>-issued messages are not affected by <TT
+CLASS="FILENAME"
+>locales.conf</TT
+>.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+></DD
+><DT
+><TT
+CLASS="LITERAL"
+>charset</TT
+></DT
+><DD
+><P
+>Indicates to the server what character set should be used for communicating with the client.</P
+></DD
+></DL
+></DIV
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="freetdsconf.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="envvar.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> file</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="install.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Environment variables</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,12 @@
+<map id="tds_process_env_chg" name="tds_process_env_chg">
+<area shape="rect" id="node2" href="$a00388.html#gad38aa5b9547817854ccba1fcc7855861" title="Get an int16 from the server. " alt="" coords="412,43,543,69"/>
+<area shape="rect" id="node3" href="$a00388.html#gae7d9c4e1a079e1d0aa0252732631e8c4" title="Get N bytes from the buffer and return them in the already allocated space given to us..." alt="" coords="617,93,703,120"/>
+<area shape="rect" id="node5" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="973,68,1076,95"/>
+<area shape="rect" id="node6" href="$a00388.html#ga3e3f76009fce5ceedb2f42bb2c9aed2e" title="Close current socket. " alt="" coords="959,220,1090,247"/>
+<area shape="rect" id="node7" href="$a00217.html#a79449d2f35a8acc8ed0585044f75524d" title="Dump the contents of data into the log file in a human readable format. " alt="" coords="953,271,1096,297"/>
+<area shape="rect" id="node8" href="$a00388.html#ga0cb72d3f6943795c39db1fa692be0a58" title="Return a single byte from the input buffer. " alt="" coords="238,195,341,221"/>
+<area shape="rect" id="node9" href="$a00390.html#gafb26aba5d935e40b87b95e21a5185848" title="Reads a string from wire in a new allocated buffer. " alt="" coords="215,144,364,171"/>
+<area shape="rect" id="node4" href="$a00388.html#ga410619783bdf2bb60b0f27a5578e0e07" title="Read in one &#39;packet&#39; from the server. " alt="" coords="777,195,905,221"/>
+<area shape="rect" id="node10" href="$a00388.html#ga90f080e6e9448feac15dee1370d66802" title="Fetch a string from the wire. " alt="" coords="421,144,533,171"/>
+<area shape="rect" id="node11" href="$a00388.html#ga676c4dee6522815b16fdc8e448e43590" title="For UTF&#45;8 and similar, tds_iconv() may encounter a partial sequence when the chunk boundary is not al..." alt="" coords="591,144,729,171"/>
+</map>

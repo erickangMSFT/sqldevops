@@ -1,0 +1,11 @@
+<map id="tds_prdatatype" name="tds_prdatatype">
+<area shape="rect" id="node2" href="$a00372.html#ga8b00d5cdcaa20cba13fa2e03d52a443e" title="Convert one datatype to another. " alt="" coords="171,93,277,120"/>
+<area shape="rect" id="node7" href="$a00372.html#gaaf8349999c16b3c36caf5947747a2915" title="Test whether or not a datatype can be converted to another datatype. " alt="" coords="173,151,275,177"/>
+<area shape="rect" id="node3" href="$a00372.html#ga32eb72f6fb3edb130e59fb3dd0766e7e" title="cf. " alt="" coords="325,81,409,108"/>
+<area shape="rect" id="node4" href="$a00372.html#gaf641c8e3d34607ca8b7ac2afed3e6d67" title="Print a regular result row to a buffer. " alt="" coords="459,5,547,32"/>
+<area shape="rect" id="node5" href="$a00372.html#gaa30be3414a97aac6139af2e928db91ca" title="Print a result set to stdout. " alt="" coords="466,56,539,83"/>
+<area shape="rect" id="node6" href="$a00372.html#ga548153eb2eae76c48aa9d4b72258dc1c" title="Send text or image data to the server. " alt="" coords="457,107,548,133"/>
+<area shape="rect" id="node8" href="$a00372.html#ga873bc0f4663165e711655ade1dfae795" title="Tie a host variable to a resultset column. " alt="" coords="336,151,399,177"/>
+<area shape="rect" id="node10" href="$a00372.html#gafefd17e15b22adda84366c817178dd7d" title="Bind a compute column to a program variable. " alt="" coords="328,201,407,228"/>
+<area shape="rect" id="node9" href="$a00232.html#af8ada101cd189eff87b3533cbeaaa23b" title="Pivot the rows, creating a new resultset. " alt="" coords="469,157,536,184"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="tds_prtype" name="tds_prtype">
+<area shape="rect" id="node2" href="$a00372.html#gac25ae21ca19777ffab1c013bd6049ebf" title="Print a token value&#39;s name to a buffer. " alt="" coords="172,56,249,83"/>
+<area shape="rect" id="node5" href="$a00217.html#aaee3fe5c514ce5570c9548de9b16e0d9" title="Write a column value to the debug log. " alt="" coords="160,107,261,133"/>
+<area shape="rect" id="node10" href="$a00390.html#ga4e3dd9d3614f5f0433b78b761dd68741" title="tds_process_col_fmt() is the other half of result set processing under TDS 4.2. " alt="" coords="583,157,735,184"/>
+<area shape="rect" id="node11" href="$a00390.html#ga07cee55fd522cca16fb59b7a8f0b1376" title="Reads data information from wire. " alt="" coords="349,313,493,340"/>
+<area shape="rect" id="node14" href="$a00390.html#gad9b6b86f48be077fb44ac603845a0c27" title="Reads data metadata from wire. " alt="" coords="143,208,279,235"/>
+<area shape="rect" id="node3" href="$a00374.html#ga6cf03708baaf02eb016b9ee77160d879" title="Bind a program host variable to a database column. " alt="" coords="382,56,461,83"/>
+<area shape="rect" id="node4" href="$a00372.html#gaa30be3414a97aac6139af2e928db91ca" title="Print a result set to stdout. " alt="" coords="385,5,458,32"/>
+<area shape="rect" id="node6" href="$a00390.html#gacb3354443bcefe7a500a500a4904cc05" title="process output parameters of a stored procedure. " alt="" coords="327,107,516,133"/>
+<area shape="rect" id="node7" href="$a00390.html#gabfc9de1d1fe718818caf63a4be4035a6" title="process all streams. " alt="" coords="1017,208,1167,235"/>
+<area shape="rect" id="node8" href="$a00390.html#ga9fdef8228d29cab7fa9098f07fa73fba" title="Process parameters from networks. " alt="" coords="564,91,753,133"/>
+<area shape="rect" id="node9" href="$a00390.html#ga39453d084f3f780ac4602d4abf2839f7" title="tds_process_default_tokens() is a catch all function that is called to process tokens not known to ot..." alt="" coords="811,171,960,213"/>
+<area shape="rect" id="node12" href="$a00390.html#gaca56fc22d65a24a96d1bef310ade73aa" title="tds7_process_result() is the TDS 7.0 result set processing routine. " alt="" coords="584,313,733,340"/>
+<area shape="rect" id="node13" href="$a00390.html#ga6728e344caa20aea1def85f58dea138b" title="tds7_process_compute_result() processes compute result sets for TDS 7/8. " alt="" coords="801,390,969,431"/>
+<area shape="rect" id="node15" href="$a00390.html#ga547b2f48659f77a69aa802d861ac827d" title="tds5_process_result() is the TDS 5.0 result set processing routine. " alt="" coords="584,259,733,285"/>
+<area shape="rect" id="node16" href="$a00390.html#ga416cf119c1d4a0fca27dc5b50c261358" title="Process results from dynamic. " alt="" coords="573,208,745,235"/>
+</map>

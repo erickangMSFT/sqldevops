@@ -1,0 +1,8 @@
+<map id="dbmoretext" name="dbmoretext">
+<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="652,34,755,61"/>
+<area shape="rect" id="node3" href="$a00326.html#ab68dead99a2ebec55895a10cd3db5202" title="Send some data in the writetext request started by tds_writetext_start. " alt="" coords="145,34,308,61"/>
+<area shape="rect" id="node6" href="$a00326.html#ac1e460551f1188620ea478238864ac4b" title="Finish sending writetext data. " alt="" coords="159,85,294,112"/>
+<area shape="rect" id="node4" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="367,34,473,61"/>
+<area shape="rect" id="node5" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="532,85,604,112"/>
+<area shape="rect" id="node7" href="$a00388.html#ga5feb53554e8917a81bbbc332163a61fb" title="Flush packet to server. " alt="" coords="356,85,484,112"/>
+</map>

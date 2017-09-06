@@ -1,0 +1,629 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Troubleshooting</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="PREVIOUS"
+TITLE="ODBC on Unix"
+HREF="uodbc.htm"><LINK
+REL="NEXT"
+TITLE="Is the server there?"
+HREF="serverthere.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="uodbc.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="serverthere.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="TROUBLESHOOTING"
+></A
+>Chapter 8. Troubleshooting</H1
+><TABLE
+BORDER="0"
+WIDTH="100%"
+CELLSPACING="0"
+CELLPADDING="0"
+CLASS="EPIGRAPH"
+><TR
+><TD
+WIDTH="45%"
+>&nbsp;</TD
+><TD
+WIDTH="45%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+><P
+><I
+>He's like motherf**king McGuiver, no he's better than McGuiver!</I
+></P
+></I
+></TD
+></TR
+><TR
+><TD
+WIDTH="45%"
+>&nbsp;</TD
+><TD
+WIDTH="45%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><I
+><SPAN
+CLASS="ATTRIBUTION"
+>Jason Mewes (Mall Rats)</SPAN
+></I
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="troubleshooting.htm#KNOWNISSUES"
+>Known Issues</A
+></DT
+><DT
+><A
+HREF="serverthere.htm"
+>Is the server there?</A
+></DT
+><DT
+><A
+HREF="logging.htm"
+>Logging</A
+></DT
+><DT
+><A
+HREF="pagenodata.htm"
+>"Page contains no data"</A
+></DT
+><DT
+><A
+HREF="seemtooslow.htm"
+>Slow connection or data retrieval</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="KNOWNISSUES"
+>Known Issues</A
+></H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="KNOWN.PORTING"
+>Porting Issues</A
+></H2
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="KNOWN.DATES"
+>Date Structures and Offsets</A
+></H3
+><P
+>Microsoft and Sybase use different <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> date structures <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>and conventions</I
+></SPAN
+>.  Notably months can be in the range [0,11] or [1,12].  Pay careful attention to the results of <CODE
+CLASS="FUNCTION"
+>dbdatecrack()</CODE
+>.  </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="KNOWN.FLOAT"
+>Floating Point</A
+></H3
+><P
+>Precision may surprise you if you pay attention.  Microsoft's <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> promotes single-precision to double in <CODE
+CLASS="FUNCTION"
+>dbbind()</CODE
+> by appending zeros; C promotes it to the nearest double.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> relies on the C compiler.  </P
+><P
+>Math libraries vary, too.  If porting an application whose output uses functions such at <CODE
+CLASS="FUNCTION"
+>log(3)</CODE
+>, expect differences in different implementations.  Perfectly consistent results between OSes will require the use of a single math library.  </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TEXTFIELDS"
+><SPAN
+CLASS="TYPE"
+>Text</SPAN
+> Fields</A
+></H2
+><P
+>Questions sometimes arise over large <SPAN
+CLASS="TYPE"
+>varchar</SPAN
+> types (anything larger than <SPAN
+CLASS="TYPE"
+>varchar(255)</SPAN
+>) that became available with Microsoft <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server 7.0</SPAN
+>.  When accessing long <SPAN
+CLASS="TYPE"
+>varchar</SPAN
+>s with <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol version 4.2 or 5.0, these fields will be truncated to 255 characters, due to limitations inherent in the protocol definition.  Your best bet in that case is to convert them to <SPAN
+CLASS="TYPE"
+>text</SPAN
+> types.</P
+><P
+>In Microsoft <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> 7.0 and later, <CODE
+CLASS="STRUCTNAME"
+>varchar</CODE
+> types can hold up to 8000 bytes (8000 <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> characters or 4000 Unicode characters).  To move these large <CODE
+CLASS="STRUCTNAME"
+>varchar</CODE
+>s through <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> 4.2, convert them with either a <B
+CLASS="COMMAND"
+>CONVERT</B
+> as in,
+	<PRE
+CLASS="SCREEN"
+>	<KBD
+CLASS="USERINPUT"
+>SELECT mycol = convert(mycol, text) FROM mytable</KBD
+> </PRE
+>
+	or with the newer SQL92 <B
+CLASS="COMMAND"
+>CAST</B
+> syntax e.g.,
+<PRE
+CLASS="SCREEN"
+>	<KBD
+CLASS="USERINPUT"
+>SELECT CAST(mycol as TEXT) FROM mytable</KBD
+></PRE
+></P
+><P
+>There is also a bug (<SPAN
+CLASS="QUOTE"
+>"Lions and tigers and bugs!  Oh, my!"</SPAN
+>) in Microsoft's implementation of <SPAN
+CLASS="TYPE"
+>text</SPAN
+> fields.
+Disregardless [sic] of their documentation, you must explicitly set the value of <CODE
+CLASS="ENVAR"
+>TEXTSIZE</CODE
+>,
+else the text fields will be represented to have a maximum size of 4 gigabytes or so.
+If you encounter some spurious <SPAN
+CLASS="QUOTE"
+>"out of memory"</SPAN
+> error try to set <CODE
+CLASS="ENVAR"
+>TEXTSIZE</CODE
+> to some reasonable value before querying any <SPAN
+CLASS="TYPE"
+>TEXT</SPAN
+> fields.  For example, in <SPAN
+CLASS="APPLICATION"
+>isql</SPAN
+>:
+<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>1&#62; </SAMP
+><KBD
+CLASS="USERINPUT"
+>set <CODE
+CLASS="ENVAR"
+>TEXTSIZE</CODE
+> 10000</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>2&#62; </SAMP
+><KBD
+CLASS="USERINPUT"
+>go</KBD
+></PRE
+>
+	
+				Another way to handle control the default <CODE
+CLASS="ENVAR"
+>TEXTSIZE</CODE
+> is to use the setting in <A
+HREF="freetdsconf.htm#FREETDSCONFFORMAT"
+><TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></A
+>.
+As most of the time data contained in BLOBs fields are much smaller than larger supported fields, we try to avoid considering field sizes
+for BLOBs allocating memory as needed instead, so you should not have to reduce this value unless you really want the server to limit
+data returned by queries.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="ENDIANISM"
+>Endianism</A
+></H2
+><P
+>If either your server or your client is a big endian system, pay careful attention to all references to endianism anywhere near <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.  See the section on <A
+HREF="configs.htm#EMULLE"
+>Little Endian Emulation</A
+> for details.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DATETIME"
+><SPAN
+CLASS="TYPE"
+>Datetime</SPAN
+> and <SPAN
+CLASS="TYPE"
+>Money</SPAN
+></A
+></H2
+><P
+>Big endian clients may experience difficulty with Microsoft servers.  Some versions of <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> 7 did not handle these types on these machines correctly, according to the protocol.  According to
+				<A
+HREF="http://support.microsoft.com/support/kb/articles/Q254/1/23.ASP"
+TARGET="_top"
+> http://support.microsoft.com/support/kb/articles/Q254/1/23.ASP</A
+> on the Microsoft support site, it's fixed as of service pack 3.  Unfortunately, there's no direct way for <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> to know whether or not a service pack has been installed, and how/whether to support the buggy version is an outstanding issue.  Your best bet is to apply their patch.
+				<DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The Knowledge Base article states <SPAN
+CLASS="QUOTE"
+>"The Sybase CT-Lib client is the only known big-endian client that can connect to <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+>."</SPAN
+>  Depends on who's doing the knowing, of course.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="INTEGRATEDSECURITY"
+>Microsoft's <SPAN
+CLASS="QUOTE"
+>"Integrated Security"</SPAN
+></A
+></H2
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> may be unable to connect to the server.  The error message will be <SAMP
+CLASS="COMPUTEROUTPUT"
+>"Login failed for user 'example'.  Reason: Not associated with a trusted SQL Server connection"</SAMP
+>.  To solve this, turn on <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> authentication:</P
+><P
+></P
+><UL
+><LI
+><P
+>Open the <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+><SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> Enterprise Manager</I
+></SPAN
+>,</P
+></LI
+><LI
+><P
+>Select the server,</P
+></LI
+><LI
+><P
+>Right mouse click and choose <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Properties</I
+></SPAN
+>.  A properties window will appear.</P
+></LI
+><LI
+><P
+>Choose the <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Security</I
+></SPAN
+> tab.  The security properties will be displayed.</P
+></LI
+><LI
+><P
+>Change the <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Authentication</I
+></SPAN
+> field to <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+><SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> and Windows</I
+></SPAN
+>,</P
+></LI
+><LI
+><P
+>Apply the changes and try again.</P
+></LI
+></UL
+><P
+>These instructions apply to Microsoft <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server 7</SPAN
+> and <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server 2000</SPAN
+>.</P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> supports integrated security mode, too.  If you have <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> running in integrated (domain) mode along with a Windows PDC, and wish to try it, see <A
+HREF="domains.htm"
+>Domain Logins</A
+> in the <A
+HREF="configs.htm"
+>Advanced Configurations</A
+> chapter. If you have Active Directory you can also use Kerberos, see <A
+HREF="kerberos.htm"
+>Kerberos support</A
+>.</P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="uodbc.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="serverthere.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>ODBC on Unix</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Is the server there?</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

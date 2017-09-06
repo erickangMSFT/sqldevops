@@ -1,0 +1,17 @@
+<map id="tds_pr_op" name="tds_pr_op">
+<area shape="rect" id="node2" href="$a00390.html#gae3368ea80d0d8b13791ceb13ee5f19c9" title="tds_process_compute_result() processes compute result sets. " alt="" coords="144,243,304,285"/>
+<area shape="rect" id="node16" href="$a00390.html#ga6728e344caa20aea1def85f58dea138b" title="tds7_process_compute_result() processes compute result sets for TDS 7/8. " alt="" coords="140,309,308,350"/>
+<area shape="rect" id="node3" href="$a00390.html#gabfc9de1d1fe718818caf63a4be4035a6" title="process all streams. " alt="" coords="356,284,505,311"/>
+<area shape="rect" id="node4" href="$a00375.html#gae67546338cb9542a4902aa914f57f314" title="_bcp_exec_out" alt="" coords="569,5,686,32"/>
+<area shape="rect" id="node5" href="$a00372.html#gaf1879b85e8238c015b9648d077665285" title="_dbresults" alt="" coords="584,56,671,83"/>
+<area shape="rect" id="node6" href="$a00373.html#gaff09873008411a0573f6d1a9e6c7cf4b" title="Get count of output parameters filled by a stored procedure. " alt="" coords="584,107,671,133"/>
+<area shape="rect" id="node7" href="$a00372.html#gae1f50a6a2c31fda57cb481922b06841e" title="Wait for results of a query from the server. " alt="" coords="592,157,663,184"/>
+<area shape="rect" id="node8" href="$a00372.html#ga548153eb2eae76c48aa9d4b72258dc1c" title="Send text or image data to the server. " alt="" coords="785,183,875,209"/>
+<area shape="rect" id="node9" href="$a00372.html#ga559e24ba70d0d96c3469eb6ab8f74e05" title="Cancel the query currently being retrieved, discarding all pending rows. " alt="" coords="580,259,675,285"/>
+<area shape="rect" id="node10" href="$a00372.html#gadd5685565c8c6c86079e17b8a73b324c" title="Fetch part of a text or image value from the server. " alt="" coords="583,309,672,336"/>
+<area shape="rect" id="node11" href="$a00372.html#gac980139b9cea03cf93e373d425991481" title="Transmit the command buffer to the server. " alt="" coords="584,360,671,387"/>
+<area shape="rect" id="node12" href="$a00387.html#gaf0da49585d39e99780a004ee2ca23479" title="Send option commands to server. " alt="" coords="749,465,911,492"/>
+<area shape="rect" id="node13" href="$a00217.html#ac6610c72bd31bad5378f760fa9b12d66" title="Initialize BCP information. " alt="" coords="579,461,676,488"/>
+<area shape="rect" id="node14" href="$a00390.html#gaeeb1562044786ea17bea361ed83e6946" title="Process results for simple query as &quot;SET TEXTSIZE&quot; or &quot;USE dbname&quot; If the statement returns results..." alt="" coords="554,513,701,554"/>
+<area shape="rect" id="node15" href="$a00390.html#gaf233e79967f82f4e0dd4d11524917a34" title="tds_process_cancel" alt="" coords="553,579,701,605"/>
+</map>

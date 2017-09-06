@@ -1,0 +1,528 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>PHP</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="How to get what works with it working"
+HREF="software.htm"><LINK
+REL="PREVIOUS"
+TITLE="Perl"
+HREF="perl.htm"><LINK
+REL="NEXT"
+TITLE="Python"
+HREF="python.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="perl.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. How to get what works with it working</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="python.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PHP"
+>PHP</A
+></H1
+><P
+>There are three options for building PHP with support for <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> corresponding to the three <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>s that <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> supports: <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>, <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+>, and <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+>.
+			<DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>All these examples build the CGI version.  Consult <A
+HREF="http://www.php.net/docs.php"
+TARGET="_top"
+>PHP's documentation</A
+> for building the Apache module and including other extensions.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="PHPDBLIB"
+><SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+></A
+></H2
+><P
+>PHP can be configured with <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> access for a "Sybase" server (which also works with Microsoft servers), or with the <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>mssql</I
+></SPAN
+> extension, intended exclusively for Microsoft servers.</P
+><P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.PHP.DBLIB"
+></A
+><P
+><B
+>Example 7-6. PHP and <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> for <SPAN
+CLASS="QUOTE"
+>"Sybase"</SPAN
+></B
+></P
+><P
+>First build <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> normally.</P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>./configure --prefix=/usr/local/freetds</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>su root</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make install</KBD
+></PRE
+><P
+>Then build PHP with support for <SPAN
+CLASS="QUOTE"
+>"Sybase"</SPAN
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>cd php</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>./configure --with-sybase=/usr/local/freetds</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>su root</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make install</KBD
+></PRE
+><P
+>And that's it!</P
+></DIV
+></P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CTLIB"
+><SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+></A
+></H2
+><P
+>Option 2 is to use the <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+> <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>.  Again here, we run into minor difficulties at build time.  Applications linking with Sybase's OpenClient have to link in a handful of libraries and these libraries vary slightly from platform to platform.  When creating <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> it was decided that there would be only one library: <TT
+CLASS="FILENAME"
+>libct</TT
+>.  This saves a great deal of library naming conflicts that Sybase ran into (e.g. <TT
+CLASS="FILENAME"
+>libtcl</TT
+> is used both by Sybase and the language TCL), however some applications like PHP assume that all the Sybase libraries will be present. So, some hand editing of the Makefile is necessary to remove these extra libs.  Build <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> just as you would for <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> in
+				<A
+HREF="php.htm#PHPDBLIB"
+> with <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+></A
+>, above. Then configure PHP with <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+>.
+	<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>cd php</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>./configure --with-sybase-ct=/usr/local/freetds</KBD
+></PRE
+>
+	Now edit the <TT
+CLASS="FILENAME"
+>Zend/Makefile</TT
+> looking for the <TT
+CLASS="LITERAL"
+>libZend_la_LDFLAGS</TT
+> line and remove <TT
+CLASS="LITERAL"
+>-lsybtcl -lintl -lcomn</TT
+> and <TT
+CLASS="LITERAL"
+>-lcs</TT
+>, leaving the <TT
+CLASS="LITERAL"
+>-lct</TT
+>. Then proceed to make and install PHP.
+<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>su root</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make install</KBD
+></PRE
+>
+	We hope an upcoming version of PHP will automatically detect the presence of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> and include only the <TT
+CLASS="LITERAL"
+>-lct</TT
+> library.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="ODBC"
+><SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+></A
+></H2
+><P
+>The third and newest option is to use the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> driver with PHP.  First build the <SPAN
+CLASS="PRODUCTNAME"
+>iODBC</SPAN
+> or <SPAN
+CLASS="PRODUCTNAME"
+>unixODBC</SPAN
+> driver manager and <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> as detailed in <A
+HREF="prepodbc.htm"
+>Preparing ODBC</A
+>.  Then build PHP with support for ODBC.
+<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>cd php</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>./configure --with-iodbc=/usr/local</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>su root</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make install</KBD
+></PRE
+>
+	Now everything should run.  There is a sample PHP script in the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> samples directory called <TT
+CLASS="FILENAME"
+>odbctest.php</TT
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="perl.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="python.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Perl</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="software.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Python</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

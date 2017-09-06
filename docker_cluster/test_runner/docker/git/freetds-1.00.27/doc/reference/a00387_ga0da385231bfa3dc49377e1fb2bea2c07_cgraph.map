@@ -1,0 +1,8 @@
+<map id="tds_start_query" name="tds_start_query">
+<area shape="rect" id="node2" href="$a00387.html#ga9ad2e6defce530a8778791cce0166ccd" title="Start query packet of a given type. " alt="" coords="173,31,333,57"/>
+<area shape="rect" id="node3" href="$a00387.html#ga024bc5482366735070befd6f4af59f71" title="Convert a string in an allocated buffer. " alt="" coords="381,5,520,32"/>
+<area shape="rect" id="node6" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="397,56,504,83"/>
+<area shape="rect" id="node4" href="$a00385.html#ga87db49044919f1bc84c0ff5e9ab00304" title="Wrapper around iconv(3). " alt="" coords="568,5,651,32"/>
+<area shape="rect" id="node5" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="699,56,801,83"/>
+<area shape="rect" id="node7" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="573,107,645,133"/>
+</map>

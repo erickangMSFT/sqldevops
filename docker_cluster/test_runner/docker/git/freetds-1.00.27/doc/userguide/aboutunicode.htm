@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>About Unicode, UCS-2, and UTF-8</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="PREVIOUS"
+TITLE="What it looks like"
+HREF="interfacesformat.htm"><LINK
+REL="NEXT"
+TITLE="ISO 8859: What everyone would like to forget"
+HREF="iso8859.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="APPENDIX"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="interfacesformat.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="iso8859.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="APPENDIX"
+><H1
+><A
+NAME="ABOUTUNICODE"
+></A
+>Appendix C. About Unicode, UCS-2, and UTF-8</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="aboutunicode.htm#ASCII"
+><ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>: What everyone knows</A
+></DT
+><DT
+><A
+HREF="iso8859.htm"
+>ISO 8859: What everyone would like to forget</A
+></DT
+><DT
+><A
+HREF="unicode.htm"
+>Unicode: East meets West</A
+></DT
+><DT
+><A
+HREF="unicodegoodbad.htm"
+>Unicode's Pluses and Minuses</A
+></DT
+><DT
+><A
+HREF="unicodeutf.htm"
+>Unicode Transformation Format: UTF-8</A
+></DT
+><DT
+><A
+HREF="unicodefreetds.htm"
+>Unicode and <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></A
+></DT
+></DL
+></DIV
+><P
+>For better or worse, <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> brings the otherwise innocent programmer into contact with the arcane business of how data are stored and transported.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is a data communications library that of course connects to databases, which are charged with storing information in a way that is neutral to all architectures and languages.  On the surface, that might not seem very complex, even worth discussing.  Under the surface, things are not so simple.</P
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="ASCII"
+><ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>: What everyone knows</A
+></H1
+><P
+>The world we are all familiar with, programmingwise, is <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>.  Our email (mostly), our <SPAN
+CLASS="QUOTE"
+>"text"</SPAN
+> files, our web pages (mostly), all use <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> to represent English (or English-like) text. Perhaps because <A
+HREF="http://czyborra.com/charsets/iso646.html"
+TARGET="_top"
+><ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+></A
+> was standardized back in 1972 by the ISO, it seems like the <SPAN
+CLASS="QUOTE"
+>"natural"</SPAN
+> way to store information.  But let's look under the hood a little bit, and examine our assumptions.</P
+><P
+>Our so-called <SPAN
+CLASS="QUOTE"
+>"text"</SPAN
+> files are nothing special, nothing but a little agreement we enter into with our operating system.  The only reason we can <SPAN
+CLASS="QUOTE"
+>"read"</SPAN
+> them with <B
+CLASS="COMMAND"
+>cat</B
+> or <B
+CLASS="COMMAND"
+>vi</B
+> is that the operating system and its tools are in on the agreement.  A file is only a stream of bytes, after all, no more <SPAN
+CLASS="QUOTE"
+>"text"</SPAN
+> than an executable.  The only thing distinguishing a <SPAN
+CLASS="QUOTE"
+>"text"</SPAN
+> file from any other, is our understanding to treat it like one.  We agree that the number 65 will represent the letter <TT
+CLASS="LITERAL"
+>A</TT
+>, 66, <TT
+CLASS="LITERAL"
+>B</TT
+>, and so on, 127 values in all.  See <B
+CLASS="COMMAND"
+>man ascii</B
+> for further details.</P
+><P
+>The important thing to understand is that the designation of 65 for <TT
+CLASS="LITERAL"
+>A</TT
+> and so on is a choice.  It's an <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>encoding standard</I
+></SPAN
+>, made necessary by the old simple fact that computers store numbers, not letters.  <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> is so ubiquitous these days that it's hard sometimes to remember there was a time when it was but one of a set of competing encoding standards.  Others you probably have heard of include <ACRONYM
+CLASS="ACRONYM"
+>EBCDIC</ACRONYM
+> and the Baudot systems, but they are by no means the only historical alternatives, nor the only modern ones.</P
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="ASCIICOMPACT"
+>The <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> Compact</A
+></H2
+><P
+>UNIX&reg; and unix-like systems bought into <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> big time.  Program code, filenames, string constants (and variables), configuration files, everything but everything is encoded in <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>.  Practically every utility, command, and library assumes the <SPAN
+CLASS="QUOTE"
+>"text"</SPAN
+> data will be <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>. At the dawn of the 21<SUP
+>st</SUP
+> century, there is widespread recognition that <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> will no longer suffice, but the art of upgrading all the computers and computer programmers is, well, an unfinished work.</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="interfacesformat.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="iso8859.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>What it looks like</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ISO 8859: What everyone would like to forget</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

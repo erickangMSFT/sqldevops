@@ -1,0 +1,10 @@
+<map id="tds_staticout_stream_init" name="tds_staticout_stream_init">
+<area shape="rect" id="node2" href="$a00388.html#ga676c4dee6522815b16fdc8e448e43590" title="For UTF&#45;8 and similar, tds_iconv() may encounter a partial sequence when the chunk boundary is not al..." alt="" coords="232,145,371,172"/>
+<area shape="rect" id="node3" href="$a00388.html#ga90f080e6e9448feac15dee1370d66802" title="Fetch a string from the wire. " alt="" coords="433,107,545,133"/>
+<area shape="rect" id="node8" href="$a00388.html#ga8d214089b6e97fc0da5e0be09f216d73" title="Fetch character data the wire. " alt="" coords="419,183,560,209"/>
+<area shape="rect" id="node4" href="$a00330.html#a84e17808683ba2dd956e811a42e23176" title="Write data to wire. " alt="" coords="626,5,749,32"/>
+<area shape="rect" id="node5" href="$a00388.html#gafae08056186b143f3ef1399307dc9be7" title="Reads a string from wire and put in a DSTR. " alt="" coords="637,56,738,83"/>
+<area shape="rect" id="node6" href="$a00390.html#gafb26aba5d935e40b87b95e21a5185848" title="Reads a string from wire in a new allocated buffer. " alt="" coords="613,107,762,133"/>
+<area shape="rect" id="node7" href="$a00390.html#ga5cfc0340d8d717e67f60037e029b2142" title="tds_process_dynamic() finds the element of the dyns array for the id " alt="" coords="608,157,767,184"/>
+<area shape="rect" id="node9" href="$a00330.html#abac4d689e0e31e80587f89247c6395a4" title="Read a data from wire. " alt="" coords="625,208,749,235"/>
+</map>

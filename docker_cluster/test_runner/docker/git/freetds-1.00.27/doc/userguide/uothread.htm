@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Threading in unixODBC</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Advanced Configurations"
+HREF="configs.htm"><LINK
+REL="PREVIOUS"
+TITLE="Kerberos Support"
+HREF="kerberos.htm"><LINK
+REL="NEXT"
+TITLE="Appending Dump Files"
+HREF="appendmode.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="kerberos.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Advanced Configurations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="appendmode.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="UOTHREAD"
+>Threading in unixODBC</A
+></H1
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>unixODBC</SPAN
+> uses a strong thread-locking policy that causes big locks with the default configuration for <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.  Performance of multi-threaded applications can be affected because every operation is serialized.  To avoid this problem, choose a threading model in <TT
+CLASS="FILENAME"
+>odbcinst.ini</TT
+>.
+			<DIV
+CLASS="EXAMPLE"
+><A
+NAME="ODBCINSTTHREAD"
+></A
+><P
+><B
+>Example 5-5. Sample <TT
+CLASS="FILENAME"
+>odbcinst.ini</TT
+> for threading model</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>	[FreeTDS]
+	Driver = /usr/local/freetds/lib/libtdsodbc.so
+	Threading = 1
+	</PRE
+></DIV
+>
+			<DIV
+CLASS="EXAMPLE"
+><A
+NAME="ODBCINITHREAD"
+></A
+><P
+><B
+>Example 5-6. Sample <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+> for threading model</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>	[Server1]
+	Driver = FreeTDS
+	Server = myServer1
+	Port = 1433
+	TDS_Version = 7.2
+	</PRE
+></DIV
+>
+			You can use also a connection string e.g. <TT
+CLASS="LITERAL"
+>DRIVER=FreeTDS;SERVER=myServer1;PORT=1433;TDS_Version=7.2;</TT
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="kerberos.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="appendmode.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Kerberos Support</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="configs.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Appending Dump Files</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,433 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Logging</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Troubleshooting"
+HREF="troubleshooting.htm"><LINK
+REL="PREVIOUS"
+TITLE="Is the server there?"
+HREF="serverthere.htm"><LINK
+REL="NEXT"
+TITLE='"Page contains no data"'
+HREF="pagenodata.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="serverthere.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Troubleshooting</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="pagenodata.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="LOGGING"
+>Logging</A
+></H1
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> has quite extensive logging capabilities.  These are often invaluable in setting up new configurations, when it's hard to be sure precisely what configuration information is being used, and what communication is (not) working.   Often such questions can be quickly resolved by turning on logging and examining the logs.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="ENVIRONMENT"
+>Environment Variables that Control Logging</A
+></H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><CODE
+CLASS="ENVAR"
+>TDSDUMP</CODE
+></DT
+><DD
+><P
+>Log files can be turned on using the <CODE
+CLASS="ENVAR"
+>TDSDUMP</CODE
+> environment variable.  For instance, setting the location of a dumpfile
+<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export TDSDUMP=/tmp/freetds.log</KBD
+></PRE
+>
+	Will generate a log file named <TT
+CLASS="FILENAME"
+>freetds.log</TT
+> in the <TT
+CLASS="FILENAME"
+>/tmp</TT
+> directory.
+	<DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="90%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+> The filenames <TT
+CLASS="FILENAME"
+>stdout</TT
+> and <TT
+CLASS="FILENAME"
+>stderr</TT
+> are also supported.  They can be handy if you want to intersperse the log output with your application's output, or if your application opens more than one connection.  (The logfile is otherwise normally truncated each time the library connects to the server.)</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+></DD
+><DT
+><CODE
+CLASS="ENVAR"
+>TDSDUMPCONFIG</CODE
+></DT
+><DD
+><P
+>Set <CODE
+CLASS="ENVAR"
+>TDSDUMPCONFIG</CODE
+> to a file to
+							write information to on how the configuration information is being
+							obtained, e.g. from environment variables, a <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> file, or <TT
+CLASS="FILENAME"
+>interfaces</TT
+> file.  Sometimes it's unclear what source of information <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is using to connect to a given servername.  This variable can make that bright and clear.</P
+></DD
+></DL
+></DIV
+><DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>What if you were running <SPAN
+CLASS="PRODUCTNAME"
+>Apache</SPAN
+>/PHP?  <SPAN
+CLASS="PRODUCTNAME"
+>Apache</SPAN
+> has many children.
+					Setting the <CODE
+CLASS="ENVAR"
+>TDSDUMP</CODE
+> (and/or <CODE
+CLASS="ENVAR"
+>TDSDUMPCONFIG</CODE
+>) variable to a null string will cause <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> to open a log under every PID.
+<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export TDSDUMP=""</KBD
+></PRE
+>
+	The log files will be named <TT
+CLASS="FILENAME"
+>/tmp/freetds.log.<TT
+CLASS="REPLACEABLE"
+><I
+>9999</I
+></TT
+></TT
+>, where <TT
+CLASS="REPLACEABLE"
+><I
+>9999</I
+></TT
+> is the pid number of the process generating the log.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>A couple of important notes about using the logs with <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.  First,
+				the logs tend to grow large, so trim or archive them often.  Secondly,
+				<SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will record certain network packets to the log, this
+				<SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>includes login packets which can contain clear text or clear text
+					equivalent passwords.</I
+></SPAN
+> So, if this is a concern (most likely
+				is) make sure that the files are not world readable, and avoid posting
+				them to mailing lists.</P
+><P
+>Once in a while, someone writes to the mailing list, asking why <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is so <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>slow</I
+></SPAN
+>.  It sometimes turns out that logging was left turned on.  Don't you be the next victim!  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> logs are meant for development and debugging, not as a system monitoring tool.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="LOGGING.FREETDS.CONF"
+><TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> variables that Control Logging</A
+></H2
+><P
+>See <A
+HREF="freetdsconf.htm#TAB.FREETDS.CONF.DEBUGFLAGS"
+>Valid bitmask values for <TT
+CLASS="LITERAL"
+>debug flags</TT
+> entry in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></A
+></P
+><P
+>The logfile is normally truncated each time <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> connects to the server.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="LOGGING.ODBC"
+>Logging in ODBC land</A
+></H2
+><FONT
+COLOR="RED"
+>(Tree-huggers need not worry)</FONT
+><P
+>Many ODBC Driver Managers have their own support for logging. How logging is controlled, however, varies widely by implementation. The ODBC log is often very helpful because it provides a log of all calls made directly by the application.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>unixODBC</DT
+><DD
+><P
+>unixODBC supports logging via some entries in <TT
+CLASS="FILENAME"
+>odbcinst.ini</TT
+>. For example:
+<PRE
+CLASS="SCREEN"
+>	[ODBC]
+	Trace        = Yes
+	TraceFile    = /tmp/sql.log
+	ForceTrace   = Yes</PRE
+>
+	Will generate a log file named <TT
+CLASS="FILENAME"
+>sql.log</TT
+> in the <TT
+CLASS="FILENAME"
+>/tmp</TT
+> directory.</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="serverthere.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="pagenodata.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Is the server there?</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="troubleshooting.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>"Page contains no data"</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

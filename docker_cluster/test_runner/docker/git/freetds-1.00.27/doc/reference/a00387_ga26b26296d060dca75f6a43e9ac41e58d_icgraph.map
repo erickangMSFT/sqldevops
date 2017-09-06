@@ -1,0 +1,8 @@
+<map id="tds_quote_and_put" name="tds_quote_and_put">
+<area shape="rect" id="node2" href="$a00387.html#ga0e2e7230c425e925402d7856ff5b4b18" title="Send a parameter to server. " alt="" coords="196,31,379,57"/>
+<area shape="rect" id="node3" href="$a00387.html#gaf614c75ea8f7ad411e53dac0e2f91be4" title="Send RPC as string query. " alt="" coords="441,5,615,32"/>
+<area shape="rect" id="node5" href="$a00387.html#ga02c6ce3ff96369603a6ee4efee64caae" title="Emulate prepared execute traslating to a normal language. " alt="" coords="427,56,629,83"/>
+<area shape="rect" id="node4" href="$a00387.html#ga5f071b94ad7889690762dc85646c74ab" title="tds_submit_rpc() call a RPC from server. " alt="" coords="700,5,816,32"/>
+<area shape="rect" id="node6" href="$a00387.html#gae603aed795a4c5bb26ab159a11256996" title="Submit a prepared query with parameters. " alt="" coords="677,56,839,83"/>
+<area shape="rect" id="node7" href="$a00387.html#ga3e7b4793c6f799fbc6c174f673bb5b32" title="tds_submit_execute() sends a previously prepared dynamic statement to the server. ..." alt="" coords="685,107,831,133"/>
+</map>

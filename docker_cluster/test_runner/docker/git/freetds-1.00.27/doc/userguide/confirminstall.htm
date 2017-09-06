@@ -1,0 +1,980 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Confirm the installation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Install FreeTDS"
+HREF="install.htm"><LINK
+REL="PREVIOUS"
+TITLE="Port/instance override syntax"
+HREF="portoverride.htm"><LINK
+REL="NEXT"
+TITLE="Preparing ODBC"
+HREF="prepodbc.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="portoverride.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Install <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="prepodbc.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CONFIRMINSTALL"
+>Confirm the installation</A
+></H1
+><P
+>We want to make sure that when your application requests a connection to your server, it actually works.  In detail, we want to know:
+			<P
+></P
+><UL
+><LI
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> can find and read <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> exists in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></P
+></LI
+><LI
+><P
+>a <TT
+CLASS="REPLACEABLE"
+><I
+>host</I
+></TT
+> property exists for <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="REPLACEABLE"
+><I
+>host</I
+></TT
+> can be resolved to a network address</P
+></LI
+><LI
+><P
+>the server is listening to the <TT
+CLASS="REPLACEABLE"
+><I
+>port</I
+></TT
+> or named <TT
+CLASS="REPLACEABLE"
+><I
+>instance</I
+></TT
+></P
+></LI
+><LI
+><P
+>the user can log in to the server</P
+></LI
+></UL
+>
+						
+			Each of the above can be confirmed independently with tsql.  Once you're sure you can connect and log in, you can run the unit tests to see if the software works as promised.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TSQL"
+><SPAN
+CLASS="APPLICATION"
+>tsql</SPAN
+></A
+></H2
+><P
+>The <I
+CLASS="FIRSTTERM"
+>tsql</I
+> utility is provided as part of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> expressly for troubleshooting.  <B
+CLASS="COMMAND"
+>tsql</B
+> is superficially similar to an <B
+CLASS="COMMAND"
+>isql</B
+>, but uses <TT
+CLASS="FILENAME"
+>libtds</TT
+> directly, bypassing the client libraries (e.g., <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>).  It can also  report where it looks for <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> and other compile-time settings (with <B
+CLASS="COMMAND"
+>tsql -C</B
+>).</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.TSQLSHOWSETTINGS"
+></A
+><P
+><B
+>Example 3-2. Show compile-time settings with <B
+CLASS="COMMAND"
+>tsql</B
+></B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -C </KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>Compile-time settings (established with the "configure" script)
+                        	    Version: freetds v0.1.0
+        	     freetds.conf directory: /usr/local/etc
+	     MS db-lib source compatibility: no
+        	Sybase binary compatibility: no
+                	      Thread safety: yes
+                	      iconv library: no
+                        	TDS version: 7.0
+                        	      iODBC: no
+                        	   unixodbc: no
+        	      SSPI "trusted" logins: no
+                        	    Keberos: no </SAMP
+></PRE
+></DIV
+><P
+>For details on the use of <B
+CLASS="COMMAND"
+>tsql</B
+>, consult its man page.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="TSQL.FREETDS.CONF"
+><TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> Lookup</A
+></H3
+><P
+>If all goes well, the first time you fire up <B
+CLASS="COMMAND"
+>tsql</B
+> it connects and you can issue your first query.  More often, though, the result is less joyous.  Listed below for your troubleshooting pleasure are a variety of <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> lookup failures and their corresponding messages.</P
+><P
+>When <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> cannot be converted to an address, up to two messages may result.  Successful conversion (by any means) never produces an error message.
+					
+					<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.NOTFOUND"
+></A
+><P
+><B
+>Example 3-3. Failure to find <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -S <TT
+CLASS="REPLACEABLE"
+><I
+>nobox</I
+></TT
+> -U <TT
+CLASS="REPLACEABLE"
+><I
+>sa</I
+></TT
+> </KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>locale is "C"
+	locale charset is "646"
+	Password:
+	Error 20012 (severity 2):
+	Server name not found in configuration files.
+	Error 20013 (severity 2):
+	Unknown host machine name.
+	There was a problem connecting to the server
+	</SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>host nobox</KBD
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>Host not found.</SAMP
+></PRE
+></DIV
+>
+	
+					In the above case message 20012 indicates <TT
+CLASS="LITERAL"
+>nobox</TT
+> was not found in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.  The library then treated <TT
+CLASS="LITERAL"
+>nobox</TT
+> as a network hostname but found it also not to be valid per DNS, leading to message 20013.</P
+><P
+>If <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> is found in the configuration files, but refers to an invalid hostname, only message 20013 is returned.
+					
+					<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.BADNAME"
+></A
+><P
+><B
+>Example 3-4. Failure to resolve hostname for <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+></B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -S <TT
+CLASS="REPLACEABLE"
+><I
+>nonesuch</I
+></TT
+> -U <TT
+CLASS="REPLACEABLE"
+><I
+>sa</I
+></TT
+>   </KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>locale is "C"
+	locale charset is "646"
+	Error 20013 (severity 2):
+	Unknown host machine name.
+	There was a problem connecting to the server</SAMP
+></PRE
+></DIV
+>
+	Unfortunately, the <SPAN
+CLASS="QUOTE"
+>"host machine name"</SPAN
+> (the right side of the <TT
+CLASS="LITERAL"
+>host</TT
+> line in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>) isn't mentioned in the error message.  Fortunately, this kind of setup problem is rarely encountered by users.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="TSQL.CONNECT"
+>Connecting to the Server</A
+></H3
+><P
+>If name lookup succeeds, <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> next attempts to connect to the server.  <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>To connect</I
+></SPAN
+> means to form at TCP connection by calling <CODE
+CLASS="FUNCTION"
+>connect(2)</CODE
+>.  A valid connection must exist before any information can be exchanged with the server.  Specifically, we need a connection before we can log in.</P
+><P
+>A few things can go wrong at this point.  The address returned by DNS may not be that of the machine hosting the server, or indeed of <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>any</I
+></SPAN
+> machine!  The machine may be down.  The server may not be running.  The server may be running but not listening to the port <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is attempting to connect to.  In rare cases, both ends are correctly configured, but a firewall stands in the way.</P
+><P
+>If no server accepts the connection, no connection can be established.  It's difficult to know why, and the message is consequently vague.
+					
+					<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.NOCONNECT"
+></A
+><P
+><B
+>Example 3-5. Failing to connect with tsql</B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -S <TT
+CLASS="REPLACEABLE"
+><I
+>emforester</I
+></TT
+> -U <TT
+CLASS="REPLACEABLE"
+><I
+>sa</I
+></TT
+>   #only connect?</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>Msg 20009, Level 9, State -1, Server OpenClient, Line -1
+	Unable to connect: Adaptive Server is unavailable or does not exist
+	There was a problem connecting to the server</SAMP
+></PRE
+></DIV
+>
+	If you get message 20009, remember you haven't connected to the machine.  It's a configuration or network issue,  <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>not a protocol failure</I
+></SPAN
+>.  Verify the server is up, has the name and IP address <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is using, and is listening to the configured port.</P
+><P
+>Named instances provide another way for connections to fail.  You can verify the instance name and the port the server is using with <B
+CLASS="COMMAND"
+>tsql -L</B
+>.
+					
+					<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.INSTANCE.NAME"
+></A
+><P
+><B
+>Example 3-6. Getting instance information with tsql</B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -LH <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> </KBD
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>locale is "C"
+	locale charset is "646"
+	ServerName TITAN
+	InstanceName MSSQLSERVER
+	IsClustered No
+	Version 8.00.194
+	tcp 1433
+	np \\TITAN\pipe\sql\query</SAMP
+></PRE
+></DIV
+>
+	<TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> could be configured to use instance <TT
+CLASS="LITERAL"
+>MSSQLSERVER</TT
+> or port <TT
+CLASS="LITERAL"
+>1433</TT
+>.</P
+><P
+>After a valid connection is formed, <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> sends a login packet.  The TDS protocol provides no way to interrogate the server for its TDS version.  If you specify the wrong one, you'll get an error.
+					
+					<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.BAD.TDSVER"
+></A
+><P
+><B
+>Example 3-7. Using the wrong protocol for the server</B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -S <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> </KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>Msg 20017, Level 9, State -1, Server OpenClient, Line -1
+	Unexpected EOF from the server
+	Msg 20002, Level 9, State -1, Server OpenClient, Line -1
+	Adaptive Server connection failed
+	There was a problem connecting to the server</SAMP
+></PRE
+></DIV
+>
+	
+					<SPAN
+CLASS="QUOTE"
+>"Unexpected EOF from the server"</SPAN
+> seems to be a fairly common message when the wrong TDS version is used.  Note that there's no complaint about the login.</P
+><P
+>If the right TDS version is used, the server will accept the login packet and examine its contents to authenticate the user.  If there's a problem, the server will say so.  This is the first time we're receiving a message from the server.  <A
+NAME="AEN1715"
+HREF="#FTN.AEN1715"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>
+										
+					<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.BAD.LOGIN"
+></A
+><P
+><B
+>Example 3-8. Login failure</B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -S <TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> -U notme </KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>Msg 18456, Level 14, State 1, Server [<TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+>], Line 0
+	Login failed for user 'notme'.
+	Msg 20002, Level 9, State -1, Server OpenClient, Line -1
+	Adaptive Server connection failed
+	There was a problem connecting to the server</SAMP
+></PRE
+></DIV
+></P
+><H3
+CLASS="BRIDGEHEAD"
+><A
+NAME="AEN1728"
+></A
+>Bypassing <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>:</H3
+><P
+><P
+><B
+CLASS="COMMAND"
+>tsql</B
+>  {-H <TT
+CLASS="REPLACEABLE"
+><I
+>hostname</I
+></TT
+>} {-p <TT
+CLASS="REPLACEABLE"
+><I
+>port</I
+></TT
+>} {-U <TT
+CLASS="REPLACEABLE"
+><I
+>username</I
+></TT
+>} [-P<TT
+CLASS="REPLACEABLE"
+><I
+>password</I
+></TT
+>] [-C]</P
+>
+					
+					Keep in mind that the TDS protocol version normally comes from <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.  When using <B
+CLASS="COMMAND"
+>tsql</B
+> this way, the library uses the compiled-in default (set by the <TT
+CLASS="FILENAME"
+>configure</TT
+> script).  If that's not what you want, override it using the <CODE
+CLASS="ENVAR"
+>TDSVER</CODE
+> environment variable.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.TSQLHOSTNAME"
+></A
+><P
+><B
+>Example 3-9. Connect with <B
+CLASS="COMMAND"
+>tsql</B
+> using a hostname and port number</B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>TDSVER=7.0 tsql -H <TT
+CLASS="REPLACEABLE"
+><I
+>hillary</I
+></TT
+> -p <TT
+CLASS="REPLACEABLE"
+><I
+>4100</I
+></TT
+> -U <TT
+CLASS="REPLACEABLE"
+><I
+>sa</I
+></TT
+></KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>1&#62;</SAMP
+></PRE
+></DIV
+><P
+>For details on <B
+CLASS="COMMAND"
+>tsql</B
+>, see the its man page.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TESTS"
+><SPAN
+CLASS="APPLICATION"
+>Unit Tests</SPAN
+></A
+></H2
+><P
+>The source code directory of each <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> library includes a <TT
+CLASS="FILENAME"
+>unittests</TT
+> directory.
+				
+<PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>ls -d -1 src/*/unittests</KBD
+>
+	<SAMP
+CLASS="COMPUTEROUTPUT"
+>src/ctlib/unittests
+	src/dblib/unittests
+	src/odbc/unittests
+	src/replacements/unittests
+	src/tds/unittests</SAMP
+></PRE
+>
+	
+				The unit tests rely on the <TT
+CLASS="FILENAME"
+>PWD</TT
+> file in root of the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> source tree.
+				<TT
+CLASS="FILENAME"
+>PWD</TT
+> holds a username, password, servername, and database to be used for the unit tests.  We try to make sure to leave nothing behind: any data and objects created are either temporary or removed at the end of the test.  The tests should all work, subject to disclaimers in the directory's <TT
+CLASS="FILENAME"
+>README</TT
+>.</P
+><P
+>To invoke the tests, edit the <TT
+CLASS="FILENAME"
+>PWD</TT
+> file and issue the command <B
+CLASS="COMMAND"
+>make check</B
+>.  In order to execute all tests successfully, you must indicate a working, available servername in <TT
+CLASS="FILENAME"
+>PWD</TT
+>.
+				Some tests require permission to create stored procedures on server.</P
+><P
+>To complete successfully, the ODBC tests require some additional setup.  In your <TT
+CLASS="FILENAME"
+>PWD</TT
+> file, add a <TT
+CLASS="LITERAL"
+>SRV</TT
+> entry specifying the DSN entry for your <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+>.  The ODBC tests all build their own <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+> and try to redirect the Driver Manager to it, however this functionality is very DM dependent and may well fail unless you have either iODBC or unixODBC.</P
+><P
+><DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>						The <TT
+CLASS="FILENAME"
+>PWD</TT
+> provided by <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> includes usernames and passwords that probably don't exist on your server.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN1715"
+HREF="confirminstall.htm#AEN1715"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>If you'd like to help the project and want to so something fairly easy but still useful, modify tsql to distinguish clearly between errors returned by the library, and those returned by the server.  Errors should be marked <SPAN
+CLASS="QUOTE"
+>"error"</SPAN
+> and don't return <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>state</I
+></SPAN
+> or a line number, but can contain an error code (and message) from the operating system.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="portoverride.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="prepodbc.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Port/instance override syntax</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="install.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Preparing ODBC</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

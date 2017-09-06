@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Choosing a TDS protocol version</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Install FreeTDS"
+HREF="install.htm"><LINK
+REL="PREVIOUS"
+TITLE="Install FreeTDS"
+HREF="install.htm"><LINK
+REL="NEXT"
+TITLE="servername Lookup"
+HREF="name.lookup.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="install.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Install <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="name.lookup.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CHOOSINGTDSPROTOCOL"
+>Choosing a <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol version</A
+></H1
+><P
+>The <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol version is probably something you'd rather not know even existed, much less something you'd have to choose.  But there's not that much to it, really.  Unless you run into an incompatibility, you're best off running with the highest protocol version supported by your server.  That's what the vendors' own products do, which is why when you read the Sybase or Microsoft documentation you find no mention of <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> versions.
+
+			<DIV
+CLASS="TABLE"
+><A
+NAME="TAB.PROTOCOL.BY.PRODUCT"
+></A
+><P
+><B
+>Table 3-1. Versions of the <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> Protocol, by Product</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Product</TH
+><TH
+>TDS Version</TH
+><TH
+>Comment</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>Sybase before System 10, Microsoft SQL Server 6.x</TD
+><TD
+>4.2</TD
+><TD
+>Still works with all products, subject to its limitations.  </TD
+></TR
+><TR
+><TD
+>Sybase System 10 and above</TD
+><TD
+>5.0</TD
+><TD
+>Still the most current protocol used by Sybase. </TD
+></TR
+><TR
+><TD
+>Sybase System SQL Anywhere</TD
+><TD
+>5.0 <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>only</I
+></SPAN
+> </TD
+><TD
+>Originally Watcom SQL Server, a completely separate codebase. Our best information is that SQL Anywhere first supported TDS in version 5.5.03 using the OpenServer Gateway (OSG), and native TDS 5.0 support arrived with version 6.0.  </TD
+></TR
+><TR
+><TD
+>Microsoft SQL Server 7.0</TD
+><TD
+>7.0</TD
+><TD
+>Includes support for the extended datatypes in <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> 7.0 (such as char/<CODE
+CLASS="STRUCTNAME"
+>varchar</CODE
+> fields of more than 255 characters), and support for Unicode.</TD
+></TR
+><TR
+><TD
+>Microsoft SQL Server 2000</TD
+><TD
+>7.1</TD
+><TD
+>Include support for <CODE
+CLASS="SYMBOL"
+>bigint</CODE
+> (64 bit integers), <CODE
+CLASS="SYMBOL"
+>variant</CODE
+> and collation on all fields. Collation is not widely used. </TD
+></TR
+><TR
+><TD
+>Microsoft SQL Server 2005</TD
+><TD
+>7.2</TD
+><TD
+>Includes support for varchar(max), varbinary(max), xml datatypes and MARS<A
+NAME="AEN870"
+HREF="#FTN.AEN870"
+><SPAN
+CLASS="footnote"
+>[a]</SPAN
+></A
+>.</TD
+></TR
+><TR
+><TD
+>Microsoft SQL Server 2008</TD
+><TD
+>7.3</TD
+><TD
+>Includes support for time, date, datetime2, datetimeoffset.</TD
+></TR
+><TR
+><TD
+>Microsoft SQL Server 2012 or 2014</TD
+><TD
+>7.4</TD
+><TD
+>Includes support for session recovery.</TD
+></TR
+><TR
+><TD
+>N/A</TD
+><TD
+>8.0</TD
+><TD
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will alias this version to 7.1 for backwards compatibility reasons, but this should be avoided due to future compatibility concerns. See note below on obsolete versions.</TD
+></TR
+></TBODY
+><TR
+><TD
+COLSPAN="3"
+>Notes:<BR><A
+NAME="FTN.AEN870"
+>a. </A
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Multiple Active Result Sets</I
+></SPAN
+>.<BR></TD
+></TR
+></TABLE
+></DIV
+></P
+><P
+>For best results, use the highest version of the protocol supported by your server.  If you encounter problems, try a lower version.  If that works, though, please report it to the mailing list!
+	<A
+NAME="AEN887"
+HREF="#FTN.AEN887"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></P
+><P
+><P
+></P
+><P
+><B
+>TDS 4.2 has limitations</B
+></P
+><UL
+><LI
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> only, of course.</P
+></LI
+><LI
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>RPC</ACRONYM
+> is not supported.</P
+></LI
+><LI
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>BCP</ACRONYM
+> is not supported.</P
+></LI
+><LI
+><P
+><CODE
+CLASS="STRUCTNAME"
+>varchar</CODE
+> fields are limited to 255 characters.  If your table defines longer fields, they'll be truncated.</P
+></LI
+><LI
+><P
+>dynamic queries (also called <I
+CLASS="FIRSTTERM"
+>prepared statements</I
+>) are not supported.</P
+></LI
+></UL
+></P
+><P
+> The protocol version may also affect how database servers interpret
+			commands.  For example, Microsoft SQL Server 2000 is known to behave differently with versions 4.2
+			and 7.0.  Version 7.0 is recommended for compatibility with SQL Server tools.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN910"
+>Regarding obsolete versions</A
+></H2
+><P
+>In the earlier days of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>, Microsoft did not release official specs for the TDS protocol.
+When MSSQL 2000 (product 8.0) was released, there was semi-official indications from the Microsoft community
+that the TDS protocol would be version 8.0.
+So the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> developers adopted that version for <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.
+Years later, when Microsoft started releasing official specs of the protocol, it became obvious that the TDS
+versions that <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> had labeled 8.0 and 9.0 were actually versions 7.1 and 7.2 respectively.</P
+><P
+>For compatibility reasons version 8.0 is still handled by <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> but you should avoid using it as it could be removed in a future version of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> or it could clash with a future SQL server version.</P
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN887"
+HREF="choosingtdsprotocol.htm#AEN887"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Want to help?  Try out the auto-protocol feature.   <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> has experimental support for iteratively trying protocol connections until it finds one the server accepts.  This is suitable when query responses are non-trivial (because the tiny delay in connecting is thus insignificant).  Try setting your TDS version to <TT
+CLASS="LITERAL"
+>0</TT
+> and report your results.  </P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="install.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="name.lookup.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Install <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="install.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> Lookup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

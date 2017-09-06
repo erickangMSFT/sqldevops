@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>What it looks like</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="The interfaces File"
+HREF="interfacesfile.htm"><LINK
+REL="PREVIOUS"
+TITLE="What it does"
+HREF="interfacespurpose.htm"><LINK
+REL="NEXT"
+TITLE="About Unicode, UCS-2, and UTF-8"
+HREF="aboutunicode.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="interfacespurpose.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix B. The <TT
+CLASS="FILENAME"
+>interfaces</TT
+> File</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="aboutunicode.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INTERFACESFORMAT"
+>What it looks like</A
+></H1
+><P
+>The format of the  <TT
+CLASS="FILENAME"
+>interfaces</TT
+> file is borrowed directly from that used by Sybase on Unix platforms (<SPAN
+CLASS="PRODUCTNAME"
+>Windows</SPAN
+> has a different format).  Additionally, we have overloaded one of the fields to add the ability to set the protocol version.  An example <TT
+CLASS="FILENAME"
+>interfaces</TT
+> file looks like this.</P
+><P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.INTERFACESFILE"
+></A
+><P
+><B
+>Example B-1. An <TT
+CLASS="FILENAME"
+>interfaces</TT
+> file example</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>					myserver
+					query tcp 4.2 127.0.0.1 4000
+					master tcp ether 127.0.0.1 4000
+					</PRE
+></DIV
+></P
+><P
+>The entry starts with the servername beginning in the first column (no
+			whitespace preceding it).  Following the servername are one or more services lines which <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>must</I
+></SPAN
+> be indented with whitespace.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> uses only the query line, although others may be present to retain compatibility with Sybase.			</P
+><P
+>The fields in the services lines are as follows.
+			<DIV
+CLASS="TABLE"
+><A
+NAME="TAB.SERVICES.LINE"
+></A
+><P
+><B
+>Table B-1. Services Line</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Example</TH
+><TH
+>Meaning</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>service</TD
+><TD
+>query</TD
+><TD
+>The only supported service</TD
+></TR
+><TR
+><TD
+>transport</TD
+><TD
+>tcp</TD
+><TD
+>The transport protocol to use.  Only tcp is supported by <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.</TD
+></TR
+><TR
+><TD
+>physical</TD
+><TD
+>4.2</TD
+><TD
+>Historically this field referred the physical/datalink layer, however it appears to simply a comment field.  Therefore, <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> optionally uses it to specify the protocol version to connect with.</TD
+></TR
+><TR
+><TD
+>hostname/IP</TD
+><TD
+>127.0.0.1</TD
+><TD
+>The hostname or IP address where the <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> resides.</TD
+></TR
+><TR
+><TD
+>port</TD
+><TD
+>4000</TD
+><TD
+>The TCP port where the <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> is listening.</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></P
+><P
+>In the example above, the <TT
+CLASS="LITERAL"
+>hostname</TT
+> was entered as an IP address.  It needn't be; it could just as well be a name.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> can use a name rather than an address; it will just let the network (specifically, the <SPAN
+CLASS="APPLICATION"
+>resolver</SPAN
+> get the address.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="interfacespurpose.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="aboutunicode.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>What it does</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="interfacesfile.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>About Unicode, UCS-2, and UTF-8</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

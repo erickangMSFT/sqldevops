@@ -1,4 +1,5 @@
 # Project: AdventureWorks
+This demo contains state-based database development sample with sqlproj and database source code.
 
 > This project requires Windows OS to build and publish a database because the build and publish tasks depend on Data-tier Application Framework (DacFx) and it is available on Windows only. 
 

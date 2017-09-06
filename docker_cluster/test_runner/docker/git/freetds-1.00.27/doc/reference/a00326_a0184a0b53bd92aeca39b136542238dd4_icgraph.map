@@ -1,0 +1,6 @@
+<map id="tds_bcp_add_variable_columns" name="tds_bcp_add_variable_columns">
+<area shape="rect" id="node2" href="$a00217.html#ad9e44450025cbcee1ad81d7e5a2cc099" title="Send one row of data to server. " alt="" coords="213,31,372,57"/>
+<area shape="rect" id="node3" href="$a00374.html#gaf1130ac97f6af55e86ec70b0aa4f5b40" title="Write data in host variables to the table. " alt="" coords="421,5,528,32"/>
+<area shape="rect" id="node4" href="$a00375.html#ga7370f1223f13510d6b33e98f2de09fb5" title="_bcp_exec_in" alt="" coords="420,56,529,83"/>
+<area shape="rect" id="node5" href="$a00374.html#ga7a184158b27a50f713e9cfae3b746209" title="Write a datafile to a table. " alt="" coords="577,56,660,83"/>
+</map>

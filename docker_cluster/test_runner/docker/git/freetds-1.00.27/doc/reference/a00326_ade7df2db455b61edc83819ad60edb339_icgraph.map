@@ -1,0 +1,6 @@
+<map id="tds_bcp_done" name="tds_bcp_done">
+<area shape="rect" id="node2" href="$a00375.html#ga7370f1223f13510d6b33e98f2de09fb5" title="_bcp_exec_in" alt="" coords="164,5,273,32"/>
+<area shape="rect" id="node4" href="$a00374.html#gaa23f8e5c7f437a94746c90292dd1cb01" title="Commit a set of rows to the table. " alt="" coords="175,56,262,83"/>
+<area shape="rect" id="node5" href="$a00374.html#ga8b85f79f53a62ac7a728fe626d609b65" title="Conclude the transfer of data from program variables. " alt="" coords="177,107,261,133"/>
+<area shape="rect" id="node3" href="$a00374.html#ga7a184158b27a50f713e9cfae3b746209" title="Write a datafile to a table. " alt="" coords="321,5,404,32"/>
+</map>
