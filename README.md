@@ -1,6 +1,15 @@
 # sqldevops demo
 
+## Demo Walkthrough
 
+### Build docker image for WideWorldImporters unittest db container
+
+```sh
+cd docker_cluster/mssql_unittest
+./docker_build.sh
+
+cd 
+```
 
 
 
