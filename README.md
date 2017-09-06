@@ -7,8 +7,6 @@
 ```sh
 cd docker_cluster/mssql_unittest
 ./docker_build.sh
-
-cd 
 ```
 
 
