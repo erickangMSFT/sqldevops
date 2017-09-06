@@ -1,4 +1,8 @@
-# sqldevops
+# sqldevops demo
+
+
+
+
 
 ## Available Demos
 
@@ -16,7 +20,6 @@
     * docker container for unit test datbase (mssql) 
     * docker container for application (wwiapp)
     * docker container for slacker test runner (slacker)
-        * todo: build one. Need to build a new images with slacker dependencies - rbenv, ruby etc then build slacker_runner test project container
     * ACR for sqldevops
     * Kubernetes cluster
         * mssql service and deployment with StatefullSet - ClusterIP and PersistentVolume mounting to Azure File disk
