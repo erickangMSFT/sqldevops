@@ -1,0 +1,8 @@
+<map id="tds7_bcp_send_colmetadata" name="tds7_bcp_send_colmetadata">
+<area shape="rect" id="node2" href="$a00217.html#a8208eef2a3974ae1f0cf3c8c8ab011ce" title="Start sending BCP data to server. " alt="" coords="256,31,363,57"/>
+<area shape="rect" id="node3" href="$a00375.html#ga7370f1223f13510d6b33e98f2de09fb5" title="_bcp_exec_in" alt="" coords="623,5,732,32"/>
+<area shape="rect" id="node5" href="$a00374.html#gaa23f8e5c7f437a94746c90292dd1cb01" title="Commit a set of rows to the table. " alt="" coords="449,31,536,57"/>
+<area shape="rect" id="node6" href="$a00217.html#a5eec23828b0610c58de248c4edb53879" title="Start bulk copy to server. " alt="" coords="411,81,575,108"/>
+<area shape="rect" id="node4" href="$a00374.html#ga7a184158b27a50f713e9cfae3b746209" title="Write a datafile to a table. " alt="" coords="780,5,863,32"/>
+<area shape="rect" id="node7" href="$a00374.html#gaf1130ac97f6af55e86ec70b0aa4f5b40" title="Write data in host variables to the table. " alt="" coords="624,81,731,108"/>
+</map>

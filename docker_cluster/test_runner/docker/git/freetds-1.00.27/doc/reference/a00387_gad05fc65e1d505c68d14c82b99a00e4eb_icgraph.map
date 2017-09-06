@@ -1,0 +1,9 @@
+<map id="tds_ascii_to_ucs2" name="tds_ascii_to_ucs2">
+<area shape="rect" id="node2" href="$a00387.html#gab775332d378c7fe083750d624441b303" title="Return string with parameters definition, useful for TDS7+ Looks like &quot;@P1 INT, @P2 VARCHAR(100)&quot;..." alt="" coords="188,71,349,112"/>
+<area shape="rect" id="node8" href="$a00387.html#gac8d5497c2d1b9fadb724111660bd03bd" title="Return string with parameters definition, useful for TDS7+. " alt="" coords="188,5,349,47"/>
+<area shape="rect" id="node3" href="$a00387.html#ga95e0fccedc459a4404f496eec74a369a" title="tds_submit_query_params() sends a language string to the database server for processing. " alt="" coords="397,13,584,39"/>
+<area shape="rect" id="node5" href="$a00387.html#gae603aed795a4c5bb26ab159a11256996" title="Submit a prepared query with parameters. " alt="" coords="811,38,972,65"/>
+<area shape="rect" id="node6" href="$a00387.html#ga74eb08c3a1c85be8ac9db428842c8b9d" title="tds_submit_prepare() creates a temporary stored procedure in the server. " alt="" coords="417,114,564,141"/>
+<area shape="rect" id="node7" href="$a00387.html#ga08877c101704bebe4fa57e0849dc272d" title="tds71_submit_prepexec() creates a temporary stored procedure in the server. " alt="" coords="405,165,576,191"/>
+<area shape="rect" id="node4" href="$a00387.html#ga5a29ae7f99d089dc3cea85ec6ee5f3ab" title="tds_submit_query() sends a language string to the database server for processing. ..." alt="" coords="632,13,763,39"/>
+</map>

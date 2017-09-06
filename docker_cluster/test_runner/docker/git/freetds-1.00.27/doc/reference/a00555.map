@@ -1,0 +1,20 @@
+<map id="pivot_t" name="pivot_t">
+<area shape="rect" id="node2" href="$a00081.html" title="KEY_T" alt="" coords="671,29,737,56"/>
+<area shape="rect" id="node4" href="$a00046.html" title="agg_t" alt="" coords="961,65,1019,92"/>
+<area shape="rect" id="node3" href="$a00052.html" title="col_t" alt="" coords="343,37,395,64"/>
+<area shape="rect" id="node5" href="$a00131.html" title="tds_dblib_dbprocess" alt="" coords="915,368,1065,395"/>
+<area shape="rect" id="node6" href="$a00106.html" title="tag_DBPROC_ROWBUF" alt="" coords="615,143,793,169"/>
+<area shape="rect" id="node7" href="$a00065.html" title="dblib_buffer_row" alt="" coords="307,89,431,116"/>
+<area shape="rect" id="node8" href="$a00164.html" title="Hold information for any results. " alt="" coords="5,199,120,225"/>
+<area shape="rect" id="node9" href="$a00168.html" title="Information for a server connection. " alt="" coords="323,195,414,221"/>
+<area shape="rect" id="node14" href="$a00116.html" title="tds_bcpinfo" alt="" coords="321,267,416,293"/>
+<area shape="rect" id="node10" href="$a00049.html" title="BCP_HOSTFILEINFO" alt="" coords="625,319,783,345"/>
+<area shape="rect" id="node11" href="$a00048.html" title="BCP_HOSTCOLINFO" alt="" coords="289,319,448,345"/>
+<area shape="rect" id="node12" href="$a00029.html" title="_DBREMOTE_PROC" alt="" coords="625,408,783,435"/>
+<area shape="rect" id="node13" href="$a00030.html" title="_DBREMOTE_PROC_PARAM" alt="" coords="261,408,476,435"/>
+<area shape="rect" id="node15" href="$a00133.html" title="Structure to hold a string. " alt="" coords="26,312,99,339"/>
+<area shape="rect" id="node16" href="$a00071.html" title="dbstring" alt="" coords="333,503,405,529"/>
+<area shape="rect" id="node17" href="$a00070.html" title="dboption" alt="" coords="666,521,742,548"/>
+<area shape="rect" id="node18" href="$a00041.html" title="_null_representation" alt="" coords="629,572,779,599"/>
+<area shape="rect" id="node19" href="$a00072.html" title="dbtypeinfo" alt="" coords="661,623,747,649"/>
+</map>

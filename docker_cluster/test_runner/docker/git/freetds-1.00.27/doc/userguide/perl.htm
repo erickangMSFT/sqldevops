@@ -1,0 +1,520 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Perl</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="How to get what works with it working"
+HREF="software.htm"><LINK
+REL="PREVIOUS"
+TITLE="How to get what works with it working"
+HREF="software.htm"><LINK
+REL="NEXT"
+TITLE="PHP"
+HREF="php.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="software.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. How to get what works with it working</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="php.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PERL"
+>Perl</A
+></H1
+><P
+>There are a few ways to use <SPAN
+CLASS="PRODUCTNAME"
+>Perl</SPAN
+> to connect to a <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> using <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DBD.SYBASE"
+>DBD::Sybase</A
+></H2
+><P
+>The recommended choice is <SPAN
+CLASS="SYSTEMITEM"
+>DBD::Sybase</SPAN
+> from Michael Peppler.  Despite the name it works for any Sybase or Microsoft <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+>.  <SPAN
+CLASS="SYSTEMITEM"
+>DBD::Sybase</SPAN
+> uses the <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+> <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+> and works well.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="DBD.ODBC"
+>DBD::ODBC</A
+></H2
+><P
+>You may also use <SPAN
+CLASS="SYSTEMITEM"
+>DBD::ODBC</SPAN
+> with the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> driver.  You may find this attractive if you're familiar with <SPAN
+CLASS="SYSTEMITEM"
+>DBD::ODBC</SPAN
+>.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="SYBPERL"
+>Sybperl</A
+></H2
+><P
+>Finally, you can use <SPAN
+CLASS="SYSTEMITEM"
+>Sybperl</SPAN
+>.  Scripts written against <SPAN
+CLASS="SYSTEMITEM"
+>Sybperl</SPAN
+> will not run against other databases the way DBI scripts will.  However, it will be familiar ground for those who know <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="PERLMODULES"
+>Building and using the Perl modules</A
+></H2
+><P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.DBD.SYBASE.BUILD"
+></A
+><P
+><B
+>Example 7-2. Building <SPAN
+CLASS="SYSTEMITEM"
+>DBD::Sybase</SPAN
+></B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>cd DBD-Sybase-0.91</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export SYBASE=/usr/local/freetds</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>perl Makefile.PL</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>su root</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make install</KBD
+></PRE
+></DIV
+>
+	
+				There will be some output about missing libraries after <KBD
+CLASS="USERINPUT"
+>perl Makefile.PL</KBD
+>. These are normal.</P
+><P
+>The following example will attach to Sybase's public <ACRONYM
+CLASS="ACRONYM"
+>JDBC</ACRONYM
+> server and run a simple query (it can be found in <TT
+CLASS="FILENAME"
+>samples/test.pl</TT
+>):
+				
+				<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.DBD.SYBASE.CONNECT"
+></A
+><P
+><B
+>Example 7-3. Connect to a server with <SPAN
+CLASS="SYSTEMITEM"
+>DBD::Sybase</SPAN
+></B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>	#!/usr/local/bin/perl
+	#
+	use DBI;
+	
+	my $dbh = DBI-&#62;connect("dbi:Sybase:server=JDBC", 'guest', 'sybase', {PrintError =&#62; 0});
+	
+	die "Unable for connect to server $DBI::errstr"
+		unless $dbh;
+	
+	my $rc;
+	my $sth;
+	
+	$sth = $dbh-&#62;prepare("select \@\@servername");
+	if($sth-&#62;execute) {
+		while(@dat = $sth-&#62;fetchrow) {
+			print "@dat\n";
+		}
+	}
+	</PRE
+></DIV
+></P
+><P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.DBD.ODBC.BUILD"
+></A
+><P
+><B
+>Example 7-4. Building <SPAN
+CLASS="SYSTEMITEM"
+>DBD::ODBC</SPAN
+></B
+></P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>cd DBD-ODBC-0.28</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export SYBASE=/usr/local/freetds</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export ODBCHOME=/usr/local</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export DBI_DSN=dbi:ODBC:JDBC</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export DBI_USER=guest</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>export DBI_PASS=sybase</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>perl Makefile.PL</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>su root</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Password: </SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>make install</KBD
+></PRE
+></DIV
+>
+	<DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>We used the public  <ACRONYM
+CLASS="ACRONYM"
+>JDBC</ACRONYM
+> server logins for our configuration here.  You'll want to replace these with ones suitable to your environment.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+><P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.DBD.ODBC.CONNECT"
+></A
+><P
+><B
+>Example 7-5. Connect to a server with <SPAN
+CLASS="SYSTEMITEM"
+>DBD::ODBC</SPAN
+></B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>	#!/usr/local/bin/perl
+	#
+	use DBI;
+	
+	my $dbh = DBI-&#62;connect("dbi:ODBC:JDBC", 'guest', 'sybase', {PrintError =&#62; 0});
+	
+	die "Unable for connect to server $DBI::errstr"
+		unless $dbh;
+	
+	my $rc;
+	my $sth;
+	
+	$sth = $dbh-&#62;prepare("select \@\@servername");
+	if($sth-&#62;execute) {
+		while(@dat = $sth-&#62;fetchrow) {
+			print "@dat\n";
+		}
+	}
+	</PRE
+></DIV
+>
+You'll note this is the same program as for <SPAN
+CLASS="SYSTEMITEM"
+>DBD::Sybase</SPAN
+> with the exception of the <CODE
+CLASS="FUNCTION"
+>connect</CODE
+> statement.  Welcome to the magic of DBI!</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="software.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="php.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>How to get what works with it working</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="software.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>PHP</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

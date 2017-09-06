@@ -1,0 +1,10 @@
+<map id="tds_process_col_fmt" name="tds_process_col_fmt">
+<area shape="rect" id="node2" href="$a00388.html#gad38aa5b9547817854ccba1fcc7855861" title="Get an int16 from the server. " alt="" coords="246,5,377,32"/>
+<area shape="rect" id="node5" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="868,56,971,83"/>
+<area shape="rect" id="node6" href="$a00390.html#ga0cf7e719115b0ae476753442d10505ab" title="Returns string representation of the given type. " alt="" coords="267,107,356,133"/>
+<area shape="rect" id="node7" href="$a00390.html#ga91770634ce8c0d6f1fe007b45da186fd" title="Adjust column size according to client&#39;s encoding. " alt="" coords="205,157,417,184"/>
+<area shape="rect" id="node9" href="$a00386.html#ga1224fb9277112dc2ce12531d2b73b145" title="Allocate space for row store return NULL on out of memory. " alt="" coords="257,208,366,235"/>
+<area shape="rect" id="node3" href="$a00388.html#gae7d9c4e1a079e1d0aa0252732631e8c4" title="Get N bytes from the buffer and return them in the already allocated space given to us..." alt="" coords="512,5,597,32"/>
+<area shape="rect" id="node4" href="$a00388.html#ga410619783bdf2bb60b0f27a5578e0e07" title="Read in one &#39;packet&#39; from the server. " alt="" coords="692,5,820,32"/>
+<area shape="rect" id="node8" href="$a00390.html#ga87209537d51f069fee02bc224da492cb" title="Allow for maximum possible size of converted data, while being careful about integer division truncat..." alt="" coords="465,157,644,184"/>
+</map>

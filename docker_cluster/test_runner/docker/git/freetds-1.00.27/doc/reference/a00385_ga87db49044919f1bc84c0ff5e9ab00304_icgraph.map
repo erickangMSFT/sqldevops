@@ -1,0 +1,30 @@
+<map id="tds_iconv" name="tds_iconv">
+<area shape="rect" id="node2" href="$a00381.html#gadba4490bf3183799a70c9e2f44fab331" title="Copy a string to client setting size according to ODBC convenction. " alt="" coords="140,543,293,570"/>
+<area shape="rect" id="node3" href="$a00294.html#a9d8eb43a81ff58ab423dce0ce95b9564" title="Reads and writes from a stream converting characters. " alt="" coords="143,1167,290,1194"/>
+<area shape="rect" id="node23" href="$a00387.html#ga024bc5482366735070befd6f4af59f71" title="Convert a string in an allocated buffer. " alt="" coords="345,661,484,687"/>
+<area shape="rect" id="node29" href="$a00387.html#gac8d5497c2d1b9fadb724111660bd03bd" title="Return string with parameters definition, useful for TDS7+. " alt="" coords="136,595,297,636"/>
+<area shape="rect" id="node4" href="$a00217.html#a8184311543c685f2ee0bcccfb725ca02" title="Read a data file, passing the data through iconv(). " alt="" coords="359,1269,471,1295"/>
+<area shape="rect" id="node6" href="$a00388.html#ga676c4dee6522815b16fdc8e448e43590" title="For UTF&#45;8 and similar, tds_iconv() may encounter a partial sequence when the chunk boundary is not al..." alt="" coords="345,1370,484,1397"/>
+<area shape="rect" id="node10" href="$a00388.html#ga1fcaf8d488cc1390f106ce3ad0bf37b4" title="Output a string to wire automatic translate string to unicode if needed. " alt="" coords="359,1117,470,1143"/>
+<area shape="rect" id="node5" href="$a00375.html#ga065757a7d0dce354660900de4aa79e2f" title="_bcp_read_hostfile" alt="" coords="562,1319,705,1346"/>
+<area shape="rect" id="node7" href="$a00388.html#ga90f080e6e9448feac15dee1370d66802" title="Fetch a string from the wire. " alt="" coords="577,1421,689,1447"/>
+<area shape="rect" id="node9" href="$a00388.html#ga8d214089b6e97fc0da5e0be09f216d73" title="Fetch character data the wire. " alt="" coords="563,1370,704,1397"/>
+<area shape="rect" id="node8" href="$a00330.html#a84e17808683ba2dd956e811a42e23176" title="Write data to wire. " alt="" coords="813,1370,935,1397"/>
+<area shape="rect" id="node11" href="$a00387.html#ga95e0fccedc459a4404f496eec74a369a" title="tds_submit_query_params() sends a language string to the database server for processing. " alt="" coords="1021,357,1208,383"/>
+<area shape="rect" id="node12" href="$a00387.html#ga6e42b4a1d1d3898229ea2fe4afc2ecec" title="Output params types and query (required by sp_prepare/sp_executesql/sp_prepexec) " alt="" coords="787,711,961,738"/>
+<area shape="rect" id="node16" href="$a00387.html#gaf573d8d4d2660c8c27770573fca05ff5" title="Send a unprepare request for a prepared query. " alt="" coords="1034,1142,1195,1169"/>
+<area shape="rect" id="node17" href="$a00387.html#gaf614c75ea8f7ad411e53dac0e2f91be4" title="Send RPC as string query. " alt="" coords="1028,914,1201,941"/>
+<area shape="rect" id="node19" href="$a00387.html#ga26b26296d060dca75f6a43e9ac41e58d" title="Send a string to server while quoting it. " alt="" coords="562,1066,705,1093"/>
+<area shape="rect" id="node20" href="$a00387.html#ga0e2e7230c425e925402d7856ff5b4b18" title="Send a parameter to server. " alt="" coords="783,965,965,991"/>
+<area shape="rect" id="node21" href="$a00387.html#ga02c6ce3ff96369603a6ee4efee64caae" title="Emulate prepared execute traslating to a normal language. " alt="" coords="1013,965,1216,991"/>
+<area shape="rect" id="node22" href="$a00326.html#a4daaa551e54dbd978650e2eef89e09ff" title="Send BCP metadata to server. " alt="" coords="532,1218,735,1245"/>
+<area shape="rect" id="node13" href="$a00387.html#ga74eb08c3a1c85be8ac9db428842c8b9d" title="tds_submit_prepare() creates a temporary stored procedure in the server. " alt="" coords="1041,762,1188,789"/>
+<area shape="rect" id="node14" href="$a00387.html#gae603aed795a4c5bb26ab159a11256996" title="Submit a prepared query with parameters. " alt="" coords="1264,661,1425,687"/>
+<area shape="rect" id="node15" href="$a00387.html#ga08877c101704bebe4fa57e0849dc272d" title="tds71_submit_prepexec() creates a temporary stored procedure in the server. " alt="" coords="1029,661,1200,687"/>
+<area shape="rect" id="node18" href="$a00387.html#ga5f071b94ad7889690762dc85646c74ab" title="tds_submit_rpc() call a RPC from server. " alt="" coords="1287,103,1403,130"/>
+<area shape="rect" id="node24" href="$a00387.html#ga9ad2e6defce530a8778791cce0166ccd" title="Start query packet of a given type. " alt="" coords="553,610,713,637"/>
+<area shape="rect" id="node26" href="$a00387.html#gafd74652c4722ddce4d642cc4209449d4" title="Put data information to wire. " alt="" coords="566,255,701,282"/>
+<area shape="rect" id="node25" href="$a00387.html#ga0da385231bfa3dc49377e1fb2bea2c07" title="Start query packet of a given type. " alt="" coords="814,762,934,789"/>
+<area shape="rect" id="node27" href="$a00387.html#gab71e2dc686eafe926dbebbce00d27dc4" title="Send dynamic request on TDS 7+ to be executed. " alt="" coords="801,255,947,282"/>
+<area shape="rect" id="node28" href="$a00387.html#ga28264995cf9616661f1fa788ac0d246d" title="Send parameters to server. " alt="" coords="813,103,935,130"/>
+</map>

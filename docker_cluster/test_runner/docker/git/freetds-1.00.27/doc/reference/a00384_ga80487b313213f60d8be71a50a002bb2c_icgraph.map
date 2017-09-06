@@ -1,0 +1,6 @@
+<map id="tds_willconvert" name="tds_willconvert">
+<area shape="rect" id="node2" href="$a00372.html#gaaf8349999c16b3c36caf5947747a2915" title="Test whether or not a datatype can be converted to another datatype. " alt="" coords="168,31,271,57"/>
+<area shape="rect" id="node3" href="$a00372.html#ga873bc0f4663165e711655ade1dfae795" title="Tie a host variable to a resultset column. " alt="" coords="327,5,389,32"/>
+<area shape="rect" id="node5" href="$a00372.html#gafefd17e15b22adda84366c817178dd7d" title="Bind a compute column to a program variable. " alt="" coords="319,56,397,83"/>
+<area shape="rect" id="node4" href="$a00232.html#af8ada101cd189eff87b3533cbeaaa23b" title="Pivot the rows, creating a new resultset. " alt="" coords="445,5,512,32"/>
+</map>

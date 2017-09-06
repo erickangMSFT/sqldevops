@@ -1,0 +1,5 @@
+<map id="tds_get_column_declaration" name="tds_get_column_declaration">
+<area shape="rect" id="node2" href="$a00387.html#ga440f0f469afad1eac4c008979873ccdd" title="Get column size for wire. " alt="" coords="269,5,417,32"/>
+<area shape="rect" id="node3" href="$a00217.html#a0383d5dcb629582266a442f0f0dbd13a" title="Return type suitable for conversions (convert all nullable types to fixed type) " alt="" coords="252,56,433,83"/>
+<area shape="rect" id="node4" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="291,107,394,133"/>
+</map>

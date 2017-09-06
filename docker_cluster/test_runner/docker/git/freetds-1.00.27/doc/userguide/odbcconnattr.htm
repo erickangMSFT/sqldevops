@@ -1,0 +1,649 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Connection attributes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Preparing ODBC"
+HREF="prepodbc.htm"><LINK
+REL="PREVIOUS"
+TITLE="Preparing ODBC"
+HREF="prepodbc.htm"><LINK
+REL="NEXT"
+TITLE="DSN-less configuration"
+HREF="dsnless.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="prepodbc.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Preparing ODBC</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="dsnless.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ODBCCONNATTR"
+>Connection attributes</A
+></H1
+><P
+>The following tables define all possible ODBC connection attributes for the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> ODBC driver.  Which ones you'll need depends on how you set yourself up.  They may appear in your connection string, or in <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+>.</P
+><P
+><DIV
+CLASS="TABLE"
+><A
+NAME="TAB.CONNECTION.ATTRIBUTES.STRINGONLY"
+></A
+><P
+><B
+>Table 4-1. Connection attributes used only in connection strings</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Possible Values</TH
+><TH
+>Default</TH
+><TH
+>Meaning</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>DSN</TT
+></TD
+><TD
+>A valid DSN entry</TD
+><TD
+>none</TD
+><TD
+>The <TT
+CLASS="LITERAL"
+>DSN</TT
+> to which <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> should connect. <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will search <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+> for entry.  It lets you specify a connection as for <CODE
+CLASS="FUNCTION"
+>SQLConnect</CODE
+>, but using <CODE
+CLASS="FUNCTION"
+>SQLDriverConnect</CODE
+>.   Do not use <TT
+CLASS="LITERAL"
+>Servername</TT
+> and <TT
+CLASS="LITERAL"
+>DSN</TT
+> together. </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>UID</TT
+></TD
+><TD
+>Any valid username</TD
+><TD
+>none</TD
+><TD
+>The username to be used when connecting.  To use domain authentication, specify the domain using the format  <TT
+CLASS="REPLACEABLE"
+><I
+>domain\username</I
+></TT
+>.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>PWD</TT
+></TD
+><TD
+>Any</TD
+><TD
+>empty</TD
+><TD
+>The password to be used when connecting. </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>WSID</TT
+></TD
+><TD
+>Any</TD
+><TD
+>Computer name</TD
+><TD
+>The name of the local computer, sent to server.   Can be specified only for a DSN-less connection.</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+>
+			
+			<DIV
+CLASS="TABLE"
+><A
+NAME="TAB.CONNECTION.ATTRIBUTES.FREETDS.CONF"
+></A
+><P
+><B
+>Table 4-2. Connection attributes that may appear in <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+></B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Possible Values</TH
+><TH
+>Default</TH
+><TH
+>Meaning</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Servername</TT
+></TD
+><TD
+>A valid <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> server section</TD
+><TD
+>none</TD
+><TD
+>A <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> servername, not a hostname as known to DNS. If you want to use ODBC-only configuration, use  <TT
+CLASS="LITERAL"
+>Server</TT
+> instead.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Server</TT
+></TD
+><TD
+>A server name or (ip) address</TD
+><TD
+>none</TD
+><TD
+>Hostname of a server. Used in an ODBC-only configuration. To specify a Microsoft SQL Server instance, use the form <TT
+CLASS="LITERAL"
+>server\instance</TT
+>.  </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Port</TT
+></TD
+><TD
+>Any TCP port</TD
+><TD
+>Depends on the TDS version specified with <B
+CLASS="COMMAND"
+>configure</B
+></TD
+><TD
+>The TCP port  where the servername is listening.  </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>TDS_Version</TT
+></TD
+><TD
+>Any valid protocol version</TD
+><TD
+>Depends on the TDS version specified with <B
+CLASS="COMMAND"
+>configure</B
+></TD
+><TD
+>TDS protocol version to use (e.g., 5.0, 7.0).</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>ClientCharset</TT
+></TD
+><TD
+>A name recognized by the iconv library linked to <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.  Corresponds to <TT
+CLASS="LITERAL"
+>client charset</TT
+> in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.</TD
+><TD
+>ISO 8859-1</TD
+><TD
+>Character set (encoding) used by the client.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>APP</TT
+></TD
+><TD
+>Free form text, up to 30 characters.  </TD
+><TD
+>none</TD
+><TD
+>Application name.  Identifies the connecting application to the server.  </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Language</TT
+></TD
+><TD
+>Any</TD
+><TD
+>us_english</TD
+><TD
+>(Human) language the server should use for error messages.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Address</TT
+></TD
+><TD
+>Any</TD
+><TD
+>none</TD
+><TD
+>IP address of the servername.  Useful if you want to specify a server by address,  rather than by name.  The format is <TT
+CLASS="REPLACEABLE"
+><I
+>ip,port</I
+></TT
+>  or simply <TT
+CLASS="REPLACEABLE"
+><I
+>ip</I
+></TT
+> in standard dotted-decimal notation.   </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Database</TT
+></TD
+><TD
+>Any</TD
+><TD
+>none</TD
+><TD
+>Specify which database you want to access.  If the database does not exist or the user lacks permission to access it,  the connection will fail.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>TextSize</TT
+></TD
+><TD
+>Any</TD
+><TD
+>Server-dependent</TD
+><TD
+>Maximum size returned from server for blobs.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>PacketSize</TT
+></TD
+><TD
+>Any</TD
+><TD
+>Server-dependent</TD
+><TD
+>Size of packets to server.  Some users saw some performance gain by increasing this value.  Normally you shouldn't set it.  </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Trusted_Connection</TT
+></TD
+><TD
+>Yes/No</TD
+><TD
+>No</TD
+><TD
+>Use your current account instead of <TT
+CLASS="LITERAL"
+>UID</TT
+>/<TT
+CLASS="LITERAL"
+>PWD</TT
+> attributes.  This option require SSPI or Kerberos and supersedes any <TT
+CLASS="LITERAL"
+>UID</TT
+>/<TT
+CLASS="LITERAL"
+>PWD</TT
+> attributes passed from the application.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>Encryption</TT
+></TD
+><TD
+>off/request/require</TD
+><TD
+>off</TD
+><TD
+>Specify encryption. See encryption on freetds.conf</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>MARS_Connection</TT
+></TD
+><TD
+>Yes/No</TD
+><TD
+>No</TD
+><TD
+>Enable MARS for this connection.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>UseNTLMv2</TT
+></TD
+><TD
+>Yes/No</TD
+><TD
+>No</TD
+><TD
+>Use NTLMv2 instead of normal NTLM. Use this option if your Windows domain have this setting.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>REALM</TT
+></TD
+><TD
+>Machine domain</TD
+><TD
+>none</TD
+><TD
+>Kerberos REALM.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>ServerSPN</TT
+></TD
+><TD
+>Any valid SPN</TD
+><TD
+>MSSQLSvc/server FQDN:port</TD
+><TD
+>Full server Kerberos SPN.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>AttachDbFilename</TT
+></TD
+><TD
+>server filename (mdf/sdf)</TD
+><TD
+>none</TD
+><TD
+>MSSQL allow to attach a database while connecting to a server.
+This setting allow to do it. You should specify <TT
+CLASS="LITERAL"
+>Database</TT
+> attribute to set the name of the database that will be used.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>DumpFile</TT
+></TD
+><TD
+>Any</TD
+><TD
+>&nbsp;</TD
+><TD
+>File name where to dump logs.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>DumpFileAppend</TT
+></TD
+><TD
+>Yes/No</TD
+><TD
+>No</TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>DumpFlags</TT
+></TD
+><TD
+>Any</TD
+><TD
+>&nbsp;</TD
+><TD
+>Debug flags. See freetds.conf entries.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>ApplicationIntent</TT
+></TD
+><TD
+>ReadWrite/ReadOnly</TD
+><TD
+>ReadWrite</TD
+><TD
+>Tell application intent. See <TT
+CLASS="LITERAL"
+>read-only intent</TT
+> on freetds.conf.</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="prepodbc.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="dsnless.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Preparing ODBC</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="prepodbc.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>DSN-less configuration</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Getting Help</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="PREVIOUS"
+TITLE="Slow connection or data retrieval"
+HREF="seemtooslow.htm"><LINK
+REL="NEXT"
+TITLE="Isolate the cause"
+HREF="isolatecause.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="seemtooslow.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="isolatecause.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="HELP"
+></A
+>Chapter 9. Getting Help</H1
+><TABLE
+BORDER="0"
+WIDTH="100%"
+CELLSPACING="0"
+CELLPADDING="0"
+CLASS="EPIGRAPH"
+><TR
+><TD
+WIDTH="45%"
+>&nbsp;</TD
+><TD
+WIDTH="45%"
+ALIGN="LEFT"
+VALIGN="TOP"
+><I
+><P
+><I
+><P
+CLASS="LITERALLAYOUT"
+>			Help&nbsp;me&nbsp;if&nbsp;you&nbsp;can,&nbsp;I'm&nbsp;feeling&nbsp;down<br>
+			And&nbsp;I&nbsp;do&nbsp;appreciate&nbsp;you&nbsp;being&nbsp;'round.<br>
+			Help&nbsp;me&nbsp;get&nbsp;my&nbsp;feet&nbsp;back&nbsp;on&nbsp;the&nbsp;ground,<br>
+			Won't&nbsp;you&nbsp;please,&nbsp;please&nbsp;help&nbsp;me?<br>
+			</P
+></I
+></P
+></I
+></TD
+></TR
+><TR
+><TD
+WIDTH="45%"
+>&nbsp;</TD
+><TD
+WIDTH="45%"
+ALIGN="RIGHT"
+VALIGN="TOP"
+><I
+><SPAN
+CLASS="ATTRIBUTION"
+>Beatles</SPAN
+></I
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="help.htm#RECONFIRM.INSTALLATION"
+>Reconfirm the installation</A
+></DT
+><DT
+><A
+HREF="isolatecause.htm"
+>Isolate the cause</A
+></DT
+><DT
+><A
+HREF="mailinglist.htm"
+>The Mailing List</A
+></DT
+><DT
+><A
+HREF="askingforhelp.htm"
+>What to include when asking for help</A
+></DT
+></DL
+></DIV
+><P
+>In the battle against frustration and wasted motion, this manual is our first defense.  Our documentation is intended to make it possible for a knowledgeable user to, well, <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>use</I
+></SPAN
+> <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> without further assistance.  We strive to include all known features and behaviors here, so you can work quickly and anonymously, and go home before 5:00.  Would that it were always thus.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="RECONFIRM.INSTALLATION"
+>Reconfirm the installation</A
+></H1
+><P
+>For initial setup and login problems, review <A
+HREF="confirminstall.htm"
+>Confirm the installation</A
+>.  Distinguish between <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>network</I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>server</I
+></SPAN
+> issues, between finding the server and logging into it.  The <CODE
+CLASS="ENVAR"
+>TDSDUMPCONFIG</CODE
+> log will show how the servername is being looked up, what address &amp; port is being used, what TDS version is being used.  The <CODE
+CLASS="ENVAR"
+>TDSDUMP</CODE
+> log will show quite clearly whether or not the server accepted the connection, and whether or not the login succeeded.  </P
+><P
+>Remember compiled-in defaults can be displayed with <B
+CLASS="COMMAND"
+>tsql</B
+>:
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>tsql -C</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>Compile-time settings (established with the "configure" script)
+                            Version: freetds v0.1.0
+             freetds.conf directory: /usr/local/etc
+     MS db-lib source compatibility: no
+        Sybase binary compatibility: no
+                      Thread safety: yes
+                      iconv library: no
+                        TDS version: 7.0
+                              iODBC: no
+                           unixodbc: no
+              SSPI "trusted" logins: no
+                            Keberos: no </SAMP
+></PRE
+>
+      
+For <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> setup issues, the <B
+CLASS="COMMAND"
+>osql</B
+> script is intended to confirm the configuration files are all sane.  If it fails to report a problem, please post a message describing the problem to the mailing list.  Thanks.  </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="seemtooslow.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="isolatecause.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Slow connection or data retrieval</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Isolate the cause</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

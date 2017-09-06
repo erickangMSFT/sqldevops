@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>DSN-less configuration</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Preparing ODBC"
+HREF="prepodbc.htm"><LINK
+REL="PREVIOUS"
+TITLE="Connection attributes"
+HREF="odbcconnattr.htm"><LINK
+REL="NEXT"
+TITLE="ODBC-only configuration"
+HREF="odbcinionly.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="odbcconnattr.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Preparing ODBC</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="odbcinionly.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="DSNLESS"
+>DSN-less configuration</A
+></H1
+><P
+>In a DSN-less configuration, the <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+> file is not consulted for server connection properties.  To connect to a servername, your application may refer to a servername entry in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>, or explicitly specify the servername's hostname (bypassing <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>).
+			
+			<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.SAMPLEDSNLESS"
+></A
+><P
+><B
+>Example 4-1. Sample files for a DSN-less configuration</B
+></P
+><P
+>The <TT
+CLASS="FILENAME"
+>odbcinst.ini</TT
+> is quite brief:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>	;
+	; odbcinst.ini
+	;
+	[FreeTDS]
+	Driver = /usr/local/freetds/lib/libtdsodbc.so
+	</PRE
+><P
+>The <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> might look something like:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>	;
+	; freetds.conf
+	;
+	[JDBC]
+	host = jdbc.sybase.com
+	port = 4444
+	tds version = 5.0
+	</PRE
+></DIV
+>
+			
+			<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.CONNECTDSNLESS"
+></A
+><P
+><B
+>Example 4-2. Connecting with a DSN-less configuration</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>	/*
+	 * application call
+	 */
+	const char servername[] = "JDBC"; <A
+NAME="AEN2127"
+HREF="#FTN.AEN2127"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>
+	sprintf(tmp, "DRIVER=FreeTDS<A
+NAME="DSNODBCINST"
+HREF="#FTN.DSNODBCINST"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+>;SERVERNAME=%s;UID=%s;PWD=%s;DATABASE=%s;",
+		servername, username, password, dbname);
+	res = SQLDriverConnect(Connection, NULL, (SQLCHAR *) tmp, SQL_NTS,
+				(SQLCHAR *) tmp, sizeof(tmp), &amp;len, SQL_DRIVER_NOPROMPT);
+	if (!SQL_SUCCEEDED(res)) {
+		printf("Unable to open data source (ret=%d)\n", res);
+		exit(1);
+	}
+	</PRE
+></DIV
+>
+			
+You can even establish a connection without reference to either <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+> or <TT
+CLASS="FILENAME"
+>freetd.conf</TT
+>.
+			
+			<DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.CONNECTDSNLESSNOCONF"
+></A
+><P
+><B
+>Example 4-3. Connecting with a DSN-less configuration that does not use <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>	/*
+	 * application call
+	 */
+	const char servername[] = "jdbc.sybase.com"; <A
+NAME="AEN2141"
+HREF="#FTN.AEN2141"
+><SPAN
+CLASS="footnote"
+>[3]</SPAN
+></A
+>
+	sprintf(tmp, "DRIVER=FreeTDS<A
+HREF="dsnless.htm#FTN.DSNODBCINST"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+>&#62;;SERVER=%s;UID=%s;PWD=%s;DATABASE=%s;TDS_Version=5.0;Port=4444;",
+		servername, username, password, dbname);
+	res = SQLDriverConnect(Connection, NULL, (SQLCHAR *) tmp, SQL_NTS,
+				(SQLCHAR *) tmp, sizeof(tmp), &amp;len, SQL_DRIVER_NOPROMPT);
+	if (!SQL_SUCCEEDED(res)) {
+		printf("Unable to open data source (ret=%d)\n", res);
+		exit(1);
+	}
+	</PRE
+></DIV
+></P
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN2127"
+HREF="dsnless.htm#AEN2127"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>refers to the <TT
+CLASS="LITERAL"
+>[JDBC]</TT
+> entry in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.DSNODBCINST"
+HREF="dsnless.htm#DSNODBCINST"
+><SPAN
+CLASS="footnote"
+>[2]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>refers to the <TT
+CLASS="LITERAL"
+>[FreeTDS]</TT
+> entry in <TT
+CLASS="FILENAME"
+>odbcinst.ini</TT
+>.</P
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN2141"
+HREF="dsnless.htm#AEN2141"
+><SPAN
+CLASS="footnote"
+>[3]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>refers to the real server name.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="odbcconnattr.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="odbcinionly.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Connection attributes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="prepodbc.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ODBC-only configuration</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

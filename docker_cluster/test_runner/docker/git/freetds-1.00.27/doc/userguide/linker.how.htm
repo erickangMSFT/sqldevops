@@ -1,0 +1,605 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>How Dost Thy Linker Link? </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="On Linkers"
+HREF="rtl.htm"><LINK
+REL="PREVIOUS"
+TITLE="Checking if a Library Provides a Function"
+HREF="linker.library.check.htm"><LINK
+REL="NEXT"
+TITLE="Keep in Mind"
+HREF="linker.conclusion.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="linker.library.check.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. On Linkers</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="linker.conclusion.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="LINKER.HOW"
+>How Dost Thy Linker Link?</A
+></H1
+><P
+>Now at last we come to how the linker performs its magic.  Once again the discussion divides between static and dynamic linking.  </P
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN6584"
+>Static Linker</A
+></H2
+><P
+>Static linking happens at build time.  Object files are collected together; a distinct list of all function names is created, and the linker is tasked with finding a definition for each one.  </P
+><P
+>Different linkers have different command-line options to support OS-specific features.  This document isn't intended to teach how to use any particular linker.  Our task here is to understand the principles involved, so that you can apply them to your particular situation.  </P
+><P
+>The static linker needs three kinds of information:
+<P
+></P
+><P
+><B
+>Static linker inputs</B
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>Object modules to be linked, including libraries </P
+></LI
+><LI
+><P
+>Locations of libraries </P
+></LI
+><LI
+><P
+>Search order </P
+></LI
+></OL
+></P
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN6597"
+>Knitting together the object modules</A
+></H3
+><P
+>The static linker merges your object files into one executable.  Your project's object files may refer freely (usually) to each other's functions, and the linker will match them up.  It will catenate them together, compute every function's offset from the start of the executable, and replace every function reference with the actual address needed for the executable it's constructing.  For library functions, definitions are copied from the library and appended to the output file (executable).  The placeholder addresses left by the compiler are similarly replaced by offsets.  </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN6600"
+>Specifying libraries</A
+></H3
+><P
+></P
+><P
+>An application programmer using <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will need to mention the name fo the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> library being used.  Failure to do so will provoke the dread <I
+CLASS="FIRSTTERM"
+>undefined reference</I
+> linker error: 
+
+<DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN6607"
+></A
+><P
+><B
+>Example A-1. Missing library name</B
+></P
+><PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>gcc -o bsqldb bsqldb.o  </KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>bsqldb.o: In function `get_login':
+../../../src/apps/bsqldb.c:816: undefined reference to `dblogin'
+../../../src/apps/bsqldb.c:823: undefined reference to `dbsetlname'
+../../../src/apps/bsqldb.c:874: undefined reference to `dbsetlname'
+../../../src/apps/bsqldb.c:884: undefined reference to `dbsetlname'
+../../../src/apps/bsqldb.c:889: undefined reference to `dbsetlname'
+&hellip;</SAMP
+></PRE
+></DIV
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="AEN6613"
+>Finding libraries</A
+></H3
+><P
+>Specifying the library is necessary but may be insufficient.  The linker may need to be told where to look for the library.  This is often the case for the application programmer using <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> because the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> libraries may be installed in a location not on the linker's default search path.  Linkers are usually pretty blunt about missing libraries: 
+
+<DIV
+CLASS="EXAMPLE"
+><A
+NAME="AEN6618"
+></A
+><P
+><B
+>Example A-2. Library not found</B
+></P
+><PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>gcc -o bsqldb bsqldb.o  -l sybdb</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>ld: cannot find -lsybdb</SAMP
+></PRE
+></DIV
+></P
+><P
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Order matters</I
+></SPAN
+>.  Linkers tend to be fussy about library search order, some more than others.  It's good practice to tell the linker to search project libraries first, third-party libraries (e.g. iconv or kerberos) next, and finally system libraries.  </P
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="LINKER.DYNAMIC"
+>Dynamic Linker</A
+></H2
+><P
+>The dynamic linker &mdash; also known as the runtime linker &mdash; is, like the rest of dynamic linking, more complicated than its static counterpart.  Whereas it's impossible even to generate an executable with missing static function references, an executable that uses dynamic libraries depends on the runtime environment to have its references satisfied.</P
+><P
+>When a dynamically linked application is launched, the OS invokes the runtime linker to resolve any undefined references.  Much as the static linker does, the runtime linker consults a list of dynamic libraries along its configured search path.  The names of the libraries to search for are embedded in the executable.  Sometimes, not always, the search path is found in the executable too.  Usually any embedded path can be overridden.  </P
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="LINKER.DYNAMIC.THE.EXECUTABLE"
+>Information in the executable</A
+></H3
+><P
+>Exactly what information is in the executable and how to display it depends on the format of the executable.  Different OSes use different formats and most Unix derivatives actually support at least two.  The most commonly encountered format for the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> programmer is the ELF format.  In the interest of your time and mine, that's the one we'll examine here.  </P
+><P
+>The GNU bintool utility <B
+CLASS="COMMAND"
+>readelf</B
+> displays the information in the executable that is input to the runtime linker:
+
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>readelf -d src/apps/.libs/bsqldb</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>Dynamic section at offset 0x6028 contains 20 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libsybdb.so.5]
+ 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.12]
+ 0x000000000000000f (RPATH)              Library rpath: [/usr/pkg/lib:/usr/local/lib]
+&hellip;</SAMP
+></PRE
+>
+	</P
+><P
+>What is this telling us?  First, the <TT
+CLASS="FILENAME"
+>bsqldb</TT
+> executable uses three shared libraries, namely <TT
+CLASS="LITERAL"
+>sybdb</TT
+> for <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>, <TT
+CLASS="LITERAL"
+>pthread</TT
+> for POSIX threads, and <TT
+CLASS="LITERAL"
+>c</TT
+>, the C standard library.  The runtime linker is going to have to find those somewhere, and it's going to use only those libraries to resolve unresolved references in the executable.  </P
+><P
+>Second, <B
+CLASS="COMMAND"
+>readelf</B
+> displays the <TT
+CLASS="LITERAL"
+>RPATH</TT
+>.  The runtime linker searches for the required dynamic libraries in the directories listed in the <TT
+CLASS="LITERAL"
+>RPATH</TT
+>, if extant.  </P
+><P
+>The <TT
+CLASS="LITERAL"
+>RPATH</TT
+> is placed in the executable by the static linker.  It can be thought of as a hint from the application builder to the system administrator.  If an executable is built with an appropriate <TT
+CLASS="LITERAL"
+>RPATH</TT
+>, the runtine linker will have all the information it needs to find the required libraries.   </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="LINKER.DYNAMIC.LD.SO"
+>Information outside the executable</A
+></H3
+><P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Runtime linkers differ.  The advice and observations that follow apply in many situations, but not all.  The best way to know how <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>yours</I
+></SPAN
+> works is to consult your system's documentation.  RTFM!  </P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+><P
+>The NetBSD and GNU linkers both (as of this writing on machines used by the author) honor a configuration file and environment variables.  They also have compiled-in default search locations.  At a minimum, the default is <TT
+CLASS="FILENAME"
+>/usr/lib</TT
+>.  Sometimes a configuration file extends this to <TT
+CLASS="FILENAME"
+>/usr/local/lib</TT
+>.   </P
+><P
+>The primary environment variable is <CODE
+CLASS="ENVAR"
+>LD_LIBRARY_PATH</CODE
+>.  On some systems this <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>overrides</I
+></SPAN
+> the <TT
+CLASS="LITERAL"
+>RPATH</TT
+> in the executable.  In others it doesn't.  Where ineffective, specific libraries (not their paths) can be forceably used with <CODE
+CLASS="ENVAR"
+>LD_PRELOAD</CODE
+>.  </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="LINKER.DYNAMIC.LDD"
+>Displaying what the Runtime linker will do</A
+></H3
+><P
+>The <B
+CLASS="COMMAND"
+>ldd(1)</B
+> shows which dynamic libraries an executable requires and where, if at all, they'll be found:
+
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>ldd $(command -v bsqldb)</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>/usr/local/bin/bsqldb:
+        -lc.12 =&#62; /usr/lib/libc.so.12
+        -lpthread.0 =&#62; /usr/lib/libpthread.so.0
+        -lsybdb.5 =&#62; /usr/local/lib/libsybdb.so.5</SAMP
+></PRE
+>
+
+Important to understand: <B
+CLASS="COMMAND"
+>ldd</B
+> is <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>not</I
+></SPAN
+> figuring out this information by itself.  It just reports the results of its interrogation of the runtime linker.  As the configuration of the runtime linker is changed, so changes the output of <B
+CLASS="COMMAND"
+>ldd</B
+>.  </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="LINKER.DYNAMIC.WIN32"
+>A Word about Windows&reg;</A
+></H3
+><P
+>Windows executables use PE format (derived from the older COFF format), which has no provision for an <TT
+CLASS="LITERAL"
+>RPATH</TT
+>.
+The runtime linker searches the <TT
+CLASS="LITERAL"
+>PATH</TT
+> instead, after some built-in locations that usually include the current working directory.
+Neither <B
+CLASS="COMMAND"
+>ldd</B
+> nor any similar utility is included in the basic product.</P
+><P
+>It has been said that Unix is for <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>programmers</I
+></SPAN
+> and Windows is for <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>users</I
+></SPAN
+>, and perhaps that roughly describes the  intention.  But the Unix features listed above &mdash; <TT
+CLASS="LITERAL"
+>RPATH</TT
+> and <B
+CLASS="COMMAND"
+>ldd</B
+> &mdash; as well as a canonical filesystem hierarchy and dynamic library versioning, all promote a better <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>user</I
+></SPAN
+> experience.  Because of them, the problem of DLL conflicts in Windows hardly exists in Unix.  Yet they are neither new nor secrect nor patented nor complicated; Microsoft could have adopted them years ago (as Apple finally did).  We therefore know that the 20-year old phenomemon known as &ldquo;DLL hell&rdquo; is not inevitable, but a <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>choice</I
+></SPAN
+> signifying nothing so much as Microsoft's indifference to its customers.
+Recently Microsoft added support to configure different search paths and other attributes based on <TT
+CLASS="LITERAL"
+>Application Manifests</TT
+>
+and <TT
+CLASS="LITERAL"
+>Application Configuration Files</TT
+>.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H3
+CLASS="SECTION"
+><A
+NAME="LINKER.DYNAMIC.ADVICE"
+>Advice for the lazy</A
+></H3
+><P
+>To avoid tinkering with your runtime linker, embed an <TT
+CLASS="LITERAL"
+>RPATH</TT
+> in your executable commensurate with its intended runtime environment.  If <B
+CLASS="COMMAND"
+>ldd</B
+> doesn't show the libraries you want, or some are not found, use <B
+CLASS="COMMAND"
+>readelf</B
+> to see which libraries are used and the <TT
+CLASS="LITERAL"
+>RPATH</TT
+>.  Relink with a better <TT
+CLASS="LITERAL"
+>RPATH</TT
+> if needed.  </P
+><P
+>When testing with new libraries, use <CODE
+CLASS="ENVAR"
+>LD_PRELOAD</CODE
+> to override the default, taking care that the semantics haven't changed.  </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="linker.library.check.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="linker.conclusion.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Checking if a Library Provides a Function</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="rtl.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Keep in Mind</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

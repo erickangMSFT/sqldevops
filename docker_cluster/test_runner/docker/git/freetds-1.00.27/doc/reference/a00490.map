@@ -1,0 +1,9 @@
+<map id="CONNECT_EVENT" name="CONNECT_EVENT">
+<area shape="rect" id="node2" href="$a00160.html" title="tds_pool_member" alt="" coords="225,97,360,124"/>
+<area shape="rect" id="node3" href="$a00162.html" title="tds_pool_user" alt="" coords="99,187,209,213"/>
+<area shape="rect" id="node4" href="$a00145.html" title="tds_login" alt="" coords="5,97,84,124"/>
+<area shape="rect" id="node5" href="$a00161.html" title="tds_pool_socket" alt="" coords="110,7,235,33"/>
+<area shape="rect" id="node6" href="$a00158.html" title="tds_pool" alt="" coords="580,97,656,124"/>
+<area shape="rect" id="node7" href="$a00125.html" title="tds_context" alt="" coords="659,7,753,33"/>
+<area shape="rect" id="node8" href="$a00159.html" title="tds_pool_event" alt="" coords="439,7,557,33"/>
+</map>

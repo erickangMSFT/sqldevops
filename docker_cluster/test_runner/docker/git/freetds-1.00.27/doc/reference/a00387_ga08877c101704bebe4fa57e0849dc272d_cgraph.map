@@ -1,0 +1,38 @@
+<map id="tds71_submit_prepexec" name="tds71_submit_prepexec">
+<area shape="rect" id="node2" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="752,63,859,89"/>
+<area shape="rect" id="node7" href="$a00386.html#ga69559de43b47f4a9e2eecc7a56527444" title="Allocate a dynamic statement. " alt="" coords="253,484,391,511"/>
+<area shape="rect" id="node10" href="$a00386.html#gabf2fdb0def5388508602ee7dd2f49506" title="Frees dynamic statement. " alt="" coords="244,535,400,561"/>
+<area shape="rect" id="node13" href="$a00387.html#gae8b7db85af16701fc0604eb117cbd4e4" title="Set current dynamic. " alt="" coords="259,585,385,612"/>
+<area shape="rect" id="node14" href="$a00387.html#ga024bc5482366735070befd6f4af59f71" title="Convert a string in an allocated buffer. " alt="" coords="736,113,875,140"/>
+<area shape="rect" id="node18" href="$a00387.html#gab775332d378c7fe083750d624441b303" title="Return string with parameters definition, useful for TDS7+ Looks like &quot;@P1 INT, @P2 VARCHAR(100)&quot;..." alt="" coords="241,418,403,459"/>
+<area shape="rect" id="node25" href="$a00387.html#ga0da385231bfa3dc49377e1fb2bea2c07" title="Start query packet of a given type. " alt="" coords="262,113,382,140"/>
+<area shape="rect" id="node27" href="$a00387.html#ga0f0b6bf447e9672e3b1ea8453ddeb113" title="Send parameter definition to server. " alt="" coords="224,636,420,663"/>
+<area shape="rect" id="node28" href="$a00387.html#ga6e42b4a1d1d3898229ea2fe4afc2ecec" title="Output params types and query (required by sp_prepare/sp_executesql/sp_prepexec) " alt="" coords="235,367,409,393"/>
+<area shape="rect" id="node33" href="$a00387.html#gafd74652c4722ddce4d642cc4209449d4" title="Put data information to wire. " alt="" coords="500,215,635,241"/>
+<area shape="rect" id="node36" href="$a00387.html#ga9fcc0a3932dcad530511395ef8a767fb" title="Write data to wire. " alt="" coords="270,687,374,713"/>
+<area shape="rect" id="node37" href="$a00387.html#gada27f4cfce925240ad33b71b63ca692d" title="Flush query packet. " alt="" coords="482,12,653,39"/>
+<area shape="rect" id="node3" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="1508,291,1611,317"/>
+<area shape="rect" id="node4" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="949,240,1021,267"/>
+<area shape="rect" id="node5" href="$a00387.html#ga11338742dc30fd0c2711f58eb830316f" title="tds_send_cancel() sends an empty packet (8 byte header only) tds_process_cancel should be called dire..." alt="" coords="1103,215,1233,241"/>
+<area shape="rect" id="node6" href="$a00388.html#ga5feb53554e8917a81bbbc332163a61fb" title="Flush packet to server. " alt="" coords="1321,25,1449,52"/>
+<area shape="rect" id="node8" href="$a00390.html#ga595fe391e60a71bd98ffd53b4c015e44" title="Finds a dynamic given string id. " alt="" coords="492,585,643,612"/>
+<area shape="rect" id="node9" href="$a00386.html#ga501af7e6186e59c257729599a044a30b" title="Get an id for dynamic query based on TDS information. " alt="" coords="512,636,623,663"/>
+<area shape="rect" id="node11" href="$a00386.html#ga1d60bf443e274797b1d1a9e7418ab962" title="Detach result info from it current socket. " alt="" coords="497,687,638,713"/>
+<area shape="rect" id="node12" href="$a00386.html#gabdc5fee73b22345c02ab894e49ad7f95" title="Frees all allocated input parameters of a dynamic statement. " alt="" coords="484,737,651,764"/>
+<area shape="rect" id="node15" href="$a00385.html#ga87db49044919f1bc84c0ff5e9ab00304" title="Wrapper around iconv(3). " alt="" coords="944,367,1027,393"/>
+<area shape="rect" id="node16" href="$a00385.html#ga3380140fc6eb9f2090c430f40e846876" title="Move the input sequence pointer to the next valid position. " alt="" coords="1075,367,1261,393"/>
+<area shape="rect" id="node17" href="$a00385.html#ga900b0bce08c6bfc2e7c988f4b5970516" title="Inputs are FreeTDS canonical names, no other. " alt="" coords="1309,316,1460,343"/>
+<area shape="rect" id="node19" href="$a00387.html#ga0cd19215e9169ea299a6c9cbf5b2fb60" title="Count number of placeholders (?) in a query. " alt="" coords="481,418,653,459"/>
+<area shape="rect" id="node21" href="$a00387.html#ga50d62edeb2a432e2dc668263f3f958ff" title="Return declaration for column (like &quot;varchar(20)&quot;) " alt="" coords="468,535,667,561"/>
+<area shape="rect" id="node24" href="$a00387.html#gad05fc65e1d505c68d14c82b99a00e4eb" title="Accept an ASCII string, convert it to UCS2&#45;LE The input is null&#45;terminated, but the output excludes t..." alt="" coords="500,484,635,511"/>
+<area shape="rect" id="node20" href="$a00387.html#gaa823973b74efdf1ff00f340496bff614" title="Found the next placeholder (? or @param) in a string. " alt="" coords="726,469,885,510"/>
+<area shape="rect" id="node22" href="$a00387.html#ga440f0f469afad1eac4c008979873ccdd" title="Get column size for wire. " alt="" coords="731,636,879,663"/>
+<area shape="rect" id="node23" href="$a00217.html#a0383d5dcb629582266a442f0f0dbd13a" title="Return type suitable for conversions (convert all nullable types to fixed type) " alt="" coords="715,585,896,612"/>
+<area shape="rect" id="node26" href="$a00387.html#ga9ad2e6defce530a8778791cce0166ccd" title="Start query packet of a given type. " alt="" coords="487,113,647,140"/>
+<area shape="rect" id="node29" href="$a00388.html#ga1fcaf8d488cc1390f106ce3ad0bf37b4" title="Output a string to wire automatic translate string to unicode if needed. " alt="" coords="512,316,623,343"/>
+<area shape="rect" id="node30" href="$a00294.html#aa9e1e45f0305622dd6aed9f8fe158581" title="Initialize an input stream for read from a static allocated buffer. " alt="" coords="720,316,891,343"/>
+<area shape="rect" id="node31" href="$a00294.html#aa038a9125979f8f0915dbd53cbf27e5a" title="Initialize a data output stream. " alt="" coords="719,367,892,393"/>
+<area shape="rect" id="node32" href="$a00294.html#a9d8eb43a81ff58ab423dce0ce95b9564" title="Reads and writes from a stream converting characters. " alt="" coords="732,417,879,444"/>
+<area shape="rect" id="node34" href="$a00389.html#gaf0e232f3c35f2d8b43486e8708f7a8fc" title="Returns the length of the string in bytes. " alt="" coords="755,265,855,292"/>
+<area shape="rect" id="node35" href="$a00389.html#ga3340b488ed37845018e34572450e64c6" title="Returns a C version (NUL terminated string) of dstr. " alt="" coords="753,215,857,241"/>
+</map>

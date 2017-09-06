@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Use FreeTDS </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="PREVIOUS"
+TITLE="stunnel HOWTO"
+HREF="stunnel.htm"><LINK
+REL="NEXT"
+TITLE="How to get what works with it working"
+HREF="software.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="stunnel.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="software.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="USEFREETDS"
+></A
+>Chapter 6. Use <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> </H1
+><BLOCKQUOTE
+CLASS="ABSTRACT"
+><DIV
+CLASS="ABSTRACT"
+><P
+></P
+><A
+NAME="AEN2636"
+></A
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>  includes several utilities.  Some are testing tools, some demonstration projects, some intended for day-to-day use.  All have man pages.</P
+><P
+></P
+></DIV
+></BLOCKQUOTE
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="UTILITIES"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> Utilities</A
+></H1
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>(listed alphabetically)</B
+></P
+><DL
+><DT
+>bsqldb</DT
+><DD
+><P
+>  A non-interactive equivalent of the <CODE
+CLASS="SYMBOL"
+>isql</CODE
+> utility programs distributed by Sybase and Microsoft. Like them, <B
+CLASS="COMMAND"
+>bsqldb</B
+> uses the command <SPAN
+CLASS="QUOTE"
+>"go"</SPAN
+> on a line by itself as a separator between batches. The last batch need not be followed by <SPAN
+CLASS="QUOTE"
+>"go"</SPAN
+>.</P
+><P
+><B
+CLASS="COMMAND"
+>bsqldb</B
+> makes use of the <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>. Intended for production use.</P
+></DD
+><DT
+>bsqlodbc</DT
+><DD
+><P
+>A non-interactive equivalent of the <CODE
+CLASS="SYMBOL"
+>isql</CODE
+> utility programs distributed by Sybase and Microsoft. Like them, <B
+CLASS="COMMAND"
+>bsqlodbc</B
+> uses the command <SPAN
+CLASS="QUOTE"
+>"go"</SPAN
+> on a line by itself as a separator between batches. The last batch need not be followed by <SPAN
+CLASS="QUOTE"
+>"go"</SPAN
+>.  It uses the <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>.</P
+><P
+><B
+CLASS="COMMAND"
+>bsqlodbc</B
+> is a demonstration project, but can also aid in isolating problems.  <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> applications typically have many layers, and it can be difficult to know if a problem arises in a layer, or in the interface between layers.  By executing a query in <B
+CLASS="COMMAND"
+>bsqlodbc</B
+>, you can see if the functionality of the <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> driver works when used as the folks who wrote the driver thought it would be used.</P
+></DD
+><DT
+>datacopy</DT
+><DD
+><P
+>A tool for migrating data between Sybase ASE and SQL Server or vice versa.</P
+><P
+><B
+CLASS="COMMAND"
+>datacopy</B
+> will move table data from one server to another without the need for intermediate files. <B
+CLASS="COMMAND"
+>datacopy</B
+> is much faster and more efficient than is <B
+CLASS="COMMAND"
+>freebcp</B
+> out/in.</P
+><P
+><B
+CLASS="COMMAND"
+>datacopy</B
+> makes use of the <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> bcp <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>.</P
+></DD
+><DT
+>defncopy</DT
+><DD
+><P
+>Replaces a similar program of the same name distributed by Sybase.</P
+><P
+><B
+CLASS="COMMAND"
+>defncopy</B
+> reads the text of a stored procedure or view, and writes a script suitable for recreating the procedure or view. For tables, it reads  the output of <B
+CLASS="COMMAND"
+>sp_help</B
+> and constructs a <TT
+CLASS="LITERAL"
+>CREATE TABLE</TT
+> statement, complete with <TT
+CLASS="LITERAL"
+>CREATE INDEX</TT
+>, too.</P
+></DD
+><DT
+>fisql</DT
+><DD
+><P
+>A complete replacement of the <CODE
+CLASS="SYMBOL"
+>isql</CODE
+> utility programs distributed by Sybase and Microsoft. Like them, <B
+CLASS="COMMAND"
+>fisql</B
+> uses the command <SPAN
+CLASS="QUOTE"
+>"go"</SPAN
+> on a line by itself as a separator between batches.</P
+></DD
+><DT
+>freebcp</DT
+><DD
+><P
+>Replicates the functionality of the <CODE
+CLASS="SYMBOL"
+>bcp</CODE
+> utility programs distributed by Sybase and Microsoft.</P
+><P
+><B
+CLASS="COMMAND"
+>freebcp</B
+> makes use of the <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> bcp <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>.</P
+><P
+>The manual pages or online help for Sybase or SQL Server can be referenced for more detailed information on bcp functionality.</P
+></DD
+><DT
+>osql</DT
+><DD
+><P
+>A Bourne shell script that checks and reports on your configuration.</P
+></DD
+><DT
+>tsql</DT
+><DD
+><P
+>A diagnostic tool that uses uses the lowest level <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> library, <CODE
+CLASS="SYMBOL"
+>libtds</CODE
+>, as a way to isolate potential  bugs  in  the  protocol implementation.</P
+><P
+><B
+CLASS="COMMAND"
+>tsql</B
+> is <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>not</I
+></SPAN
+> a replacement for a complete <CODE
+CLASS="SYMBOL"
+>isql</CODE
+>.</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="stunnel.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="software.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>stunnel HOWTO</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>How to get what works with it working</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

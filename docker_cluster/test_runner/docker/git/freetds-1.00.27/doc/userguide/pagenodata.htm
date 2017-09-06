@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>"Page contains no data"</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Troubleshooting"
+HREF="troubleshooting.htm"><LINK
+REL="PREVIOUS"
+TITLE="Logging"
+HREF="logging.htm"><LINK
+REL="NEXT"
+TITLE="Slow connection or data retrieval"
+HREF="seemtooslow.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="logging.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Troubleshooting</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="seemtooslow.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="PAGENODATA"
+>"Page contains no data"</A
+></H1
+><P
+>Web browsers display this error when the underlying script didn't return any information.  The error could be in any of several places, of which <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is one.  To isolate the cause, turn on enough logs to see the query, and execute the query through <SPAN
+CLASS="APPLICATION"
+>SQSH</SPAN
+>.  If that works, the problem lies further up the chain.  If it doesn't, take a look at the <A
+HREF="troubleshooting.htm#KNOWNISSUES"
+>known issues</A
+> section.</P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> under PHP executing within an <SPAN
+CLASS="PRODUCTNAME"
+>Apache</SPAN
+> process may abort with a segmentation fault.  The evidence of this is the words "Segmentation Fault" or "Bus Error" in the <SPAN
+CLASS="PRODUCTNAME"
+>Apache</SPAN
+> error log, and a "Page contains no data" warning displayed by the web browser.  The unexpected termination of the process causes the connection to the client to be closed before any buffered data is sent.</P
+><P
+>To diagnose this sort of problem, follow this procedure;</P
+><P
+></P
+><UL
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>Compile PHP as a CGI binary.</P
+><P
+>This should have been a side-effect of your build of PHP, look for an
+					executable called php in the PHP build tree.  If you are using a
+					packaged binary, look for a php-cgi package.</P
+></LI
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>Make a reproducer.</P
+><P
+>Make a PHP script that reliably reproduces the segmentation
+					fault via the web server, but with no arguments.  This is so that you
+					can execute it using the PHP binary, thus excluding the web
+					server as the cause of the problem.</P
+></LI
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>Reproduce on command line.</P
+><P
+>Reproduce the segmentation fault using PHP on the command line, by activating PHP with the script as first argument.  For example;</P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>% </SAMP
+><KBD
+CLASS="USERINPUT"
+>php file.php</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>Segmentation fault</SAMP
+>
+	<SAMP
+CLASS="PROMPT"
+>% </SAMP
+></PRE
+><P
+>If this doesn't reproduce the segmentation fault, then there is
+					something about the environment that differs, so look for the
+					differences and resolve them.  Check environment variables,
+					assumptions made by the script, the UID you are executing under, and
+					the current working directory.</P
+></LI
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>Reproduce using GDB.</P
+><P
+>Now reproduce the segmentation fault using the debugger, GDB.
+					Instead of aborting to the command line, GDB will stop executing the
+					PHP program at the point of failure.  Use the <B
+CLASS="COMMAND"
+>bt</B
+>
+					command to determine the details and context.  This is called a
+					backtrace.</P
+><PRE
+CLASS="SCREEN"
+>	<SAMP
+CLASS="PROMPT"
+>% </SAMP
+><KBD
+CLASS="USERINPUT"
+>gdb php</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>gdb&#62; </SAMP
+><KBD
+CLASS="USERINPUT"
+>run file.php</KBD
+>
+	<SAMP
+CLASS="PROMPT"
+>gdb&#62; </SAMP
+><KBD
+CLASS="USERINPUT"
+>bt</KBD
+></PRE
+></LI
+><LI
+STYLE="list-style-type: opencircle"
+><P
+>Analyze the backtrace.</P
+><P
+>Read the backtrace to determine what the cause of the problem
+					is.  Examine each line, assigning responsibility by component; some
+					code is PHP, some is <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>, and some may be glibc.  You will need
+					the source code for each component, and software engineering debugging
+					skills.</P
+><P
+>If you cannot determine the cause yourself, send the backtrace
+					to the <A
+HREF="mailinglist.htm"
+>mailing list</A
+>, along with the
+					PHP script.  It helps to make the script as small as possible, but
+					still fail.  It also helps to report the version numbers of PHP, and
+					<SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="logging.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="seemtooslow.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Logging</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="troubleshooting.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Slow connection or data retrieval</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

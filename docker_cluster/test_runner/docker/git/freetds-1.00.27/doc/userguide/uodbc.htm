@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>ODBC on Unix</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="How to get what works with it working"
+HREF="software.htm"><LINK
+REL="PREVIOUS"
+TITLE="Qt"
+HREF="qt.htm"><LINK
+REL="NEXT"
+TITLE="Troubleshooting"
+HREF="troubleshooting.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="qt.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. How to get what works with it working</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="troubleshooting.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="UODBC"
+>ODBC on Unix</A
+></H1
+><P
+><SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> has some issues on Unix, mainly due to lack of clean specifications.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="UODBC.64"
+>ODBC and 64-bit</A
+></H2
+><P
+>ODBC was originally specified as 32-bit<A
+NAME="AEN3029"
+HREF="#FTN.AEN3029"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>.  Its evolution to 64-bit took place in the absence of a good specification which led to conflicting declarations and associated problems.  For instance, some parameters are defined as SQLINTEGER but are used for pointer offsets.   But SQLINTEGER was (and remains) 32-bit, while pointer offsets must be 64-bit.  Also row numbers and some other formerly 32-bit quantities are now 64-bit.</P
+><P
+>If you use <SPAN
+CLASS="PRODUCTNAME"
+>unixODBC</SPAN
+> Frediano would recommend at least version 2.2.14. Earlier versions have issues if used on 64-bit environments.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="UODBC.WCHAR"
+>sizeof(SQLWCHAR)</A
+></H2
+><P
+>Under Windows <TT
+CLASS="LITERAL"
+>sizeof(wchar_t) == sizeof(SQLWCHAR) == 2</TT
+> but on many Unix systems you have <TT
+CLASS="LITERAL"
+>sizeof(wchar_t) == 4</TT
+>.  And some DMs decided to keep <TT
+CLASS="LITERAL"
+>sizeof(SQLWCHAR) == 2</TT
+> (including <SPAN
+CLASS="PRODUCTNAME"
+>unixODBC</SPAN
+>) while in other DM <TT
+CLASS="LITERAL"
+>sizeof(SQLWCHAR) == sizeof(wchar_t) == 4</TT
+> (namely <SPAN
+CLASS="PRODUCTNAME"
+>iODBC</SPAN
+>). This leads to incompatible ABIs between applications and drivers. If you compile the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> ODBC driver using <SPAN
+CLASS="PRODUCTNAME"
+>iODBC</SPAN
+> take care to ensure all drivers are compiled with the same header files.</P
+><P
+>Alternatively, compile <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> with both includes and rename the library to use two ABIs (for instance having a <TT
+CLASS="FILENAME"
+>libtdsiodbc.so</TT
+> and a <TT
+CLASS="FILENAME"
+>libtdsuodbc.so</TT
+>).</P
+><P
+>At the time of writing <SPAN
+CLASS="PRODUCTNAME"
+>Ubuntu</SPAN
+> compiled Qt using <SPAN
+CLASS="PRODUCTNAME"
+>iODBC</SPAN
+> but most packages use <SPAN
+CLASS="PRODUCTNAME"
+>unixODBC</SPAN
+>. If you plan to use Qt with the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> driver, you should have an <SPAN
+CLASS="PRODUCTNAME"
+>iODBC</SPAN
+>-compatible driver. Also be aware that the QODBC Qt driver has problems with <SPAN
+CLASS="PRODUCTNAME"
+>iODBC</SPAN
+> and <TT
+CLASS="LITERAL"
+>SQLWCHAR</TT
+> (see <A
+HREF="qt.htm"
+>Qt</A
+>). Due to these problems Frediano suggests not using this configuration (Qt database) on <SPAN
+CLASS="PRODUCTNAME"
+>Ubuntu</SPAN
+> at this time.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="UODBC.CHAR"
+>Default charset</A
+></H2
+><P
+>Character encoding is yet another trap.  ODBC makes no provision for specifying client character encoding. By default many DM converting from multi-byte to wide characters assume the client uses ISO 8859-1.  Even the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> driver assumes ISO 8859-1 by default.  Also some DM have problems converting multi-byte encodings (like UTF-8), by assuming a byte can be converted to a single wide character (and vice versa). That creates problems if you use multi-byte encoding for <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> driver.</P
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN3029"
+HREF="uodbc.htm#AEN3029"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>In fact, the earliest versions were 16-bit.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="qt.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="troubleshooting.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Qt</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="software.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Troubleshooting</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

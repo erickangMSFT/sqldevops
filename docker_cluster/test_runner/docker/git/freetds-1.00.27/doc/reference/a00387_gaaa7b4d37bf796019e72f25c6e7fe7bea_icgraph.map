@@ -1,0 +1,5 @@
+<map id="tds_count_placeholders" name="tds_count_placeholders">
+<area shape="rect" id="node2" href="$a00387.html#ga02c6ce3ff96369603a6ee4efee64caae" title="Emulate prepared execute traslating to a normal language. " alt="" coords="225,31,428,57"/>
+<area shape="rect" id="node3" href="$a00387.html#gae603aed795a4c5bb26ab159a11256996" title="Submit a prepared query with parameters. " alt="" coords="476,5,637,32"/>
+<area shape="rect" id="node4" href="$a00387.html#ga3e7b4793c6f799fbc6c174f673bb5b32" title="tds_submit_execute() sends a previously prepared dynamic statement to the server. ..." alt="" coords="484,56,629,83"/>
+</map>

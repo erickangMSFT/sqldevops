@@ -1,0 +1,21 @@
+<map id="tds_process_end" name="tds_process_end">
+<area shape="rect" id="node2" href="$a00388.html#gad38aa5b9547817854ccba1fcc7855861" title="Get an int16 from the server. " alt="" coords="198,47,329,74"/>
+<area shape="rect" id="node5" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="1023,174,1125,200"/>
+<area shape="rect" id="node6" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="857,199,964,226"/>
+<area shape="rect" id="node7" href="$a00390.html#ga69902dffb299d62a799888e0fa3ccd68" title="Attempt to close all deferred closes (dynamics and cursors). " alt="" coords="184,293,343,334"/>
+<area shape="rect" id="node3" href="$a00388.html#gae7d9c4e1a079e1d0aa0252732631e8c4" title="Get N bytes from the buffer and return them in the already allocated space given to us..." alt="" coords="429,47,514,74"/>
+<area shape="rect" id="node4" href="$a00388.html#ga410619783bdf2bb60b0f27a5578e0e07" title="Read in one &#39;packet&#39; from the server. " alt="" coords="847,72,975,99"/>
+<area shape="rect" id="node8" href="$a00390.html#gaeeb1562044786ea17bea361ed83e6946" title="Process results for simple query as &quot;SET TEXTSIZE&quot; or &quot;USE dbname&quot; If the statement returns results..." alt="" coords="398,217,545,258"/>
+<area shape="rect" id="node11" href="$a00387.html#gab25de0567ac096e8f8e88490eeddf562" title="Send a deallocation request to server. " alt="" coords="401,300,542,327"/>
+<area shape="rect" id="node15" href="$a00387.html#gaf573d8d4d2660c8c27770573fca05ff5" title="Send a unprepare request for a prepared query. " alt="" coords="391,503,552,530"/>
+<area shape="rect" id="node18" href="$a00386.html#gabf2fdb0def5388508602ee7dd2f49506" title="Frees dynamic statement. " alt="" coords="393,706,549,732"/>
+<area shape="rect" id="node9" href="$a00390.html#gabfc9de1d1fe718818caf63a4be4035a6" title="process all streams. " alt="" coords="625,148,774,175"/>
+<area shape="rect" id="node10" href="$a00387.html#gae8b7db85af16701fc0604eb117cbd4e4" title="Set current dynamic. " alt="" coords="847,275,974,302"/>
+<area shape="rect" id="node12" href="$a00387.html#ga2c6da4886cc30af02546a3bc2ebcae5d" title="Check if a cursor is allocated into the server. " alt="" coords="600,250,799,276"/>
+<area shape="rect" id="node13" href="$a00387.html#ga34fb1084682cc31fe02a4a7946955a5a" title="Set current cursor. " alt="" coords="628,300,771,327"/>
+<area shape="rect" id="node14" href="$a00387.html#gada27f4cfce925240ad33b71b63ca692d" title="Flush query packet. " alt="" coords="614,402,785,428"/>
+<area shape="rect" id="node16" href="$a00387.html#ga0da385231bfa3dc49377e1fb2bea2c07" title="Start query packet of a given type. " alt="" coords="639,604,759,631"/>
+<area shape="rect" id="node17" href="$a00388.html#ga1fcaf8d488cc1390f106ce3ad0bf37b4" title="Output a string to wire automatic translate string to unicode if needed. " alt="" coords="644,655,755,682"/>
+<area shape="rect" id="node19" href="$a00386.html#ga1d60bf443e274797b1d1a9e7418ab962" title="Detach result info from it current socket. " alt="" coords="629,706,770,732"/>
+<area shape="rect" id="node20" href="$a00386.html#gabdc5fee73b22345c02ab894e49ad7f95" title="Frees all allocated input parameters of a dynamic statement. " alt="" coords="616,756,783,783"/>
+</map>

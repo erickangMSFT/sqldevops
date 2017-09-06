@@ -1,0 +1,1419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>The freetds.conf file</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="Install FreeTDS"
+HREF="install.htm"><LINK
+REL="PREVIOUS"
+TITLE="servername Lookup"
+HREF="name.lookup.htm"><LINK
+REL="NEXT"
+TITLE="The locales.conf file"
+HREF="locales.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="name.lookup.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Install <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="locales.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="FREETDSCONF"
+>The <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> file</A
+></H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="FREETDSCONFPURPOSE"
+>What it does</A
+></H2
+><P
+>Just as DNS defines hostnames for  network addresses, <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> uses a <I
+CLASS="FIRSTTERM"
+>servername</I
+> to define the properties of your server.  <A
+NAME="AEN955"
+HREF="#FTN.AEN955"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>
+				In particular, <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> needs to know:
+				<P
+></P
+><P
+><B
+>Primary Server Properties</B
+></P
+><UL
+><LI
+><P
+>Hostname or IP address of the server</P
+></LI
+><LI
+><P
+>Port number or Instance name (not both)</P
+></LI
+><LI
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol version</P
+></LI
+></UL
+>				</P
+><P
+></P
+><P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>	<SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> also supports an older configuration file format, known as the <TT
+CLASS="FILENAME"
+>interfaces</TT
+> file.  Use <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> unless <TT
+CLASS="FILENAME"
+>interfaces</TT
+> is needed for your situation.  It is easier to read, and it is where all the new options are being added.  <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> looks for <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> first, falling back on <TT
+CLASS="FILENAME"
+>interfaces</TT
+> only if <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> is not found.</P
+><P
+>Should you need it, more information about <TT
+CLASS="FILENAME"
+>interfaces</TT
+> can be found in the <A
+HREF="interfacesfile.htm"
+>Appendix</A
+>.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="FREETDSCONFLOCATION"
+>Where it goes</A
+></H2
+><P
+>The default location of <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> is determined by the  <TT
+CLASS="LITERAL"
+>--sysconfdir</TT
+> option of <B
+CLASS="COMMAND"
+>configure</B
+>.  If you don't specify anything, <B
+CLASS="COMMAND"
+>configure</B
+>'s default <TT
+CLASS="LITERAL"
+>sysconfdir</TT
+> is <TT
+CLASS="FILENAME"
+>/usr/local/etc</TT
+>.  <B
+CLASS="COMMAND"
+>tsql -C</B
+> reports the <TT
+CLASS="LITERAL"
+>sysconfdir</TT
+> to let you confirm it.</P
+><P
+>In addition, <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will look for a file <TT
+CLASS="FILENAME"
+>.freetds.conf</TT
+> in the user's home directory (<CODE
+CLASS="ENVAR"
+>${HOME}</CODE
+><TT
+CLASS="FILENAME"
+>/.freetds.conf</TT
+>).</P
+><P
+>The actual name and location of <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> may be specified by the environment variable <CODE
+CLASS="ENVAR"
+>FREETDS</CODE
+> (or <CODE
+CLASS="ENVAR"
+>FREETDSCONF</CODE
+>, same effect).  See <A
+HREF="envvar.htm"
+>Environment Variables</A
+>, below.</P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> reads the user's <TT
+CLASS="REPLACEABLE"
+><I
+>${HOME}/</I
+></TT
+><TT
+CLASS="FILENAME"
+>.freetds.conf</TT
+> before resorting to the system-wide <TT
+CLASS="REPLACEABLE"
+><I
+>sysconfdir/</I
+></TT
+><TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.  The file used is the first one that is readable and contains a section for the server.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="FREETDSCONFFORMAT"
+>What it looks like</A
+></H2
+><P
+><DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+> The following information is also provided in the <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> manual page, cf. <B
+CLASS="COMMAND"
+>man freetds.conf</B
+>.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+><P
+>The <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> file format is similar to that of Samba's modified <SPAN
+CLASS="QUOTE"
+>"<TT
+CLASS="FILENAME"
+>win.ini</TT
+>"</SPAN
+>.  It
+				is composed of two types of sections: one <TT
+CLASS="LITERAL"
+>[global]</TT
+> section,  and a <TT
+CLASS="LITERAL"
+>[<TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+>]</TT
+> section for each servername.  Settings in the <TT
+CLASS="LITERAL"
+>[global]</TT
+> section affect all servernames, but can be overridden in a <TT
+CLASS="LITERAL"
+>[<TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+>]</TT
+> section.  For example</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.FREETDSCONF"
+></A
+><P
+><B
+>Example 3-1. A <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> file example</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>					[global]
+					tds version = 4.2
+					
+					[myserver]
+					host = ntbox.mydomain.com
+					port = 1433
+					
+					[myserver2]
+					host = unixbox.mydomain.com
+					port = 4000
+					tds version = 5.0
+					
+					[myserver3]
+					host = instancebox.mydomain.com
+					instance = foo
+					tds version = 7.1
+					</PRE
+></DIV
+><P
+>In this example, the default  <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> version for all servernames is set to <TT
+CLASS="LITERAL"
+>4.2</TT
+>.  It is then overridden for <TT
+CLASS="LITERAL"
+>myserver2</TT
+> (a Sybase server) which uses <TT
+CLASS="LITERAL"
+>5.0</TT
+>, and <TT
+CLASS="LITERAL"
+>myserver3</TT
+> (a MSSQL 2000 server) which uses <TT
+CLASS="LITERAL"
+>7.1</TT
+>.</P
+><P
+>Usually, it is sufficient to state just the server's hostname and TDS protocol version.  Everything else can be inferred, unless your setup (or your server's) strays from the defaults.
+				<DIV
+CLASS="TIP"
+><P
+></P
+><TABLE
+CLASS="TIP"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Some people seem to feel safer using the IP address for the server, rather than its name.  We don't recommend you do that.  Use the name, and benefit from the inherent advantages.  That's why DNS was invented in the first place, you know.</P
+></TD
+></TR
+></TABLE
+></DIV
+></P
+><P
+>It bears mentioning here that prior versions of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> were quite fussy about domain logins, forcing users to make explicit per-server entries in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+>.  That is no longer the case.  If the username has the form <CODE
+CLASS="PARAMETER"
+>DOMAIN\username</CODE
+>, <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will automatically use a domain login.</P
+><DIV
+CLASS="TABLE"
+><A
+NAME="TAB.FREETDS.CONF"
+></A
+><P
+><B
+>Table 3-2. <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> settings</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><COL><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Possible Values</TH
+><TH
+>Default</TH
+><TH
+>Meaning</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>tds version</TT
+></TD
+><TD
+>4.2, 5.0, 7.0, 7.1, 7.2, 7.3, 7.4, <TT
+CLASS="LITERAL"
+>auto</TT
+></TD
+><TD
+><CODE
+CLASS="PARAMETER"
+>--with-tdsver</CODE
+> value (<TT
+CLASS="LITERAL"
+>5.0</TT
+> if unspecified)
+								Overridden by <A
+HREF="envvar.htm#TDSVER"
+>TDSVER</A
+>.</TD
+><TD
+>The <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol version to use when connecting.  <SPAN
+CLASS="QUOTE"
+>"<TT
+CLASS="LITERAL"
+>auto</TT
+>"</SPAN
+> tells <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> to use an autodetection (trial-and-error) algorithm to choose the protocol version. </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>host</TT
+></TD
+><TD
+>host name or IP address</TD
+><TD
+>none</TD
+><TD
+>The host that the servername is running on.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>port</TT
+></TD
+><TD
+>any valid port</TD
+><TD
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TD
+>Product</TD
+><TD
+>Version</TD
+><TD
+>Default Port</TD
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>Sybase <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+></TD
+><TD
+>prior to System 10</TD
+><TD
+>1433</TD
+></TR
+><TR
+><TD
+>Sybase <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+></TD
+><TD
+>10 and up</TD
+><TD
+>5000</TD
+></TR
+><TR
+><TD
+>Sybase <SPAN
+CLASS="PRODUCTNAME"
+>SQL Anywhere</SPAN
+></TD
+><TD
+>7</TD
+><TD
+>2638</TD
+></TR
+><TR
+><TD
+>Microsoft <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+></TD
+><TD
+>all</TD
+><TD
+>1433</TD
+></TR
+></TBODY
+></TABLE
+></TD
+><TD
+>	The port number that the servername is listening to.
+								<SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Please note:</I
+></SPAN
+>
+								The "defaults" to the left are the server's default settings.   <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> chooses its default port based on the TDS protocol version: <TT
+CLASS="LITERAL"
+>5000</TT
+> for <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> <TT
+CLASS="LITERAL"
+>5.0</TT
+>, and <TT
+CLASS="LITERAL"
+>1433</TT
+> for everything else.  Mutually exclusive with <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>instance</I
+></SPAN
+>, below.
+								Overridden by <A
+HREF="envvar.htm#TDSPORT"
+>TDSPORT</A
+>. </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>instance</TT
+></TD
+><TD
+>instance name</TD
+><TD
+>none</TD
+><TD
+><P
+>Name of Microsoft SQL Server <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>instance</I
+></SPAN
+> to connect to. The port will be detected automatically.  Mutually exclusive with <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>port</I
+></SPAN
+>, above.  Requires UDP connection to port 1434 on the server.</P
+></TD
+></TR
+><TR
+><A
+NAME="ASA.DATABASE"
+></A
+><TD
+><TT
+CLASS="LITERAL"
+>ASA database</TT
+></TD
+><TD
+>valid database name</TD
+><TD
+>servername [<TT
+CLASS="REPLACEABLE"
+><I
+>section</I
+></TT
+>] name</TD
+><TD
+>Specifies the name of the default database when connecting to an ASA server.  A TDS 5.0 login packet has a field called <TT
+CLASS="LITERAL"
+>lservname</TT
+>.   For most TDS servers, <TT
+CLASS="LITERAL"
+>lservname</TT
+> is a user-defined string with no inherent meaning.  ASA servers, however, requires that <TT
+CLASS="LITERAL"
+>lservname</TT
+>  contain a valid database name, and sets that as the default database for the connection. <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> normally fills <TT
+CLASS="LITERAL"
+>lservname</TT
+>  with the [<TT
+CLASS="REPLACEABLE"
+><I
+>section</I
+></TT
+>] text..   This entry instead sets the database name independently of the [<TT
+CLASS="REPLACEABLE"
+><I
+>section</I
+></TT
+>] name.   </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>database</TT
+></TD
+><TD
+>valid database name</TD
+><TD
+>none</TD
+><TD
+>Specifies the name of the default database.
+This is the name of the database container in the server you are connecting to.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>initial block size</TT
+></TD
+><TD
+>multiple of 512</TD
+><TD
+>512</TD
+><TD
+>Specifies the maximum size of a protocol block.  Don't mess with unless you know what you are doing.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>dump file</TT
+></TD
+><TD
+>any valid file name</TD
+><TD
+>none
+								Overridden by <A
+HREF="logging.htm#TDSDUMP"
+>TDSDUMP</A
+>.
+								</TD
+><TD
+>Specifies the location of a tds dump file and turns on logging</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>dump file append</TT
+></TD
+><TD
+>yes/no</TD
+><TD
+>no</TD
+><TD
+>Appends dump file instead of overwriting it.  Useful for debugging when many processes are active.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>timeout</TT
+></TD
+><TD
+>0-</TD
+><TD
+>none</TD
+><TD
+>Sets period to wait for response of query before timing out.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>connect timeout</TT
+></TD
+><TD
+>0-</TD
+><TD
+>none</TD
+><TD
+>Sets period to wait for response from connect before timing out.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>emulate little endian</TT
+></TD
+><TD
+>yes/no</TD
+><TD
+>no</TD
+><TD
+>Forces big endian machines (Sparc, PPC, PARISC) to act as little endian to communicate with MS Servers. Set automatically for <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> 7.0 or above on big endian hosts</TD
+></TR
+><TR
+><A
+NAME="CLIENTCHARSET"
+></A
+><TD
+><TT
+CLASS="LITERAL"
+>client charset</TT
+></TD
+><TD
+>any valid iconv character set</TD
+><TD
+>ISO-8859-1<A
+NAME="AEN1195"
+HREF="#FTN.AEN1195"
+><SPAN
+CLASS="footnote"
+>[a]</SPAN
+></A
+></TD
+><TD
+>Makes <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> use iconv to convert to and from the specified character set from UCS-2 in <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> 7.0 or above.
+								<SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> uses iconv to convert all character data, so there's no need to match the server's charset to insert any characters the server supports.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>text size</TT
+></TD
+><TD
+>0 to 4,294,967,295</TD
+><TD
+>4,294,967,295</TD
+><TD
+>default value of TEXTSIZE, in bytes.  For <SPAN
+CLASS="TYPE"
+>text</SPAN
+> and <SPAN
+CLASS="TYPE"
+>image</SPAN
+> datatypes, sets the maximum width of any returned column. Cf. <B
+CLASS="COMMAND"
+>set TEXTSIZE</B
+> in the <ACRONYM
+CLASS="ACRONYM"
+>T-SQL</ACRONYM
+> documentation for your server.  </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>debug flags</TT
+></TD
+><TD
+>Any number even in hex or octal notation</TD
+><TD
+>0x4fff</TD
+><TD
+>Sets granularity of logging. A bitmask. See table below for specification.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>encryption</TT
+></TD
+><TD
+>off/request/require</TD
+><TD
+>off</TD
+><TD
+>Specify if encryption is desired. Supported for Microsoft servers. <CODE
+CLASS="SYMBOL"
+>off</CODE
+> disables encryption (only if needed); <CODE
+CLASS="SYMBOL"
+>request</CODE
+> means use if available; <CODE
+CLASS="SYMBOL"
+>require</CODE
+> means create and allow encrypted connections only.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>enable gssapi delegation</TT
+></TD
+><TD
+>on/off</TD
+><TD
+>off</TD
+><TD
+>Enable delegation flag using Kerberos.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>realm</TT
+></TD
+><TD
+>any</TD
+><TD
+>default Kerberos realm</TD
+><TD
+>Specify Kerberos realm.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>SPN</TT
+></TD
+><TD
+>any</TD
+><TD
+>MSSQLSvc/fqdn:port</TD
+><TD
+>Specify Kerberos SPN.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>use ntlmv2</TT
+></TD
+><TD
+>yes/no</TD
+><TD
+>no</TD
+><TD
+>Use NTLMv2.  An alternative to the <TT
+CLASS="LITERAL"
+>UseNTLMv2</TT
+> option in <TT
+CLASS="FILENAME"
+>odbc.ini</TT
+>.  </TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>use lanman</TT
+></TD
+><TD
+>yes/no</TD
+><TD
+>no</TD
+><TD
+>Use LAN MANAGER for NTLM.  This is a very old encryption.  Should not be enabled unless you have a really old server.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>use utf-16</TT
+></TD
+><TD
+>yes/no</TD
+><TD
+>no</TD
+><TD
+>Instead of using UCS-2 for database wide character encoding use UTF-16.  Newer Windows versions use this encoding instead of UCS-2. This could result in some issues if clients assume that a character is always 2 bytes.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>ca file</TT
+></TD
+><TD
+>any filename or <TT
+CLASS="LITERAL"
+>system</TT
+></TD
+><TD
+>none</TD
+><TD
+>File that hold root certificates (in PEM format) to verify server certificate, used during an encrypted connection.
+If not specify or empty any certificate will be accepted from server.
+If you specify <TT
+CLASS="LITERAL"
+>system</TT
+> <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> will use system wide certificate list.
+If a certiticate is not installed server can generate a self signed certificate, in this case is useful to disable certificate validation (which is the default).
+Note that is not possible to specify a directory as usually database servers does not use a certificate signed by a public global certification authority.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>crl file</TT
+></TD
+><TD
+>any filename</TD
+><TD
+>none</TD
+><TD
+>File that hold certificate revocation list. Only used if <TT
+CLASS="LITERAL"
+>ca file</TT
+> is also specified.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>check certificate hostname</TT
+></TD
+><TD
+>yes/no</TD
+><TD
+>yes</TD
+><TD
+>Check is the hostname is valid in the certificate. Only used if <TT
+CLASS="LITERAL"
+>ca file</TT
+> is also specified.</TD
+></TR
+><TR
+><TD
+><TT
+CLASS="LITERAL"
+>read-only intent</TT
+></TD
+><TD
+>yes/no</TD
+><TD
+>no</TD
+><TD
+>Tell server we only intent to do read-only queries.
+This is supported from MSSQL 2012.</TD
+></TR
+></TBODY
+><TR
+><TD
+COLSPAN="4"
+>Notes:<BR><A
+NAME="FTN.AEN1195"
+>a. </A
+>Valid for ISO 8859-1 character set.  See <A
+HREF="localization.htm"
+>Localization and <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> 7.0</A
+> for more information.<BR></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN1295"
+>Overrides</A
+></H3
+><P
+>Many settings in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> can be overridden by <A
+HREF="envvar.htm"
+>environment variables</A
+>.</P
+><P
+>The servername can also be decorated adding the port or instance name using <A
+HREF="portoverride.htm"
+>port override syntax</A
+>.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN1302"
+>Controlling log details</A
+></H3
+><BLOCKQUOTE
+CLASS="ABSTRACT"
+><DIV
+CLASS="ABSTRACT"
+><P
+></P
+><A
+NAME="AEN1304"
+></A
+><P
+>The logging capability has helped solve innumerable cases, some trivial and some very low-level bugs.  Sometimes a developer needs very detailed information about one function, whereas someone else may interested only in whether or not a particular function is called, or even want to see only the SQL that was transmitted to the server.</P
+><P
+></P
+></DIV
+></BLOCKQUOTE
+><P
+>The log's granularity can be controlled with the <TT
+CLASS="LITERAL"
+>debug flags</TT
+> entry. The default value (<TT
+CLASS="LITERAL"
+>4FFF</TT
+> hex) gives a level of detail that is useful for resolving problems via the mailing list.</P
+><DIV
+CLASS="TABLE"
+><A
+NAME="TAB.FREETDS.CONF.DEBUGFLAGS"
+></A
+><P
+><B
+>Table 3-3. Valid bitmask values for <TT
+CLASS="LITERAL"
+>debug flags</TT
+> entry in <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+></B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Value</TH
+><TH
+>Meaning</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>0x80</TD
+><TD
+>function trace and info</TD
+></TR
+><TR
+><TD
+>0x40</TD
+><TD
+>information level 2</TD
+></TR
+><TR
+><TD
+>0x20</TD
+><TD
+>information level 1</TD
+></TR
+><TR
+><TD
+>0x10</TD
+><TD
+>network</TD
+></TR
+><TR
+><TD
+>0x08</TD
+><TD
+>warning</TD
+></TR
+><TR
+><TD
+>0x04</TD
+><TD
+>error</TD
+></TR
+><TR
+><TD
+>0x02</TD
+><TD
+>severe error</TD
+></TR
+><TR
+><TD
+>0x1000</TD
+><TD
+>show pid</TD
+></TR
+><TR
+><TD
+>0x2000</TD
+><TD
+>show time</TD
+></TR
+><TR
+><TD
+>0x4000</TD
+><TD
+>show source level info (source file and line)</TD
+></TR
+><TR
+><TD
+>0x8000</TD
+><TD
+>thread id (not implemented)</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>For more about the wonderful world of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> logs, see <A
+HREF="logging.htm"
+>Logging</A
+>.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN1355"
+>Deprecated options</A
+></H3
+><P
+>The following options have long been deprecated.</P
+><P
+></P
+><P
+><B
+>Deprecated <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> settings</B
+></P
+><UL
+COMPACT="COMPACT"
+><LI
+><P
+><CODE
+CLASS="SYMBOL"
+>try server login</CODE
+></P
+></LI
+><LI
+><P
+><CODE
+CLASS="SYMBOL"
+>try domain login </CODE
+></P
+></LI
+><LI
+><P
+><CODE
+CLASS="SYMBOL"
+>nt domain </CODE
+></P
+></LI
+><LI
+><P
+><CODE
+CLASS="SYMBOL"
+>cross domain login </CODE
+></P
+></LI
+><LI
+><P
+><CODE
+CLASS="SYMBOL"
+>debug level </CODE
+></P
+></LI
+></UL
+></DIV
+></DIV
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN955"
+HREF="freetdsconf.htm#AEN955"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>In general, the servername is arbitrary and local; it's used only by your client programs to tell <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> which server to connect to.  You can choose any name you like.</P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>Sybase SQL Anywhere</SPAN
+> (a/k/a Sybase ASA), however, is fussy.  Unless you use the <A
+HREF="freetdsconf.htm#ASA.DATABASE"
+>ASA Database</A
+> property, you must use the database's name as your servername.  Otherwise, the server will refuse your connection.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="name.lookup.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="locales.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><TT
+CLASS="REPLACEABLE"
+><I
+>servername</I
+></TT
+> Lookup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="install.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The <TT
+CLASS="FILENAME"
+>locales.conf</TT
+> file</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,24 @@
+<map id="tds_sys_iconv_open" name="tds_sys_iconv_open">
+<area shape="rect" id="node2" href="$a00306.html#a89de4d12be43b135ad355236717e9cbb" title="Initialize charset searching for UTF&#45;8, UCS&#45;2 and ISO8859&#45;1. " alt="" coords="243,5,351,32"/>
+<area shape="rect" id="node3" href="$a00306.html#a010ab1d181c8996f6a5984c9900eca6b" title="Get iconv name given canonic. " alt="" coords="221,107,373,133"/>
+<area shape="rect" id="node4" href="$a00385.html#ga3a7a7b4d6ed344127e164dd0b443d790" title="Open iconv descriptors to convert between character sets (both directions). " alt="" coords="439,68,577,95"/>
+<area shape="rect" id="node6" href="$a00385.html#ga87db49044919f1bc84c0ff5e9ab00304" title="Wrapper around iconv(3). " alt="" coords="467,183,549,209"/>
+<area shape="rect" id="node23" href="$a00385.html#ga3380140fc6eb9f2090c430f40e846876" title="Move the input sequence pointer to the next valid position. " alt="" coords="204,208,391,235"/>
+<area shape="rect" id="node5" href="$a00385.html#gac85bc9c101048a124707c7050035e30f" title="Get a iconv info structure, allocate and initialize if needed. " alt="" coords="635,68,777,95"/>
+<area shape="rect" id="node7" href="$a00381.html#gadba4490bf3183799a70c9e2f44fab331" title="Copy a string to client setting size according to ODBC convenction. " alt="" coords="629,125,783,152"/>
+<area shape="rect" id="node8" href="$a00294.html#a9d8eb43a81ff58ab423dce0ce95b9564" title="Reads and writes from a stream converting characters. " alt="" coords="633,176,779,203"/>
+<area shape="rect" id="node14" href="$a00387.html#ga024bc5482366735070befd6f4af59f71" title="Convert a string in an allocated buffer. " alt="" coords="637,463,775,489"/>
+<area shape="rect" id="node22" href="$a00387.html#gac8d5497c2d1b9fadb724111660bd03bd" title="Return string with parameters definition, useful for TDS7+. " alt="" coords="625,227,787,269"/>
+<area shape="rect" id="node9" href="$a00217.html#a8184311543c685f2ee0bcccfb725ca02" title="Read a data file, passing the data through iconv(). " alt="" coords="859,83,971,109"/>
+<area shape="rect" id="node10" href="$a00388.html#ga676c4dee6522815b16fdc8e448e43590" title="For UTF&#45;8 and similar, tds_iconv() may encounter a partial sequence when the chunk boundary is not al..." alt="" coords="845,133,984,160"/>
+<area shape="rect" id="node11" href="$a00388.html#ga1fcaf8d488cc1390f106ce3ad0bf37b4" title="Output a string to wire automatic translate string to unicode if needed. " alt="" coords="859,184,970,211"/>
+<area shape="rect" id="node12" href="$a00387.html#ga95e0fccedc459a4404f496eec74a369a" title="tds_submit_query_params() sends a language string to the database server for processing. " alt="" coords="1043,336,1229,363"/>
+<area shape="rect" id="node13" href="$a00387.html#ga0e2e7230c425e925402d7856ff5b4b18" title="Send a parameter to server. " alt="" coords="1045,235,1227,261"/>
+<area shape="rect" id="node15" href="$a00387.html#ga9ad2e6defce530a8778791cce0166ccd" title="Start query packet of a given type. " alt="" coords="835,387,995,413"/>
+<area shape="rect" id="node16" href="$a00387.html#gae603aed795a4c5bb26ab159a11256996" title="Submit a prepared query with parameters. " alt="" coords="1055,437,1217,464"/>
+<area shape="rect" id="node17" href="$a00387.html#ga5f071b94ad7889690762dc85646c74ab" title="tds_submit_rpc() call a RPC from server. " alt="" coords="1078,488,1194,515"/>
+<area shape="rect" id="node18" href="$a00387.html#ga74eb08c3a1c85be8ac9db428842c8b9d" title="tds_submit_prepare() creates a temporary stored procedure in the server. " alt="" coords="841,640,988,667"/>
+<area shape="rect" id="node19" href="$a00387.html#ga08877c101704bebe4fa57e0849dc272d" title="tds71_submit_prepexec() creates a temporary stored procedure in the server. " alt="" coords="1051,564,1221,591"/>
+<area shape="rect" id="node20" href="$a00387.html#gafd74652c4722ddce4d642cc4209449d4" title="Put data information to wire. " alt="" coords="847,488,982,515"/>
+<area shape="rect" id="node21" href="$a00330.html#a84e17808683ba2dd956e811a42e23176" title="Write data to wire. " alt="" coords="853,691,976,717"/>
+</map>

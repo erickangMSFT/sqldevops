@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Unicode's Pluses and Minuses</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="About Unicode, UCS-2, and UTF-8"
+HREF="aboutunicode.htm"><LINK
+REL="PREVIOUS"
+TITLE="Unicode: East meets West"
+HREF="unicode.htm"><LINK
+REL="NEXT"
+TITLE="Unicode Transformation Format: UTF-8"
+HREF="unicodeutf.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="unicode.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix C. About Unicode, UCS-2, and UTF-8</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="unicodeutf.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="UNICODEGOODBAD"
+>Unicode's Pluses and Minuses</A
+></H1
+><P
+>You will read from time to time that Unicode is not perfect.  Surprise, surprise: it's true.  From a linguistic point of view, Unicode is incomplete; in particular, UCS-2 is demonstrably too small (!) to hold all the forms of Chinese ideographs used over the centuries.  (It is, however, quite useful and widely employed in representing modern Chinese.)  Of more common concern to programmers are Unicode's technical problems, or rather, Unix's technical shortcomings <I
+CLASS="FOREIGNPHRASE"
+>vis-a-vis</I
+> any encoding more complex than <ACRONYM
+CLASS="ACRONYM"
+>ISO 8859-x</ACRONYM
+>.</P
+><P
+>The basic problem, from a programmer's perspective, is the ancient agreement Unix entered into 30 years ago, the <SPAN
+CLASS="QUOTE"
+>"<ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> Compact,"</SPAN
+> alluded to earlier.  Assumptions about <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> are littered throughout Unix-like systems, beginning with C's convention of representing strings as arrays of characters ending in a zero.  Returning to our HELLO example earlier, C will store <TT
+CLASS="LITERAL"
+>HELLO</TT
+> as  <TT
+CLASS="LITERAL"
+>72 69 76 76 79 0</TT
+>, in very nice <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>.  Many many parts of the operating system and its associated tools and applications will recognize that as a 5-letter word because it's terminated by a null (zero).  In UCS-2 Unicode, though, that same <TT
+CLASS="LITERAL"
+>HELLO</TT
+> uses 2 bytes for every character and becomes <TT
+CLASS="LITERAL"
+>72 0 69 0 76 0 76 0 79 0 0 0</TT
+>.  Practically the whole OS will think that's a 1-letter word, <SPAN
+CLASS="QUOTE"
+>"H"</SPAN
+>.  Not a good thing.</P
+><P
+>Even if every OS were magically rid of all <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> assumptions and C strings, there would still be the problem of Endianism.  <A
+HREF="http://whatis.techtarget.com/definition/0,,sid9_gci211659,00.html"
+TARGET="_top"
+>Technical</A
+> explanations on the subject are not hard to find.  The long and short of it is, given a 16-bit integer (2 bytes), different hardware architectures will store the value differently.  Asked to store our friend <SPAN
+CLASS="QUOTE"
+>"A"</SPAN
+>, (0x41), for instance, a Sparc processor will put the least significant byte at the higher address (00 41) whereas an Intel processor will put it in the lower address (41 00).  Put aside the questions of left, right, and wrong; architectures are a fact of life.  Endianism shows up wherever integers are stored and retrieved in heterogeneous environments.</P
+><P
+>The Unicode folks knew about Endianism, of course, and had to address it.  A Unicode bytestream is supposed to begin with a byte-order mark.  Needless to say, perhaps, many don't.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="unicode.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="unicodeutf.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Unicode: East meets West</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="aboutunicode.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Unicode Transformation Format: UTF-8</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

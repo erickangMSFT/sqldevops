@@ -1,0 +1,14 @@
+<map id="tds_bcpinfo" name="tds_bcpinfo">
+<area shape="rect" id="node2" href="$a00164.html" title="Hold information for any results. " alt="" coords="539,419,653,445"/>
+<area shape="rect" id="node3" href="$a00168.html" title="Information for a server connection. " alt="" coords="1248,435,1339,461"/>
+<area shape="rect" id="node7" href="$a00134.html" title="Holds information for a dynamic (also called prepared) query. " alt="" coords="757,345,859,372"/>
+<area shape="rect" id="node8" href="$a00126.html" title="Holds informations about a cursor. " alt="" coords="764,435,852,461"/>
+<area shape="rect" id="node4" href="$a00145.html" title="tds_login" alt="" coords="436,147,515,173"/>
+<area shape="rect" id="node5" href="$a00133.html" title="Structure to hold a string. " alt="" coords="36,204,109,231"/>
+<area shape="rect" id="node11" href="$a00120.html" title="Metadata about columns in regular and compute rows. " alt="" coords="319,411,412,437"/>
+<area shape="rect" id="node6" href="$a00154.html" title="tds_packet" alt="" coords="1014,435,1105,461"/>
+<area shape="rect" id="node9" href="$a00124.html" title="tds_connection" alt="" coords="1000,283,1119,309"/>
+<area shape="rect" id="node10" href="$a00182.html" title="tdsiconvinfo" alt="" coords="24,308,121,335"/>
+<area shape="rect" id="node12" href="$a00121.html" title="tds_column_funcs" alt="" coords="5,411,140,437"/>
+<area shape="rect" id="node13" href="$a00115.html" title="tds_bcpcoldata" alt="" coords="14,461,131,488"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="search_interface_file" name="search_interface_file">
+<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="395,5,497,32"/>
+<area shape="rect" id="node3" href="$a00389.html#gad96366d9fa93bfc283cef1299fbe97ab" title="copy a string from another " alt="" coords="218,81,329,108"/>
+<area shape="rect" id="node5" href="$a00383.html#ga45281d1cb2ac649db65d80bb3ff06b66" title="Given a portname lookup the port. " alt="" coords="212,132,335,159"/>
+<area shape="rect" id="node7" href="$a00383.html#gade94d7e89ba1f668c82be0b00a7f5cd7" title="Set TDS version from given string. " alt="" coords="208,31,339,57"/>
+<area shape="rect" id="node4" href="$a00389.html#ga656718f240d7403f986ae887d84a6ca1" title="Set string to a given buffer of characters. " alt="" coords="387,81,505,108"/>
+<area shape="rect" id="node6" href="$a00217.html#a3a2add5890ed468e36d780d29263ae22" title="Return service port given the name. " alt="" coords="389,132,503,159"/>
+</map>

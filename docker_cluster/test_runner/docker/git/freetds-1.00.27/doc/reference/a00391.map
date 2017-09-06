@@ -1,0 +1,11 @@
+<map id="LibTDS API" name="LibTDS API">
+<area shape="rect" id="node1" href="$a00388.html" title="Functions for reading or writing from network. " alt="" coords="168,5,303,32"/>
+<area shape="rect" id="node2" href="$a00387.html" title="Function to handle query. " alt="" coords="205,56,265,83"/>
+<area shape="rect" id="node3" href="$a00386.html" title="Allocate or free resources. " alt="" coords="167,107,304,133"/>
+<area shape="rect" id="node4" href="$a00382.html" title="Functions for handling authentication. " alt="" coords="180,157,291,184"/>
+<area shape="rect" id="node5" href="$a00389.html" title="Handle dynamic string. " alt="" coords="148,208,323,235"/>
+<area shape="rect" id="node6" href="$a00384.html" title="Conversions between datatypes. " alt="" coords="188,259,283,285"/>
+<area shape="rect" id="node7" href="$a00390.html" title="Handle tokens in packets. " alt="" coords="165,309,306,336"/>
+<area shape="rect" id="node8" href="$a00383.html" title="Handle reading of configuration. " alt="" coords="182,360,289,387"/>
+<area shape="rect" id="node9" href="$a00385.html" title="Convert between different charsets. " alt="" coords="163,411,308,437"/>
+</map>

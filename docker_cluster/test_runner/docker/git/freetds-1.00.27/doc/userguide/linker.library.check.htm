@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Checking if a Library Provides a Function</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="On Linkers"
+HREF="rtl.htm"><LINK
+REL="PREVIOUS"
+TITLE="What is a C library?"
+HREF="rtl.define.library.htm"><LINK
+REL="NEXT"
+TITLE="How Dost Thy Linker Link? "
+HREF="linker.how.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="rtl.define.library.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. On Linkers</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="linker.how.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="LINKER.LIBRARY.CHECK"
+>Checking if a Library Provides a Function</A
+></H1
+><P
+>A linker, any linker, knits together object files (some of which may be in libraries) such that every function needed by the program has a definition.  If the linker fails to locate a definition for even one function, it will fail and the program will not run.  </P
+><P
+>Returning to <A
+HREF="rtl.htm#BSQLDB.UNRESOLVED"
+><TT
+CLASS="FILENAME"
+>bsqldb.o</TT
+></A
+>, we can use <B
+CLASS="COMMAND"
+>nm</B
+> to see which functions are unresolved, and determine whether or not a particular library contains them.  We'll ignore the symbols that start with an underscore, marking them per the C standard as being provided by the implementation<A
+NAME="AEN6537"
+HREF="#FTN.AEN6537"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+>, and focus on the last five in this abbreviated list.  
+
+ <P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Some unresolved functions in <TT
+CLASS="FILENAME"
+>bsqldb.o</TT
+></B
+></P
+><DL
+><DT
+><CODE
+CLASS="FUNCTION"
+>asprintf</CODE
+>, <CODE
+CLASS="FUNCTION"
+>basename</CODE
+></DT
+><DD
+><P
+>Normally provided by the standard C library, but if not by <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>'s replacements library: 
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>nm /usr/lib/libc.a | grep -w T | grep -E 'asprintf|basename'</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>0000000000000000 T _basename
+0000000000000000 T _asprintf</SAMP
+></PRE
+>
+			</P
+></DD
+><DT
+><CODE
+CLASS="FUNCTION"
+>calloc</CODE
+></DT
+><DD
+><P
+>Provided by the standard C library:
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>nm /usr/lib/libc.a | grep -w T | grep calloc </KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>0000000000004240 T calloc</SAMP
+></PRE
+>
+			</P
+></DD
+><DT
+><CODE
+CLASS="FUNCTION"
+>dbaltbind</CODE
+>, <CODE
+CLASS="FUNCTION"
+>dbaltcolid</CODE
+></DT
+><DD
+><P
+>Provided by <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>:
+<PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+>nm libsybdb.a | grep -Ew 'dbaltbind|dbaltcolid'</KBD
+>
+<SAMP
+CLASS="COMPUTEROUTPUT"
+>0000000000007140 T dbaltbind
+0000000000003590 T dbaltcolid</SAMP
+></PRE
+>
+			</P
+></DD
+></DL
+></DIV
+>
+
+Although these examples refer to static libraries, <B
+CLASS="COMMAND"
+>nm</B
+> works just as well with dynamic libraries, too.  </P
+><P
+>There are other tools besides <B
+CLASS="COMMAND"
+>nm</B
+>.  Windows&reg;, for instance, has <B
+CLASS="COMMAND"
+>dumpbin</B
+>, and the GNU bintools include <B
+CLASS="COMMAND"
+>objdump</B
+>.  </P
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN6537"
+HREF="linker.library.check.htm#AEN6537"
+><SPAN
+CLASS="footnote"
+>[1]</SPAN
+></A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Why and how leading underscores enter into this discussion is just one more example of arcane historical practices one needs to know to master the subject.  For our purposes, though, it's enough to know that <SPAN
+CLASS="QUOTE"
+>"implementation-provided"</SPAN
+> functions like these &mdash; functions provided by the C standard library &mdash; often have an underscored prepended.  </P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="rtl.define.library.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="linker.how.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>What is a C library?</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="rtl.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>How Dost Thy Linker Link?</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

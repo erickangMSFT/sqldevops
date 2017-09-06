@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Unicode: East meets West</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="About Unicode, UCS-2, and UTF-8"
+HREF="aboutunicode.htm"><LINK
+REL="PREVIOUS"
+TITLE="ISO 8859: What everyone would like to forget"
+HREF="iso8859.htm"><LINK
+REL="NEXT"
+TITLE="Unicode's Pluses and Minuses"
+HREF="unicodegoodbad.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="iso8859.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix C. About Unicode, UCS-2, and UTF-8</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="unicodegoodbad.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="UNICODE"
+>Unicode: East meets West</A
+></H1
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> and its 8-bit cousins are on the way out, and with them the assumption that a character can be represented by a single byte.  The new kid on the block is <A
+HREF="http://www.unicode.org/"
+TARGET="_top"
+>Unicode</A
+>, similar to but not precisely the same as ISO 10646.  Unicode (despite its name) is a set of standards.  The most widely implemented is the 16-bit form, called UCS-2.  As you might guess, UCS-2 uses two bytes per character, allowing it to encode most characters of most languages.  Because <SPAN
+CLASS="QUOTE"
+>"most"</SPAN
+> is far from <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>all</I
+></SPAN
+>, there are nascent 32-bit forms, too, but they are neither complete nor in common use.</P
+><P
+>In the same sense that 7-bit <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> was extended to 8 bits, Unicode extends the most prevalent <SPAN
+CLASS="QUOTE"
+>"8-bit <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>"</SPAN
+>,  <ACRONYM
+CLASS="ACRONYM"
+>ISO 8859-1</ACRONYM
+>, to 16 and 32 bits.  The first 256 values remain in Unicode as in <ACRONYM
+CLASS="ACRONYM"
+>ISO 8859-1</ACRONYM
+>: 65 is still <TT
+CLASS="LITERAL"
+>A</TT
+>, except instead of being 8 bits (0x40), it's 16 bits (0x0040).  Unlike the 8-bit extensions, Unicode has a unique 1:1 map of numbers to characters, so no language context or <SPAN
+CLASS="QUOTE"
+>"character set"</SPAN
+> name is needed to decode a Unicode string.</P
+><P
+>UCS-2 was the initial system employed by Microsoft NT-based systems while recent versions moved to UTF-16.
+Microsoft database servers store UCS-2/UTF-16 strings in <SPAN
+CLASS="TYPE"
+>nchar</SPAN
+> and <SPAN
+CLASS="TYPE"
+>nvarchar</SPAN
+> datatypes.
+Microsoft also designed version 7.0 (and up) of the <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol around UCS-2/UTF-16: all metadata (table names and such) are encoded according to these encoding on the wire.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="iso8859.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="unicodegoodbad.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>ISO 8859: What everyone would like to forget</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="aboutunicode.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Unicode's Pluses and Minuses</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

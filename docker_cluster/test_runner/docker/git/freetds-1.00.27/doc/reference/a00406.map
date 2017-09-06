@@ -1,0 +1,18 @@
+<map id="src/tds/iconv.c" name="src/tds/iconv.c">
+<area shape="rect" id="node2" href="$a00191_source.html" title="config.h" alt="" coords="93,304,163,331"/>
+<area shape="rect" id="node6" href="$a00217.html" title="Main include file for libtds. " alt="" coords="685,80,785,107"/>
+<area shape="rect" id="node19" href="$a00208_source.html" title="freetds/iconv.h" alt="" coords="1099,229,1213,256"/>
+<area shape="rect" id="node20" href="$a00333_source.html" title="encodings.h" alt="" coords="1363,80,1461,107"/>
+<area shape="rect" id="node7" href="$a00219_source.html" title="time.h" alt="" coords="869,155,928,181"/>
+<area shape="rect" id="node8" href="$a00221_source.html" title="freetds/version.h" alt="" coords="57,155,183,181"/>
+<area shape="rect" id="node9" href="$a00235_source.html" title="tds_sysdep_public.h" alt="" coords="58,229,206,256"/>
+<area shape="rect" id="node10" href="$a00216_source.html" title="freetds/sysdep_private.h" alt="" coords="749,229,926,256"/>
+<area shape="rect" id="node11" href="$a00218_source.html" title="freetds/thread.h" alt="" coords="208,155,331,181"/>
+<area shape="rect" id="node12" href="$a00199_source.html" title="freetds/bool.h" alt="" coords="355,155,461,181"/>
+<area shape="rect" id="node13" href="$a00226_source.html" title="replacements.h" alt="" coords="675,155,794,181"/>
+<area shape="rect" id="node15" href="$a00212_source.html" title="freetds/pushvis.h" alt="" coords="348,304,476,331"/>
+<area shape="rect" id="node16" href="$a00210_source.html" title="freetds/popvis.h" alt="" coords="649,304,772,331"/>
+<area shape="rect" id="node18" href="$a00211_source.html" title="freetds/proto.h" alt="" coords="485,155,600,181"/>
+<area shape="rect" id="node14" href="$a00228_source.html" title="replacements/readpassphrase.h" alt="" coords="449,229,674,256"/>
+<area shape="rect" id="node17" href="$a00227.html" title="Provide poll call where missing. " alt="" coords="231,229,375,256"/>
+</map>

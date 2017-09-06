@@ -1,0 +1,394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>What is FreeTDS?</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="PREVIOUS"
+TITLE="About this User Guide"
+HREF="about.htm"><LINK
+REL="NEXT"
+TITLE="History of TDS Versions"
+HREF="tdshistory.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="about.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tdshistory.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="WHAT"
+></A
+>Chapter 1. What is <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>?</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="what.htm#TDSPROTOCOLHIST"
+>Background: The <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> Protocol
+			and related <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>s</A
+></DT
+><DT
+><A
+HREF="tdshistory.htm"
+>History of <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> Versions</A
+></DT
+><DT
+><A
+HREF="freetdshistory.htm"
+>History of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></A
+></DT
+><DT
+><A
+HREF="projects.htm"
+>Current Projects, Language Bindings, and Alternatives</A
+></DT
+></DL
+></DIV
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is re-implementation of C libraries originally marketed by Sybase and Microsoft SQL Server.  It allows many open source applications such as <SPAN
+CLASS="PRODUCTNAME"
+>Perl</SPAN
+> and <SPAN
+CLASS="PRODUCTNAME"
+>PHP</SPAN
+> (or your own C or C++ program) to connect to Sybase or Microsoft <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+>.  </P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> provides drop-in replacements for 
+
+<P
+></P
+><UL
+><LI
+><P
+>Sybase's <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> and <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+></P
+></LI
+><LI
+><P
+>Microsoft's <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> (which differs in small details from Sybase's)</P
+></LI
+><LI
+><P
+>the <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> drivers from both vendors</P
+></LI
+><LI
+><P
+>interactive SQL and BCP utilities</P
+></LI
+></UL
+>
+
+The <SPAN
+CLASS="QUOTE"
+>"TDS"</SPAN
+> part of the name comes from name of the protocol used to communicate with such servers: the Tabular Data Stream.  </P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> is distributed in source code form, and is expected to compile on just about any operating system.  That means every form of Unix&reg; and Unix-like&trade; system (including notable variants such as Interix&reg; and QNX&reg;), as well as Win32&reg;, VMS&reg;, and OS X&reg;.  If it doesn't compile on your system &mdash; and you're not using MS-DOS&reg; &mdash; it's probably considered a bug.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TDSPROTOCOLHIST"
+>Background: The <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> Protocol
+			and related <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>s</A
+></H1
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> is a <I
+CLASS="FIRSTTERM"
+>protocol</I
+>, a set of rules describing how to transmit data between two computers.  Like any protocol, it defines the types of messages that can be sent, and the order in which they may be sent.  Protocols describe the <SPAN
+CLASS="QUOTE"
+>"bits on the wire"</SPAN
+>, how data flow.</P
+><P
+>In reading this manual, it may be helpful to keep in mind that a protocol is not an <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>, although the two are related.  The server recognizes and speaks a protocol; anything that can send it the correct combination of bytes in the right order can communicate with it.  But programmers aren't generally in the business of sending bytes; that's the job of a library.  Over the years, there have been a few libraries &mdash; each with its own <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+> &mdash; that do the work of moving SQL through a <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> pipe.  <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+>, <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>, and <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+> have very different <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>s, but they're all one to the server, because on the wire they speak <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+>.</P
+><P
+>The <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol was designed and developed by Sybase Inc. for their Sybase <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+> relational database engine in 1984.  The problem Sybase faced then still exists: There was no commonly accepted application-level protocol to transfer data between a database server and its client.  To encourage the use of their product, Sybase came up with <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>.</P
+><P
+><SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> provided an <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+> to the client program, and communicated with the server.  What it sent to the server took the form of a stream of bytes meant for tables of data, a Tabular Data Stream.</P
+><P
+>In 1990 Sybase entered into a technology sharing agreement with Microsoft which resulted in Microsoft marketing its own <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+>. Microsoft kept the <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+> and added <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+>.  (Microsoft has since added other <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>s, too.  It no longer supports its own <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> implementation.) At about the same time, Sybase introduced a more powerful <SPAN
+CLASS="QUOTE"
+>"successor"</SPAN
+> to <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>, called <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+>, and called the pair <SPAN
+CLASS="PRODUCTNAME"
+><I
+CLASS="FIRSTTERM"
+>OpenClient</I
+></SPAN
+>.</P
+><P
+><SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+>, <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+>, and <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> are <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>s that &mdash; however different their programming style may be &mdash; all communicate with the server in the same way.  The language they use is <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+>.</P
+><P
+>The <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> protocol comes in several flavors, most of which were not openly documented.  If anything, it was considered to be something like a trade secret, or at least proprietary technology.  The exception is <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> 5.0, used exclusively by Sybase, for which documentation is available <A
+HREF="http://crm.sybase.com/sybase/www/ESD/tds_spec_download.jsp"
+TARGET="_top"
+>from Sybase</A
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="about.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tdshistory.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>About this User Guide</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>History of <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> Versions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

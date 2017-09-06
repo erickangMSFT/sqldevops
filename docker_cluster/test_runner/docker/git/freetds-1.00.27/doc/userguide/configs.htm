@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>Advanced Configurations</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="PREVIOUS"
+TITLE="Troubleshooting ODBC connections"
+HREF="odbcdiagnose.htm"><LINK
+REL="NEXT"
+TITLE="Localization and TDS 7.0"
+HREF="localization.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="odbcdiagnose.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="localization.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="CONFIGS"
+></A
+>Chapter 5. Advanced Configurations</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="configs.htm#EMULLE"
+>Big Endian Clients with Buggy <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+>s</A
+></DT
+><DT
+><A
+HREF="localization.htm"
+>Localization and <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> 7.0</A
+></DT
+><DT
+><A
+HREF="domains.htm"
+>Domain Logins</A
+></DT
+><DT
+><A
+HREF="kerberos.htm"
+>Kerberos Support</A
+></DT
+><DT
+><A
+HREF="uothread.htm"
+>Threading in unixODBC</A
+></DT
+><DT
+><A
+HREF="appendmode.htm"
+>Appending Dump Files</A
+></DT
+><DT
+><A
+HREF="tdspool.htm"
+>TDS Connection Pooling</A
+></DT
+><DT
+><A
+HREF="stunnel.htm"
+>stunnel HOWTO</A
+></DT
+></DL
+></DIV
+><P
+>This chapter details some advanced configurations that need expanded explanation.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="EMULLE"
+>Big Endian Clients with Buggy <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server</SPAN
+>s</A
+></H1
+><P
+>Several version of Microsoft SQL server have a bug that affects big endian clients.  This includes 7.0 GA and 7.0 SP1.  Furthermore, <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> Protocol version 7.0 is natively little endian. <SPAN
+CLASS="PRODUCTNAME"
+>SQL Server 2000</SPAN
+> is also reported not to work from big endian clients without little endian emulation turned on.</P
+><DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The terms <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>big endian</I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>little endian</I
+></SPAN
+> come originally from Gulliver's Travels.  In computer science they refer to the the integer byte-order for a processor.  Big endian processors, such as Sparc and PowerPC store the most significant byte in the first memory location of a multi-byte integer.  Little endian processors, such as Intel and Alpha do it the other way around.  So the 16-bit number 258 would be 0x0102 on big endian and 0x0201 on little endian machines.</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>In this example we want to force connections to a server named <TT
+CLASS="LITERAL"
+>mssql</TT
+> to emulate a little endian client.  We are using protocol version 4.2 here, version 7.0 or above will automatically emulate little endian mode regardless of the <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> setting.
+			<SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>You shouldn't use this option, set another protocol version instead (7.0, 7.1, 7.2, 7.3 or 7.4)</I
+></SPAN
+>.</P
+><DIV
+CLASS="EXAMPLE"
+><A
+NAME="E.G.LITTLEENDIAN"
+></A
+><P
+><B
+>Example 5-1. Emulate Little Endian <TT
+CLASS="FILENAME"
+>freetds.conf</TT
+> setting</B
+></P
+><PRE
+CLASS="PROGRAMLISTING"
+>	[mssql]
+	host = ntbox.mydomain.com
+	port = 1433
+	tds version = 4.2
+	emulate little endian = yes
+	</PRE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="odbcdiagnose.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="localization.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Troubleshooting ODBC connections</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Localization and <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> 7.0</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

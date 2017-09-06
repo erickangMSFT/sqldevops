@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>ISO 8859: What everyone would like to forget</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="About Unicode, UCS-2, and UTF-8"
+HREF="aboutunicode.htm"><LINK
+REL="PREVIOUS"
+TITLE="About Unicode, UCS-2, and UTF-8"
+HREF="aboutunicode.htm"><LINK
+REL="NEXT"
+TITLE="Unicode: East meets West"
+HREF="unicode.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="aboutunicode.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix C. About Unicode, UCS-2, and UTF-8</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="unicode.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="ISO8859"
+>ISO 8859: What everyone would like to forget</A
+></H1
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> won, it would seem, but the race goes not to the swift.  <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> has many limitations, the most egregious of which is, it's not much good for anything besides English.  It encodes all the letters and punctuation (almost) of the English alphabet, but is useless for German, Russian, and Greek, to say nothing of Chinese.</P
+><P
+><ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+> assigns one byte to every character, but deals with only 7 of the 8 available bits, the range 0-127 (with the <SPAN
+CLASS="QUOTE"
+>"high bit"</SPAN
+> always zero).  Demand for computers that could display and print languages besides English &mdash; even English with em dashes and cent (&cent;) signs &mdash; arrived soon enough, with the Marketing Department way out in front of the propeller heads.  The predictable result was an array of <SPAN
+CLASS="QUOTE"
+>"8-bit <ACRONYM
+CLASS="ACRONYM"
+>ASCII</ACRONYM
+>"</SPAN
+> encoding standards for a wide variety of alphabets.  Eventually, they were standardized (or at least enumerated and documented) by the ISO.  These are what our friendly database vendors are referring to when they talk about <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>character sets</I
+></SPAN
+>.  More information on this subject can be found at <A
+HREF="http://www.webreference.com/dlab/books/html/39-1.html"
+TARGET="_top"
+>webreference.com</A
+>.			</P
+><P
+>The upshot is, there is no uniform standard, no agreement on the meaning of a byte, particularly if that byte's value is greater than 127.  Let's say your client machine sends <TT
+CLASS="LITERAL"
+>HELLO</TT
+> and your database stores it as  <TT
+CLASS="LITERAL"
+>72 69 76 76 79</TT
+>.  When another client retrieves that value, it will convert it into human-readable form by applying an encoding standard.  If everything's tightly wrapped, it will use the very same encoding that your database used (and the same one you had in mind when you sent it), and that client will also see <TT
+CLASS="LITERAL"
+>HELLO</TT
+>.  If things are not so tightly wrapped but that client is fortunate enough to be using a similar standard to what you were using, say, ISO 8859-1, he'll still see <TT
+CLASS="LITERAL"
+>HELLO</TT
+>.  Most languages based on the Roman alphabet can be represented by ISO 8859-1, and are thus interchangeable.  Beyond that, things get quickly messy.  Greek clients, for one, are not so lucky: there are three ISO 8859 standards for Greek, all mutually incompatible.
+			
+			For more information, see <A
+HREF="http://czyborra.com/charsets/iso8859.html"
+TARGET="_top"
+>ISO 8859 Alphabet Soup</A
+>.  Roman Czyborra's site is very informative; take your time there if you don't want your head to spin.</P
+><P
+>Database servers need to know what encoding standard to employ, too.  It's not obvious at first, but notions like <SPAN
+CLASS="QUOTE"
+>"uppercase"</SPAN
+> and <SPAN
+CLASS="QUOTE"
+>"lowercase"</SPAN
+>, trailing blanks, and collation rules all depend on what letter is meant by what number.  (Collation even depends on what culture is interpreting the letters.)</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="aboutunicode.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="unicode.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>About Unicode, UCS-2, and UTF-8</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="aboutunicode.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Unicode: East meets West</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

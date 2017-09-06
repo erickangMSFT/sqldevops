@@ -1,0 +1,6 @@
+<map id="tds_socket_read" name="tds_socket_read">
+<area shape="rect" id="node2" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="180,31,252,57"/>
+<area shape="rect" id="node3" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="490,5,593,32"/>
+<area shape="rect" id="node4" href="$a00387.html#ga11338742dc30fd0c2711f58eb830316f" title="tds_send_cancel() sends an empty packet (8 byte header only) tds_process_cancel should be called dire..." alt="" coords="300,56,429,83"/>
+<area shape="rect" id="node5" href="$a00388.html#ga5feb53554e8917a81bbbc332163a61fb" title="Flush packet to server. " alt="" coords="477,56,605,83"/>
+</map>

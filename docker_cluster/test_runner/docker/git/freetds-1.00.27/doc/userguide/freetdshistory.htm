@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+><HEAD
+><TITLE
+>History of FreeTDS</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="FreeTDS User Guide"
+HREF="index.htm"><LINK
+REL="UP"
+TITLE="What is FreeTDS?"
+HREF="what.htm"><LINK
+REL="PREVIOUS"
+TITLE="History of TDS Versions"
+HREF="tdshistory.htm"><LINK
+REL="NEXT"
+TITLE="Current Projects, Language Bindings, and Alternatives"
+HREF="projects.htm"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="userguide.css"><META
+HTTP-EQUIV="Content-Type"
+CONTENT="text/html; charset=utf-8"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> User Guide: A Guide to Installing, Configuring, and Running <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tdshistory.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. What is <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+>?</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="projects.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="FREETDSHISTORY"
+>History of <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+></A
+></H1
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> was and is developed by observation and experimentation, which is to say, by trial and error.</P
+><P
+>In early 1997, the only option for connecting to a Sybase server from Linux or other free systems was an aging Sybase-released version of <SPAN
+CLASS="PRODUCTNAME"
+>OpenClient</SPAN
+>.  Unfortunately it had a few problems.  The original release was <CODE
+CLASS="SYMBOL"
+>a.out</CODE
+>-based, although Greg Thain did a great service in converting the library to ELF.  Secondly, it included only the newer <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+> <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+>.  The older <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> <ACRONYM
+CLASS="ACRONYM"
+>API</ACRONYM
+> was missing.</P
+><P
+>Brian Bruns, a Sybase DBA and originator of the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> project, had some <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> programs he wanted to run under Linux, and thus began the <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS</SPAN
+> project. The original work focused on <SPAN
+CLASS="SYSTEMITEM"
+>DB-Library</SPAN
+> and version 5.0 of the protocol, but quickly expanded to include a <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+> compatible layer and <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> version 4.2.  Later support for <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> and <ACRONYM
+CLASS="ACRONYM"
+>TDS 7.0 and 7.1</ACRONYM
+> was added. Craig Spannring wrote a Java  <ACRONYM
+CLASS="ACRONYM"
+>JDBC</ACRONYM
+> driver which became <SPAN
+CLASS="PRODUCTNAME"
+>FreeTDS/JDBC</SPAN
+>.</P
+><P
+>As the project matured, it gained new participants.  Frediano Ziglio greatly expanded the <SPAN
+CLASS="SYSTEMITEM"
+>ODBC</SPAN
+> driver, and continues to improve both it and the underlying TDS library.  Bill Thompson wrote most of the present BCP system and added cursors to our <SPAN
+CLASS="SYSTEMITEM"
+>CT-Library</SPAN
+>.  James K. Lowden joined the project to add documentation, and in 2002 became its maintainer.  Such are the rewards for doing a good deed.</P
+><P
+>There have been many other contributions.  Please see the <TT
+CLASS="FILENAME"
+>AUTHORS</TT
+> in the distribution for a (we hope) complete list.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tdshistory.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="projects.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>History of <ACRONYM
+CLASS="ACRONYM"
+>TDS</ACRONYM
+> Versions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="what.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Current Projects, Language Bindings, and Alternatives</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

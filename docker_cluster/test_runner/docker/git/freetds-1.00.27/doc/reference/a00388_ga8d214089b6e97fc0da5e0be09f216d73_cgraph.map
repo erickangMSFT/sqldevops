@@ -1,0 +1,13 @@
+<map id="tds_get_char_data" name="tds_get_char_data">
+<area shape="rect" id="node2" href="$a00388.html#ga676c4dee6522815b16fdc8e448e43590" title="For UTF&#45;8 and similar, tds_iconv() may encounter a partial sequence when the chunk boundary is not al..." alt="" coords="195,90,333,117"/>
+<area shape="rect" id="node5" href="$a00388.html#gae7d9c4e1a079e1d0aa0252732631e8c4" title="Get N bytes from the buffer and return them in the already allocated space given to us..." alt="" coords="841,32,926,58"/>
+<area shape="rect" id="node10" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="832,242,935,269"/>
+<area shape="rect" id="node3" href="$a00294.html#abc3a77c8aa28842e7f28583cbabc1415" title="Initialize a data input stream. " alt="" coords="388,90,553,117"/>
+<area shape="rect" id="node6" href="$a00294.html#a9fe0d3799d2e3bde49b614c9d0c3785d" title="Initialize an output stream for write into a static allocated buffer. " alt="" coords="381,36,560,62"/>
+<area shape="rect" id="node8" href="$a00294.html#a9d8eb43a81ff58ab423dce0ce95b9564" title="Reads and writes from a stream converting characters. " alt="" coords="397,192,544,218"/>
+<area shape="rect" id="node4" href="$a00294.html#a04b537d889f7d4c9b9701eb81baf7efd" title="Reads data from network for input stream. " alt="" coords="608,90,784,117"/>
+<area shape="rect" id="node7" href="$a00294.html#a1d92ebe06f18378ac17ccfd20db05126" title="Writes data to a static allocated buffer. " alt="" coords="620,24,772,66"/>
+<area shape="rect" id="node9" href="$a00385.html#ga87db49044919f1bc84c0ff5e9ab00304" title="Wrapper around iconv(3). " alt="" coords="655,141,737,168"/>
+<area shape="rect" id="node11" href="$a00217.html#a79449d2f35a8acc8ed0585044f75524d" title="Dump the contents of data into the log file in a human readable format. " alt="" coords="625,242,767,269"/>
+<area shape="rect" id="node12" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="660,192,732,218"/>
+</map>

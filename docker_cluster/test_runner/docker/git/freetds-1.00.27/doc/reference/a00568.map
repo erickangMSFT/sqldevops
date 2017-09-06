@@ -1,0 +1,6 @@
+<map id="tag_DBPROC_ROWBUF" name="tag_DBPROC_ROWBUF">
+<area shape="rect" id="node2" href="$a00065.html" title="dblib_buffer_row" alt="" coords="33,228,157,255"/>
+<area shape="rect" id="node3" href="$a00164.html" title="Hold information for any results. " alt="" coords="116,95,231,121"/>
+<area shape="rect" id="node4" href="$a00168.html" title="Information for a server connection. " alt="" coords="216,228,307,255"/>
+<area shape="rect" id="node5" href="$a00120.html" title="Metadata about columns in regular and compute rows. " alt="" coords="127,5,220,32"/>
+</map>
