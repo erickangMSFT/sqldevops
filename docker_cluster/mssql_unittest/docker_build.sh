@@ -1,9 +1,4 @@
-docker build . --rm -t unittestdb:temp
+#!/bin/bash
 
-docker run --name unittest -d unittestdb:temp
-docker export unittest | docker import - tools:latest
-
-docker rm -f tools_temp
-docker rmi tools:temp
-
+docker build . --rm -t mssql-unittest:latest
 docker rmi -f $(docker images -f "dangling=true" -q)
