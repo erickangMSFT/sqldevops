@@ -1,5 +1,0 @@
-<map id="tds_canonical_charset" name="tds_canonical_charset">
-<area shape="rect" id="node2" href="$a00385.html#ga6561d1dba1a04c168431b16ec17d7e4c" title="Determine canonical iconv character set name. " alt="" coords="217,5,424,32"/>
-<area shape="rect" id="node3" href="$a00386.html#ga2ef389ac3b0cddec76bf8f1c0951bc9c" title="Initialize login structure with locale information and other stuff for connection. " alt="" coords="472,5,577,32"/>
-<area shape="rect" id="node4" href="$a00383.html#ga9af192306186ddf39e09be0fd4ad8aaf" title="tds_read_config_info() will fill the tds connection structure based on configuration information gath..." alt="" coords="625,5,780,32"/>
-</map>

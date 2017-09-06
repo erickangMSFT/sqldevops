@@ -1,4 +1,0 @@
-<map id="tds_dynamic_stream_init" name="tds_dynamic_stream_init">
-<area shape="rect" id="node2" href="$a00294.html#abaf688c85ea04a2392103d519a55d04e" title="Writes data to a dynamic allocated buffer. " alt="" coords="232,5,384,47"/>
-<area shape="rect" id="node3" href="$a00386.html#ga924cb9fb5d19dbd308ba0ce8c1a8a1d5" title="Reallocate a pointer and update it if success. " alt="" coords="432,13,523,39"/>
-</map>

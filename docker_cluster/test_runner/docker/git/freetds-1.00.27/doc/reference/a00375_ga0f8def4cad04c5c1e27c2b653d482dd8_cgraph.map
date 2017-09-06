@@ -1,6 +1,0 @@
-<map id="_bcp_get_col_data" name="_bcp_get_col_data">
-<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="235,5,338,32"/>
-<area shape="rect" id="node3" href="$a00217.html#a0383d5dcb629582266a442f0f0dbd13a" title="Return type suitable for conversions (convert all nullable types to fixed type) " alt="" coords="196,56,377,83"/>
-<area shape="rect" id="node4" href="$a00217.html#a4c070147d189dede5e08a2dc66852678" title="Return the number of bytes needed by specified type. " alt="" coords="207,107,366,133"/>
-<area shape="rect" id="node5" href="$a00375.html#gac82ffc5c1f71cbf453d81d1057004f1e" title="Get the data for bcp&#45;in from program variables, where the program data have been identified as charac..." alt="" coords="215,157,359,184"/>
-</map>

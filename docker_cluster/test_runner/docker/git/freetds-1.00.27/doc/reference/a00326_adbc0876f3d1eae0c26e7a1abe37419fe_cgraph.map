@@ -1,9 +1,0 @@
-<map id="tds_bcp_send_record" name="tds_bcp_send_record">
-<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="859,94,961,121"/>
-<area shape="rect" id="node3" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="239,80,345,106"/>
-<area shape="rect" id="node6" href="$a00326.html#a6d1e3ee3ba4ddeac7d5c9b5e30b185f1" title="Add fixed size columns to the row. " alt="" coords="611,170,811,197"/>
-<area shape="rect" id="node7" href="$a00326.html#a0184a0b53bd92aeca39b136542238dd4" title="Add variable size columns to the row. " alt="" coords="212,214,372,255"/>
-<area shape="rect" id="node4" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="455,80,527,106"/>
-<area shape="rect" id="node5" href="$a00387.html#ga11338742dc30fd0c2711f58eb830316f" title="tds_send_cancel() sends an empty packet (8 byte header only) tds_process_cancel should be called dire..." alt="" coords="646,120,775,146"/>
-<area shape="rect" id="node8" href="$a00217.html#a79449d2f35a8acc8ed0585044f75524d" title="Dump the contents of data into the log file in a human readable format. " alt="" coords="420,272,563,298"/>
-</map>

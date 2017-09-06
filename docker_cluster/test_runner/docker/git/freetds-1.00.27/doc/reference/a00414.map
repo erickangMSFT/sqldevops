@@ -1,7 +1,0 @@
-<map id="_cs_blkdesc" name="_cs_blkdesc">
-<area shape="rect" id="node2" href="$a00116.html" title="tds_bcpinfo" alt="" coords="7,347,102,373"/>
-<area shape="rect" id="node3" href="$a00164.html" title="Hold information for any results. " alt="" coords="93,213,208,240"/>
-<area shape="rect" id="node4" href="$a00168.html" title="Information for a server connection. " alt="" coords="132,347,223,373"/>
-<area shape="rect" id="node5" href="$a00120.html" title="Metadata about columns in regular and compute rows. " alt="" coords="79,124,172,151"/>
-<area shape="rect" id="node6" href="$a00133.html" title="Structure to hold a string. " alt="" coords="29,5,102,32"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="dbsetifile" name="dbsetifile">
-<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="331,5,433,32"/>
-<area shape="rect" id="node3" href="$a00378.html#ga302a4ce6559b81808e3be51615cd1b67" title="Call client&#45;installed error handler. " alt="" coords="162,56,238,83"/>
-<area shape="rect" id="node6" href="$a00383.html#ga57cea6e376d7c2d28b811a5b0053210c" title="Set the full name of interface file. " alt="" coords="131,107,269,149"/>
-<area shape="rect" id="node4" href="$a00389.html#gae6d3d12bd1f5f0c56df934a377c245d3" title="test if string is empty " alt="" coords="317,56,447,83"/>
-<area shape="rect" id="node5" href="$a00389.html#ga3340b488ed37845018e34572450e64c6" title="Returns a C version (NUL terminated string) of dstr. " alt="" coords="330,107,434,133"/>
-</map>

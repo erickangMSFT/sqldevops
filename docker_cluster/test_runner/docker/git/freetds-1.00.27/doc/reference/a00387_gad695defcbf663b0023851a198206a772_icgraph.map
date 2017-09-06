@@ -1,8 +1,0 @@
-<map id="tds_submit_queryf" name="tds_submit_queryf">
-<area shape="rect" id="node2" href="$a00375.html#gae67546338cb9542a4902aa914f57f314" title="_bcp_exec_out" alt="" coords="199,5,316,32"/>
-<area shape="rect" id="node4" href="$a00217.html#ac6610c72bd31bad5378f760fa9b12d66" title="Initialize BCP information. " alt="" coords="209,56,306,83"/>
-<area shape="rect" id="node6" href="$a00217.html#a7711612cc544a7da2c7aa212b870acb2" title="Start writing writetext request. " alt="" coords="188,107,327,133"/>
-<area shape="rect" id="node3" href="$a00374.html#ga7a184158b27a50f713e9cfae3b746209" title="Write a datafile to a table. " alt="" coords="379,5,461,32"/>
-<area shape="rect" id="node5" href="$a00374.html#gada8e987c4a6225b9276c05ba3a4f47a0" title="Prepare for bulk copy operation on a table. " alt="" coords="385,56,455,83"/>
-<area shape="rect" id="node7" href="$a00372.html#ga548153eb2eae76c48aa9d4b72258dc1c" title="Send text or image data to the server. " alt="" coords="375,107,465,133"/>
-</map>

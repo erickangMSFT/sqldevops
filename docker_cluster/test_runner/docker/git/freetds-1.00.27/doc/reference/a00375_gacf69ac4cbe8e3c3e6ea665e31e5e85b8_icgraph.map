@@ -1,8 +1,0 @@
-<map id="_bcp_free_columns" name="_bcp_free_columns">
-<area shape="rect" id="node2" href="$a00374.html#ga330b9f1028f856a9eec5115550bcb4f7" title="Indicate how many columns are to be found in the datafile. " alt="" coords="217,5,319,32"/>
-<area shape="rect" id="node3" href="$a00374.html#ga963c5e38bca7668afc57f5cc123d10fb" title="Read a format definition file. " alt="" coords="387,5,487,32"/>
-<area shape="rect" id="node4" href="$a00375.html#gaa134c1c3ccc4326e693adb8357272f1d" title="_bcp_free_storage" alt="" coords="197,107,339,133"/>
-<area shape="rect" id="node5" href="$a00374.html#gada8e987c4a6225b9276c05ba3a4f47a0" title="Prepare for bulk copy operation on a table. " alt="" coords="401,56,472,83"/>
-<area shape="rect" id="node6" href="$a00374.html#ga7a184158b27a50f713e9cfae3b746209" title="Write a datafile to a table. " alt="" coords="395,107,478,133"/>
-<area shape="rect" id="node7" href="$a00374.html#ga8b85f79f53a62ac7a728fe626d609b65" title="Conclude the transfer of data from program variables. " alt="" coords="395,157,479,184"/>
-</map>

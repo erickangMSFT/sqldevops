@@ -1,6 +1,0 @@
-<map id="tds7_build_bulk_insert_stmt" name="tds7_build_bulk_insert_stmt">
-<area shape="rect" id="node2" href="$a00326.html#ab4d7e5309152f54613d52c8469a07fd8" title="Prepare the query to be sent to server to request BCP information. " alt="" coords="248,31,432,57"/>
-<area shape="rect" id="node3" href="$a00217.html#a5eec23828b0610c58de248c4edb53879" title="Start bulk copy to server. " alt="" coords="480,31,644,57"/>
-<area shape="rect" id="node4" href="$a00374.html#gaf1130ac97f6af55e86ec70b0aa4f5b40" title="Write data in host variables to the table. " alt="" coords="693,5,800,32"/>
-<area shape="rect" id="node5" href="$a00375.html#ga7370f1223f13510d6b33e98f2de09fb5" title="_bcp_exec_in" alt="" coords="692,56,801,83"/>
-</map>

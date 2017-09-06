@@ -1,5 +1,0 @@
-<map id="tds_lookup_port" name="tds_lookup_port">
-<area shape="rect" id="node2" href="$a00383.html#gaca20b6e5f5a5ac1727126712dd39564b" title="Open and read the file &#39;file&#39; searching for a logical server by the name of &#39;host&#39;. " alt="" coords="176,5,331,32"/>
-<area shape="rect" id="node3" href="$a00383.html#ga6631af35ee817f93827c62bbda41674a" title="Try to find the IP number and port for a (possibly) logical server name. " alt="" coords="379,31,527,57"/>
-<area shape="rect" id="node4" href="$a00383.html#ga9af192306186ddf39e09be0fd4ad8aaf" title="tds_read_config_info() will fill the tds connection structure based on configuration information gath..." alt="" coords="575,31,729,57"/>
-</map>

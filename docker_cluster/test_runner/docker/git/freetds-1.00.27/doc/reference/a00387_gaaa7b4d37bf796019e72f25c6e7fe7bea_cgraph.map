@@ -1,5 +1,0 @@
-<map id="tds_count_placeholders" name="tds_count_placeholders">
-<area shape="rect" id="node2" href="$a00387.html#ga6455b2991afbf7da90270787f2059d31" title="Get position of next placeholder. " alt="" coords="225,31,384,57"/>
-<area shape="rect" id="node3" href="$a00387.html#ga5dbe51ce9533218f2da23f69ff63dda4" title="Skip quoting string (like &#39;sfsf&#39;, &quot;dflkdj&quot; or [dfkjd]) " alt="" coords="439,5,564,32"/>
-<area shape="rect" id="node4" href="$a00387.html#gaac7347ba9380d77d726648b85e9fab8f" title="Skip a comment in a query. " alt="" coords="432,56,571,83"/>
-</map>

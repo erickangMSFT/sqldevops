@@ -1,7 +1,0 @@
-<map id="tds_skip_comment" name="tds_skip_comment">
-<area shape="rect" id="node2" href="$a00387.html#ga6455b2991afbf7da90270787f2059d31" title="Get position of next placeholder. " alt="" coords="192,81,351,108"/>
-<area shape="rect" id="node3" href="$a00387.html#ga3a5d1771cacc947521c4077551f0d3a4" title="Substitute ?&#45;style placeholders with named (@param) ones. " alt="" coords="413,5,556,32"/>
-<area shape="rect" id="node4" href="$a00387.html#ga95e0fccedc459a4404f496eec74a369a" title="tds_submit_query_params() sends a language string to the database server for processing. " alt="" coords="627,44,813,71"/>
-<area shape="rect" id="node5" href="$a00387.html#gaaa7b4d37bf796019e72f25c6e7fe7bea" title="Count the number of placeholders in query. " alt="" coords="399,107,571,133"/>
-<area shape="rect" id="node6" href="$a00387.html#ga02c6ce3ff96369603a6ee4efee64caae" title="Emulate prepared execute traslating to a normal language. " alt="" coords="619,120,821,147"/>
-</map>

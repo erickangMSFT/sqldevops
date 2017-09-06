@@ -1,6 +1,0 @@
-<map id="dbconvert_ps" name="dbconvert_ps">
-<area shape="rect" id="node2" href="$a00372.html#ga32eb72f6fb3edb130e59fb3dd0766e7e" title="cf. " alt="" coords="160,56,244,83"/>
-<area shape="rect" id="node3" href="$a00372.html#gaf641c8e3d34607ca8b7ac2afed3e6d67" title="Print a regular result row to a buffer. " alt="" coords="293,5,381,32"/>
-<area shape="rect" id="node4" href="$a00372.html#gaa30be3414a97aac6139af2e928db91ca" title="Print a result set to stdout. " alt="" coords="301,56,374,83"/>
-<area shape="rect" id="node5" href="$a00372.html#ga548153eb2eae76c48aa9d4b72258dc1c" title="Send text or image data to the server. " alt="" coords="292,107,383,133"/>
-</map>

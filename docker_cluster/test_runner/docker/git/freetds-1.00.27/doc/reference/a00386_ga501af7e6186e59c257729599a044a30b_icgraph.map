@@ -1,6 +1,0 @@
-<map id="tds_get_dynid" name="tds_get_dynid">
-<area shape="rect" id="node2" href="$a00386.html#ga69559de43b47f4a9e2eecc7a56527444" title="Allocate a dynamic statement. " alt="" coords="164,56,303,83"/>
-<area shape="rect" id="node3" href="$a00387.html#ga74eb08c3a1c85be8ac9db428842c8b9d" title="tds_submit_prepare() creates a temporary stored procedure in the server. " alt="" coords="363,5,509,32"/>
-<area shape="rect" id="node4" href="$a00387.html#gae603aed795a4c5bb26ab159a11256996" title="Submit a prepared query with parameters. " alt="" coords="355,56,517,83"/>
-<area shape="rect" id="node5" href="$a00387.html#ga08877c101704bebe4fa57e0849dc272d" title="tds71_submit_prepexec() creates a temporary stored procedure in the server. " alt="" coords="351,107,521,133"/>
-</map>

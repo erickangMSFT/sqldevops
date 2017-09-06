@@ -1,8 +1,0 @@
-<map id="tds7_get_instance_port" name="tds7_get_instance_port">
-<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="662,31,765,58"/>
-<area shape="rect" id="node3" href="$a00388.html#ga2a7429ff031f77023d1bf31339a266db" title="Set socket to non&#45;blocking. " alt="" coords="224,31,424,58"/>
-<area shape="rect" id="node4" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="288,82,360,108"/>
-<area shape="rect" id="node7" href="$a00217.html#a79449d2f35a8acc8ed0585044f75524d" title="Dump the contents of data into the log file in a human readable format. " alt="" coords="253,132,395,159"/>
-<area shape="rect" id="node5" href="$a00387.html#ga11338742dc30fd0c2711f58eb830316f" title="tds_send_cancel() sends an empty packet (8 byte header only) tds_process_cancel should be called dire..." alt="" coords="472,82,601,108"/>
-<area shape="rect" id="node6" href="$a00388.html#ga5feb53554e8917a81bbbc332163a61fb" title="Flush packet to server. " alt="" coords="649,82,777,108"/>
-</map>

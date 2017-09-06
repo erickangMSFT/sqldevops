@@ -1,6 +1,0 @@
-<map id="tds_convert_string" name="tds_convert_string">
-<area shape="rect" id="node2" href="$a00385.html#ga87db49044919f1bc84c0ff5e9ab00304" title="Wrapper around iconv(3). " alt="" coords="192,31,275,57"/>
-<area shape="rect" id="node3" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="756,5,859,32"/>
-<area shape="rect" id="node4" href="$a00385.html#ga3380140fc6eb9f2090c430f40e846876" title="Move the input sequence pointer to the next valid position. " alt="" coords="323,31,509,57"/>
-<area shape="rect" id="node5" href="$a00385.html#ga900b0bce08c6bfc2e7c988f4b5970516" title="Inputs are FreeTDS canonical names, no other. " alt="" coords="557,31,708,57"/>
-</map>

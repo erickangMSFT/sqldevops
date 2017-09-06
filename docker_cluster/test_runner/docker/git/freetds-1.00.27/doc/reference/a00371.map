@@ -1,9 +1,0 @@
-<map id="The db&#45;lib API" name="The db&#45;lib API">
-<area shape="rect" id="node2" href="$a00373.html" title="Functions used with stored procedures. " alt="" coords="163,5,363,32"/>
-<area shape="rect" id="node3" href="$a00376.html" title="Functions to manipulate the MONEY datatype. " alt="" coords="200,56,325,83"/>
-<area shape="rect" id="node4" href="$a00378.html" title="Functions called within db&#45;lib for self&#45;help. " alt="" coords="224,107,301,133"/>
-<area shape="rect" id="node5" href="$a00372.html" title="Core functions needed by most db&#45;lib programs. " alt="" coords="197,157,328,184"/>
-<area shape="rect" id="node6" href="$a00377.html" title="Functions to manipulate DBDATETIME structures. " alt="" coords="193,208,332,235"/>
-<area shape="rect" id="node7" href="$a00379.html" title="Functions thus far not implemented in the FreeTDS db&#45;lib implementation. " alt="" coords="203,259,323,285"/>
-<area shape="rect" id="node8" href="$a00374.html" title="Functions to bulk&#45;copy (a/k/a bcp) data to/from the database. " alt="" coords="191,309,334,336"/>
-</map>

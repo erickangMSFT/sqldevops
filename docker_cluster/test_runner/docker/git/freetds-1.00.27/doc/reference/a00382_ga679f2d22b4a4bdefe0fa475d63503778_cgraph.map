@@ -1,4 +1,0 @@
-<map id="tds_ntlm_get_auth" name="tds_ntlm_get_auth">
-<area shape="rect" id="node2" href="$a00389.html#ga3340b488ed37845018e34572450e64c6" title="Returns a C version (NUL terminated string) of dstr. " alt="" coords="192,5,296,32"/>
-<area shape="rect" id="node3" href="$a00389.html#gaf0e232f3c35f2d8b43486e8708f7a8fc" title="Returns the length of the string in bytes. " alt="" coords="194,56,294,83"/>
-</map>

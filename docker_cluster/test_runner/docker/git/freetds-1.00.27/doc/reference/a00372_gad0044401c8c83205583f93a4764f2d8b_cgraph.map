@@ -1,8 +1,0 @@
-<map id="dbexit" name="dbexit">
-<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="684,93,787,120"/>
-<area shape="rect" id="node3" href="$a00388.html#ga3e3f76009fce5ceedb2f42bb2c9aed2e" title="Close current socket. " alt="" coords="231,93,361,120"/>
-<area shape="rect" id="node6" href="$a00372.html#gaef740b394b44eb33925c2718f7b30d69" title="Close a connection to the server and free associated resources. " alt="" coords="112,144,183,171"/>
-<area shape="rect" id="node4" href="$a00217.html#a16db200d2281f76fe46fc1cbe37ca9df" title="Set state of TDS connection, with logging and checking. " alt="" coords="409,43,516,69"/>
-<area shape="rect" id="node5" href="$a00217.html#abf18b98efef6ce2dc0b97d658a3a1918" title="Call the client library&#39;s error handler (for library&#45;generated errors only) " alt="" coords="564,93,636,120"/>
-<area shape="rect" id="node7" href="$a00372.html#ga0fcfcf6846442dac9dd5584d270ec72a" title="Erase the command buffer, in case DBNOAUTOFREE was set with dbsetopt(). " alt="" coords="423,195,503,221"/>
-</map>

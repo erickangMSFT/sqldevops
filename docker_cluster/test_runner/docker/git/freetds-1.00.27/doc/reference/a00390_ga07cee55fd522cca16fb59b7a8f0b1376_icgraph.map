@@ -1,8 +1,0 @@
-<map id="tds7_get_data_info" name="tds7_get_data_info">
-<area shape="rect" id="node2" href="$a00390.html#gaca56fc22d65a24a96d1bef310ade73aa" title="tds7_process_result() is the TDS 7.0 result set processing routine. " alt="" coords="197,157,347,184"/>
-<area shape="rect" id="node7" href="$a00390.html#ga6728e344caa20aea1def85f58dea138b" title="tds7_process_compute_result() processes compute result sets for TDS 7/8. " alt="" coords="395,209,563,250"/>
-<area shape="rect" id="node3" href="$a00390.html#ga39453d084f3f780ac4602d4abf2839f7" title="tds_process_default_tokens() is a catch all function that is called to process tokens not known to ot..." alt="" coords="404,91,553,133"/>
-<area shape="rect" id="node5" href="$a00390.html#gabfc9de1d1fe718818caf63a4be4035a6" title="process all streams. " alt="" coords="845,132,995,159"/>
-<area shape="rect" id="node4" href="$a00390.html#ga93945b42d45ee28ae1296b35a1c1e9bb" title="tds_process_login_tokens() is called after sending the login packet to the server. " alt="" coords="611,5,797,32"/>
-<area shape="rect" id="node6" href="$a00390.html#ga65a2316369529731732f200c190d05d6" title="tds_process_info() is called for INFO, ERR, or EED tokens and is responsible for calling the CLI&#39;s me..." alt="" coords="639,107,769,133"/>
-</map>

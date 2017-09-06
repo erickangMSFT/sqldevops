@@ -1,7 +1,0 @@
-<map id="tds_save_context" name="tds_save_context">
-<area shape="rect" id="node2" href="$a00125.html" title="tds_context" alt="" coords="5,95,100,121"/>
-<area shape="rect" id="node3" href="$a00144.html" title="tds_locale" alt="" coords="9,5,96,32"/>
-<area shape="rect" id="node4" href="$a00166.html" title="tds_save_env" alt="" coords="124,95,235,121"/>
-<area shape="rect" id="node5" href="$a00167.html" title="tds_save_msg" alt="" coords="259,95,372,121"/>
-<area shape="rect" id="node6" href="$a00147.html" title="tds_message" alt="" coords="262,5,369,32"/>
-</map>

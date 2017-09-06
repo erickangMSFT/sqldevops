@@ -1,9 +1,0 @@
-<map id="tds_alloc_get_string" name="tds_alloc_get_string">
-<area shape="rect" id="node2" href="$a00388.html#ga90f080e6e9448feac15dee1370d66802" title="Fetch a string from the wire. " alt="" coords="203,57,315,84"/>
-<area shape="rect" id="node3" href="$a00388.html#gae7d9c4e1a079e1d0aa0252732631e8c4" title="Get N bytes from the buffer and return them in the already allocated space given to us..." alt="" coords="389,19,475,45"/>
-<area shape="rect" id="node5" href="$a00388.html#ga676c4dee6522815b16fdc8e448e43590" title="For UTF&#45;8 and similar, tds_iconv() may encounter a partial sequence when the chunk boundary is not al..." alt="" coords="363,95,501,121"/>
-<area shape="rect" id="node4" href="$a00388.html#ga410619783bdf2bb60b0f27a5578e0e07" title="Read in one &#39;packet&#39; from the server. " alt="" coords="575,5,703,32"/>
-<area shape="rect" id="node6" href="$a00294.html#abc3a77c8aa28842e7f28583cbabc1415" title="Initialize a data input stream. " alt="" coords="556,56,721,83"/>
-<area shape="rect" id="node7" href="$a00294.html#a9fe0d3799d2e3bde49b614c9d0c3785d" title="Initialize an output stream for write into a static allocated buffer. " alt="" coords="549,107,728,133"/>
-<area shape="rect" id="node8" href="$a00294.html#a9d8eb43a81ff58ab423dce0ce95b9564" title="Reads and writes from a stream converting characters. " alt="" coords="565,157,712,184"/>
-</map>

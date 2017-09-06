@@ -1,4 +1,0 @@
-<map id="tds_iconv_info_init" name="tds_iconv_info_init">
-<area shape="rect" id="node2" href="$a00385.html#gac85bc9c101048a124707c7050035e30f" title="Get a iconv info structure, allocate and initialize if needed. " alt="" coords="192,5,333,32"/>
-<area shape="rect" id="node3" href="$a00385.html#gaed775f7fcca42b5c2a53f9508c140259" title="Get iconv information from a LCID (to support different column encoding under MSSQL2K) ..." alt="" coords="381,5,548,32"/>
-</map>

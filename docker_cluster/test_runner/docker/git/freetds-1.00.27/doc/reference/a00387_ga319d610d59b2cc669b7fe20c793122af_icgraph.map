@@ -1,9 +1,0 @@
-<map id="tds_put_data_info_length" name="tds_put_data_info_length">
-<area shape="rect" id="node2" href="$a00387.html#ga28264995cf9616661f1fa788ac0d246d" title="Send parameters to server. " alt="" coords="236,81,359,108"/>
-<area shape="rect" id="node3" href="$a00387.html#ga95e0fccedc459a4404f496eec74a369a" title="tds_submit_query_params() sends a language string to the database server for processing. " alt="" coords="407,5,593,32"/>
-<area shape="rect" id="node5" href="$a00387.html#gae603aed795a4c5bb26ab159a11256996" title="Submit a prepared query with parameters. " alt="" coords="820,31,981,57"/>
-<area shape="rect" id="node6" href="$a00387.html#ga3e7b4793c6f799fbc6c174f673bb5b32" title="tds_submit_execute() sends a previously prepared dynamic statement to the server. ..." alt="" coords="427,107,573,133"/>
-<area shape="rect" id="node7" href="$a00387.html#ga5f071b94ad7889690762dc85646c74ab" title="tds_submit_rpc() call a RPC from server. " alt="" coords="442,157,558,184"/>
-<area shape="rect" id="node4" href="$a00387.html#ga5a29ae7f99d089dc3cea85ec6ee5f3ab" title="tds_submit_query() sends a language string to the database server for processing. ..." alt="" coords="641,5,772,32"/>
-<area shape="rect" id="node8" href="$a00373.html#gafa4dfd181be21e49c397f7daaa9cf96c" title="Execute the procedure and free associated memory. " alt="" coords="663,157,751,184"/>
-</map>

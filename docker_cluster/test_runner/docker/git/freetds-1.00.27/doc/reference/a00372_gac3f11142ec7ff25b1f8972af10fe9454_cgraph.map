@@ -1,7 +1,0 @@
-<map id="dbtxtimestamp" name="dbtxtimestamp">
-<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="423,5,525,32"/>
-<area shape="rect" id="node3" href="$a00378.html#ga0fc84c7073ed4876d9596c3eccac3609" title="Sanity checks for column&#45;oriented functions. " alt="" coords="165,56,237,83"/>
-<area shape="rect" id="node4" href="$a00378.html#ga302a4ce6559b81808e3be51615cd1b67" title="Call client&#45;installed error handler. " alt="" coords="285,56,361,83"/>
-<area shape="rect" id="node5" href="$a00389.html#gae6d3d12bd1f5f0c56df934a377c245d3" title="test if string is empty " alt="" coords="409,56,539,83"/>
-<area shape="rect" id="node6" href="$a00389.html#ga3340b488ed37845018e34572450e64c6" title="Returns a C version (NUL terminated string) of dstr. " alt="" coords="422,107,526,133"/>
-</map>

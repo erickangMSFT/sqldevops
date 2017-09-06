@@ -1,9 +1,0 @@
-<map id="dbconvert" name="dbconvert">
-<area shape="rect" id="node2" href="$a00217.html#ab45c291105027e69836002e1dd586141" title="Write a message to the debug log. " alt="" coords="623,54,725,81"/>
-<area shape="rect" id="node3" href="$a00372.html#ga8b00d5cdcaa20cba13fa2e03d52a443e" title="Convert one datatype to another. " alt="" coords="137,117,244,143"/>
-<area shape="rect" id="node4" href="$a00263.html#ac7a199aaeb82935f6d1dda2be551a089" title="Returns type in string. " alt="" coords="313,66,430,93"/>
-<area shape="rect" id="node5" href="$a00217.html#a4c070147d189dede5e08a2dc66852678" title="Return the number of bytes needed by specified type. " alt="" coords="292,117,451,143"/>
-<area shape="rect" id="node6" href="$a00263.html#aea6a865806d454280126de940478c214" title="dbgetnull" alt="" coords="332,167,411,194"/>
-<area shape="rect" id="node7" href="$a00378.html#ga302a4ce6559b81808e3be51615cd1b67" title="Call client&#45;installed error handler. " alt="" coords="499,167,575,194"/>
-<area shape="rect" id="node8" href="$a00384.html#gaa865e08f7ad70ef92b111c2ea3657457" title="tds_convert convert a type to another. " alt="" coords="323,269,419,295"/>
-</map>

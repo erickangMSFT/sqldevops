@@ -1,2 +1,0 @@
-The dblib and ctlib test programs in this directory are old.  Please refer to the src/dblib/unittests and src/ctlib/unittests for better examples.
-
