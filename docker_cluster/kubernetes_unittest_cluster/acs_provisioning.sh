@@ -48,6 +48,9 @@ kubectl create secret docker-registry mssqlkey \
 # deploy mssql and unittest cluster definition
 kubectl create -f wwi_unittest.yml
 
+
+###end of initial provisioning####
+
 # run the following commands to update the pod with a newer version of docker image.
 kubectl set image deployment/slacker-runner \
 slacker-runner=sqldevopsacs.azurecr.io/slacker-node-runner -n sqldevops

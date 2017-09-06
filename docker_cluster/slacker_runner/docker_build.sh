@@ -1,7 +1,7 @@
 #!/bin/bash
 
-docker-compose build
-docker-compose up -d
+docker build . --rm -t slacker-node-runner:alpine
+
 docker rmi -f $(docker images -f "dangling=true" -q)
 
-curl localhost:8888
+docker images
