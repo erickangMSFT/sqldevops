@@ -12,13 +12,20 @@
 As a developer, you can build the entire dev and test environment for database, application and test in a few seconds.
 1. simply run the following commands:
 
-    ```bash
-    cd ./docker_cluster/docker-compose
-    docker-compose up -d
-    docker ps
-    ```
+```bash
+cd ./docker_cluster/docker-compose
+docker-compose up -d
+docker ps
+```
 
     That's it. check docker-compose file [./docker_cluster/docker-compose/docker-compose.yml](./docker_cluster/docker-compose/docker-compose.yml)
+```sqltools``` cotainer has pre-installed sqlcmd, bcp and mssql-scripter.
+
+```bash
+docker exec -ti sqltools bash
+``` 
+
+
 
 2. Open web browser and check following:
     * demo webapp [http://localhost](http://localhost)
