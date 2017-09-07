@@ -3,8 +3,7 @@ db/bin
 db/obj
 /db_tests/WideWorldImporters/debug
 nul
-/test_runner/docker/git/
-/test_runner/runner/node_modules
+/test_runner/node_modules
 .vscode
 *.bak
 *.deb
