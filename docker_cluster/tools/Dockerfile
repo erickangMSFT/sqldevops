@@ -1,9 +1,8 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get install -y curl apt-transport-https python3 python3-pip vim
-# RUN pip install mssql-scripter
-# RUN pip install --upgrade pip
+RUN apt-get install -y curl apt-transport-https python python-pip vim
+RUN pip install mssql-scripter
 
 RUN curl -s https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl -s https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list
