@@ -1,17 +1,126 @@
 # sqldevops demo
 
-## Demo Walkthrough
+## pre-req
 
-### Build docker image for WideWorldImporters unittest db container
+- install docker
+- create a docker hub account and send email to erickang@microsoft.com for [WideWorldImporters unittest docker image] (https://hub.docker.com/r/ericskang/unittestdb/)
+    - otherwise, you can build your own docker image using [./docker_cluster/mssql_unittest/docker_build_push.sh](/Users/erickang/Projects/Demos/sqldevops/docker_cluster/mssql_unittest/docker_build_push.sh)
 
-```sh
-cd docker_cluster/mssql_unittest
-./docker_build.sh
+## Demo
+
+### Bootstrap dev and test enviroment as a developer
+As a developer, you can build the entire dev and test environment for database, application and test in a few seconds.
+1. simply run the following commands:
+
+    ```bash
+    cd docker_cluster\docker-compose
+    docker-compose up -d
+    docker ps
+    ```
+
+    That's it. check docker-compose file [./docker_cluster/docker-compose/docker-compose.yml](./docker_cluster/docker-compose/docker-compose.yml)
+
+2. Open web browser and check following:
+    * demo webapp [http://localhost](http://localhost)
+        * check people information page for the result of data sanitization with dynamic data masking [http://localhost/Directory](http://localhost/Directory)
+    
+    * demo wideworldimporters unittest [http://localhost:8000](http://localhost:8000)
+        * click each link on the index page
+
+### Container-centric clustering
+Enable parallel testing with kunbernetes cluster: note that parallel testing implementation is a demo purpose only.
+URL to [Azure Container Registry](https://ms.portal.azure.com/#resource/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/sqldevopsGroup/providers/Microsoft.ContainerRegistry/registries/sqldevopsACS/overview) for this demo: 
+
+
+0. install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 
+
+1. create Azure container service. Or you can use minikube to play locally. [miniKube](https://kubernetes.io/docs/getting-started-guides/minikube/)
+
+* open the [source folder](./docker_cluster/kubernetes_unittest_cluster)
+* it can be fully automated but you will need to provide values for the settings first
+* or just run the script line-by-line for demo
+
+```bash
+code ./docker_cluster/kubernetes_unittest_cluster/acs_provisioning.sh
+vim ./docker_cluster/kubernetes_unittest_cluster/acs_provisioning.sh
+```
+> I assume you already have visual studio code installed. use vim otherwise.
+> To install azure-cli, go to [https://github.com/Azure/azure-cli](https://github.com/Azure/azure-cli)
+
+2. open kubernetes dashboard
+
+```bash
+kubectl proxy
+```
+Open dashboard [http://127.0.0.1/ui] and check the settings
+
+3. run all tests in single pod 
+
+```bash
+cd ./test_controller
+
+# modify node_runner_url='http://localhost:8000' to the extenal IP assigned for slacker service by Kubernetes
+./run_tests.sh
+```
+Total execution time would be ~10 seconds
+
+
+4. increase the number of pods to 2 and run the same test again
+use kubernetes dashboard / deployment / slacker pods property or run the following command:
+
+```bash 
+# spining up / down
+
+kubectl scale deployment slacker-runner --replicas=2 -n sqldevops
+watch kubectl get pods -n sqldevops-dev
+
+kubectl scale deployment slacker-runner --replicas=1 -n sqldevops
+watch kubectl get pods -n sqldevops-dev
+
 ```
 
+## Data sanitization details
+
+* source folder: [data_sanitization](./data_sanitization)
+* automation script: [./data_sanitization/create_unittest_db.ps1](./data_sanitization/create_unittest_db.ps1)
+* key take aways
+    * the solution is defined in powershell script and automated. automation sample: [./docker_cluster/mssql_unittest/docker_build_push.sh](./docker_cluster/mssql_unittest/docker_build_push.sh)
+        * intentionally used powershell for linux for demo. it can be defined on bash or python.
+    * show the use of sqlcmd and bcp
+    * show the use of mssql-scripter
+    * data sanitization flow
+        * restore pre-prod using prod backup or clone
+        * enable dynamic data masking and create a low-previleged database user w.o UNMASK permission
+        * mssql-scripter to dump schema
+        * regex to modify the database name and reduce the database size from 4GB total to a few MB.
+        * bcp out reference data only with the low-previleged user to convert dynamic data masking to static data masking
+        * create database using mssql-scripter dump script and bcp in reference data only.
+
+## Docker image build process details
+
+* source folder: [docker_cluster](./docker_cluster)
+    * Unittest database creation [Dockerfile](./docker_cluster/mssql_unittest/Dockerfile) [Shell script](./docker_cluster/mssql_unittest/docker_build_push.sh)
+
+    * demo webapp: [Dockerfile](./web_app/Dockerfile)
+
+    * slacker-node-runner (web based test runner): [Dockerfile](./docker_cluster/slacker_runner/Dockerfile)
+
+    * slacker (framework only): [Dockerfile](.docker_cluster/slacker/Dockerfile)
+
+* Docker hub repositories
+
+    * https://hub.docker.com/r/ericskang/unittestdb/ (private)
+
+    * https://hub.docker.com/r/ericskang/webapp/ (public)
+
+    * https://hub.docker.com/r/ericskang/slacker-node-runner/ (public)
+
+    * https://hub.docker.com/r/ericskang/mssql-slacker/ (public)
 
 
-## Available Demos
+
+
+## Available Demos (TBD)
 
 - Crete UnitTest Database: sanitize data with Dynamic Data Masking and including schema and reference table data only
     * mssql-scipter to create a database with schema only.
