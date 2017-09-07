@@ -1,10 +1,10 @@
 # sqldevops demo
 
-## pre-req
+## Pre-req
 
-- install docker
-- create a docker hub account and send email to erickang@microsoft.com for [WideWorldImporters unittest docker image](https://hub.docker.com/r/ericskang/unittestdb/)
-    - otherwise, you can build your own docker image using [docker_cluster/mssql_unittest/docker_build_push.sh](./docker_cluster/mssql_unittest/docker_build_push.sh)
+- install [Docker](https://www.docker.com/)
+- create a docker hub account and send an email to erickang at microsoft dot com to get the access permission for [WideWorldImporters unittest docker image](https://hub.docker.com/r/ericskang/unittestdb/)
+    - otherwise, you can just build your own docker image using [docker_cluster/mssql_unittest/docker_build_push.sh](./docker_cluster/mssql_unittest/docker_build_push.sh)
 
 ## Demo
 
