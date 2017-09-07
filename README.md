@@ -27,7 +27,7 @@ As a developer, you can build the entire dev and test environment for database, 
     * demo wideworldimporters unittest [http://localhost:8000](http://localhost:8000)
         * click each link on the index page
 
-### Container-centric clustering
+### Container-centric cluster
 Enable parallel testing with kunbernetes cluster: note that parallel testing implementation is a demo purpose only.
 URL to [Azure Container Registry](https://ms.portal.azure.com/#resource/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/sqldevopsGroup/providers/Microsoft.ContainerRegistry/registries/sqldevopsACS/overview) for this demo: 
 
