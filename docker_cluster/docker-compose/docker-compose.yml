@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   webapp:
     image: ericskang/webapp:latest
@@ -16,7 +16,7 @@ services:
       - "8000:8000"
   mssql:
     image: ericskang/unittestdb:latest
-    container_name: mssql_unittest
+    container_name: mssql
     ports: 
       - "1433:1433"
     environment:
