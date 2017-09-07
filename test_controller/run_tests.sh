@@ -29,7 +29,6 @@ start=$SECONDS
 
 for spec in $(curl -s $node_runner_url/api/getspecs | jq -r '.[] | .specFile'); do
     url=${node_runner_url}'/api/runspec/'${format}'/'$spec
-    echo $url
     curl -s $url & 
 done
 
