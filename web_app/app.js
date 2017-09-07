@@ -17,9 +17,10 @@ const bodyParser = require('body-parser');
 //database
 const mssql = require('mssql');
 const dbconfig = require('./src/config/dbconfig.json');
-
+const pool = new mssql.ConnectionPool(dbconfig);
+mssql.globalConnectionPool = pool;
 //open database connection
-mssql.connect(dbconfig,(err)=>{
+pool.connect((err)=>{
   if (err){
     console.log('connection failed to server:' + dbconfig.server + ' database:' + dbconfig.database);
     console.log(err);
@@ -28,7 +29,7 @@ mssql.connect(dbconfig,(err)=>{
     console.log ('Connected to ' + dbconfig.server 
                     + '/' + dbconfig.database 
                     + ' (' + dbconfig.user + ')');
-    const request = new mssql.Request();
+    const request = new mssql.Request(pool);
     request.query('select @@version',(err,rec)=>{
       console.log(JSON.stringify(rec.recordset, null, 0)
         .replace('[{"":"', '')

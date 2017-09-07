@@ -17,31 +17,34 @@ const dbconfig = require('../config/dbconfig.json');
 const tablespaceSqlFile = './src/sql/tablespace.sql';
 const nav = require('../config/navconfig.json');
 
+const pool = mssql.globalConnectionPool;
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  const request = new mssql.Request();
   fs.readFile(tablespaceSqlFile, 'utf8', (err, script) => {
-    const request = new mssql.Request();
-    request.query(script, (err, rec) => {
-      if (err) {
-        const sqlerror = sqldevops.getSqlError(err);
-        res.render('error', {
-          message: sqlerror.message,
-          error: sqlerror
-        });
-      }
-      else {
-        // for debugging
-        //console.log(rec.recordset);
-        res.render('index', {
-          title: 'Insights',
-          nav: nav,
-          tablespaces: rec.recordset,
-          server: dbconfig.server,
-          database: dbconfig.database,
-          user: dbconfig.user
-        });
-      }
+    pool.connect((err) => {
+      const request = new mssql.Request(pool);
+      request.query(script, (err, rec) => {
+        if (err) {
+          const sqlerror = sqldevops.getSqlError(err);
+          res.render('error', {
+            message: sqlerror.message,
+            error: sqlerror
+          });
+        }
+        else {
+          // for debugging
+          //console.log(rec.recordset);
+          res.render('index', {
+            title: 'Insights',
+            nav: nav,
+            tablespaces: rec.recordset,
+            server: dbconfig.server,
+            database: dbconfig.database,
+            user: dbconfig.user
+          });
+        }
+      });
     });
   });
 });

@@ -21,11 +21,12 @@ const nav = require('../config/navconfig.json');
 const viewName = 'servermemorybydb';
 const title = 'Memory Usage by Database';
 
+const pool = mssql.globalConnectionPool;
 
 /* GET directory page. */
 router.get('/', (req, res, next) => {
     fs.readFile(sqlFile, 'utf8', (err, script) => {
-        const request = new mssql.Request();
+        const request = new mssql.Request(pool);
         request.query(script, (err, rec) => {
             if (err) {
                 const sqlerror = sqldevops.getSqlError(err);

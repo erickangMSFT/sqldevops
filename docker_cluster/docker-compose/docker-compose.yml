@@ -1,14 +1,21 @@
 version: '3'
 services:
+  webapp:
+    image: ericskang/webapp:latest
+    depends_on:
+      - mssql
+    container_name: webapp
+    ports:
+      - "80:3000"
   slacker:
-    build: .
+    image: ericskang/slacker-node-runner:latest
     depends_on: 
       - mssql
-    container_name: slacker_runner
+    container_name: slacker
     ports:
-      - "80:8000"
+      - "8000:8000"
   mssql:
-    build: ./unittest_db
+    image: ericskang/unittestdb:latest
     container_name: mssql_unittest
     ports: 
       - "1433:1433"

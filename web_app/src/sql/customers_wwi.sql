@@ -1,9 +1,8 @@
 SELECT
-    c.CustomerID, 
-    c.CustomerName, 
-    c.CustomerCategoryName CustomerCategory, 
-    c.PrimaryContact, 
-    c.AlternateContact, 
-    c.PhoneNumber,
-    c.WebsiteURL
-FROM Website.Customers c
+    p.PersonID, 
+    p.FullName, 
+    p.PhoneNumber,
+    p.FaxNumber,
+    p.EmailAddress,
+    p.LogonName
+FROM Application.People p

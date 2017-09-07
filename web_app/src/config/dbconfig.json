@@ -2,7 +2,7 @@
     "user": "sa",
     "password": "Yukon900",
     "server": "mssql",
-    "database": "WideWorldImporters",
+    "database": "WideWorldImportersTest",
     "options": {
         "encrypt": false
     }

@@ -74,24 +74,22 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>Customer Name</th>
-                  <th>Customer Category</th>
-                  <th>Primary Contact</th>
-                  <th>Alternate Contact</th>
-                  <th>PhoneNumber</th>
-                  <th>Website URL</th>
+                  <th>Full Name</th>
+                  <th>Phone Number</th>
+                  <th>Fax Number</th>
+                  <th>Email Address</th>
+                  <th>Logon Name</th>
                 </tr>
               </thead>
               <tbody>
-                <% for (var i in customers) { %>
+                <% for (var i in people) { %>
                   <tr>
-                      <td> <%=customers[i].CustomerID %></td>
-                      <td> <%=customers[i].CustomerName %></td>
-                      <td> <%=customers[i].CustomerCategory %></td>
-                      <td> <%=customers[i].PrimaryContact %></td>
-                      <td> <%=customers[i].AlternateContact %></td>
-                      <td> <%=customers[i].PhoneNumber %></td>
-                      <td> <%=customers[i].WebsiteURL %></td>
+                      <td> <%=people[i].PersonID %></td>
+                      <td> <%=people[i].FullName %></td>
+                      <td> <%=people[i].PhoneNumber %></td>
+                      <td> <%=people[i].FaxNumber %></td>
+                      <td> <%=people[i].EmailAddress %></td>
+                      <td> <%=people[i].LogonName %></td>
                   </tr>
                 <% } %>
               </tbody>

@@ -25,7 +25,7 @@ rm -f ./out/*.*
 write-host "** drop WideWorldImportersTest database" -foreground green
 sqlcmd -S $hostname -Usa -PYukon900 -i ./sql/drop_testdb.sql
 
-write-host "** generae script wiht mssql-scripter schema only" -foreground green
+write-host "** generae script with mssql-scripter schema only" -foreground green
 mssql-scripter -S $hostname -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
 
 write-host "** find and replace db name from WideWorldImporters to WideWorldImportersTest" -foreground green
