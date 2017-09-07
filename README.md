@@ -59,7 +59,8 @@ Open dashboard [http://127.0.0.1/ui] and check the settings
 ```bash
 cd ./test_controller
 
-# modify node_runner_url='http://localhost:8000' to the extenal IP assigned for slacker service by Kubernetes
+# modify node_runner_url='http://localhost:8000' 
+# to extenal IP assigned by Kubernetes for slacker_runner service
 ./run_tests.sh
 ```
 Total execution time would be ~10 seconds
