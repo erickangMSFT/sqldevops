@@ -110,13 +110,13 @@ watch kubectl get pods -n sqldevops-dev
 
 * Docker hub repositories
 
-    * https://hub.docker.com/r/ericskang/unittestdb/ (private)
+    * https://hub.docker.com/r/ericskang/unittestdb/tags/ (private)
 
-    * https://hub.docker.com/r/ericskang/webapp/ (public)
+    * https://hub.docker.com/r/ericskang/webapp/tags/ (public)
 
-    * https://hub.docker.com/r/ericskang/slacker-node-runner/ (public)
+    * https://hub.docker.com/r/ericskang/slacker-node-runner/tags/ (public)
 
-    * https://hub.docker.com/r/ericskang/mssql-slacker/ (public)
+    * https://hub.docker.com/r/ericskang/mssql-slacker/tags/ (public)
 
 
 
