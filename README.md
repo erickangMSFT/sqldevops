@@ -105,7 +105,7 @@ watch kubectl get pods -n sqldevops-dev
 
     * slacker-node-runner (web based test runner): [Dockerfile](./docker_cluster/slacker_runner/Dockerfile)
 
-    * slacker (framework only): [Dockerfile](.docker_cluster/slacker/Dockerfile)
+    * slacker (framework only): [Dockerfile](./docker_cluster/slacker/Dockerfile)
 
 * Docker hub repositories
 
