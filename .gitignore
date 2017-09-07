@@ -1,4 +1,4 @@
-web/node_modules
+web_app/node_modules
 db/bin
 db/obj
 /db_tests/WideWorldImporters/debug
