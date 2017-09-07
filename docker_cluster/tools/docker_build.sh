@@ -1,9 +1,15 @@
-docker build . --rm -t tools:temp
+#!/bin/bash
 
-docker run --name tools_temp -d tools:temp
-docker export tools_temp | docker import - tools:latest
 
-docker rm -f tools_temp
-docker rmi tools:temp
+dt=`date '+%Y-%m-%d_%H-%M-%S'`
+
+docker build . --rm -t ericskang/sqltools:$dt
+
+docker tag ericskang/sqltools:$dt ericskang/sqltools:latest
+
+docker login
+
+docker push ericskang/sqltools:$dt
+docker push ericskang/sqltools:latest
 
 docker rmi -f $(docker images -f "dangling=true" -q)
