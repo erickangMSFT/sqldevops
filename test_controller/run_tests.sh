@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+node_runner_url='http://localhost:8000'
+
 # Usage: ./run.sh -f {document, json, html} default = document view.
 
 format='document' #default format
@@ -20,12 +23,13 @@ done
 printf "\n" && printf '\e[1;34m%-6s\e[m' "* starting tests for:" && printf "\n"
 starttime=$(gdate +"%Y-%m-%d %H:%M:%S %3N")
 
-curl -s http://104.45.235.86:8000/api/getspecs | jq -r '.[] | .specFile'
+curl -s $node_runner_url/api/getspecs | jq -r '.[] | .specFile'
 
 start=$SECONDS
 
-for spec in $(curl -s http://104.45.235.86:8000/api/getspecs | jq -r '.[] | .specFile'); do
-    url='http://104.45.235.86:8000/api/runspec/'${format}'/'$spec
+for spec in $(curl -s $node_runner_url/api/getspecs | jq -r '.[] | .specFile'); do
+    url=${node_runner_url}'/api/runspec/'${format}'/'$spec
+    echo $url
     curl -s $url & 
 done
 

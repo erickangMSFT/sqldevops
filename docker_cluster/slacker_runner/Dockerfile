@@ -28,7 +28,7 @@ RUN rbenv install $RUBY_VERSION \
 
 RUN gem install bundler && gem install tiny_tds -f && gem install slacker
 
-ENV TEST_GITFILE git://github.com/erickangMSFT/slacker-sample.git
+ENV TEST_GITFILE git://github.com/erickangMSFT/wwi-test.git
 ENV RUNNER_GITFILE git://github.com/erickangMSFT/slacker-node-runner.git
 
 WORKDIR /opt/slacker-test
