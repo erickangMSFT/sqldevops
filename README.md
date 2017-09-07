@@ -13,7 +13,7 @@ As a developer, you can build the entire dev and test environment for database, 
 1. simply run the following commands:
 
     ```bash
-    cd docker_cluster\docker-compose
+    cd ./docker_cluster/docker-compose
     docker-compose up -d
     docker ps
     ```
