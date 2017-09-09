@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get install -y curl apt-transport-https python python-pip vim
+RUN apt-get install -y curl apt-transport-https python python-pip vim git wget
 RUN pip install mssql-scripter
 
 RUN curl -s https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
@@ -19,6 +19,4 @@ ENV PATH "$MSSQLTOOLS_ROOT/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 RUN useradd -ms /bin/bash sqltools
 USER sqltools
 WORKDIR /home/sqltools
-
-
 CMD tail -f /dev/null
