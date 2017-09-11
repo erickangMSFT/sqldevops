@@ -22,6 +22,7 @@ def main(argv):
     response = urllib2.urlopen(args.server_url + api_getspecs)
     spec_list = json.loads(response.read())    
     spec_urls = [] 
+    
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* starting tests for: ', bcolors.ENDC))
     for spec in spec_list:
         print('{0}{1}'.format('- ', spec['specFile']))
