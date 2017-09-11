@@ -1,18 +1,17 @@
 #!/usr/bin/python
 
-
 import sys
 import argparse
 import urllib2
 import json
 import threading
+import multiprocessing as mp
 from datetime import datetime  
 
 api_getspecs = '/api/getspecs'
 api_runspec = '/api/runspec/'
 api_runall = '/api/runall/'
 host_url = 'http://localhost:8000'
-
 
 def main(argv):
     parser = argparse.ArgumentParser()
@@ -22,25 +21,20 @@ def main(argv):
 
     response = urllib2.urlopen(args.server_url + api_getspecs)
     spec_list = json.loads(response.read())    
-    
+    spec_urls = [] 
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* starting tests for: ', bcolors.ENDC))
     for spec in spec_list:
         print('{0}{1}'.format('- ', spec['specFile']))
+        url = args.server_url + api_runspec + args.output_format + '/' + spec['specFile'] 
+        spec_urls.append(url)
 
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* waiting for the result...', bcolors.ENDC))
 
     start_time=datetime.now()
-
-    threads =[]
-    for spec in spec_list:
-        url = args.server_url + api_runspec + args.output_format + '/' + spec['specFile']
-        o = urllib2.build_opener(TestHandler())
-        t = threading.Thread(target=o.open, args=(url,))
-        threads.append(t)
-        t.start()
-
-    for t in threads:
-        t.join()
+   
+    pool = mp.Pool(processes=mp.cpu_count())
+    results = [pool.apply_async(run_spec, args=(url,)) for url in spec_urls]
+    output = [p.get() for p in results]
     
     end_time=datetime.now()
 
@@ -51,11 +45,9 @@ def main(argv):
     print('{0}{1}\t{2}{3}'.format(bcolors.HEADER, 'end time:', end_time.strftime("%H:%M:%S.%f"), bcolors.ENDC))
     print('{0}{1}\t{2} {3}{4}\n'.format(bcolors.HEADER, 'elapse time:', str(divmod(elapse_time.total_seconds(), 60)[1]), 'seconds', bcolors.ENDC))
 
-class TestHandler(urllib2.HTTPHandler):
-    def http_response(self, req, response):
-        #print "spec: %s" % (response.geturl(),)
-        print(response.read())
-        return response
+def run_spec(req):
+    response= urllib2.urlopen(req)
+    print (response.read())
 
 class bcolors:
     HEADER = '\033[95m'
@@ -67,11 +59,8 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-
 if __name__ == "__main__":
     main(sys.argv[1:])
-
-
 
 
 # Black        0;30     Dark Gray     1;30
