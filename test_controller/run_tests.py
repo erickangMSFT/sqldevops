@@ -44,6 +44,7 @@ def main(argv):
     print('{0}{1}\t{2}{3}'.format(bcolors.HEADER, 'start time:', start_time.strftime("%H:%M:%S.%f"), bcolors.ENDC))
     print('{0}{1}\t{2}{3}'.format(bcolors.HEADER, 'end time:', end_time.strftime("%H:%M:%S.%f"), bcolors.ENDC))
     print('{0}{1}\t{2} {3}{4}\n'.format(bcolors.HEADER, 'elapse time:', str(divmod(elapse_time.total_seconds(), 60)[1]), 'seconds', bcolors.ENDC))
+    print('{0}processed by {1} cores{2}\n'.format(bcolors.UNDERLINE, mp.cpu_count(), bcolors.ENDC))
 
 def run_spec(req):
     response= urllib2.urlopen(req)
