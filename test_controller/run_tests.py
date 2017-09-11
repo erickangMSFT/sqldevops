@@ -8,18 +8,22 @@ import json
 import threading
 from datetime import datetime  
 
+api_getspecs = '/api/getspecs'
+api_runspec = '/api/runspec/'
+api_runall = '/api/runall/'
+
 def main(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--server', dest='server_url', default='http://localhost:8000')
     parser.add_argument('-f', '--format', dest='output_format', default='document')
     args = parser.parse_args()
 
-    response = urllib2.urlopen(args.server_url+'/api/getspecs/')
+    response = urllib2.urlopen(args.server_url + api_getspecs)
     spec_list = json.loads(response.read())    
     
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* starting tests for: ', bcolors.ENDC))
     for spec in spec_list:
-        print(spec['specFile'])
+        print('{0}{1}'.format('- ', spec['specFile']))
 
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* waiting for the result...', bcolors.ENDC))
 
@@ -27,7 +31,7 @@ def main(argv):
 
     threads =[]
     for spec in spec_list:
-        url = args.server_url+'/api/runspec/'+args.output_format+'/'+spec['specFile']
+        url = args.server_url + api_runspec + args.output_format + '/' + spec['specFile']
         o = urllib2.build_opener(TestHandler())
         t = threading.Thread(target=o.open, args=(url,))
         threads.append(t)
