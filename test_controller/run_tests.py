@@ -31,8 +31,9 @@ def main(argv):
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* waiting for the result...', bcolors.ENDC))
 
     start_time=datetime.now()
-   
-    pool = mp.Pool(processes=mp.cpu_count())
+    
+    cpu_count = mp.cpu_count()
+    pool = mp.Pool(processes=(cpu_count, cpu_count-1)[cpu_count>2])
     results = [pool.apply_async(run_spec, args=(url,)) for url in spec_urls]
     output = [p.get() for p in results]
     
