@@ -11,10 +11,12 @@ from datetime import datetime
 api_getspecs = '/api/getspecs'
 api_runspec = '/api/runspec/'
 api_runall = '/api/runall/'
+host_url = 'http://localhost:8000'
+
 
 def main(argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument('-s', '--server', dest='server_url', default='http://localhost:8000')
+    parser.add_argument('-s', '--server', dest='server_url', default=host_url)
     parser.add_argument('-f', '--format', dest='output_format', default='document')
     args = parser.parse_args()
 
