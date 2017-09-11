@@ -32,8 +32,7 @@ def main(argv):
 
     start_time=datetime.now()
     
-    cpu_count = mp.cpu_count()
-    pool = mp.Pool(processes=(cpu_count, cpu_count-1)[cpu_count>2])
+    pool = mp.Pool(processes=mp.cpu_count())
     results = [pool.apply_async(run_spec, args=(url,)) for url in spec_urls]
     output = [p.get() for p in results]
     
