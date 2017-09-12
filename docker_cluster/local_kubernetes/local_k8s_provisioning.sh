@@ -20,7 +20,7 @@ kubectl create secret docker-registry mssqlkey \
 --docker-email=<DOCKER_EMAIL>
 -n $KUBE_NAMESPACE
 
-kubectl create secret docker-registry mykey --docker-username=ericskang --docker-password=$mypassword --docker-email=erickangatms@outlook.com -n sqldevops
+kubectl create secret docker-registry mykey --docker-username=$myusername --docker-password=$mypassword --docker-email=$myemail -n sqldevops
 
 
 # deploy mssql and unittest cluster definition
