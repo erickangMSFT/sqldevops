@@ -1,0 +1,2 @@
+kubectl exec mssql-1960134983-3tmk8 -c mssql -n sqldevops -i -t -- bash -il
+kubectl exec slacker -c slacker -n sqldevops -i -t -- bash -il

@@ -1,0 +1,150 @@
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: mssql
+  namespace: sqldevops
+  labels:
+    app: unittest
+    version: latest
+spec:
+  strategy:
+    type: Recreate
+  selector: 
+    matchLabels: 
+      app: unittest
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: unittest
+        tier: backend
+    spec:
+      containers:
+        - image: ericskang/unittestdb:latest
+          name: mssql
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: mykey
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql
+  namespace: sqldevops
+spec:
+  selector:
+    app: unittest
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+  type: ClusterIP
+
+--- 
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: slacker
+  namespace: sqldevops
+spec:
+  selector:
+    app: unittest
+    tier: frontend
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: NodePort 
+
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: slacker
+  namespace: sqldevops
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: unittest
+        tier: frontend
+    spec:
+      containers:
+        - name: slacker
+          image: ericskang/slacker-node-runner:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: mykey
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapp
+  namespace: sqldevops
+spec:
+  selector:
+    app: webapp
+    tier: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: NodePort 
+
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: webapp
+  namespace: sqldevops
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: webapp
+        tier: frontend
+    spec:
+      containers:
+        - name: webapp
+          image: ericskang/webapp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: mykey
+          
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: sqltools
+  namespace: sqldevops
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sqltools
+        tier: frontend
+    spec:
+      containers:
+        - name: sqltools
+          image: ericskang/sqltools:latest
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: mykey
+
