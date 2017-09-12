@@ -12,21 +12,23 @@ api_getspecs = '/api/getspecs'
 api_runspec = '/api/runspec/'
 api_runall = '/api/runall/'
 host_url = 'http://localhost:8000'
+http_prefix = 'http://'
 
 def main(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--server', dest='server_url', default=host_url)
+    parser.add_argument('-p', '--port', dest='port', default=8000)
     parser.add_argument('-f', '--format', dest='output_format', default='document')
     args = parser.parse_args()
 
-    response = urllib2.urlopen(args.server_url + api_getspecs)
+    response = urllib2.urlopen(http_prefix + args.server_url + ':' + str(args.port) + api_getspecs)
     spec_list = json.loads(response.read())    
     spec_urls = [] 
     
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* starting tests for: ', bcolors.ENDC))
     for spec in spec_list:
         print('{0}{1}'.format('- ', spec['specFile']))
-        url = args.server_url + api_runspec + args.output_format + '/' + spec['specFile'] 
+        url = http_prefix + args.server_url + ':' + str(args.port) + api_runspec + args.output_format + '/' + spec['specFile'] 
         spec_urls.append(url)
 
     print('{0}\n{1}\n{2}'.format(bcolors.OKGREEN, '* waiting for the result...', bcolors.ENDC))
