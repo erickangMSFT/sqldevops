@@ -6,4 +6,4 @@
 # and slacker service is deployed as NodePort type
 
 kubectl get services -n sqldevops
-kubectl describe nodes | grep -e 'Name:' -e 'IP' -e 'slacker' -e 'webapp' -e 'sqltools' -e 'mssql'
+kubectl describe nodes | grep -e 'Name:' -e 'IP' -e 'Addresses' -e 'slacker' -e 'webapp' -e 'sqltools' -e 'mssql'
