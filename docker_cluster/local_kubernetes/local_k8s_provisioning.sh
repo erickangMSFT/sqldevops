@@ -1,24 +1,8 @@
 #!/bin/bash
 
-# Optional: create a new namespace 
 kubectl create -f ./namespace.yaml
 kubectl get namespaces
 export KUBE_NAMESPACE=sqldevops
-
-# Onetime-setup - run to use a private docker repository. Make sure to place the key in the same namespce with pods and services.
-# sample - get the server, username and password from the private registry. For azure container registry, use portal.azure.net to retrieve the information
-# kubectl create secret docker-registry mssqlkey 
-# --docker-server=sqldevopsacs.azurecr.io 
-# --docker-username=sqldevopsadmin 
-# --docker-password=!#roalkdfjqweoruqwfasldfkjasf 
-# --docker-email=sqldevopsadmin@myemail
- 
-kubectl create secret docker-registry mssqlkey \
---docker-server=<DOCKER_REGISTRY_SERVER> \
---docker-username=<DOCKER_USER> \
---docker-password=<DOCKER_PASSWORD> \
---docker-email=<DOCKER_EMAIL>
--n $KUBE_NAMESPACE
 
 kubectl create secret docker-registry mykey --docker-username=$myusername --docker-password=$mypassword --docker-email=$myemail -n sqldevops
 
@@ -26,3 +10,18 @@ kubectl create secret docker-registry mykey --docker-username=$myusername --dock
 # deploy mssql and unittest cluster definition
 kubectl create -f wwi_unittest.yml
 
+# scaling
+kubectl scale deployment slacker --replicas=2 -n sqldevops
+watch kubectl get pods -n sqldevops
+
+kubectl scale deployment webapp --replicas=1 -n sqldevops
+watch kubectl get pods -n sqldevops
+
+# run the following commands to update the pod with a newer version of docker image.
+kubectl set image deployment/slacker-runner \
+slacker-runner=sqldevopsacs.azurecr.io/slacker-node-runner -n sqldevops
+
+# management: to access the pod run the following command.
+kubectl get pods -n $KUBE_NAMESPACE
+export POD_NAME=<pod_name e.g mssql-3396410544-681mj>
+kubectl exec -ti $POD_NAME -n $KUBE_NAMESPACE bash
