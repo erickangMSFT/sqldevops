@@ -6,6 +6,35 @@ metadata:
 
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sqlpv 
+  namespace: db-hosts
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  hostPath:
+    path: /data/sqlvol1/
+
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sqlpvclaim
+  namespace: db-hosts
+spec:
+  storageClassName: standard 
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: sql
@@ -13,6 +42,10 @@ metadata:
   labels:
     app: sql
 spec:
+  volumes:
+    - name: sqlvol 
+      persistentVolumeClaim:
+        claimName: sqlpvclaim
   containers:
     - image: microsoft/mssql-server-linux:latest
       name: mssql
@@ -24,10 +57,6 @@ spec:
       volumeMounts:
         - mountPath: /var/opt/mssql
           name: sqlvol
-  volumes:
-    - name: sqlvol
-      hostPath:
-        path: /kubevol/sqlvol1
 ---
 
 kind: Service
