@@ -10,7 +10,7 @@ RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/adven
 RUN unzip ./adventure-works-2014-oltp-full-database-backup.zip
 
 WORKDIR /opt/var/provisioning_scripts
-RUN wget 
-RUN wget 
+RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/docker_cluster/demodb/mssql/wwi-restore.sql
+RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/docker_cluster/demodb/mssql/adventureworks-restore.sql
 
 CMD /opt/mssql/bin/sqlservr 
