@@ -1,16 +1,19 @@
-RUN microsoft/mssql-server-linux:latest
+RUN postgres:latest
 
-ENV SA_PASSWORD Yukon900
-ENV MSSQL_PID Developer
+ENV POSTGRES_USER=sa
+ENV POSTGRES_PASSWORD Yukon900
 
-WORKDIR /var/opt/mssql/backup
+
+WORKDIR /backup
 RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v0.2/WideWorldImporters-Full.bak
 RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks2014/adventure-works-2014-oltp-full-database-backup.zip
 
 RUN unzip ./adventure-works-2014-oltp-full-database-backup.zip
 
 WORKDIR /opt/var/provisioning_scripts
-RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/restore.sql
-RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/adventureworks-restore.sql
+#RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/restore.sql
+#RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/adventureworks-restore.sql
 
-CMD /opt/mssql/bin/sqlservr 
+EXPOSE 5432
+
+CMD tail -f /dev/null
