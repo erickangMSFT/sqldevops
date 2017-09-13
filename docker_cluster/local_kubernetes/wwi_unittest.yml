@@ -28,7 +28,6 @@ spec:
         - name: mykey
 
 ---
-
 kind: Service
 apiVersion: v1
 metadata:
@@ -45,7 +44,6 @@ spec:
   type: ClusterIP
 
 --- 
-
 kind: Service
 apiVersion: v1
 metadata:
@@ -62,14 +60,13 @@ spec:
   type: NodePort 
 
 ---
-
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: slacker
   namespace: sqldevops
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -84,8 +81,8 @@ spec:
             - containerPort: 8000
       imagePullSecrets:
         - name: mykey
----
 
+---
 kind: Service
 apiVersion: v1
 metadata:
@@ -102,14 +99,13 @@ spec:
   type: NodePort 
 
 ---
-
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: webapp
   namespace: sqldevops
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -126,7 +122,6 @@ spec:
         - name: mykey
           
 ---
-
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -146,4 +141,3 @@ spec:
           imagePullPolicy: Always
       imagePullSecrets:
         - name: mykey
-
