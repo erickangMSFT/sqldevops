@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: db-hosts
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sql
+  namespace: db-hosts
+  labels:
+    app: sql
+spec:
+  containers:
+    - image: microsoft/mssql-server-linux:latest
+      name: mssql
+      env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          value: "Yukon900"
+      volumeMounts:
+        - mountPath: /var/opt/mssql
+          name: sqlvol
+  volumes:
+    - name: sqlvol
+      hostPath:
+        path: /kubevol/sqlvol1
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: sql
+  namespace: db-hosts
+spec:
+  selector:
+    app: sql
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+  type: NodePort
+
+--- 
