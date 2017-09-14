@@ -31,10 +31,10 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: sql
+  name: mssql
   namespace: db-hosts
   labels:
-    app: sql
+    app: mssql
 spec:
   volumes:
     - name: sqlvol 
@@ -55,11 +55,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: sql
+  name: mssql
   namespace: db-hosts
 spec:
   selector:
-    app: sql
+    app: mssql
   ports:
     - protocol: TCP
       port: 1433
