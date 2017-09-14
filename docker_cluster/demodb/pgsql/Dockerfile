@@ -8,7 +8,7 @@ RUN apk add --update unzip ca-certificates openssl && update-ca-certificates && 
 WORKDIR /backup
 RUN wget https://ftp.postgresql.org/pub/projects/pgFoundry/dbsamples/pagila/pagila/pagila-0.10.1.zip
 RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/docker_cluster/pgsql_jobs/provisioning/provisioning.sh
-
+RUN chmod +x provisioning.sh
 RUN unzip ./pagila-0.10.1.zip
 RUN rm ./pagila-0.10.1.zip
 
