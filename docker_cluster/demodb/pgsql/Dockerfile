@@ -1,9 +1,9 @@
-RUN postgres:alpine
+FROM postgres:alpine
 
 ENV POSTGRES_USER=sa
 ENV POSTGRES_PASSWORD Yukon900
 
-RUN apk add --update unzip && rm -rf /var/cache/apk/*
+RUN apk add --update unzip ca-certificates openssl && update-ca-certificates && rm -rf /var/cache/apk/*
 
 WORKDIR /backup
 RUN wget https://ftp.postgresql.org/pub/projects/pgFoundry/dbsamples/pagila/pagila/pagila-0.10.1.zip
