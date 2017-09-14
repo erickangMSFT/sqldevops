@@ -11,8 +11,5 @@ spec:
       containers:
       - name: pg-provisioning
         image: ericskang/db-provisioning-job:pgsql
-        command:
-         - "/bin/sh"
-         - "-c"
-         - "/opt/pg-provisioning-job/provisioning.sh"
+        command: ["sh", "-c", "./provisioning.sh"]
       restartPolicy: Never
