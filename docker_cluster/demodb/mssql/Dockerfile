@@ -5,7 +5,7 @@ ENV MSSQL_PID Developer
 
 RUN apt-get update && apt-get install -y unzip
 
-WORKDIR /var/opt/mssql/backup
+WORKDIR /tmp/backup
 RUN wget -q https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v0.2/WideWorldImporters-Full.bak
 RUN wget -q https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks2014/adventure-works-2014-oltp-full-database-backup.zip
 
