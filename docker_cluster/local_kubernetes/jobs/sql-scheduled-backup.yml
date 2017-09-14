@@ -13,10 +13,11 @@ spec:
           containers:
           - name: sql-full-backup-job
             image: ericskang/cronjobs:backup
+            imagePullPolicy: Always
             args:
             - /bin/bash
             - -c
-            - ./fullbackup.sh
+            - ./full-backup.sh
           restartPolicy: OnFailure
 
 ---
@@ -34,8 +35,9 @@ spec:
           containers:
           - name: sql-log-backup-job
             image: ericskang/cronjobs:backup
+            imagePullPolicy: Always
             args:
             - /bin/bash
             - -c
-            - ./logbackup.sh
+            - ./log-backup.sh
           restartPolicy: OnFailure
