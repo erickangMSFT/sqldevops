@@ -3,7 +3,7 @@
 dt=`date '+%Y-%m-%d_%H-%M-%S'`
 
 # initial build including wwi backup files and restore script
-docker build . --rm -t demodb:pgsql
+docker build . --rm -t ericskang/demodb:pgsql
 
 docker push ericskang/demodb:pgsql
 
