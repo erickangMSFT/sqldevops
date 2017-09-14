@@ -3,12 +3,11 @@ RUN postgres:alpine
 ENV POSTGRES_USER=sa
 ENV POSTGRES_PASSWORD Yukon900
 
+RUN apk add --update unzip && rm -rf /var/cache/apk/*
 
 WORKDIR /backup
-#RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v0.2/WideWorldImporters-Full.bak
-#RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks2014/adventure-works-2014-oltp-full-database-backup.zip
-
-#RUN unzip ./adventure-works-2014-oltp-full-database-backup.zip
+RUN wget https://ftp.postgresql.org/pub/projects/pgFoundry/dbsamples/pagila/pagila/pagila-0.10.1.zip
+RUN unzip ./pagila-0.10.1.zip
 
 WORKDIR /opt/var/provisioning_scripts
 #RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/restore.sql
