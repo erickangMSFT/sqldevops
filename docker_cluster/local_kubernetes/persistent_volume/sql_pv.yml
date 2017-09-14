@@ -47,13 +47,11 @@ spec:
       persistentVolumeClaim:
         claimName: sqlpvclaim
   containers:
-    - image: microsoft/mssql-server-linux:latest
+    - image: ericskang/demodb:mssql
       name: mssql
       env:
         - name: ACCEPT_EULA
           value: "Y"
-        - name: SA_PASSWORD
-          value: "Yukon900"
       volumeMounts:
         - mountPath: /var/opt/mssql
           name: sqlvol

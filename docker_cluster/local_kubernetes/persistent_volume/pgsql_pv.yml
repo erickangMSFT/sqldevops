@@ -46,30 +46,25 @@ spec:
       persistentVolumeClaim:
         claimName: pgsqlpvclaim
   containers:
-    - image: microsoft/mssql-server-linux:latest
+    - image: ericskang/demodb:pgsql
       name: pgsql
-      env:
-        - name: ACCEPT_EULA
-          value: "Y"
-        - name: SA_PASSWORD
-          value: "Yukon900"
       volumeMounts:
-        - mountPath: /var/opt/mssql
-          name: sqlvol
+        - mountPath: /usr/local/pgsql/data
+          name: pgsqlvol
 ---
 
 kind: Service
 apiVersion: v1
 metadata:
-  name: sql
+  name: pgsql
   namespace: db-hosts
 spec:
   selector:
-    app: sql
+    app: pgsql
   ports:
     - protocol: TCP
-      port: 1433
-      targetPort: 1433
+      port: 5432
+      targetPort: 5432
   type: NodePort
 
 --- 
