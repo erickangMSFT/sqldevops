@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sql-provisioning
+  namespace: db-hosts
+spec:
+  template:
+    metadata:
+      name: sql-provisioning
+    spec:
+      containers:
+      - name: sql-provisioning
+        image: ericskang/db-provisioning-job:mssql
+        imagePullPolicy: Always
+        command: ["/bin/bash", "-c", "./provision.sh"]
+      restartPolicy: Never
