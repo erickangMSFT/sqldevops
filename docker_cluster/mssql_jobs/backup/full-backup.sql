@@ -9,7 +9,7 @@ DECLARE @fileDate VARCHAR(20)
 DECLARE @rowsToProcess int
 DECLARE @currentRow int
 -- specify database backup directory
-SET @path = '/var/opt/mssql/backup'
+SET @path = '/var/opt/mssql/backup/'
 -- specify filename format
 SELECT @fileDate = CONVERT(VARCHAR(20),GETDATE(),112)
 DECLARE @db_table TABLE (rowid int not null primary key identity(1,1),
