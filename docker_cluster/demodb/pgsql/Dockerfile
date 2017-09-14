@@ -7,11 +7,10 @@ RUN apk add --update unzip ca-certificates openssl && update-ca-certificates && 
 
 WORKDIR /backup
 RUN wget https://ftp.postgresql.org/pub/projects/pgFoundry/dbsamples/pagila/pagila/pagila-0.10.1.zip
-RUN unzip ./pagila-0.10.1.zip
+RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/docker_cluster/pgsql_jobs/provisioning/provisioning.sh
 
-WORKDIR /opt/var/provisioning_scripts
-#RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/restore.sql
-#RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/adventureworks-restore.sql
+RUN unzip ./pagila-0.10.1.zip
+RUN rm ./pagila-0.10.1.zip
 
 EXPOSE 5432
 
