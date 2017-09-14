@@ -14,5 +14,5 @@ spec:
         command:
          - "/bin/sh"
          - "-c"
-         - "echo test"
+         - "/opt/pg-provisioning-job/provisioning.sh"
       restartPolicy: Never
