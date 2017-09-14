@@ -1,14 +1,14 @@
-RUN postgres:latest
+RUN postgres:alpine
 
 ENV POSTGRES_USER=sa
 ENV POSTGRES_PASSWORD Yukon900
 
 
 WORKDIR /backup
-RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v0.2/WideWorldImporters-Full.bak
-RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks2014/adventure-works-2014-oltp-full-database-backup.zip
+#RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v0.2/WideWorldImporters-Full.bak
+#RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks2014/adventure-works-2014-oltp-full-database-backup.zip
 
-RUN unzip ./adventure-works-2014-oltp-full-database-backup.zip
+#RUN unzip ./adventure-works-2014-oltp-full-database-backup.zip
 
 WORKDIR /opt/var/provisioning_scripts
 #RUN wget https://raw.githubusercontent.com/erickangMSFT/sqldevops/master/data_sanitization/sql/restore.sql
@@ -16,4 +16,4 @@ WORKDIR /opt/var/provisioning_scripts
 
 EXPOSE 5432
 
-CMD tail -f /dev/null
+CMD ["postgres"]
