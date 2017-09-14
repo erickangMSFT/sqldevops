@@ -17,8 +17,6 @@ dt=`date '+%Y-%m-%d_%H-%M-%S'`
 docker commit unittestdb ericskang/unittestdb:$dt
 docker tag ericskang/unittestdb:$dt ericskang/unittestdb:latest
 
-docker login
-
 docker push ericskang/unittestdb:$dt
 docker push ericskang/unittestdb:latest
 
