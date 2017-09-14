@@ -1,18 +1,18 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: db-provisioning
+  name: pg-provisioning
   namespace: db-hosts
 spec:
   template:
     metadata:
-      name: db-provisioning
+      name: pg-provisioning
     spec:
       containers:
-      - name: db-provisioning
-        image: ericskang/db-provision-job
+      - name: pg-provisioning
+        image: ericskang/db-provisioning-job:pgsql
         command:
-         - "bin/bash"
+         - "/bin/sh"
          - "-c"
-         - "provision.sh"
+         - "echo test"
       restartPolicy: Never
