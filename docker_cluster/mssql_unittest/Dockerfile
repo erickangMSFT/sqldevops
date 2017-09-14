@@ -1,6 +1,5 @@
 FROM microsoft/mssql-server-linux:latest
 
-ENV ACCEPT_EULA Y
 ENV SA_PASSWORD Yukon900
 ENV MSSQL_PID Developer
 

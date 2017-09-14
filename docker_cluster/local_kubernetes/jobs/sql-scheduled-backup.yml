@@ -5,7 +5,7 @@ metadata:
   name: sql-full-backup-job
   namespace: db-hosts
 spec:
-  schedule: "* */24 * * *"
+  schedule: "*/59 */23 * * *"
   jobTemplate:
     spec:
       template:
