@@ -177,3 +177,7 @@ watch kubectl get pods -n sqldevops-dev
     * mssql-scripter to turn dynamic masking into a static masking in dev / test database
     * reduced database schema and size using mssql-scripter --include-dependencies and --include-objects options
     * [demo file](./docker/demo.sh)
+
+```bash
+  grafana-server --config=/usr/local/etc/grafana/grafana.ini --homepath /usr/local/share/grafana cfg:default.paths.logs=/usr/local/var/log/grafana cfg:default.paths.data=/usr/local/var/lib/grafana cfg:default.paths.plugins=/usr/local/var/lib/grafana/plugins
+```
