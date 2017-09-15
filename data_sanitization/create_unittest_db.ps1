@@ -37,10 +37,10 @@ write-host "** create WideWorldImportersTest database" -foreground green
 sqlcmd -S $hostname -Usa -PYukon900 -i ./out/wwi.sql
 
 write-host "** bcp out reference tables from WideWorldImporters" -foreground green
-/usr/local/bin/powershell ./bash/bcp_out_loop.ps1
+powershell ./bash/bcp_out_loop.ps1
 
 write-host "** bcp in reference tables to WideWorldImportersTest" -foreground green
-/usr/local/bin/powershell ./bash/bcp_in_loop.ps1
+powershell ./bash/bcp_in_loop.ps1
 
 write-host "** cleanup intermediate files" -foreground green
 rm -f ./out/*.*

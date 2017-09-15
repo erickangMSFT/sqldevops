@@ -1,4 +1,4 @@
-#!/usr/local/bin/powershell
+#!/usr/bin/powershell
  $hostname="localhost"
  $ref_tables = @("Application.People", 
             "Application.Countries", 
@@ -19,5 +19,5 @@
     $bcp_file = "./out/" + $ref_table + ".bcp"
     $fmt_file = "./out/"+ $ref_table + ".fmt"
     write-host "**** bcp in: " + $ref_table -foreground cyan
-    /usr/local/bin/bcp $ref_table in ./$bcp_file -f $fmt_file -h "TABLOCK,CHECK_CONSTRAINTS" -q  -S $hostname -Usa -PYukon900 -d WideWorldImportersTest
+    bcp $ref_table in ./$bcp_file -f $fmt_file -h "TABLOCK,CHECK_CONSTRAINTS" -q  -S $hostname -Usa -PYukon900 -d WideWorldImportersTest
  }
