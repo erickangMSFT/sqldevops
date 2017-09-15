@@ -9,10 +9,10 @@ spec:
     - ReadWriteOnce
   capacity:
     storage: 10Gi
-  persistentVolumeReclaimPolicy: Recycle
+  persistentVolumeReclaimPolicy: Retain 
   storageClassName: slow
   nfs:
-    path: /var/nfsshare/sqlvol
+    path: /var/nfsshare
     server: 10.128.19.19
 
 ---
@@ -26,8 +26,8 @@ spec:
     - ReadWriteOnce
   capacity:
     storage: 10Gi
-  persistentVolumeReclaimPolicy: Recycle
+  persistentVolumeReclaimPolicy: Retain 
   storageClassName: slow
   nfs:
-    path: /var/nfsshare/sqlvol
+    path: /var/nfsshare
     server: 10.128.19.19

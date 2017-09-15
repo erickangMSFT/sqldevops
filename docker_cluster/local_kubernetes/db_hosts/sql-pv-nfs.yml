@@ -1,0 +1,55 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sqlpvclaim
+  namespace: db-hosts
+spec:
+  storageClassName: slow
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mssql
+  namespace: db-hosts
+  labels:
+    app: mssql
+spec:
+  volumes:
+    - name: sqlvol 
+      persistentVolumeClaim:
+        claimName: sqlpvclaim
+  containers:
+    - image: ericskang/demodb:mssql
+      name: mssql
+      imagePullPolicy: Always
+      env:
+        - name: ACCEPT_EULA
+          value: "Y"
+      volumeMounts:
+        - mountPath: /var/opt/mssql
+          name: sqlvol
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql
+  namespace: db-hosts
+spec:
+  selector:
+    app: mssql
+  ports:
+    - protocol: TCP
+      port: 1433
+      nodePort: 31433
+      targetPort: 1433
+  type: NodePort
+
+--- 

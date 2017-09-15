@@ -1,0 +1,52 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pgsqlpvclaim
+  namespace: db-hosts
+spec:
+  storageClassName: slow 
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pgsql
+  namespace: db-hosts
+  labels:
+    app: pgsql
+spec:
+  volumes:
+    - name: pgsqlvol 
+      persistentVolumeClaim:
+        claimName: pgsqlpvclaim
+  containers:
+    - image: ericskang/demodb:pgsql
+      name: pgsql
+      imagePullPolicy: Always
+      volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: pgsqlvol
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: pgsql
+  namespace: db-hosts
+spec:
+  selector:
+    app: pgsql
+  ports:
+    - protocol: TCP
+      port: 5432
+      nodePort: 32432
+      targetPort: 5432
+  type: NodePort
+
+--- 
