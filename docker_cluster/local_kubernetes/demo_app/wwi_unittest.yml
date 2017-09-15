@@ -43,6 +43,7 @@ spec:
       targetPort: 1433
   type: NodePort
 
+
 --- 
 kind: Service
 apiVersion: v1
