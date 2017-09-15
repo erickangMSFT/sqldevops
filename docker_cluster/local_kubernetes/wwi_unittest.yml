@@ -26,7 +26,6 @@ spec:
           env:
             - name: ACCEPT_EULA
               value: "Y"
-          imagePullPolicy: Always
 
 ---
 kind: Service
@@ -77,11 +76,8 @@ spec:
       containers:
         - name: slacker
           image: ericskang/slacker-node-runner:latest
-          imagePullPolicy: Always
           ports:
             - containerPort: 8000
-      imagePullSecrets:
-        - name: mykey
 
 ---
 kind: Service
@@ -116,11 +112,8 @@ spec:
       containers:
         - name: webapp
           image: ericskang/webapp:latest
-          imagePullPolicy: Always
           ports:
             - containerPort: 3000
-      imagePullSecrets:
-        - name: mykey
           
 ---
 apiVersion: apps/v1beta1
@@ -139,6 +132,3 @@ spec:
       containers:
         - name: sqltools
           image: ericskang/sqltools:latest
-          imagePullPolicy: Always
-      imagePullSecrets:
-        - name: mykey

@@ -13,7 +13,6 @@ spec:
           containers:
           - name: sql-full-backup-job
             image: ericskang/cronjobs:backup
-            imagePullPolicy: Always
             args:
             - /bin/bash
             - -c
@@ -35,7 +34,6 @@ spec:
           containers:
           - name: sql-log-backup-job
             image: ericskang/cronjobs:backup
-            imagePullPolicy: Always
             args:
             - /bin/bash
             - -c
