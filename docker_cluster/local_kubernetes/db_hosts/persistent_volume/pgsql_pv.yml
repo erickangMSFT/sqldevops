@@ -44,7 +44,7 @@ spec:
       name: pgsql
       imagePullPolicy: Always
       volumeMounts:
-        - mountPath: /usr/local/pgsql/data
+        - mountPath: /var/lib/postgresql/data
           name: pgsqlvol
 ---
 
