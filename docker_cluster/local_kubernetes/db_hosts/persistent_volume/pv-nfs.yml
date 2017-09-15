@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sqlpv 
+  namespace: db-hosts
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  nfs:
+    path: /var/nfsshare/sqlvol
+    server: 10.128.19.19
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pgsqlpv 
+  namespace: db-hosts
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  nfs:
+    path: /var/nfsshare/sqlvol
+    server: 10.128.19.19
