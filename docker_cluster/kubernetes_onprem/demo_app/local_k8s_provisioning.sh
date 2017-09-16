@@ -1,13 +1,17 @@
 #!/bin/bash
 
+# setup minikube or kubernetes on localhost (linux with lxd)
+kubectl create secret docker-registry mykey --docker-username=$myusername --docker-password=$mypassword --docker-email=$myemail -n sqldevops
+
+# create a namespace (optional)
 kubectl create -f ./namespace.yaml
 kubectl get namespaces
 export KUBE_NAMESPACE=sqldevops
 
-kubectl create secret docker-registry mykey --docker-username=$myusername --docker-password=$mypassword --docker-email=$myemail -n sqldevops
-
 # deploy mssql and unittest cluster definition
 kubectl create -f wwi_unittest.yml
+
+# done
 
 # scaling
 kubectl scale deployment slacker --replicas=2 -n sqldevops
