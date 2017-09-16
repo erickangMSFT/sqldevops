@@ -1,8 +1,6 @@
 #!/bin/bash
 
-dt=`date '+%Y-%m-%d_%H-%M-%S'`
-
-docker build . --rm -t ericskang/sqltools:sqlcmd
+docker build . --rm --squash --compress -t ericskang/sqltools:sqlcmd
 
 docker login
 

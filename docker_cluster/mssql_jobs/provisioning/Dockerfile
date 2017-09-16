@@ -1,4 +1,4 @@
-FROM ericskang/sqltools:latest
+FROM ericskang/sqltools:sqlcmd
 
 WORKDIR /opt/sql-provisioning-job
 
