@@ -116,6 +116,7 @@ spec:
       containers:
         - name: webapp
           image: ericskang/webapp:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           
