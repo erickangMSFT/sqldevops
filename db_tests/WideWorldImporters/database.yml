@@ -3,8 +3,8 @@
 
 # Replace the following with your connection information.
 # Note that at this point Slacker only works with SQL Server authentication.
-server: linux-vm
-database: WideWorldImportersTest
+server: mssql
+database: WideWorldImporters
 user: sa
 password: Yukon900
 driver: tiny_tds

@@ -28,8 +28,8 @@ sqlcmd -S $hostname -Usa -PYukon900 -i ./sql/drop_testdb.sql
 write-host "** generae script with mssql-scripter schema only" -foreground green
 mssql-scripter -S $hostname -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
 
-write-host "** find and replace db name from WideWorldImporters to WideWorldImportersTest" -foreground green
-Get-ChildItem -Path ./out/wwi.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'WideWorldImporters', 'WideWorldImportersTest' | set-content $_.fullname }
+#write-host "** find and replace db name from WideWorldImporters to WideWorldImportersTest" -foreground green
+#Get-ChildItem -Path ./out/wwi.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'WideWorldImporters', 'WideWorldImportersTest' | set-content $_.fullname }
 write-host "** reduce the database file size" -foreground green
 Get-ChildItem -Path ./out/wwi.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'SIZE = .*KB ,', '' | set-content $_.fullname }
 
