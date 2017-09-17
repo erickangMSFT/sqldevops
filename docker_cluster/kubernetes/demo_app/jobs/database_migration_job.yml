@@ -1,20 +1,19 @@
 ---
 apiVersion: batch/v2alpha1
-kind: CronJob
+kind: Job
 metadata:
-  name: sql-full-backup-job
-  namespace: db-hosts
+  name: db-migration-job
+  namespace: sqldevops
 spec:
-  schedule: "*/59 */23 * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: sql-full-backup-job
-            image: ericskang/cronjobs:backup
+          - name: db-migration-job
+            image: ericskang/db-jobs:migration
             args:
             - /bin/bash
             - -c
-            - ./full-backup.sh
+            - ./log-backup.sh
           restartPolicy: OnFailure
