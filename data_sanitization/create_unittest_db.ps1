@@ -1,4 +1,4 @@
-#!/usr/local/bin/powershell
+#!/usr/bin/powershell
 
 # Install SQL Server CLI tools.
 
@@ -22,8 +22,8 @@ write-host "** cleanup intermediate files" -foreground green
 mkdir ./out
 rm -f ./out/*.*
 
-write-host "** drop WideWorldImportersTest database" -foreground green
-sqlcmd -S $hostname -Usa -PYukon900 -i ./sql/drop_testdb.sql
+#write-host "** drop WideWorldImportersTest database" -foreground green
+#sqlcmd -S $hostname -Usa -PYukon900 -i ./sql/drop_testdb.sql
 
 write-host "** generae script with mssql-scripter schema only" -foreground green
 mssql-scripter -S $hostname -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
@@ -33,20 +33,20 @@ mssql-scripter -S $hostname -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
 write-host "** reduce the database file size" -foreground green
 Get-ChildItem -Path ./out/wwi.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'SIZE = .*KB ,', '' | set-content $_.fullname }
 
-write-host "** create WideWorldImportersTest database" -foreground green
-sqlcmd -S $hostname -Usa -PYukon900 -i ./out/wwi.sql
-
 write-host "** bcp out reference tables from WideWorldImporters" -foreground green
 powershell ./bash/bcp_out_loop.ps1
+
+write-host "** drop pre-production backup" -foreground green
+sqlcmd -S $hostname -Usa -P Yukon900 -i ./sql/drop_preprod.sql
+
+write-host "** create WideWorldImportersTest database" -foreground green
+sqlcmd -S $hostname -Usa -PYukon900 -i ./out/wwi.sql
 
 write-host "** bcp in reference tables to WideWorldImportersTest" -foreground green
 powershell ./bash/bcp_in_loop.ps1
 
 write-host "** cleanup intermediate files" -foreground green
 rm -f ./out/*.*
-
-write-host "** drop pre-production backup" -foreground green
-sqlcmd -S $hostname -Usa -P Yukon900 -i ./sql/drop_preprod.sql 
 
 write-host "** end of init_db" -foreground green
 

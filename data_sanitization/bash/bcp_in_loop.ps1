@@ -19,5 +19,5 @@
     $bcp_file = "./out/" + $ref_table + ".bcp"
     $fmt_file = "./out/"+ $ref_table + ".fmt"
     write-host "**** bcp in: " + $ref_table -foreground cyan
-    bcp $ref_table in ./$bcp_file -f $fmt_file -h "TABLOCK,CHECK_CONSTRAINTS" -q  -S $hostname -Usa -PYukon900 -d WideWorldImportersTest
+    bcp $ref_table in ./$bcp_file -f $fmt_file -h "TABLOCK,CHECK_CONSTRAINTS" -q  -S $hostname -Usa -PYukon900 -d WideWorldImporters
  }
