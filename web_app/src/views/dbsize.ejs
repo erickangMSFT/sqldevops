@@ -56,16 +56,16 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li ><a href="/Queryperf">Query Performance </a></li>
-            <li ><a href="/dbsize">Database Size </a></li>
+            <li class="active"><a href="/dbsize">Database Size <span class="sr-only">(current)</span></a></li>
             <li ><a href="/tablespacedetail">Table Space Usage </a></li>
-            <li class="active"><a href="/users">Database Users <span class="sr-only">(current)</span></a></li>
-            <li ><a href="/servermemorybydb">Memory Usage by Database </a></li>   
-            <li ><a href="/backuphistory">Backup History </a></li>                
+            <li ><a href="/users">Database Users </a></li>
+            <li ><a href="/servermemorybydb">Memory Usage by Database </a></li>  
+            <li ><a href="/backuphistory">Backup History </a></li>           
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header"><%=title%>
-            <span class="text-muted"> <h5></h5> 
+            <span class="text-muted"> <h5>All tables and indexes</h5> 
             <h5>Connected to <%=server%>/<%=database%> (<%=user%>)</h5>
             </span>
           </h1>
@@ -73,17 +73,17 @@
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Database</th>
-                  <th>Username</th>
-                  <th>Assigned DB Role</th>
+                  <th>Name</th>
+                  <th>Data File Size (MB)</th>
+                  <th>Log File Size (MB)</th>
                 </tr>
               </thead>
               <tbody>
-                <% for (var i in users) { %>
+                <% for (var i in dbsize) { %>
                   <tr>
-                      <td> <%=users[i].DBName%></td>
-                      <td> <%=users[i].UserName %></td>
-                      <td> <%=users[i].AssociatedDBRole %></td>
+                      <td> <%=dbsize[i].name %></td>
+                      <td> <%=dbsize[i].data_file %></td>
+                      <td> <%=dbsize[i].log_file %></td>
                   </tr>
                 <% } %>
               </tbody>

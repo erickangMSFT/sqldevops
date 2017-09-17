@@ -47,6 +47,7 @@ const queryperf = require('./src/routes/queryperf');
 const tablespacedetail = require('./src/routes/tablespacedetail');
 const servermemorybydb = require('./src/routes/servermemorybydb');
 const backuphistory = require('./src/routes/backuphistory');
+const dbsize = require('./src/routes/dbsize');
 
 const app = express();
 
@@ -70,6 +71,7 @@ app.use('/queryperf', queryperf);
 app.use('/tablespacedetail', tablespacedetail);
 app.use('/servermemorybydb', servermemorybydb);
 app.use('/backuphistory', backuphistory);
+app.use('/dbsize', dbsize);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

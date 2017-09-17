@@ -9,4 +9,4 @@ select
     (select sum(size) from fs where type = 0 and fs.database_id = db.database_id) DataFileSizeMB,
     (select sum(size) from fs where type = 1 and fs.database_id = db.database_id) LogFileSizeMB
 from sys.databases db
-where database_id > 4
+--where database_id > 4

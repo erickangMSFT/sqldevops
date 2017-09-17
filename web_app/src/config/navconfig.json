@@ -8,6 +8,10 @@
         "name": "Directory"
     },
     {
+        "url": "/dbsize",
+        "name": "Database Size"
+    },
+    {
         "url": "/tablespacedetail",
         "name": "Table Space Usage"
     },

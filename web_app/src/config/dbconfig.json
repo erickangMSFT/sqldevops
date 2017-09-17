@@ -1,8 +1,9 @@
 {
     "user": "sa",
     "password": "Yukon900",
-    "server": "mssql",
+    "server": "kubernetes",
     "database": "WideWorldImporters",
+    "port": 31431,
     "options": {
         "encrypt": false
     }
