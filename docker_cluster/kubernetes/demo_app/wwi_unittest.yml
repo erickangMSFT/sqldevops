@@ -41,7 +41,7 @@ spec:
     - protocol: TCP
       port: 1433
       targetPort: 1433
-      nodePort: 31441
+      nodePort: 31431
   type: NodePort
 
 
