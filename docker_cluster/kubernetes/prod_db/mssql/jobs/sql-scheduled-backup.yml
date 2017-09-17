@@ -3,7 +3,7 @@ apiVersion: batch/v2alpha1
 kind: CronJob
 metadata:
   name: sql-full-backup-job
-  namespace: db-hosts
+  namespace: production
 spec:
   schedule: "*/59 */23 * * *"
   jobTemplate:

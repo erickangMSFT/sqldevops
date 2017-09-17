@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: sqlpvclaim
-  namespace: db-hosts
+  namespace: production
 spec:
   storageClassName: standard 
   accessModes:
@@ -17,7 +17,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: mssql
-  namespace: db-hosts
+  namespace: production
   labels:
     app: mssql
 spec:
@@ -41,7 +41,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: mssql
-  namespace: db-hosts
+  namespace: production
 spec:
   selector:
     app: mssql
