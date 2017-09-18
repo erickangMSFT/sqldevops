@@ -5,11 +5,19 @@
 # 2. install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl/
 # 3. install minikube https://github.com/kubernetes/minikube/releases 
 # 4. start minikue cluster
-    # minikube start / stop / delete
+minikube start
 # 5. run the initial kubectl config
-    # kubectl config use-context minikube
+kubectl config use-context minikube
 # 6. start dashboard
-    # minikube dashboard
+minikube dashboard
+
+##################
+## Docker image repository: Dockerfiles are link in each repository
+# demodb image:         https://hub.docker.com/r/ericskang/demodb/
+# db provisioning job:  https://hub.docker.com/r/ericskang/db-provisioning-job/
+# scheduled backup job: https://hub.docker.com/r/ericskang/cronjobs/
+# db change deploy job: https://hub.docker.com/r/ericskang/db-jobs/
+# webapp:               https://hub.docker.com/r/ericskang/webapp/
 
 # git clone this repository to the current directory
 git clone https://github.com/erickangMSFT/sqldevops.git
@@ -37,15 +45,15 @@ kubectl get all -n production
 kubectl get pv
 kubectl describe pvc sqlpvclaim -n production
 
+#####################
+### k8s Job system
+
 # create database provisioning job and deploy user databases. demo for job-to-complete
 kubectl apply -f ./jobs/provisioning/sql-provisioning.yml
 
 # check the database creation
 kubectl get pods -a -n production
 kubectl logs <name of provisioniing pod e.g. sql-provisioning-hrs0w> -n production
-
-#####################
-### JOB system
 
 # clean up the completed provisioning job
 kubectl delete -f ./jobs/provisioning/sql-provisioning.yml
@@ -97,10 +105,9 @@ sqlcmd -S<node_address_id>,31433 -Usa -PYukon900 -Q 'select name from sys.databa
 
 #####################
 ##### Database change management (migration-script based)
-# 1. migration fixes a bug in Website.InsertCustomerOrders which inserts a broken order with invalid StockItemID value.
-# the full database change project is at
+# 1. this migration fixes a bug in Website.InsertCustomerOrders which inserts a broken order record when StockItemID value is invalid.
+# the full database change mgmt project is at:
 git clone https://github.com/erickangMSFT/wwi-db.git
-sqlcmd -Skubernetes,31433 -Usa -PYukon900 -dWideWorldImporters -Q 'exec sp_helptext "[Website].[InsertCustomerOrders]"'
 
 # 2. deploying changes to the WWI using kubernetes job automation
 kubectl apply -f mssql/jobs/migration/sql-db-migration.yml
