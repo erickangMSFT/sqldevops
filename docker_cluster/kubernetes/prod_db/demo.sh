@@ -14,7 +14,7 @@
 # create namespace: production
 kubectl apply -f namespace.yml
 
-# create persistent volume
+# create persistent volume (pv)
 kubectl apply -f persistent_volume/pv-host.yml
 
 # check persistent volume
