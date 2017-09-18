@@ -24,7 +24,7 @@ git clone https://github.com/erickangMSFT/sqldevops.git
 cd ./sqldevops/docker_cluster/kubernetes/prod_db
 
 ################
-### Initial setup
+### Initial mssql pod setup
 
 # create namespace: production
 kubectl apply -f namespace.yml
