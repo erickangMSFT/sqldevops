@@ -12,7 +12,7 @@ kubectl config use-context minikube
 minikube dashboard
 
 ##################
-## Docker image repository: Dockerfiles are link in each repository
+## Docker image repository: Dockerfiles are linked in each repository
 # demodb image:         https://hub.docker.com/r/ericskang/demodb/
 # db provisioning job:  https://hub.docker.com/r/ericskang/db-provisioning-job/
 # scheduled backup job: https://hub.docker.com/r/ericskang/cronjobs/
