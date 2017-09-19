@@ -1,0 +1,17 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-test-job
+  namespace: sqldevops
+spec:
+  template:
+    metadata:
+      name: db-test-job
+    spec:
+      containers:
+      - name: db-test-job
+        image: ericskang/mssql-slacker:controller
+        imagePullPolicy: Always
+        command: ["/bin/sh", "-c", "/usr/local/bin/python ./run_tests.py -s slacker"]
+      restartPolicy: Never
