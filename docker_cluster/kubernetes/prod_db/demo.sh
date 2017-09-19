@@ -88,7 +88,7 @@ kubectl delete -f jobs/business-continuity/sql-scheduled-logbackup.yml
 # 1. create demo web app for a visual demo.
 kubectl apply -f web.yml
 
-# 2. open web browser and go to <node_address_id>:30080/dbsize  e.g. http://kubernetes:30080/dbsize or http://10.128.19.19:30080/dbsize
+# 2. open web browser and go to <node_address_ip>:30080/dbsize  e.g. http://kubernetes:30080/dbsize or http://10.128.19.19:30080/dbsize
 
 # 3. delete mssql pod to simulate the failure. you can do it in dashboard ui as well. > minikube dashboard
 kubectl delete pods mssql -n production
