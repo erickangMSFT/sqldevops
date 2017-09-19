@@ -101,7 +101,7 @@ kubectl apply -f sql-pv-host.yml
 watch kubectl get pods -n production
 
 # 6. check the web app http://<node_adress_ip>:30080/dbsize or run 
-sqlcmd -S<node_address_id>,31433 -Usa -PYukon900 -Q 'select name from sys.databases'
+sqlcmd -S<node_address_ip>,31433 -Usa -PYukon900 -Q 'select name from sys.databases'
 
 #####################
 ##### Database change management (migration-script based)
