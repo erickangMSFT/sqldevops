@@ -96,7 +96,7 @@ kubectl delete pods mssql -n production
 # 4. check the mssql pod is terminated
 watch kubectl get pods -n production
 
-# 5. recreate mssql pod without provisioning user data
+# 5. recreate mssql pod without provisioning user database (WWI and Adventureworks. they must be persisted)
 kubectl apply -f sql-pv-host.yml
 watch kubectl get pods -n production
 
