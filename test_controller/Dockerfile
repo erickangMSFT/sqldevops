@@ -1,4 +1,4 @@
-FROM python:2-2-alpine3.6
+FROM python:2-alpine3.6
 
 WORKDIR /app/src/controller
 
