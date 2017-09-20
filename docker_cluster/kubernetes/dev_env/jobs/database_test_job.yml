@@ -15,3 +15,4 @@ spec:
         imagePullPolicy: Always
         command: ["/bin/sh", "-c", "/usr/local/bin/python ./run_tests.py -s slacker"]
       restartPolicy: Never
+

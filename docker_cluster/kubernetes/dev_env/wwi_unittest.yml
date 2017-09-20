@@ -119,21 +119,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
-          
----
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: sqltools
-  namespace: sqldevops
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: sqltools
-        tier: frontend
-    spec:
-      containers:
-        - name: sqltools
-          image: ericskang/sqltools:latest
