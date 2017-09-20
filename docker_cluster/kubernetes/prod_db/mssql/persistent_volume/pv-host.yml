@@ -10,4 +10,4 @@ spec:
   capacity:
     storage: 10Gi
   hostPath:
-    path: /tmp/data/sqlvol/
+    path: /tmp
