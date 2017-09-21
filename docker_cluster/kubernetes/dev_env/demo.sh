@@ -1,15 +1,28 @@
 #!/bin/bash
 
 # setup minikube or kubernetes on localhost (linux with lxd)
-kubectl create secret docker-registry mykey --docker-username=$myusername --docker-password=$mypassword --docker-email=$myemail -n sqldevops
+#kubectl create secret docker-registry mykey --docker-username=$myusername --docker-password=$mypassword --docker-email=$myemail -n sqldevops
 
 # create a namespace (optional)
-kubectl create -f ./namespace.yaml
+kubectl apply -f ./namespace.yaml
 kubectl get namespaces
 export KUBE_NAMESPACE=sqldevops
 
 # deploy mssql and unittest cluster definition
-kubectl create -f wwi_unittest.yml
+kubectl apply -f wwi_unittest.yml
+
+# run database unittest job
+kubectl apply -f jobs/database_test_job.yml
+kubectl get pods -a -n sqldevops
+kubectl logs <pod-name> -n sqldevops
+kubectl delete -f jobs/database_test_job.yml
+
+# deploy database changes: database version migration
+kubectl apply -f jobs/database_migration_job.yml
+kubectl get pods -a -n sqldevops
+kubectl logs <pod-name> -n sqldevops
+kubectl delete -f jobs/database_migration_job.yml
+
 
 # done
 
