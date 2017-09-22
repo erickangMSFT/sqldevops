@@ -1,6 +1,6 @@
 FROM microsoft/mssql-server-linux:latest
 
-ENV SA_PASSWORD Yukon900
+ENV SA_PASSWORD SqlDevOps2017
 ENV MSSQL_PID Developer
 
 RUN apt-get update && apt-get install -y unzip

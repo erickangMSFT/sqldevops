@@ -16,6 +16,6 @@ database: tempdb
 
 # Slacker supports only SQL Server authentication.
 user: sa
-password: Yukon900
+password: SqlDevOps2017
 
 console_enabled: false

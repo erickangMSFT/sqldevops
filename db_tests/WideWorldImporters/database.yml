@@ -6,7 +6,7 @@
 server: mssql
 database: WideWorldImporters
 user: sa
-password: Yukon900
+password: SqlDevOps2017
 driver: tiny_tds
 port: 1433
 console_enabled: false

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mssql-scripter -Slocalhost -dWideWorldImporters -Usa -PYukon900 > wwi.sql
+mssql-scripter -Slocalhost -dWideWorldImporters -Usa -PSqlDevOps2017 > wwi.sql
 

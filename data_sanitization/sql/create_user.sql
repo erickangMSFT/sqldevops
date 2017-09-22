@@ -1,5 +1,5 @@
 USE [master]
-create login scripter with password = 'Yukon900'
+create login scripter with password = 'SqlDevOps2017'
 go
 
 USE [WideWorldImporters]

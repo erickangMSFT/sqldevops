@@ -13,3 +13,4 @@ spec:
         image: ericskang/db-provisioning-job:mssql
         command: ["/bin/bash", "-c", "./provision.sh"]
       restartPolicy: Never
+

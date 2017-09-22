@@ -6,6 +6,6 @@
 server: localhost
 database: AdventureWorks
 user: sa
-password: Yukon900
+password: SqlDevOps2017
 port: 1433
 driver: tiny_tds

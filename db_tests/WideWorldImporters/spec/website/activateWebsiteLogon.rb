@@ -4,7 +4,7 @@ describe 'WideWorldImporters: Website.ActivateWebsiteLogon' do
             sql.WideWorldImporters.website.activateLogon(
                 :PersonID => 3150, 
                 :LogonName => 'emily@widworldimporters.com', 
-                :Password => 'Yukon900').count)
+                :Password => 'SqlDevOps2017').count)
             .to eq(1)
     end
 
@@ -13,7 +13,7 @@ describe 'WideWorldImporters: Website.ActivateWebsiteLogon' do
             sql.WideWorldImporters.website.activateLogon(
                 :PersonID => 1, 
                 :LogonName => 'testuser@wideworldimporters.com', 
-                :Password => 'Yukon900')}
+                :Password => 'SqlDevOps2017')}
             .to raise_error(TinyTds::Error, 'Invalid PersonID')
 
     end
@@ -23,7 +23,7 @@ describe 'WideWorldImporters: Website.ActivateWebsiteLogon' do
             sql.WideWorldImporters.website.activateLogon(
                 :PersonID => 2, 
                 :LogonName => 'kaylaw@wideworldimporters.com', 
-                :Password => 'Yukon900')}
+                :Password => 'SqlDevOps2017')}
             .to raise_error(TinyTds::Error, 'Invalid PersonID')
 
     end

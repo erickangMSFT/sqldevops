@@ -5,7 +5,7 @@ wget -q https://ftp.postgresql.org/pub/projects/pgFoundry/dbsamples/pagila/pagil
 unzip ./pagila-0.10.1.zip
 rm ./pagila-0.10.1.zip
 
-PGPASSWORD='Yukon900'
+PGPASSWORD='SqlDevOps2017'
 
 print ** creating pagila database
 psql -h pgsql -U sa -c "CREATE DATABASE pagila;"

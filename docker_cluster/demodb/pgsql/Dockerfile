@@ -1,7 +1,7 @@
 FROM postgres:alpine
 
 ENV POSTGRES_USER=sa
-ENV POSTGRES_PASSWORD Yukon900
+ENV POSTGRES_PASSWORD SqlDevOps2017
 
 RUN apk add --update unzip ca-certificates openssl && update-ca-certificates && rm -rf /var/cache/apk/*
 

@@ -10,17 +10,17 @@ az account list
 az account set -s <your subscription name>
 
 # create an azure group to provision acs
-az group create -n sqldevops-demo-kubernetes -l westus
+az group create -n sqldevops-erickang-kubernetes -l westus
 
 # provision acs. change agent-count to 2 or more for a practical setup including azure loadbalancer
 az acs create -n sqldevops-cluster \
--g sqldevops-demo-kubernetes \
+-g sqldevops-erickang-kubernetes \
 --dns-prefix sqldevops-cluster \
 --orchestrator-type kubernetes \
---agent-count 1
+--agent-count 2
 
 # run this to make your laptop to connect acs-k8s with kubectl
-az acs kubernetes get-credentials -n sqldevops-cluster -g sqldevops-demo-kubernetes
+az acs kubernetes get-credentials -n sqldevops-cluster -g sqldevops-erickang-kubernetes
 
 # check the status in K8s dashboard. access it using a web browser: 127.0.0.1/ui after running the following command
 kubectl proxy

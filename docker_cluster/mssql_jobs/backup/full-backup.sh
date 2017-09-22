@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sqlcmd -Smssql -Usa -PYukon900 -i ./full-backup.sql
+sqlcmd -Smssql -Usa -PSqlDevOps2017 -i ./full-backup.sql
 
 
 

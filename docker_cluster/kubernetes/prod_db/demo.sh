@@ -62,7 +62,7 @@ kubectl delete -f ./jobs/provisioning/sql-provisioning.yml
 kubectl get services -n production
 kubectl describe nodes | grep -e 'Addr' -e 'Name:'
 
-sqlcmd -S<node_address_ip>,31433 -Usa -PYukon900 -Q 'select name from sys.databases' # node port number is assigned to 31433
+sqlcmd -S<node_address_ip>,31433 -Usa -PSqlDevOps2017 -Q 'select name from sys.databases' # node port number is assigned to 31433
 
 # enable full backup job every 24hours. demo for cronjob for scheduled backups.
 kubectl apply -f kubectl apply -f jobs/business-continuity/sql-scheduled-backup.yml
@@ -101,7 +101,7 @@ kubectl apply -f sql-pv-host.yml
 watch kubectl get pods -n production
 
 # 6. check the web app http://<node_adress_ip>:30080/dbsize or run 
-sqlcmd -S<node_address_ip>,31433 -Usa -PYukon900 -Q 'select name from sys.databases'
+sqlcmd -S<node_address_ip>,31433 -Usa -PSqlDevOps2017 -Q 'select name from sys.databases'
 
 #####################
 ##### Database change management (migration-script based)

@@ -9,24 +9,24 @@
 $hostname="localhost"
 
 write-host "Restoring pre-production backup" -foreground green
-sqlcmd -S $hostname -Usa -P Yukon900 -i ./sql/restore.sql 
+sqlcmd -S $hostname -Usa -P SqlDevOps2017 -i ./sql/restore.sql 
 
 # check the server name: in this demo $hostname is the name of docker host machine. replace $hostname to your docker host name.
 # check the server name in bash folder and replace the name of docker host name.
 
 write-host "Enable Dynamic Data masking on WideWorldImporters"
-sqlcmd -S $hostname -dWideWorldImporters -U sa -P Yukon900 -i ./sql/ddm.sql 
-sqlcmd -S $hostname -U sa -P Yukon900 -i ./sql/create_user.sql
+sqlcmd -S $hostname -dWideWorldImporters -U sa -P SqlDevOps2017 -i ./sql/ddm.sql 
+sqlcmd -S $hostname -U sa -P SqlDevOps2017 -i ./sql/create_user.sql
 
 write-host "** cleanup intermediate files" -foreground green
 mkdir ./out
 rm -f ./out/*.*
 
 #write-host "** drop WideWorldImportersTest database" -foreground green
-#sqlcmd -S $hostname -Usa -PYukon900 -i ./sql/drop_testdb.sql
+#sqlcmd -S $hostname -Usa -PSqlDevOps2017 -i ./sql/drop_testdb.sql
 
 write-host "** generae script with mssql-scripter schema only" -foreground green
-mssql-scripter -S $hostname -dWideWorldImporters -Usa -PYukon900 > ./out/wwi.sql
+mssql-scripter -S $hostname -dWideWorldImporters -Usa -PSqlDevOps2017 > ./out/wwi.sql
 
 #write-host "** find and replace db name from WideWorldImporters to WideWorldImportersTest" -foreground green
 #Get-ChildItem -Path ./out/wwi.sql | ForEach-Object {( Get-Content -Path $_.FullName ) -replace 'WideWorldImporters', 'WideWorldImportersTest' | set-content $_.fullname }
@@ -37,10 +37,10 @@ write-host "** bcp out reference tables from WideWorldImporters" -foreground gre
 powershell ./bash/bcp_out_loop.ps1
 
 write-host "** drop pre-production backup" -foreground green
-sqlcmd -S $hostname -Usa -P Yukon900 -i ./sql/drop_preprod.sql
+sqlcmd -S $hostname -Usa -P SqlDevOps2017 -i ./sql/drop_preprod.sql
 
 write-host "** create WideWorldImportersTest database" -foreground green
-sqlcmd -S $hostname -Usa -PYukon900 -i ./out/wwi.sql
+sqlcmd -S $hostname -Usa -PSqlDevOps2017 -i ./out/wwi.sql
 
 write-host "** bcp in reference tables to WideWorldImportersTest" -foreground green
 powershell ./bash/bcp_in_loop.ps1
