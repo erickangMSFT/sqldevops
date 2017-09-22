@@ -79,6 +79,7 @@ spec:
       containers:
         - name: slacker
           image: ericskang/slacker-node-runner:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
 
