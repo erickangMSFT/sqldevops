@@ -1,31 +1,45 @@
 FROM node:8.4-alpine
+RUN \
+  apk update && apk upgrade && \
 
-RUN apk add --update freetds freetds-dev unixodbc-dev git wget build-base readline-dev openssl-dev zlib-dev && rm -f /var/cache/apk/*
+  # install ruby
+  apk --no-cache add ruby ruby-dev ruby-rdoc ruby-bundler ruby-json ruby-irb ruby-rake ruby-bigdecimal && \
 
+  # gem 'oj', 'puma', 'byebug'
+   apk --no-cache add make gcc libc-dev && \
 
-# rbenv
-ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
-ENV RBENV_ROOT /usr/local/rbenv
-ENV RUBY_VERSION 2.4.1
-ENV CONFIGURE_OPTS --disable-install-doc
+  # gem 'nokogiri'
+  # bundle config --global build.nokogiri --use-system-libraries && \
+  # apk --no-cache add make libxml2 libxslt-dev g++ && \
 
-RUN apk add --update \
-    linux-headers \
-    imagemagick-dev \    
-    libffi-dev \ 
-&& rm -rf /var/cache/apk/*
+  # gem 'rb-readline'
+  # apk --no-cache add ncurses && \
 
-RUN git clone --depth 1 git://github.com/sstephenson/rbenv.git ${RBENV_ROOT} \
-&&  git clone --depth 1 https://github.com/sstephenson/ruby-build.git ${RBENV_ROOT}/plugins/ruby-build \
-&&  git clone --depth 1 git://github.com/jf/rbenv-gemset.git ${RBENV_ROOT}/plugins/rbenv-gemset \
-&& ${RBENV_ROOT}/plugins/ruby-build/install.sh
+  # gem 'ffi'
+  # apk --no-cache add libffi-dev && \
 
-RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh 
+  # gem 'mysql2'dd
+  # apk --no-cache add mysql-dev && \
 
-RUN rbenv install $RUBY_VERSION \
-&&  rbenv global $RUBY_VERSION
+  # gem 'unf_ext'
+  # apk --no-cache add g++ && \
 
-RUN gem install bundler && gem install tiny_tds -f && gem install slacker
+  # gem 'tiny_tds'
+   apk --no-cache add freetds-dev unixodbc-dev && \
+
+  # app dependencies
+   apk --no-cache add ca-certificates git && \
+
+  # clear after installation
+  rm -rf /var/cache/apk/*
+
+# to avoid installing documentation for gems
+COPY gemrc $HOME/.gemrc
+
+# use mounted volume for gems
+ENV BUNDLE_PATH /bundle& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
+
+RUN gem install tiny_tds -f && gem install slacker
 
 ENV TEST_GITFILE git://github.com/erickangMSFT/wwi-test.git
 ENV RUNNER_GITFILE git://github.com/erickangMSFT/slacker-node-runner.git
@@ -33,8 +47,6 @@ ENV RUNNER_GITFILE git://github.com/erickangMSFT/slacker-node-runner.git
 WORKDIR /opt/slacker-test
 
 RUN git clone ${TEST_GITFILE} .
-
-# RUN git clone 
 
 WORKDIR /opt/slacker
 
