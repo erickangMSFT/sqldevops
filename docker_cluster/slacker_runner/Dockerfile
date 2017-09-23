@@ -1,6 +1,6 @@
 FROM node:8.4-alpine
 
-RUN apk add --update freetds freetds-dev unixodbc-dev bash git wget curl vim build-base readline-dev openssl-dev zlib-dev && rm -f /var/cache/apk/*
+RUN apk add --update freetds freetds-dev unixodbc-dev git wget build-base readline-dev openssl-dev zlib-dev && rm -f /var/cache/apk/*
 
 
 # rbenv
@@ -12,8 +12,7 @@ ENV CONFIGURE_OPTS --disable-install-doc
 RUN apk add --update \
     linux-headers \
     imagemagick-dev \    
-    libffi-dev \    
-    libffi-dev \
+    libffi-dev \ 
 && rm -rf /var/cache/apk/*
 
 RUN git clone --depth 1 git://github.com/sstephenson/rbenv.git ${RBENV_ROOT} \
