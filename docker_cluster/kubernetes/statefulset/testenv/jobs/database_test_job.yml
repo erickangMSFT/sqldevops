@@ -13,6 +13,6 @@ spec:
       - name: db-test-job
         image: ericskang/mssql-slacker:controller
         imagePullPolicy: Always
-        command: ["/bin/sh", "-c", "/usr/local/bin/python ./run_tests.py -s slacker"]
+        command: ["/bin/sh", "-c", "/usr/local/bin/python ./run_tests.py -s nginx-lb -p 6000"]
       restartPolicy: Never
 
