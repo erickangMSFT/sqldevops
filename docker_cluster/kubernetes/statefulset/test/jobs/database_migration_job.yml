@@ -1,0 +1,17 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migration-job
+  namespace: sqldevops
+spec:
+  template:
+    metadata:
+      name: db-migration-job
+    spec:
+      containers:
+      - name: db-migration-job
+        image: ericskang/db-jobs:migration
+        imagePullPolicy: Always
+        command: ["/bin/bash", "-c", "./migration_runner.py"]
+      restartPolicy: Never
