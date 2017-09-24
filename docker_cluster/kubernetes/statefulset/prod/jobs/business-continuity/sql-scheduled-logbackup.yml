@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: sql-log-backup-job
+  namespace: production
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: sql-log-backup-job
+            image: ericskang/cronjobs:backup
+            args:
+            - /bin/bash
+            - -c
+            - ./log-backup.sh
+          restartPolicy: OnFailure
+
+
+
