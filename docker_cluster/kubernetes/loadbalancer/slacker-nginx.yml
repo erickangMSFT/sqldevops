@@ -1,0 +1,36 @@
+--- 
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-lb
+  namespace: sqldevops
+spec:
+  selector:
+    app: loadbalancer
+  ports:
+    - protocol: TCP
+      port: 6000
+      targetPort: 6000
+      nodePort: 30188
+  type: NodePort 
+
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-lb
+  namespace: sqldevops
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: loadbalancer
+    spec:
+      containers:
+        - name: nginx-lb
+          image: ericskang/slacker-lb:nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6000
+

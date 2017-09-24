@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-node_runner_url='http://localhost:8000'
+node_runner_url='http://kubernetes:30188'
 
 # Usage: ./run.sh -f {document, json, html} default = document view.
 

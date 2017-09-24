@@ -54,13 +54,11 @@ metadata:
 spec:
   selector:
     app: unittest
-    tier: frontend
   ports:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-      nodePort: 30088
-  type: NodePort 
+  clusterIP: None
 
 ---
 apiVersion: apps/v1beta1
@@ -75,7 +73,6 @@ spec:
     metadata:
       labels:
         app: unittest
-        tier: frontend
     spec:
       containers:
         - name: slacker
