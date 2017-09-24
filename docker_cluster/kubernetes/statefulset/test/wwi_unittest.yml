@@ -58,7 +58,6 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-  clusterIP: None
 
 ---
 apiVersion: apps/v1beta1
