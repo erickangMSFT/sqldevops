@@ -10,7 +10,7 @@
 
 # Ignite Demo source codes
 
-1. Bootstrapping a dev env in Kubernetes cluster. https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/dev_env
+1. Boot-strapping a dev env in Kubernetes cluster. https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/dev_env
 
 2. Database version change project
 https://github.com/erickangMSFT/wwi-db
