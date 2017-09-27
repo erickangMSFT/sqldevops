@@ -12,6 +12,7 @@ spec:
       containers:
       - name: db-migration-job
         image: ericskang/db-jobs:migration
-        imagePullPolicy: Always
         command: ["/bin/bash", "-c", "./migration_runner.py"]
       restartPolicy: Never
+
+
