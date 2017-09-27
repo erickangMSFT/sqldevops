@@ -6,6 +6,31 @@
 - create a docker hub account and send an email to erickang at microsoft dot com to get the access permission for [WideWorldImporters unittest docker image](https://hub.docker.com/r/ericskang/unittestdb/)
     - otherwise, you can just build your own docker image using [docker_cluster/mssql_unittest/docker_build_push.sh](./docker_cluster/mssql_unittest/docker_build_push.sh)
 
+- install [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/)
+
+# Ignite Demo source codes
+
+1. Bootstrapping a dev env in Kubernetes cluster. https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/dev_env
+
+2. Database version change project
+https://github.com/erickangMSFT/wwi-db
+
+3. Database Test and Version change Kubernetes Jobs
+https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/dev_env/jobs
+
+4. Database Unittest project
+https://github.com/erickangMSFT/wwi-test
+
+5. Persistent Storage and Production DB Kubernetes specs (localhostversion)
+https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/prod_db 
+
+6. Scheduled Backup Jobs
+https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/prod_db/mssql/jobs/business-continuity
+
+7. Azure Container Service Provisioning
+https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes_azure
+
+
 ## Demo
 
 ### Bootstrap dev and test enviroment as a developer
