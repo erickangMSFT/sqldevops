@@ -31,7 +31,7 @@ https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/
 https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes_azure
 
 
-## Demo
+## Docker Demo
 
 ### Bootstrap dev and test enviroment as a developer
 As a developer, you can build the entire dev and test environment for database, application and test in a few seconds.
@@ -59,7 +59,7 @@ docker exec -ti sqltools bash
     * demo wideworldimporters unittest [http://localhost:8000](http://localhost:8000)
         * click each link on the index page
 
-### ACS Kubernetes cluster
+### ACS Kubernetes cluster provisioning demo
 Enable parallel testing with kunbernetes cluster: note that parallel testing implementation is a demo purpose only.
 URL to [Azure Container Registry](https://ms.portal.azure.com/#resource/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/sqldevopsGroup/providers/Microsoft.ContainerRegistry/registries/sqldevopsACS/overview) for this demo: 
 
@@ -150,12 +150,7 @@ watch kubectl get pods -n sqldevops-dev
 
     * https://hub.docker.com/r/ericskang/mssql-slacker/tags/ (public)
 
-
-
-
-
-
-(TBD:below)
+### Other demos
 
 - Crete UnitTest Database: sanitize data with Dynamic Data Masking and including schema and reference table data only
     * mssql-scipter to create a database with schema only.
