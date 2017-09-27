@@ -185,7 +185,7 @@ watch kubectl get pods -n sqldevops-dev
 
 - CI and CD automation for all above scenarios
 
-Advanced
+### Advanced
 
-StatefulSet demo
+#### StatefulSet demo
 https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/statefulset/testenv
