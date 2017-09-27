@@ -190,19 +190,7 @@ watch kubectl get pods -n sqldevops-dev
 
 - CI and CD automation for all above scenarios
 
-## Missing demos 
+Advanced
 
-8. Develop database and publish the change back to production
-
-9. Containerization (cluster included) with persistent volume setup for statefulset
-
-
-
-    * Enable Dynamic Data Masking on pre-prod database
-    * mssql-scripter to turn dynamic masking into a static masking in dev / test database
-    * reduced database schema and size using mssql-scripter --include-dependencies and --include-objects options
-    * [demo file](./docker/demo.sh)
-
-```bash
-  grafana-server --config=/usr/local/etc/grafana/grafana.ini --homepath /usr/local/share/grafana cfg:default.paths.logs=/usr/local/var/log/grafana cfg:default.paths.data=/usr/local/var/lib/grafana cfg:default.paths.plugins=/usr/local/var/lib/grafana/plugins
-```
+StatefulSet demo
+https://github.com/erickangMSFT/sqldevops/tree/master/docker_cluster/kubernetes/statefulset/testenv
