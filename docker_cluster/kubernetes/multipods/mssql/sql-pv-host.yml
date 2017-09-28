@@ -1,0 +1,106 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sqlpvclaim1
+  namespace: production
+spec:
+  storageClassName: standard 
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mssql1
+  namespace: production
+  labels:
+    db: mssql1
+spec:
+  volumes:
+    - name: sqlvol 
+      persistentVolumeClaim:
+        claimName: sqlpvclaim1
+  containers:
+    - image: ericskang/demodb:mssql
+      name: mssql
+      env:
+        - name: ACCEPT_EULA
+          value: "Y"
+      volumeMounts:
+        - mountPath: /var/opt/mssql
+          name: sqlvol
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql1
+  namespace: production
+spec:
+  selector:
+    db: mssql1
+  ports:
+    - protocol: TCP
+      port: 1433
+      nodePort: 31433
+      targetPort: 1433
+  type: NodePort
+
+--- 
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sqlpvclaim1
+  namespace: production
+spec:
+  storageClassName: standard 
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mssql2
+  namespace: production
+  labels:
+    db: mssql2
+spec:
+  volumes:
+    - name: sqlvol 
+      persistentVolumeClaim:
+        claimName: sqlpvclaim2
+  containers:
+    - image: ericskang/demodb:mssql
+      name: mssql
+      env:
+        - name: ACCEPT_EULA
+          value: "Y"
+      volumeMounts:
+        - mountPath: /var/opt/mssql
+          name: sqlvol
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql2
+  namespace: production
+spec:
+  selector:
+    db: mssql2
+  ports:
+    - protocol: TCP
+      port: 1433
+      nodePort: 31432
+      targetPort: 1433
+  type: NodePort

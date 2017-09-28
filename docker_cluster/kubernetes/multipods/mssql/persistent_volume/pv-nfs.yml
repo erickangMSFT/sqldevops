@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sqlpv 
+  namespace: production
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  persistentVolumeReclaimPolicy: Retain 
+  storageClassName: slow
+  nfs:
+    path: /var/nfsshare
+    server: 10.128.19.19
