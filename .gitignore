@@ -4,7 +4,6 @@ db/obj
 /db_tests/WideWorldImporters/debug
 nul
 /test_runner/node_modules
-.vscode
 *.bak
 *.deb
 *.swp
