@@ -84,6 +84,17 @@
     ],
     "dashboard.server.widgets": [
         {
+            "provider": "MSSQL",
+            "name": "Used space by databases",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "all_database_used_space": null
+            }
+        },
+        {
             "gridItemConfig": {
                 "sizex": 1,
                 "sizey": 1
@@ -112,17 +123,6 @@
         },
         {
             "provider": "MSSQL",
-            "name": "Memory usage by database",
-            "gridItemConfig": {
-                "sizex": 2,
-                "sizey": 1
-            },
-            "widget": {
-                "memory-usage-by-db-server-insight": null
-            }
-        },
-        {
-            "provider": "MSSQL",
             "name": "Database growth",
             "widget": {
                 "backup-growth-trend-server-insight": null
@@ -134,6 +134,17 @@
         },
         {
             "provider": "MSSQL",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "name": "Wait counts per type",
+            "widget": {
+                "Wait-counts-by-Paul-Rendal-server-insight": null
+            }
+        },
+        {
+            "provider": "MSSQL",
             "name": "CPU utilization",
             "gridItemConfig": {
                 "sizex": 2,
@@ -141,6 +152,17 @@
             },
             "widget": {
                 "cpu-utilization-server-insight": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "name": "Memory usage by database",
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
+            },
+            "widget": {
+                "memory-usage-by-db-server-insight": null
             }
         },
         {
