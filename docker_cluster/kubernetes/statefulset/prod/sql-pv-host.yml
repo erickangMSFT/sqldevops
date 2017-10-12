@@ -13,28 +13,36 @@ spec:
       storage: 5Gi
 
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1beta1
+kind: StatefulSet
 metadata:
   name: mssql
   namespace: production
   labels:
-    app: mssql
+    db: mssql
 spec:
-  volumes:
-    - name: sqlvol 
-      persistentVolumeClaim:
-        claimName: sqlpvclaim
-  containers:
-    - image: ericskang/demodb:mssql
-      name: mssql
-      imagePullPolicy: Always
-      env:
-        - name: ACCEPT_EULA
-          value: "Y"
-      volumeMounts:
-        - mountPath: /var/opt/mssql
-          name: sqlvol
+  serviceName: mssql
+  replicas: 1
+  template:
+    metadata: 
+      labels: 
+        db: mssql
+    spec: 
+      volumes:
+        - name: sqlvol 
+          persistentVolumeClaim:
+            claimName: sqlpvclaim
+      containers:
+        - image: ericskang/demodb:mssql
+          name: mssql
+          ports:
+            - containerPort: 1433
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+          volumeMounts:
+            - mountPath: /var/opt/mssql
+              name: sqlvol
 ---
 
 kind: Service
@@ -44,12 +52,22 @@ metadata:
   namespace: production
 spec:
   selector:
-    app: mssql
+    db: mssql
   ports:
     - protocol: TCP
       port: 1433
-      nodePort: 31433
       targetPort: 1433
-  type: NodePort
-
---- 
+  type: ClusterIP
+  
+---
+kind: Pod
+apiVersion: v1 
+metadata:
+  name: sqltools
+  namespace: production
+  labels:
+    app: sqltools
+spec:
+  containers:
+    - image: ericskang/sqltools:sqlcmd
+      name: sqltools
