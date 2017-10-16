@@ -1,0 +1,45 @@
+version: '3'
+services:
+  webapp:
+    image: ericskang/webapp:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+    depends_on:
+      - mssql
+    ports:
+      - "80:3000"
+    networks:
+      - sqlnet
+  slacker:
+    image: ericskang/slacker-node-runner:latest
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+    depends_on: 
+      - mssql
+    ports:
+      - "8000:8000"
+    networks:
+      - sqlnet
+  mssql:
+    image: ericskang/unittestdb:latest
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    ports: 
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "SqlDevOps2017"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+    networks:
+      - sqlnet
+networks:
+  sqlnet:
