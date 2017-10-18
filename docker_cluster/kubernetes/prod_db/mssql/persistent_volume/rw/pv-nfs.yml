@@ -9,6 +9,7 @@ spec:
     - ReadWriteOnce
   capacity:
     storage: 20Gi
-  persistentVolumeReclaimPolicy: Retain 
+  persistentVolumeReclaimPolicy: Recycle 
   nfs:
     path: "/export"
+    server: "192.168.1.119"
