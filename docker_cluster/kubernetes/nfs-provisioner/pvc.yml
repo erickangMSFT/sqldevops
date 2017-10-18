@@ -2,7 +2,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: sqlpvclaim
-  namespace: production
   annotations:
     volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"
 spec:
@@ -10,4 +9,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 1Mi 
