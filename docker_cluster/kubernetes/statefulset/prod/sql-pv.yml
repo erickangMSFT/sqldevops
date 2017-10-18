@@ -1,18 +1,4 @@
 ---
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: sqlpvclaim
-  namespace: production
-spec:
-  storageClassName: standard 
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-
----
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
@@ -33,18 +19,22 @@ spec:
           persistentVolumeClaim:
             claimName: sqlpvclaim
       containers:
-        - image: ericskang/demodb:mssql
+        - image: microsoft/mssql-server-linux:latest
           name: mssql
           ports:
             - containerPort: 1433
+              targetPort: 1433
           env:
             - name: ACCEPT_EULA
               value: "Y"
+            - name: SA_PASSWORD
+              value: "SqlDevOps2017"
+            - name: MSSQL_PID
+              value: "Developer"
           volumeMounts:
             - mountPath: /var/opt/mssql
               name: sqlvol
 ---
-
 kind: Service
 apiVersion: v1
 metadata:
