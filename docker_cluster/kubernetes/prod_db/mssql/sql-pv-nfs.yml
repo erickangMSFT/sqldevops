@@ -10,7 +10,7 @@ spec:
   volumes:
     - name: sqlvol 
       persistentVolumeClaim:
-        claimName: sqlpvclaim
+        claimName: sqlpvclaim1
   containers:
     - name: mssql
       image: microsoft/mssql-server-linux:latest 
