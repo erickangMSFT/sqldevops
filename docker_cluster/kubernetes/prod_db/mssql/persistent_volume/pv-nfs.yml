@@ -8,9 +8,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 10Gi
-  persistentVolumeReclaimPolicy: Retain 
-  storageClassName: slow
+    storage: 20Gi
+  persistentVolumeReclaimPolicy: Recycle 
   nfs:
-    path: /var/nfsshare
-    server: 10.128.19.19
+    path: "/k8svolumes"
+    server: "10.135.10.138"

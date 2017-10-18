@@ -1,18 +1,4 @@
 ---
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: sqlpvclaim
-  namespace: production
-spec:
-  storageClassName: slow
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-
----
 apiVersion: v1
 kind: Pod
 metadata:
@@ -26,12 +12,17 @@ spec:
       persistentVolumeClaim:
         claimName: sqlpvclaim
   containers:
-    - image: ericskang/demodb:mssql
+    - image: microsoft/mssql-server-linux:latest
       name: mssql
-      imagePullPolicy: Always
       env:
-        - name: ACCEPT_EULA
+        - name: "ACCEPT_EULA"
           value: "Y"
+      env:
+        - name: "SA_PASSWORD"
+          value: "SqlDevOps2017"
+      env:
+        - name: "MSSQL_PID"
+          value: "Developer"
       volumeMounts:
         - mountPath: /var/opt/mssql
           name: sqlvol
