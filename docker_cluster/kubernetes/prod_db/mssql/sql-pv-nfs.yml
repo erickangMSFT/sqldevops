@@ -12,16 +12,14 @@ spec:
       persistentVolumeClaim:
         claimName: sqlpvclaim
   containers:
-    - image: microsoft/mssql-server-linux:latest
-      name: mssql
+    - name: mssql
+      image: microsoft/mssql-server-linux:latest
       env:
-        - name: "ACCEPT_EULA"
+        - name: ACCEPT_EULA
           value: "Y"
-      env:
-        - name: "SA_PASSWORD"
+        - name: SA_PASSWORD
           value: "SqlDevOps2017"
-      env:
-        - name: "MSSQL_PID"
+        - name: MSSQL_PID
           value: "Developer"
       volumeMounts:
         - mountPath: /var/opt/mssql
