@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: sqlpvclaim
+  name: sqlpvclaim1
   namespace: production
 spec:
   storageClassName: standard 
