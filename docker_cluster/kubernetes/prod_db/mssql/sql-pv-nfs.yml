@@ -13,7 +13,7 @@ spec:
         claimName: sqlpvclaim
   containers:
     - name: mssql
-      image: microsoft/mssql-server-linux:latest
+      image: microsoft/mssql-server-linux:latest 
       env:
         - name: ACCEPT_EULA
           value: "Y"
