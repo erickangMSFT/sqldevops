@@ -41,4 +41,3 @@ spec:
       targetPort: 1433
   type: NodePort
 
---- 
