@@ -23,7 +23,6 @@ spec:
           name: mssql
           ports:
             - containerPort: 1433
-              targetPort: 1433
           env:
             - name: ACCEPT_EULA
               value: "Y"
