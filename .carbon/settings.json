@@ -1,5 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+    "dashboard.database.properties": false,
     "dashboard.database.widgets": [
         {
             "provider": "MSSQL",
@@ -10,6 +11,17 @@
             },
             "widget": {
                 "query-data-store-julie-koesmarno": null
+            }
+        },
+        {
+            "provider": "MSSQL",
+            "name": "Space used by tables",
+            "widget": {
+                "table-space-db-insight": null
+            },
+            "gridItemConfig": {
+                "sizex": 2,
+                "sizey": 1
             }
         },
         {
@@ -51,17 +63,7 @@
                 "data-file-space-db-insight": null
             }
         },
-        {
-            "provider": "MSSQL",
-            "name": "Space used by tables",
-            "widget": {
-                "table-space-db-insight": null
-            },
-            "gridItemConfig": {
-                "sizex": 2,
-                "sizey": 1
-            }
-        },
+
         {
             "gridItemConfig": {
                 "sizex": 1,
