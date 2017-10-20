@@ -2,17 +2,17 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: mssql-statefulset
+  name: mssql-fci
   namespace: production
   labels:
-    db: mssql
+    db: mssql-fci
 spec:
-  serviceName: mssql-statefulset
+  serviceName: mssql-fci
   replicas: 2
   template:
     metadata: 
       labels: 
-        db: mssql
+        db: mssql-fci
     spec: 
       volumes:
         - name: sqlvol 
@@ -20,7 +20,7 @@ spec:
             claimName: sqlpvclaim2
       containers:
         - image: microsoft/mssql-server-linux:latest
-          name: mssql
+          name: mssql-fci
           ports:
             - containerPort: 1433
           env:
@@ -37,26 +37,14 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: mssql-statefulset
+  name: mssql-fci
   namespace: production
 spec:
   selector:
-    db: mssql
+    db: mssql-fci
   ports:
     - protocol: TCP
       port: 1433
       targetPort: 1433
   type: ClusterIP
   
----
-kind: Pod
-apiVersion: v1 
-metadata:
-  name: sqltools
-  namespace: production
-  labels:
-    app: sqltools
-spec:
-  containers:
-    - image: ericskang/sqltools:sqlcmd
-      name: sqltools
