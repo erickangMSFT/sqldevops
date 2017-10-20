@@ -8,6 +8,3 @@ kubectl apply -f auth/clusterrolebinding.yaml
 
 kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec":{"serviceAccount":"nfs-client-provisioner"}}}}'
 
-
-kubectl apply -f pvc.yaml
-kubectl apply -f test.yaml
