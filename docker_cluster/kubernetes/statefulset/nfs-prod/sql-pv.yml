@@ -2,12 +2,12 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: mssql-statefulset
+  name: mssql
   namespace: production
   labels:
     db: mssql
 spec:
-  serviceName: mssql-statefulset
+  serviceName: mssql-prod
   replicas: 2 
   template:
     metadata: 
@@ -44,7 +44,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: mssql-statefulset
+  name: mssql-prod
   namespace: production
 spec:
   selector:
