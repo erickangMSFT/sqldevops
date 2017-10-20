@@ -1,4 +1,4 @@
-FROM node:8.4-alpine
+FROM node:alpine
 # Create app directory
 WORKDIR /usr/src/app
 # Install app dependencies

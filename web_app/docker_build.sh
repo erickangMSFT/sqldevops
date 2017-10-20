@@ -11,4 +11,4 @@ docker rmi -f $(docker images -f "dangling=true" -q)
 
 docker rmi -f ericskang/webapp:$dt
 docker rmi -f ericskang/webapp:latest
-docker rmi -f node:8.4-alpine
+docker rmi -f node:alpine
