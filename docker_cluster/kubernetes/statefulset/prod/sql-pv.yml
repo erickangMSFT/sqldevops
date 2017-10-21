@@ -8,7 +8,7 @@ metadata:
     db: mssql-fci
 spec:
   serviceName: mssql-fci
-  replicas: 2
+  replicas: 1
   template:
     metadata: 
       labels: 
