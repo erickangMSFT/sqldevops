@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "dashboard.database.properties": false,
     "dashboard.database.widgets": [
         {
             "provider": "MSSQL",
