@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: sqlnfs3 
+  name: sqlnfs
   namespace: production
 spec:
   accessModes:
@@ -11,5 +11,6 @@ spec:
     storage: 20Gi
   persistentVolumeReclaimPolicy: Recycle 
   nfs:
-    path: "/k8svolumes/sqlpv3"
+    path: "/k8svolumes/sqlpv1"
     server: "10.135.10.138"
+

@@ -17,7 +17,7 @@ spec:
       volumes:
         - name: sqlvol 
           persistentVolumeClaim:
-            claimName: sqlpvclaim2
+            claimName: sqlpvclaim
       containers:
         - image: microsoft/mssql-server-linux:latest
           name: mssql-fci

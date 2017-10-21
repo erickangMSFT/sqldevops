@@ -8,7 +8,7 @@ metadata:
     db: mssql-nfs
 spec:
   serviceName: mssql-prod
-  replicas: 2 
+  replicas: 1 
   template:
     metadata: 
       labels: 
@@ -53,7 +53,7 @@ spec:
     - protocol: TCP
       port: 1433
       targetPort: 1433
-      nodePort: 31430
+      nodePort: 31432
   type: NodePort
   
 ---
