@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:boron-alpine
 RUN mkdir -p /usr/local/etc \
 	&& { \
 		echo 'install: --no-document'; \
