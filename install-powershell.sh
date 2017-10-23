@@ -12,7 +12,7 @@ curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt
 apt-get update
 
 # Install PowerShell
-apt-get install -y powershell mssql-tools unixodbc-dev
+ACCEPT_EULA=Y apt-get install -y powershell mssql-tools unixodbc-dev
 
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 source ~/.bashrc
