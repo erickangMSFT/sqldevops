@@ -6,7 +6,9 @@
 # apt-get python python-pip
 # pip install mssql-scripter
 
-$hostname="127.0.0.1"
+docker run --name mssql -t 1433:1433 -d -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=SqlDevOps2017" -e "MSSQL_PID=Developer" microsoft/mssql-server-linux:latest 
+
+$hostname="localhost"
 
 write-host "Restoring pre-production backup" -foreground green
 /opt/mssql-tools/bin/sqlcmd -S $hostname -Usa -P SqlDevOps2017 -i ./sql/restore.sql 
