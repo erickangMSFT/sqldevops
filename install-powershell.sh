@@ -12,7 +12,7 @@ curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt
 apt-get update
 
 # Install PowerShell
-ACCEPT_EULA="YES"
+export ACCEPT_EULA="YES"
 apt-get install -y powershell mssql-tools unixodbc-dev python-pip
 
 pip install mssql-scripter
