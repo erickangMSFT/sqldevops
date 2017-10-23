@@ -13,7 +13,7 @@ apt-get update
 
 # Install PowerShell
 export ACCEPT_EULA=Y
-apt-get install -y powershell mssql-tools unixodbc-dev python-pip
+apt-get install -y powershell mssql-tools unixodbc-dev python-pip locales
 
 pip install mssql-scripter
 
