@@ -20,5 +20,5 @@ $hostname="localhost"
     $fmt_file = "./out/"+ $ref_table + ".fmt"
     bcp $ref_table format nul -w -f $fmt_file -S $hostname -Uscripter -PSqlDevOps2017 -d WideWorldImporters
     write-host "**** bcp out: " + $ref_table -foreground cyan
-    bcp $ref_table out ./$bcp_file -f $fmt_file -S $hostname -Uscripter -PSqlDevOps2017 -d WideWorldImporters
+    /opt/mssql-tools/bin/bcp $ref_table out ./$bcp_file -f $fmt_file -S $hostname -Uscripter -PSqlDevOps2017 -d WideWorldImporters
  }
