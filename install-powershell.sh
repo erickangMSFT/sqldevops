@@ -13,7 +13,7 @@ apt-get update
 
 # Install PowerShell
 ACCEPT_EULA=Y
-apt-get install -y powershell mssql-tools unixodbc-dev pip
+apt-get install -y powershell mssql-tools unixodbc-dev python-pip
 
 pip install mssql-scripter
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
