@@ -16,5 +16,10 @@ export ACCEPT_EULA=Y
 apt-get install -y powershell mssql-tools unixodbc-dev python-pip
 
 pip install mssql-scripter
+
+localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+export LANG=en_US.utf8
+
+
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 source ~/.bashrc
