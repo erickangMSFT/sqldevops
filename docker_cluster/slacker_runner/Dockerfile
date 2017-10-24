@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:boron-alpine
 RUN apk update && apk upgrade && \
 apk --no-cache add ruby ruby-dev ruby-rdoc ruby-bundler ruby-json ruby-irb ruby-rake ruby-bigdecimal make gcc libc-dev freetds-dev unixodbc-dev ca-certificates git && \
 rm -rf /var/cache/apk/*

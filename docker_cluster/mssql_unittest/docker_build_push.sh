@@ -22,7 +22,3 @@ docker tag ericskang/unittestdb:$dt ericskang/unittestdb:latest
 
 docker push ericskang/unittestdb:$dt
 docker push ericskang/unittestdb:latest
-
-# docker rmi -f $(docker images -f "dangling=true" -q)
-# docker rm -f unittestdb
-# docker rmi -f mssql-unittest:temp
