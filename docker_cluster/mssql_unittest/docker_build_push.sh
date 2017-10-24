@@ -9,8 +9,8 @@ docker ps
 
 # sql server needs 10 to 15 seconds to bootup
 sleep 15
-docker ps
-cat /etc/hosts
+
+
 
 echo 'starting data sanitization'
 cd ../../data_sanitization
