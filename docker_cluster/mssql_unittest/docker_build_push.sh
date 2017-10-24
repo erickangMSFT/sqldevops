@@ -5,14 +5,11 @@ docker build . --rm -t mssql-unittest:temp
 
 # start a docker container to further build layers.
 docker run --name unittestdb -e "ACCEPT_EULA=Y" -p 1433:1433 -d mssql-unittest:temp
-docker ps
-
-docker network ls
 
 # sql server needs 10 to 15 seconds to bootup
 sleep 15
 
-
+docker ps
 
 echo 'starting data sanitization'
 cd ../../data_sanitization
