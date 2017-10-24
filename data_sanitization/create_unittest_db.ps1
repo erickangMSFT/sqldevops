@@ -6,7 +6,7 @@
 # apt-get python python-pip
 # pip install mssql-scripter
 
-$hostname="unittestdb"
+$hostname="localhost"
 
 write-host "Restoring pre-production backup" -foreground green
 /opt/mssql-tools/bin/sqlcmd -S $hostname -Usa -P SqlDevOps2017 -i ./sql/restore.sql 
