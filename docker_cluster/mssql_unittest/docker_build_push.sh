@@ -11,7 +11,7 @@ sleep 15
 
 docker ps
 
-echo 'starting data sanitization'
+echo 'Starting data sanitization'
 cd ../../data_sanitization
 powershell ./create_unittest_db.ps1
 
@@ -22,3 +22,5 @@ docker tag ericskang/unittestdb:$dt ericskang/unittestdb:latest
 
 docker push ericskang/unittestdb:$dt
 docker push ericskang/unittestdb:latest
+
+echo 'Finished build and publishing sanitized database image.'
