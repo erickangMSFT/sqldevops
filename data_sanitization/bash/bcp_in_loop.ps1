@@ -1,5 +1,5 @@
 #!/usr/bin/powershell
- $hostname="localhost"
+ $hostname="0.0.0.0"
  $ref_tables = @("Application.People", 
             "Application.Countries", 
             "Application.StateProvinces", 

@@ -1,5 +1,5 @@
 #!/usr/bin/powershell
-$hostname="localhost"
+$hostname="0.0.0.0"
  $ref_tables = @("Application.People", 
             "Application.Countries", 
             "Application.StateProvinces", 
@@ -18,7 +18,7 @@ $hostname="localhost"
  foreach ($ref_table in $ref_tables) {
     $bcp_file = "./out/" + $ref_table + ".bcp"
     $fmt_file = "./out/"+ $ref_table + ".fmt"
-    bcp $ref_table format nul -w -f $fmt_file -S $hostname -Uscripter -PSqlDevOps2017 -d WideWorldImporters
+    /opt/mssql-tools/bin/bcp $ref_table format nul -w -f $fmt_file -S $hostname -Uscripter -PSqlDevOps2017 -d WideWorldImporters
     write-host "**** bcp out: " + $ref_table -foreground cyan
     /opt/mssql-tools/bin/bcp $ref_table out ./$bcp_file -f $fmt_file -S $hostname -Uscripter -PSqlDevOps2017 -d WideWorldImporters
  }
