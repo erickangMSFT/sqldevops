@@ -1,0 +1,18 @@
+version: '2'
+services:
+  webapp:
+    image: ericskang/webapp:latest
+    depends_on:
+      - mssql
+    container_name: webapp
+    ports:
+      - "80:3000"
+  mssql:
+    image: ericskang/unittestdb:latest
+    container_name: mssql
+    ports: 
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "SqlDevOps2017"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
