@@ -1,21 +1,14 @@
 version: '2'
 services:
   webapp:
-    image: ericskang/webapp:latest
+    image: sqlpass.azurecr.io/webapp:latest
     depends_on:
       - mssql
     container_name: webapp
     ports:
       - "80:3000"
-  slacker:
-    image: ericskang/slacker-node-runner:latest
-    depends_on: 
-      - mssql
-    container_name: slacker
-    ports:
-      - "8000:8000"
   mssql:
-    image: ericskang/unittestdb:latest
+    image: sqlpass.azurecr.io/unittestdb:latest
     container_name: mssql
     ports: 
       - "1433:1433"
