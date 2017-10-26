@@ -18,7 +18,7 @@ powershell ./create_unittest_db.ps1
 dt=`date '+%Y-%m-%d_%H-%M-%S'`
 
 docker commit unittestdb sqlpass.azurecr.io/unittestdb:$dt
-docker tag ericskang/unittestdb:$dt sqlpass.azurecr.io/unittestdb:latest
+docker tag sqlpass.azurecr.io/unittestdb:$dt sqlpass.azurecr.io/unittestdb:latest
 
 docker push sqlpass.azurecr.io/unittestdb:$dt
 docker push sqlpass.azurecr.io/unittestdb:latest
