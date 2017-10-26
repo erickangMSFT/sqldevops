@@ -13,11 +13,11 @@ az account set -s <your subscription name>
 az group create -n sqldevops-erickang-kubernetes -l westus
 
 # provision acs. change agent-count to 2 or more for a practical setup including azure loadbalancer
-az acs create -n sqldevops-cluster \
--g sqldevops-erickang-kubernetes \
---dns-prefix sqldevops-cluster \
+az acs create -n sqldevops-k8s \
+-g erickang-kubernetes-acs \
+--dns-prefix sqldevops-k8s \
 --orchestrator-type kubernetes \
---agent-count 2
+--agent-count 1
 
 # run this to make your laptop to connect acs-k8s with kubectl
 az acs kubernetes get-credentials -n sqldevops-cluster -g sqldevops-erickang-kubernetes

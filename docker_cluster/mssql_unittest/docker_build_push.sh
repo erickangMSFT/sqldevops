@@ -17,10 +17,10 @@ powershell ./create_unittest_db.ps1
 
 dt=`date '+%Y-%m-%d_%H-%M-%S'`
 
-docker commit unittestdb ericskang/unittestdb:$dt
-docker tag ericskang/unittestdb:$dt ericskang/unittestdb:latest
+docker commit unittestdb sqlpass.azurecr.io/unittestdb:$dt
+docker tag ericskang/unittestdb:$dt sqlpass.azurecr.io/unittestdb:latest
 
-docker push ericskang/unittestdb:$dt
-docker push ericskang/unittestdb:latest
+docker push sqlpass.azurecr.io/unittestdb:$dt
+docker push sqlpass.azurecr.io/unittestdb:latest
 
 echo 'Finished build and publishing sanitized database image.'
