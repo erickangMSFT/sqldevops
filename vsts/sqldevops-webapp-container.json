@@ -1,0 +1,306 @@
+{
+    "options": [
+        {
+            "enabled": false,
+            "definition": {
+                "id": "5d58cc01-7c75-450c-be18-a388ddb129ec"
+            },
+            "inputs": {
+                "branchFilters": "[\"+refs/heads/*\"]",
+                "additionalFields": "{}"
+            }
+        },
+        {
+            "enabled": false,
+            "definition": {
+                "id": "a9db38f9-9fdc-478c-b0f9-464221e58316"
+            },
+            "inputs": {
+                "workItemType": "445022",
+                "assignToRequestor": "true",
+                "additionalFields": "{}"
+            }
+        },
+        {
+            "enabled": false,
+            "definition": {
+                "id": "57578776-4c22-4526-aeb0-86b6da17ee9c"
+            },
+            "inputs": {}
+        }
+    ],
+    "triggers": [
+        {
+            "branchFilters": [
+                "+master"
+            ],
+            "pathFilters": [],
+            "batchChanges": false,
+            "maxConcurrentBuildsPerBranch": 1,
+            "pollingInterval": 0,
+            "triggerType": 2
+        }
+    ],
+    "variables": {
+        "system.debug": {
+            "value": "false",
+            "allowOverride": true
+        },
+        "docker-user": {
+            "value": null,
+            "isSecret": true
+        },
+        "docker-passwd": {
+            "value": null,
+            "isSecret": true
+        }
+    },
+    "retentionRules": [
+        {
+            "branches": [
+                "+refs/heads/*"
+            ],
+            "artifacts": [],
+            "artifactTypesToDelete": [
+                "FilePath",
+                "SymbolStore"
+            ],
+            "daysToKeep": 10,
+            "minimumToKeep": 1,
+            "deleteBuildRecord": true,
+            "deleteTestResults": true
+        }
+    ],
+    "metrics": [
+        {
+            "name": "CurrentBuildsInQueue",
+            "scope": "refs/heads/master",
+            "intValue": 0
+        },
+        {
+            "name": "CurrentBuildsInProgress",
+            "scope": "refs/heads/master",
+            "intValue": 0
+        },
+        {
+            "name": "CanceledBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2017-10-26T00:00:00.000Z"
+        },
+        {
+            "name": "FailedBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2017-10-26T00:00:00.000Z"
+        },
+        {
+            "name": "PartiallySuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2017-10-26T00:00:00.000Z"
+        },
+        {
+            "name": "SuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2017-10-26T00:00:00.000Z"
+        },
+        {
+            "name": "TotalBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 2,
+            "date": "2017-10-26T00:00:00.000Z"
+        },
+        {
+            "name": "CanceledBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2017-10-25T00:00:00.000Z"
+        },
+        {
+            "name": "FailedBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2017-10-25T00:00:00.000Z"
+        },
+        {
+            "name": "PartiallySuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2017-10-25T00:00:00.000Z"
+        },
+        {
+            "name": "SuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2017-10-25T00:00:00.000Z"
+        },
+        {
+            "name": "TotalBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 2,
+            "date": "2017-10-25T00:00:00.000Z"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "https://sqldevops.visualstudio.com/b401ff87-dd18-4e3b-bd88-160c04c1eb27/_apis/build/Definitions/11"
+        },
+        "web": {
+            "href": "https://sqldevops.visualstudio.com/_permalink/_build/index?collectionId=c516a4b0-31e6-4fbe-839c-029cba48fd86&projectId=b401ff87-dd18-4e3b-bd88-160c04c1eb27&definitionId=11"
+        },
+        "editor": {
+            "href": "https://sqldevops.visualstudio.com/_permalink/_build/definitionEditor?collectionId=c516a4b0-31e6-4fbe-839c-029cba48fd86&projectId=b401ff87-dd18-4e3b-bd88-160c04c1eb27&definitionId=11"
+        }
+    },
+    "jobAuthorizationScope": 1,
+    "jobTimeoutInMinutes": 60,
+    "jobCancelTimeoutInMinutes": 5,
+    "process": {
+        "phases": [
+            {
+                "dependencies": [],
+                "steps": [
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Docker Login",
+                        "timeoutInMinutes": 0,
+                        "condition": "succeeded()",
+                        "refName": "ShellScript1",
+                        "task": {
+                            "id": "6c731c3c-3c68-459a-a5c9-bde6e6595b5b",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "scriptPath": "docker-login.sh",
+                            "args": "$(docker-user) $(docker-passwd)",
+                            "disableAutoCwd": "false",
+                            "cwd": "",
+                            "failOnStandardError": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Docker Build",
+                        "timeoutInMinutes": 0,
+                        "condition": "succeeded()",
+                        "refName": "ShellScript2",
+                        "task": {
+                            "id": "6c731c3c-3c68-459a-a5c9-bde6e6595b5b",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "scriptPath": "docker_build.sh",
+                            "args": "",
+                            "disableAutoCwd": "false",
+                            "cwd": "",
+                            "failOnStandardError": "false"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Shell Script agent_cleanup.sh",
+                        "timeoutInMinutes": 0,
+                        "condition": "always()",
+                        "refName": "ShellScript3",
+                        "task": {
+                            "id": "6c731c3c-3c68-459a-a5c9-bde6e6595b5b",
+                            "versionSpec": "2.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "scriptPath": "agent_cleanup.sh",
+                            "args": "",
+                            "disableAutoCwd": "false",
+                            "cwd": "",
+                            "failOnStandardError": "false"
+                        }
+                    }
+                ],
+                "variables": {},
+                "name": "Docker",
+                "target": {
+                    "demands": [],
+                    "executionOptions": {
+                        "type": 0
+                    },
+                    "type": 1
+                },
+                "jobAuthorizationScope": "projectCollection",
+                "jobCancelTimeoutInMinutes": 1
+            }
+        ],
+        "type": 1
+    },
+    "repository": {
+        "properties": {
+            "cleanOptions": "0",
+            "gitLfsSupport": "false",
+            "skipSyncSource": "false",
+            "checkoutNestedSubmodules": "false",
+            "reportBuildStatus": "true",
+            "fetchDepth": "0",
+            "connectedServiceId": "8da53ac9-503d-4627-806d-21b9fc990f26",
+            "apiUrl": "https://api.github.com/repos/erickangMSFT/wwi-webapp",
+            "branchesUrl": "https://api.github.com/repos/erickangMSFT/wwi-webapp/branches",
+            "cloneUrl": "https://github.com/erickangMSFT/wwi-webapp.git",
+            "refsUrl": "https://api.github.com/repos/erickangMSFT/wwi-webapp/git/refs",
+            "definitionId": "11",
+            "branch": "master"
+        },
+        "id": "https://github.com/erickangMSFT/wwi-webapp.git",
+        "type": "GitHub",
+        "name": "erickangMSFT/wwi-webapp",
+        "url": "https://github.com/erickangMSFT/wwi-webapp.git",
+        "defaultBranch": "master",
+        "clean": "false",
+        "checkoutSubmodules": false
+    },
+    "processParameters": {},
+    "quality": 1,
+    "authoredBy": {
+        "id": "b300a433-5241-48cf-baa9-74d151cc3869",
+        "displayName": "Eric Kang",
+        "uniqueName": "erickang@microsoft.com",
+        "url": "https://app.vssps.visualstudio.com/A65706c0f-8d2d-4d6d-b178-a2956fd32422/_apis/Identities/b300a433-5241-48cf-baa9-74d151cc3869",
+        "imageUrl": "https://sqldevops.visualstudio.com/_api/_common/identityImage?id=b300a433-5241-48cf-baa9-74d151cc3869"
+    },
+    "drafts": [],
+    "queue": {
+        "id": 26,
+        "name": "LinuxAgents",
+        "pool": {
+            "id": 7,
+            "name": "LinuxAgents"
+        }
+    },
+    "id": 11,
+    "name": "sqldevops-webapp-container",
+    "url": "https://sqldevops.visualstudio.com/b401ff87-dd18-4e3b-bd88-160c04c1eb27/_apis/build/Definitions/11",
+    "uri": "vstfs:///Build/Definition/11",
+    "path": "\\",
+    "type": 2,
+    "queueStatus": 0,
+    "revision": 4,
+    "createdDate": "2017-10-26T15:58:09.250Z",
+    "project": {
+        "id": "b401ff87-dd18-4e3b-bd88-160c04c1eb27",
+        "name": "sqldevops-container",
+        "url": "https://sqldevops.visualstudio.com/_apis/projects/b401ff87-dd18-4e3b-bd88-160c04c1eb27",
+        "state": "wellFormed",
+        "revision": 38,
+        "visibility": 1
+    }
+}
