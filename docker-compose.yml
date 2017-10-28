@@ -8,7 +8,7 @@ services:
     ports:
       - "80:3000"
   mssql:
-    image: sqlpass.azurecr.io/unittestdb:latest
+    image: sqlpass.azurecr.io/mssql-dev-db-image:latest
     container_name: mssql
     ports: 
       - "1433:1433"
