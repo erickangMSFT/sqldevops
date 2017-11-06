@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: mssql
+  namespace: production
+  labels:
+    db: mssql
+spec:
+  serviceName: mssql
+  replicas: 1
+  template:
+    metadata: 
+      labels: 
+        db: mssql
+    spec: 
+      volumes:
+        - name: sqlvol 
+          persistentVolumeClaim:
+            claimName: sqlpvclaim1
+      containers:
+        - image: microsoft/mssql-server-linux:latest
+          name: mssql
+          ports:
+            - containerPort: 1433
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              value: "SqlDevOps2017"
+            - name: MSSQL_PID
+              value: "Developer"
+          volumeMounts:
+            - mountPath: /var/opt/mssql
+              name: sqlvol
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql
+  namespace: production
+spec:
+  selector:
+    db: mssql
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+  type: ClusterIP
