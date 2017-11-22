@@ -23,9 +23,9 @@ spec:
             - name: NFS_SERVER
               value: 10.135.10.138
             - name: NFS_PATH
-              value: /export
+              value: /k8svolumes
       volumes:
         - name: nfs-client-root
           nfs:
             server: 10.135.10.138
-            path: /export
+            path: /k8svolumes
