@@ -21,11 +21,11 @@ spec:
             - name: PROVISIONER_NAME
               value: fuseim.pri/ifs 
             - name: NFS_SERVER
-              value: 192.168.1.119
+              value: 10.135.10.138
             - name: NFS_PATH
-              value: /export
+              value: /k8svolumes
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 192.168.1.119
-            path: /export
+            server: 10.135.10.138
+            path: /k8svolumes
