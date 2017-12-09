@@ -13,7 +13,7 @@ docker ps
 
 echo 'Starting data sanitization'
 cd ../../data_sanitization
-powershell ./create_unittest_db.ps1
+pwsh ./create_unittest_db.ps1
 
 dt=`date '+%Y-%m-%d_%H-%M-%S'`
 
