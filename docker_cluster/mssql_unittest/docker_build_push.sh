@@ -17,10 +17,10 @@ pwsh ./create_unittest_db.ps1
 
 dt=`date '+%Y-%m-%d_%H-%M-%S'`
 
-docker commit unittestdb sqlpass.azurecr.io/mssql-dev-db-image:$dt
-docker tag sqlpass.azurecr.io/mssql-dev-db-image:$dt sqlpass.azurecr.io/mssql-dev-db-image:latest
+docker commit unittestdb ericskang/unittestdb:$dt
+docker tag ericskang/unittestdb:$dt ericskang/unittestdb:latest
 
-docker push sqlpass.azurecr.io/mssql-dev-db-image:$dt
-docker push sqlpass.azurecr.io/mssql-dev-db-image:latest
+docker push ericskang/unittestdb:$dt
+docker push ericskang/unittestdb:latest
 
 echo 'Finished build and publishing sanitized database image.'

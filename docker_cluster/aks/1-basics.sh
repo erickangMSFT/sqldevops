@@ -7,6 +7,8 @@ docker run --name demosqlserver \
     -e "MSSQL_PID=Developer" \
     -d microsoft/mssql-server-linux:latest
 
+docker ps
+
 docker rm -f demosqlserver
 
 docker-compose up -d

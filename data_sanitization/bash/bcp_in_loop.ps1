@@ -1,4 +1,4 @@
-#!/usr/bin/powershell
+#!/usr/bin/pwsh
  $hostname="localhost"
  $ref_tables = @("Application.People", 
             "Application.Countries", 
