@@ -19,5 +19,7 @@ az aks install-cli
 az aks get-credentials \
     -g mvademoaksgroup \
     -n mvademok8s
-
 kubectl config get-contexts
+
+clear
+kubectl cluster-info
